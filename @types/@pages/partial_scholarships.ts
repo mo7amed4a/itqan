@@ -1,5 +1,5 @@
 export interface Partial_scholarshipsLangType {
-  Partial_scholarships: {
+  partial_scholarships: {
     title: string;
     university: string;
     specialization: {

@@ -5,7 +5,7 @@ import { Button } from "flowbite-react";
 
 export default async function Page({ params }: { params: { lng: string } }) {
   const lng = params.lng;
-  const { t } = await useTranslation(lng, "Partial_scholarships");
+  const { t } = await useTranslation(lng, "partial_scholarships");
   return (
     <div className="container mx-auto px-4 my-10">
       <h1 className="text-center text-xl md:text-2xl font-bold text-gray-500 capitalize">

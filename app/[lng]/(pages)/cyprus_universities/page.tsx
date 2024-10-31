@@ -15,7 +15,7 @@ export default async function UniversitiesPage({
   params: { lng: string };
 }) {
   const lng = params.lng;
-  const { t } = await useTranslation(lng, "Cypriot_universities");
+  const { t } = await useTranslation(lng, "cypriot_universities");
 
   return (
     <div className="my-10 container mx-auto space-y-20 p-4">

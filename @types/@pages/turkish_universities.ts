@@ -1,5 +1,5 @@
 export interface Turkish_universitiesLangType {
-  Turkish_universities: {
+  turkish_universities: {
     title: string;
     links: {
       all: string;

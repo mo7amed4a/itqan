@@ -11,7 +11,7 @@ import { TFunction } from "i18next";
 export default function CardFull({
   t
 }: {
-  t: TFunction<"Partial_scholarships", undefined>
+  t: TFunction<"partial_scholarships", undefined>
 }) {
   return (
     <div className='bg-white rounded-xl p-4 flex flex-col md:flex-row'>

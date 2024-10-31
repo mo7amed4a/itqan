@@ -1,5 +1,5 @@
 export interface Cypriot_universitiesLangType {
-  Cypriot_universities: {
+  cypriot_universities: {
     title: string;
     links: {
       all: string;
