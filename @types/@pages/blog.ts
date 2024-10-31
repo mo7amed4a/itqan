@@ -1,5 +1,5 @@
 export interface BlogLangType {
-  Blogs: {
+  blogs: {
     title: string;
     links: {
       study_in_turkey: string;

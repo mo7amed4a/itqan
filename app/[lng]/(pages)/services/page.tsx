@@ -8,7 +8,7 @@ import Image from "next/image";
 import img1 from "../../../../public/images/for-blog.png";
 import FormBooking from "../../../../components/home/form-booking";
 
-export default async function page({ params }: { params: { lng: string } }) {
+export default async function Page({ params }: { params: { lng: string } }) {
   const lng = params.lng;
   const { t } = await useTranslation(lng);
 

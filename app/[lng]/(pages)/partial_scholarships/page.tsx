@@ -3,7 +3,7 @@ import CardFull from "../../../../components/cards/Card-full";
 import { useTranslation } from "../../../../i18n";
 import { Button } from "flowbite-react";
 
-export default async function page({ params }: { params: { lng: string } }) {
+export default async function Page({ params }: { params: { lng: string } }) {
   const lng = params.lng;
   const { t } = await useTranslation(lng, "Partial_scholarships");
   return (

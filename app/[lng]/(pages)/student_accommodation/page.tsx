@@ -1,10 +1,18 @@
-import LinkApp from '@/components/global/LinkApp'
-import CardUniversity from '@/components/home/CardUniversity'
+import LinkApp from "../../../../components/global/LinkApp";
+import CardUniversity from "../../../../components/home/CardUniversity";
+
 import { Button, Carousel } from 'flowbite-react'
 import React from 'react'
+import { useTranslation } from "../../../../i18n";
 
 
-export default function UniversitiesPage() {
+export default async function UniversitiesPage({
+    params,
+}: {
+    params: { lng: string };
+}) {
+    const lng = params.lng;
+    // const { t } = await useTranslation(lng);
   return (
     <div className='my-10 container mx-auto space-y-20 p-4'>
         <div className='flex justify-center items-center text-center'>
@@ -13,23 +21,23 @@ export default function UniversitiesPage() {
         <div>
              <ul className='flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar'>
                 <li className='border-b-2 border-red-500 text-red-500'>
-                    <LinkApp href='/blogs'>جامعات اسطنبول</LinkApp>
+                    <LinkApp lng={lng} href='/blogs'>جامعات اسطنبول</LinkApp>
                 </li>
                 <li>
-                    <LinkApp href='/blogs'>جامعات</LinkApp>
+                    <LinkApp lng={lng} href='/blogs'>جامعات</LinkApp>
                 </li>
                 <li>
-                    <LinkApp href='/blogs'>جامعات</LinkApp>
+                    <LinkApp lng={lng} href='/blogs'>جامعات</LinkApp>
                 </li>
                 <li>
-                    <LinkApp href='/blogs'>جامعات</LinkApp>
+                    <LinkApp lng={lng} href='/blogs'>جامعات</LinkApp>
                 </li>
                 <li>
-                    <LinkApp href='/blogs'>جامعات</LinkApp>
+                    <LinkApp lng={lng} href='/blogs'>جامعات</LinkApp>
                 </li>
                 <li>
-                    <LinkApp href='/blogs'>جامعات</LinkApp>
-                </li>
+                    <LinkApp lng={lng} href='/blogs'>جامعات</LinkApp>
+                </li> 
              </ul>
         </div>
 

@@ -1,9 +1,9 @@
 import { BlogLangType } from "./@pages/blog";
 import { BookingFixedType } from "./@pages/bookingFixed";
-import { Cypriot_universitiesLangType } from "./@pages/Cypriot_universities";
+import { Cypriot_universitiesLangType } from "./@pages/cypriot_universities";
 import { HomeLangType } from "./@pages/home";
-import { Partial_scholarshipsLangType } from "./@pages/Partial_scholarships";
-import { Turkish_universitiesLangType } from "./@pages/Turkish_universities";
+import { Partial_scholarshipsLangType } from "./@pages/partial_scholarships";
+import { Turkish_universitiesLangType } from "./@pages/turkish_universities";
 
 interface Resources
   extends HomeLangType,

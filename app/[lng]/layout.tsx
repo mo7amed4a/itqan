@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang={lng} dir={dir(lng)}>
       <head >
-      <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet" />
       </head>
       <body>
       

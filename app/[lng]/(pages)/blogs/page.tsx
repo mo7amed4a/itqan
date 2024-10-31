@@ -8,9 +8,9 @@ import img1 from "../../../../public/images/for-blog.png"
 import Image from "next/image";
 import { useTranslation } from "../../../../i18n";
 
-export default async function blogs({ params }: { params: { lng: string } }) {
+export default async function Blogs({ params }: { params: { lng: string } }) {
   const lng = params.lng;
-  const {t} = await useTranslation(lng, 'Blogs')
+  const {t} = await useTranslation(lng, 'blogs')
   return (
     <div className="my-10 container mx-auto space-y-20 p-4">
       <div className="flex justify-center items-center text-center">
