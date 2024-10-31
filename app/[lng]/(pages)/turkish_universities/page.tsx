@@ -5,7 +5,6 @@ import CarouselApp, { CarouselItem } from "../../../../components/global/Carouse
 import Image from "next/image";
 import img1 from "../../../../public/images/for-blog.png"
 import LinkApp from "../../../../components/global/LinkApp";
-import { use } from "i18next";
 import { useTranslation } from "../../../../i18n";
 import CardUniversity from "../../../../components/home/CardUniversity";
 

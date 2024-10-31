@@ -5,7 +5,7 @@ import { FaMapSigns } from "react-icons/fa";
 import { FaLanguage } from "react-icons/fa";
 import { FaTag } from "react-icons/fa6";
 import { TFunction } from "i18next";
-
+import img1 from "../../public/logo/logo-3.png"
 
 
 export default function CardFull({
@@ -16,7 +16,7 @@ export default function CardFull({
   return (
     <div className='bg-white rounded-xl p-4 flex flex-col md:flex-row'>
         <div className='lg:w-1/4 p-4 hidden lg:block'>
-            <Image src="/logo/logo-3.png" className='rounded-full w-52' alt="alt" width={100} height={100} />
+            <Image src={img1} className='rounded-full w-52' alt="alt" width={100} height={100} />
         </div>
         <div className='lg:w-3/4 md:py-5 flex flex-col items-start space-y-4'>
         <div className='flex justify-between items-center w-full'>
