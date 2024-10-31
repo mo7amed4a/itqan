@@ -1,0 +1,24 @@
+{
+  "title": "Partial Scholarships",
+  "university": "Medipol University",
+  "specialization": {
+    "label": "Specialization",
+    "option1": "Computer Engineering",
+    "option2": "Computer Engineering",
+    "option3": "Computer Engineering",
+    "option4": "Computer Engineering"
+  },
+  "language": {
+    "label": "Language of Study",
+    "value": "English"
+  },
+  "fees": {
+    "label": "Tuition Fees",
+    "value": "14000$"
+  },
+  "buttons": {
+    "view_university": "View University",
+    "register_scholarship": "Register for Scholarship Now"
+  },
+  "show_more": "Show More"
+}

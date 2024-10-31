@@ -1,0 +1,32 @@
+{
+  "title": "Cypriot Universities",
+  "links": {
+    "all": "All",
+    "privateUniversities": "Private Universities",
+    "internationalUniversities": "International Universities",
+    "cyprusUniversities": "Our Cypriot Universities"
+  },
+  "mostRanked": "Most Ranked",
+  "topMajors": "Top Majors",
+  "universityInfo": {
+    "name": "Ibn Khaldun University",
+    "description": "This enhances the student's chances of getting prestigious jobs or pursuing higher studies in recognized educational institutions around the world.",
+    "establishmentYear": "Year of Establishment",
+    "ranking": "Global Ranking",
+    "rankingNumber": "5746",
+    "establishedYearValue": "2020",
+    "majors": {
+      "humanSciences": "Human Sciences",
+      "medicine": "Human Medicine",
+      "computerEngineering": "Computer Engineering",
+      "pharmacy": "Pharmacy"
+    },
+    "startingPrices": "Prices Start",
+    "priceRange": {
+      "from": "from",
+      "to": "to"
+    },
+    "registerNow": "Register Now"
+  },
+  "show_more": "Show More"
+}

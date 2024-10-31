@@ -1,0 +1,34 @@
+{
+  "title": "Turkish Universities",
+  "links": {
+    "all": "All",
+    "istanbulEuropean": "Istanbul European Universities",
+    "istanbulAsian": "Istanbul Asian Universities",
+    "ankara": "Ankara Universities",
+    "mersin": "Mersin Universities",
+    "gaziantep": "Gaziantep Universities"
+  },
+  "topMajors": "Top Majors",
+  "mostRanked": "Most Ranked",
+  "universityInfo": {
+    "name": "Ibn Khaldun University",
+    "description": "This enhances the student's chances of getting prestigious jobs or pursuing higher studies in recognized educational institutions around the world.",
+    "establishmentYear": "Year of Establishment",
+    "ranking": "Global Ranking",
+    "rankingNumber": "5746",
+    "establishedYearValue": "2020",
+    "majors": {
+      "humanSciences": "Human Sciences",
+      "medicine": "Human Medicine",
+      "computerEngineering": "Computer Engineering",
+      "pharmacy": "Pharmacy"
+    },
+    "startingPrices": "Prices Start",
+    "priceRange": {
+      "from": "From",
+      "to": "To"
+    },
+    "registerNow": "Register Now"
+  },
+  "show_more": "Show More"
+}

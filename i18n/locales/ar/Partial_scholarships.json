@@ -1,0 +1,24 @@
+{
+  "title": "المنح الجزئية",
+  "university": "جامعة ميدبول",
+  "specialization": {
+    "label": "التخصص",
+    "option1": " هندسة الحاسوب",
+    "option2": " هندسة الحاسوب",
+    "option3": " هندسة الحاسوب",
+    "option4": " هندسة الحاسوب"
+  },
+  "language": {
+    "label": "لغة الدراسة",
+    "value": "الإنجليزية"
+  },
+  "fees": {
+    "label": "الرسوم",
+    "value": "14000$"
+  },
+  "buttons": {
+    "view_university": "عرض الجامعة",
+    "register_scholarship": "سجل في المنحة الآن"
+  },
+  "show_more": "اظهار المزيد"
+}

@@ -1,0 +1,32 @@
+{
+  "drawer": {
+    "register_now": "Register",
+    "personal_info": "Personal Information",
+    "name": "Name",
+    "surname": "Surname",
+    "country_of_residence": "Country of Residence",
+    "gender": "Gender",
+    "email": "Email",
+    "phone_number": "Phone Number",
+    "university_info": "University & Major Info",
+    "select_degree": "Select Degree",
+    "select_language": "Select Language",
+    "select_specialization": "Select Specialization",
+    "select_universities": "Select Universities to Join",
+    "message_text": "Message Text",
+    "message_content": "Message Content",
+    "name_required": "Name is required",
+    "surname_required": "Surname is required",
+    "country_required": "Country of residence is required",
+    "gender_required": "Gender is required",
+    "email_required": "Email is required",
+    "invalid_email": "Invalid email",
+    "phone_required": "Phone number is required",
+    "select_degree_required": "Degree is required",
+    "select_language_required": "Language is required",
+    "select_specialization_required": "Specialization is required",
+    "select_universities_required": "Universities are required",
+    "message_required": "Message content is required",
+    "submitting": "Submitting"
+  }
+}

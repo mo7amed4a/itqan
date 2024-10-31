@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+[dir="rtl"] [class*="space-x"] > :not(template) ~ :not(template) {
+  --space-x-reverse: 0 !important;
+  margin-left: calc(1rem * var(--space-x-reverse)) !important;
+  margin-right: calc(1rem * calc(1 - var(--space-x-reverse))) !important;
+}
+
+body {
+  font-family: Tajawal;
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0px;
+  text-align: right;
+  background-color: #f5f7f9;
+}
+.bg-hero {
+  background: url(../../public/images/home-hero.png);
+  @apply bg-cover bg-bottom;
+}
+
+.hidden-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-bullet li {
+  @apply relative ps-2 before:absolute before:-start-1 before:top-1 md:before:top-2 before:rounded-full before:w-1 before:h-1 before:bg-primary
+}
+
+.list {
+  @apply relative ps-2 before:absolute before:-start-1 before:top-1.5 before:rounded-full before:w-1.5 before:h-1.5 before:bg-red-500
+}

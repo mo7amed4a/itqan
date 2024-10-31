@@ -1,0 +1,34 @@
+{
+  "title": "جامعاتنا التركية",
+  "links": {
+    "all": "الكل",
+    "istanbulEuropean": "جامعات إسطنبول الأوروبية",
+    "istanbulAsian": "جامعات إسطنبول الآسيوية",
+    "ankara": "جامعات أنقرة",
+    "mersin": "جامعات مرسين",
+    "gaziantep": "جامعات غازي عنتاب"
+  },
+  "mostRanked": "الأكثر تصنيفاً",
+  "topMajors": "أهم التخصصات",
+  "universityInfo": {
+    "name": "جامعة ابن خلدون",
+    "description": "هذا يعزز من فرص الطالب في الحصول على وظائف مرموقة أو متابعة الدراسات العليا في مؤسسات تعليمية ومعترف بها حول العالم.",
+    "establishmentYear": "سنة التأسيس",
+    "ranking": "الترتيب العالمي",
+    "rankingNumber": "5746",
+    "establishedYearValue": "2020",
+    "majors": {
+      "humanSciences": "العلوم الإنسانية",
+      "medicine": "الطب البشري",
+      "computerEngineering": "هندسة الحاسوب",
+      "pharmacy": "الصيدلة"
+    },
+    "startingPrices": "تبدأ الأسعار",
+    "priceRange": {
+      "from": "من",
+      "to": "الى"
+    },
+    "registerNow": "سجل الآن"
+  },
+   "show_more": "مشاهدة المزيد"
+}
