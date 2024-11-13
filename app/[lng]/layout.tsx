@@ -6,6 +6,7 @@ import BookingFixed from '../../components/fixedCps/BookingFixed'
 import FooterApp from '../../components/Footer/footer'
 import { fallbackLng, languages } from '../../i18n/settings'
 import { useTranslation } from '../../i18n'
+import { Toaster } from 'react-hot-toast'
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }))
@@ -42,7 +43,9 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet" />
       </head>
       <body>
-      
+        <div className='relative z-[54187198429748928972928] text-sm'>
+          <Toaster />
+        </div>
       <HeaderApp locale={lng} />
       <BookingFixed lng={lng}/>
         {children}

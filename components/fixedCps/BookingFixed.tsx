@@ -1,62 +1,154 @@
 "use client";
-import { Button, Card, Drawer, Textarea, TextInput } from "flowbite-react";
-import React, { useState } from "react";
+import {
+  Button,
+  Card,
+  Clipboard,
+  Drawer,
+  Textarea,
+  TextInput,
+} from "flowbite-react";
+import React, { useEffect, useState } from "react";
 import { BiMale, BiPhone } from "react-icons/bi";
 import { CgFlag } from "react-icons/cg";
 import { CiUser } from "react-icons/ci";
-import {
-  FaGraduationCap,
-  FaLanguage,
-  FaRegFileAlt,
-} from "react-icons/fa";
+import { FaGraduationCap, FaLanguage, FaRegFileAlt } from "react-icons/fa";
 import { FaHandPointRight } from "react-icons/fa6";
 import { LuGraduationCap } from "react-icons/lu";
 import { MdEmail } from "react-icons/md";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "../../i18n/client";
+import { api, setAcceptLanguage } from "../../lib/axios";
+import toast from "react-hot-toast";
+import Link from "next/link";
 // import axios from "axios";
 
-export default function BookingFixed({
-  lng,
-}: {
-  lng: string;
-}) {
+type DataType = {
+  name: string;
+  surname: string;
+  country: string;
+  gender: string;
+  email: string;
+  mobile: string;
+  select_degree: string;
+  language: string;
+  specialization: string;
+  universities: string;
+  message: string;
+};
 
-  const { t: dataLang } = useTranslation(lng, "layOutFixed")
+export default function BookingFixed({ lng }: { lng: string }) {
+  const { t: dataLang } = useTranslation(lng, "layOutFixed");
   const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => setIsOpen(false);
-
+  const [text, setText] = useState<string | null>(null);
 
   const validationSchema = Yup.object({
-    name: Yup.string().required(dataLang('drawer.name_required')),
-    surname: Yup.string().required(dataLang('drawer.surname_required')),
-    country: Yup.string().required(dataLang('drawer.country_required')),
+    name: Yup.string().required(dataLang("drawer.name_required")),
+    surname: Yup.string().required(dataLang("drawer.surname_required")),
+    country: Yup.string().required(dataLang("drawer.country_required")),
     gender: Yup.string().required(dataLang("drawer.gender_required")),
-    email: Yup.string().email(dataLang('drawer.invalid_email')).required(dataLang("drawer.email_required")),
-    mobile: Yup.string().required(dataLang('drawer.phone_required')),
-    select_degree: Yup.string().required(dataLang('drawer.select_degree_required')),
-    language: Yup.string().required(dataLang("drawer.select_language_required")),
-    specialization: Yup.string().required(dataLang('drawer.select_specialization_required')),
-    universities: Yup.string().required(dataLang("drawer.select_universities_required")),
-    message: Yup.string().required(dataLang('drawer.message_required')),
+    email: Yup.string()
+      .email(dataLang("drawer.invalid_email"))
+      .required(dataLang("drawer.email_required")),
+    mobile: Yup.string().required(dataLang("drawer.phone_required")),
+    select_degree: Yup.string().required(
+      dataLang("drawer.select_degree_required")
+    ),
+    language: Yup.string().required(
+      dataLang("drawer.select_language_required")
+    ),
+    specialization: Yup.string().required(
+      dataLang("drawer.select_specialization_required")
+    ),
+    universities: Yup.string().required(
+      dataLang("drawer.select_universities_required")
+    ),
+    message: Yup.string().required(dataLang("drawer.message_required")),
   });
 
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async (values: DataType) => {
     try {
       // const response = await axios.post("/", values);
-      // console.log(response.data); 
-      const res = await fetch("/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      })
+      // console.log(response.data);
+      const data = {
+        first_name: values.name,
+        last_name: values.surname,
+        country: values.country,
+        gender: values.gender,
+        email: values.email,
+        phone_number: values.mobile,
+        degree_level: values.select_degree,
+        language: values.language,
+        specialization: values.specialization,
+        preferred_universities: values.universities,
+        message_text: values.message,
+      };
+      const queryString = new URLSearchParams(data).toString();
+      const url = `/register?${queryString}`;
+      setAcceptLanguage(lng);
+      const resp = await api.post(url);
+      if (resp?.data?.status) {
+        setText(resp.data.msg);
+        localStorage.setItem("msgBooking", resp.data.msg);
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? "animate-enter" : "animate-leave"
+            } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-green-400`}
+          >
+            <div className="flex-1 w-0 p-4">
+              <div className="flex items-start">
+                <div className="ml-3 flex-1">
+                  <p className="mt-1 text-lg text-green-500">{resp.data.msg}</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex border-l border-green-200">
+              <button
+                onClick={() => toast.dismiss(t.id)}
+                className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        ));
+      } else {
+        setText(null);
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? "animate-enter" : "animate-leave"
+            } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-red-400`}
+          >
+            <div className="flex-1 w-0 p-4">
+              <div className="flex items-start">
+                <div className="ml-3 flex-1">
+                  <p className="mt-1 text-lg text-red-500">{resp.data.msg}</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex border-l border-gray-200">
+              <button
+                onClick={() => toast.dismiss(t.id)}
+                className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-red-600 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        ));
+      }
     } catch (error) {
       console.error("Error submitting form", error);
     }
   };
+
+  useEffect(() => {
+    setText(localStorage.getItem("msgBooking") as string|| null);
+  }, [])
+  
 
   return (
     <div>
@@ -106,7 +198,11 @@ export default function BookingFixed({
                     placeholder={dataLang("drawer.name")}
                     sizing="lg"
                   />
-                  <ErrorMessage name="name" component="div" className="text-red-500 text-start  text-sm md:text-base" />
+                  <ErrorMessage
+                    name="name"
+                    component="div"
+                    className="text-red-500 text-start  text-sm md:text-base"
+                  />
 
                   <Field
                     name="surname"
@@ -116,7 +212,11 @@ export default function BookingFixed({
                     placeholder={dataLang("drawer.surname")}
                     sizing="lg"
                   />
-                  <ErrorMessage name="surname" component="div" className="text-red-500 text-start  text-sm md:text-base" />
+                  <ErrorMessage
+                    name="surname"
+                    component="div"
+                    className="text-red-500 text-start  text-sm md:text-base"
+                  />
 
                   <Field
                     name="country"
@@ -126,7 +226,11 @@ export default function BookingFixed({
                     placeholder={dataLang("drawer.country_of_residence")}
                     sizing="lg"
                   />
-                  <ErrorMessage name="country" component="div" className="text-red-500 text-start  text-sm md:text-base" />
+                  <ErrorMessage
+                    name="country"
+                    component="div"
+                    className="text-red-500 text-start  text-sm md:text-base"
+                  />
 
                   <Field
                     name="gender"
@@ -136,7 +240,11 @@ export default function BookingFixed({
                     placeholder={dataLang("drawer.gender")}
                     sizing="lg"
                   />
-                  <ErrorMessage name="gender" component="div" className="text-red-500 text-start  text-sm md:text-base" />
+                  <ErrorMessage
+                    name="gender"
+                    component="div"
+                    className="text-red-500 text-start  text-sm md:text-base"
+                  />
 
                   <Field
                     name="email"
@@ -146,7 +254,11 @@ export default function BookingFixed({
                     placeholder={dataLang("drawer.email")}
                     sizing="lg"
                   />
-                  <ErrorMessage name="email" component="div" className="text-red-500 text-start  text-sm md:text-base" />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="text-red-500 text-start  text-sm md:text-base"
+                  />
 
                   <Field
                     name="mobile"
@@ -156,7 +268,11 @@ export default function BookingFixed({
                     placeholder={dataLang("drawer.phone_number")}
                     sizing="lg"
                   />
-                  <ErrorMessage name="mobile" component="div" className="text-red-500 text-start  text-sm md:text-base" />
+                  <ErrorMessage
+                    name="mobile"
+                    component="div"
+                    className="text-red-500 text-start  text-sm md:text-base"
+                  />
                 </Card>
 
                 <div className="flex flex-col gap-2 md:gap-4">
@@ -168,41 +284,57 @@ export default function BookingFixed({
                       name="select_degree"
                       as={TextInput}
                       rightIcon={lng === "ar" && FaRegFileAlt}
-                    icon={lng === "en" && FaRegFileAlt}
+                      icon={lng === "en" && FaRegFileAlt}
                       placeholder={dataLang("drawer.select_degree")}
                       sizing="lg"
                     />
-                    <ErrorMessage name="select_degree" component="div" className="text-red-500 text-start  text-sm md:text-base" />
+                    <ErrorMessage
+                      name="select_degree"
+                      component="div"
+                      className="text-red-500 text-start  text-sm md:text-base"
+                    />
 
                     <Field
                       name="language"
                       as={TextInput}
                       rightIcon={lng === "ar" && FaLanguage}
-                    icon={lng === "en" && FaLanguage}
+                      icon={lng === "en" && FaLanguage}
                       placeholder={dataLang("drawer.select_language")}
                       sizing="lg"
                     />
-                    <ErrorMessage name="language" component="div" className="text-red-500 text-start  text-sm md:text-base" />
+                    <ErrorMessage
+                      name="language"
+                      component="div"
+                      className="text-red-500 text-start  text-sm md:text-base"
+                    />
 
                     <Field
                       name="specialization"
                       as={TextInput}
                       rightIcon={lng === "ar" && FaGraduationCap}
-                    icon={lng === "en" && FaGraduationCap}
+                      icon={lng === "en" && FaGraduationCap}
                       placeholder={dataLang("drawer.select_specialization")}
                       sizing="lg"
                     />
-                    <ErrorMessage name="specialization" component="div" className="text-red-500 text-start  text-sm md:text-base" />
+                    <ErrorMessage
+                      name="specialization"
+                      component="div"
+                      className="text-red-500 text-start  text-sm md:text-base"
+                    />
 
                     <Field
                       name="universities"
                       as={TextInput}
                       rightIcon={lng === "ar" && LuGraduationCap}
-                    icon={lng === "en" && LuGraduationCap}
+                      icon={lng === "en" && LuGraduationCap}
                       placeholder={dataLang("drawer.select_universities")}
                       sizing="lg"
                     />
-                    <ErrorMessage name="universities" component="div" className="text-red-500 text-start  text-sm md:text-base" />
+                    <ErrorMessage
+                      name="universities"
+                      component="div"
+                      className="text-red-500 text-start  text-sm md:text-base"
+                    />
                   </Card>
 
                   <Card className="w-full shadow-none [&>div]:p-3 md:[&>div]:p-4">
@@ -214,7 +346,11 @@ export default function BookingFixed({
                       as={Textarea}
                       placeholder={dataLang("drawer.message_content")}
                     />
-                    <ErrorMessage name="message" component="div" className="text-red-500 text-start text-sm md:text-base" />
+                    <ErrorMessage
+                      name="message"
+                      component="div"
+                      className="text-red-500 text-start text-sm md:text-base"
+                    />
                   </Card>
                 </div>
 
@@ -225,12 +361,28 @@ export default function BookingFixed({
                     className="md:w-2/6 font-bold px-1 md:px-2 md:py-1 text-xs md:text-base"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? dataLang("drawer.submitting") : dataLang("drawer.register_now")}
+                    {isSubmitting
+                      ? dataLang("drawer.submitting")
+                      : dataLang("drawer.register_now")}
                   </Button>
                 </div>
+                <div></div>
               </Form>
             )}
           </Formik>
+          {text && (
+            <div className="flex justify-center text-lg text-primary text-center w-full">
+              <div className="flex flex-col gap-y-2 items-center ">
+              <p>{text}</p>
+                {text != null && (
+                <div className="flex gap-x-2">
+                    <Button as={Link} href={`/${lng}/followup_request/${text?.split(":")[1]}`} size="sm" className="bg-primary hover:bg-green-600" >{dataLang("drawer.followup_request")}</Button>
+                    <Clipboard valueToCopy={text?.split(":")[1]} label={dataLang("drawer.btnCopy")} className="bg-primary hover:bg-green-600 py-3" />
+                </div>
+                )}
+              </div>
+            </div>
+          )}
         </Drawer.Items>
       </Drawer>
     </div>

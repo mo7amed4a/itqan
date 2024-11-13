@@ -7,10 +7,12 @@ import { CiUser } from "react-icons/ci";
 import { MdEmail } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from "../../i18n/client";
+import toast from "react-hot-toast";
+import { api, setAcceptLanguage } from "../../lib/axios";
 type FormValues = {
   name: string;
   email: string;
-  whatsapp: string;
+  mobile: string;
 };
 
 export default function FormBooking({lng}:{lng: string}) {
@@ -21,18 +23,31 @@ export default function FormBooking({lng}:{lng: string}) {
     email: Yup.string()
       .email(dataLang('form_booking.email_invalid'))
       .required(dataLang('form_booking.email_required')),
-    whatsapp: Yup.string()
-      .required(dataLang('form_booking.whatsapp_required'))
-      .matches(/^[0-9]{10,14}$/, dataLang('form_booking.whatsapp_invalid')),
+    mobile: Yup.string()
+      .required(dataLang('form_booking.mobile_w_required'))
+      .matches(/^[0-9]{10,14}$/, dataLang('form_booking.mobile_w_invalid')),
   });
 
-  const handleSubmit = (
+  const handleSubmit = async (
     values: FormValues,
     { setSubmitting }: { setSubmitting: any }
   ) => {
-    
-    console.log(values);
-    setSubmitting(true);
+    try {
+      const queryString = new URLSearchParams(values).toString();
+      const url = `/callme?${queryString}`;
+      setAcceptLanguage(lng);
+      const resp = await api.post(url);
+      if (resp?.data?.status) {
+        toast.success(resp.data.msg);
+      } else {
+        toast.error(resp.data.msg);
+      }
+    } catch (error) {
+      console.error("Error submitting form", error);
+    }
+    finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -40,7 +55,7 @@ export default function FormBooking({lng}:{lng: string}) {
           initialValues={{
             name: "",
             email: "",
-            whatsapp: "",
+            mobile: "",
           }}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
@@ -79,15 +94,15 @@ export default function FormBooking({lng}:{lng: string}) {
                 />
 
                 <Field
-                  name="whatsapp"
+                  name="mobile"
                   as={TextInput}
                   rightIcon={FaWhatsapp}
-                  placeholder={dataLang('form_booking.whatsapp')}
+                  placeholder={dataLang('form_booking.mobile_w')}
                   sizing="lg"
                   className="text-right"
                 />
                 <ErrorMessage
-                  name="whatsapp"
+                  name="mobile"
                   component="div"
                   className="text-red-500 text-sm"
                 />

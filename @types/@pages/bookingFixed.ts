@@ -30,6 +30,8 @@ export interface BookingFixedType {
       select_universities_required: "الجامعات مطلوبة";
       message_required: "محتوى الرسالة مطلوب";
       submitting: "جاري التسجيل";
+      btnCopy: "نسخ الكود";
+      followup_request: "تتبع الطلب";
     };
   };
 }

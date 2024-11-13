@@ -29,7 +29,7 @@ export default async function HeaderApp({ locale }: {  locale: string  }) {
             <Button color="primary" className="border px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base" >{t('be_our_agent')}</Button>
           </div>
           <div>
-            <Button color="failure" className="border px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base">{t('follow_up_on_the_registration_request')}</Button>
+            <Button as={Link} href={`/${locale}/followup_request`} color="failure" className="border px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base">{t('follow_up_on_the_registration_request')}</Button>
           </div>
         </div>
         <div className="flex justify-between md:justify-start gap-0.5 md:gap-x-2">

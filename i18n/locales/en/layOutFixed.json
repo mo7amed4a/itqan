@@ -27,6 +27,8 @@
     "select_specialization_required": "Specialization is required",
     "select_universities_required": "Universities are required",
     "message_required": "Message content is required",
-    "submitting": "Submitting"
+    "submitting": "Submitting",
+    "btnCopy": "Copy Code",
+    "followup_request": "followup request"
   }
 }

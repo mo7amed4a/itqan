@@ -45,14 +45,14 @@
       "title": "Apply Through Itqan",
       "name": "Name",
       "email": "Email",
-      "whatsapp": "WhatsApp Number",
+      "mobile_w": "Whatsapp Number",
       "submit": "Submit",
       "loading": "Submitting...",
       "name_required": "Name is required",
       "email_required": "Email is required",
-      "whatsapp_required": "WhatsApp number is required",
+      "mobile_w_required": "mobile_w number is required",
       "email_invalid": "Invalid email",
-      "whatsapp_invalid": "Invalid WhatsApp number"
+      "mobile_w_invalid": "Invalid mobile_w number"
     }
   }
   

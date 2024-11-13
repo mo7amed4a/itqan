@@ -10,15 +10,21 @@ import { Button } from 'flowbite-react';
 import { useTranslation } from '../../i18n';
 import Image from 'next/image';
 import img1 from "../../public/images/form-logo.png"
+import { api, setAcceptLanguage } from '../../lib/axios';
 
 export default async function Page({ params: { lng } }: {
   params: {
     lng: string;
   };
 }) {
-  
   const { t } = await useTranslation(lng, "home")
-
+    setAcceptLanguage(lng);
+    const resp = await api.get('/get_home');
+    if (resp?.data?.status) {
+      console.log(resp.data.msg);
+    } else {
+      console.log(resp.data.msg);
+    }
   return (
     <main className="space-y-20">
       <HeroSection dataLang={t} locale={lng} />

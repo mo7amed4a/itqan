@@ -46,14 +46,14 @@ export interface HomeLangType {
       title: string;
       name: string;
       email: string;
-      whatsapp: string;
+      mobile_w: string;
       submit: string;
       loading: string;
       name_required: string;
       email_required: string;
-      whatsapp_required: string;
+      mobile_w_required: string;
       email_invalid: string;
-      whatsapp_invalid: string;
+      mobile_w_invalid: string;
     };
   };
 }

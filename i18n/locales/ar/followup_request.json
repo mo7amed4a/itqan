@@ -1,0 +1,23 @@
+{
+  "tracking_title": "متابعة الطلب",
+  "enter_code": "أدخل رمز الطلب",
+  "code_require": "الكود مطلوب",
+  "submit_button": "إرسال",
+
+  "title": "متابعة طلب تسجيل",
+  "id": "الرقم التعريفي",
+  "code": "الرمز",
+  "first_name": "الاسم الأول",
+  "last_name": "الاسم الأخير",
+  "country": "الدولة",
+  "gender": "الجنس",
+  "email": "البريد الإلكتروني",
+  "phone_number": "رقم الهاتف",
+  "degree_level": "المستوى الدراسي",
+  "language": "اللغة",
+  "specialization": "التخصص",
+  "preferred_universities": "الجامعات المفضلة",
+  "message_text": "نص الرسالة",
+  "created_at": "تاريخ الإنشاء",
+  "updated_at": "تاريخ التحديث"
+}

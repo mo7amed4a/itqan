@@ -45,13 +45,13 @@
     "title": "أستمارة تقديم عن طريق اتقان",
     "name": "الاسم",
     "email": "البريد الالكتروني",
-    "whatsapp": "رقم الواتساب",
+    "mobile_w": "رقم الواتساب",
     "submit": "سجل الان",
     "loading": "جاري التسجيل",
     "name_required": "الاسم مطلوب",
     "email_required": "البريد الالكتروني مطلوب",
-    "whatsapp_required": "رقم الواتساب مطلوب",
+    "mobile_w_required": "رقم الواتساب مطلوب",
     "email_invalid": "البريد الالكتروني غير صالح",
-    "whatsapp_invalid": "رقم الواتساب غير صالح"
+    "mobile_w_invalid": "رقم الواتساب غير صالح"
   }
 }

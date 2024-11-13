@@ -1,0 +1,23 @@
+{
+  "tracking_title": "Track Your Application",
+  "enter_code": "Enter your application code",
+  "code_require": "Code required",
+  "submit_button": "Submit",
+
+  "title": "Followup Request",
+  "id": "ID",
+  "code": "Code",
+  "first_name": "First Name",
+  "last_name": "Last Name",
+  "country": "Country",
+  "gender": "Gender",
+  "email": "Email",
+  "phone_number": "Phone Number",
+  "degree_level": "Degree Level",
+  "language": "Language",
+  "specialization": "Specialization",
+  "preferred_universities": "Preferred Universities",
+  "message_text": "Message Text",
+  "created_at": "Created At",
+  "updated_at": "Updated At"
+}

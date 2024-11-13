@@ -1,6 +1,8 @@
 import { BlogLangType } from "./@pages/blog";
 import { BookingFixedType } from "./@pages/bookingFixed";
+import { ContactInfoType } from "./@pages/contact";
 import { Cypriot_universitiesLangType } from "./@pages/cypriot_universities";
+import { FollowupRequestType } from "./@pages/followup_request";
 import { HomeLangType } from "./@pages/home";
 import { Partial_scholarshipsLangType } from "./@pages/partial_scholarships";
 import { Turkish_universitiesLangType } from "./@pages/turkish_universities";
@@ -11,7 +13,9 @@ interface Resources
     BlogLangType,
     Turkish_universitiesLangType,
     Cypriot_universitiesLangType,
-    Partial_scholarshipsLangType {
+    Partial_scholarshipsLangType,
+    FollowupRequestType,
+    ContactInfoType {
   Header: {
     be_our_agent: string;
     follow_up_on_the_registration_request: string;

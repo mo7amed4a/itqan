@@ -2,11 +2,13 @@
 const nextConfig = {
   reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
   swcMinify: true,
+  images: {
+    domains: ["itqanedu.ivadso.com"]
+  }
   // experimental: {
   //   // Required: for next 13
   //   appDir: true
   // }
-  
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
