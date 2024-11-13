@@ -18,7 +18,7 @@ import LinkApp from "../global/LinkApp";
 import { formatDate } from "../../lib/moment";
 export default function CardBlog({ blog , lng}: { blog: BlogItemType , lng: string}) {
   return (
-    <LinkApp lng={lng} href={`${blog.slug}`}>
+    <LinkApp lng={lng} href={`/blogs/${blog.slug}`}>
       <div className="shadow-xl rounded-2xl p-3 hover:!scale-[1.02] duration-300">
         <div className="relative">
           <Image

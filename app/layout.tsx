@@ -26,5 +26,6 @@ export default function RootLayout({
       },
     },
   };
+  
   return <Flowbite theme={{ theme: customTheme }}>{children}</Flowbite>;
 }
