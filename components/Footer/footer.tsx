@@ -19,9 +19,13 @@ import LinkApp from "../global/LinkApp";
 import img1 from "../../public/logo/logo-footer.png"
 import Image from "next/image";
 import { useTranslation } from "../../i18n";
+import { api, setAcceptLanguage } from "../../lib/axios";
 
-export default async function FooterApp({lng, data}: {lng: string, data: any}) {
+export default async function FooterApp({lng}: {lng: string}) {
   const { t } = await useTranslation(lng, "Footer");
+  setAcceptLanguage(lng);
+  const response = await api.get("/get_settings");
+  const data = response?.data?.data
   return (
     <Footer container className="bg-primary text-white rounded-none mt-32">
       <div className="w-full">

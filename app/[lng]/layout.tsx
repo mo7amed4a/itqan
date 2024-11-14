@@ -1,18 +1,13 @@
-import "./global.css";
-
-import { dir } from "i18next";
 import HeaderApp from "../../components/Header/header";
 import BookingFixed from "../../components/fixedCps/BookingFixed";
 import FooterApp from "../../components/Footer/footer";
-import { fallbackLng, languages } from "../../i18n/settings";
-import { useTranslation } from "../../i18n";
 import { Toaster } from "react-hot-toast";
-import { api, setAcceptLanguage } from "../../lib/axios";
-import TawkTo from "../../components/fixedCps/tawkTo";
+import { dir } from "i18next";
+import { setAcceptLanguage } from "../../lib/axios";
 
-export async function generateStaticParams() {
-  return languages.map((lng) => ({ lng }));
-}
+// export async function generateStaticParams() {
+//   return languages.map((lng) => ({ lng }));
+// }
 
 // export async function generateMetadata({
 //   params: { lng },
@@ -44,27 +39,17 @@ export default async function RootLayout({
   };
 }) {
   setAcceptLanguage(lng);
-  const response = await api.get("/get_settings");
-  const data = response?.data?.data
-
+  
   return (
-    <html lang={lng} dir={dir(lng)}>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>
-        <div className="relative z-[54187198429748928972928] text-sm">
-          <Toaster />
-        </div>
-        <HeaderApp data={data} locale={lng} />
-        <BookingFixed lng={lng} />
-        {children}
-        <FooterApp data={data} lng={lng} />
-        {/* <TawkTo /> */}
-      </body>
-    </html>
+    <main dir={dir(lng)}>
+      <div className="relative z-[54187198429748928972928] text-sm">
+        <Toaster />
+      </div>
+      <HeaderApp locale={lng} />
+      <BookingFixed lng={lng} />
+      {children}
+      <FooterApp lng={lng} />
+      {/* <TawkTo /> */}
+    </main>
   );
 }

@@ -17,13 +17,9 @@ export default function WhyItqan({
             {/* {t("whyItqan.title")} */}
             {data.why_title}
           </h1>
-          <ul className="custom-bullet text-sm md:text-xl text-start items-start space-y-1 md:ps-2">
-            {/* <li>{t("whyItqan.p1")}</li>
-            <li>{t("whyItqan.p2")}</li>
-            <li>{t("whyItqan.p3")}</li>
-            <li>{t("whyItqan.p4")}</li> */}
-            <li>{data.why_details}</li>
-          </ul>
+          <div className="custom-bullet [&>ul]:text-sm [&>ul]:md:text-xl [&>ul]:text-start [&>ul]:items-start [&>ul]:space-y-1 [&>ul]:md:ps-2"
+      dangerouslySetInnerHTML={{ __html: data.why_details }}
+    />
         </div>
         <div>
           <Image

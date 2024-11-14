@@ -9,7 +9,7 @@ import { Button } from "flowbite-react";
 import { useTranslation } from "../../i18n";
 import Image from "next/image";
 import img1 from "../../public/images/form-logo.png";
-import { api } from "../../lib/axios";
+import { api, setAcceptLanguage } from "../../lib/axios";
 
 export default async function Page({
   params: { lng },
@@ -19,6 +19,7 @@ export default async function Page({
   };
 }) {
   const { t } = await useTranslation(lng, "home");
+  // setAcceptLanguage(lng);
   const response = await api.get("/get_home");
   let data = null
   if (response?.data?.status) {
@@ -35,12 +36,12 @@ export default async function Page({
           title={t("specialties.title")}
           className="container mx-auto "
         >
-          <div className="overflow-x-auto whitespace-nowrap p-4 hidden-scrollbar space-x-4 my10">
-            {[1, 2, 7, 8, 9, 66, 114, 245, 87, 5454, 54256429, 3, 4].map(
-              (e) => (
-                <CardSmall key={e} text={"oni"} />
-              )
-            )}
+          <div className="overflow-x-auto whitespace-nowrap p-4 hidden-scrollbar space-x-4">
+              {
+                data && data.services && data.services.length > 0 && data.services.map((e: any) => (
+                  <CardSmall key={e.id} imageUrl={e.image} text={e.name} />
+                ))
+              }
           </div>
         </SectionApp>
         <SectionApp

@@ -5,6 +5,7 @@ export const api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  timeout: 4000
 });
 
 export const setAcceptLanguage = (language: string) => {

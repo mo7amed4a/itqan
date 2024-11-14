@@ -12,9 +12,18 @@ import LocalSwitcher from "./local-switcher";
 import Image from "next/image";
 import logo from '../../public/logo/logo.png'
 import { useTranslation } from "../../i18n";
+import { api, setAcceptLanguage } from "../../lib/axios";
 
-export default async function HeaderApp({ locale , data}: {  locale: string, data: any  }) {
+export default async function HeaderApp({ locale}: {  locale: string}) {
   const {t} = await useTranslation(locale, "Header");
+  setAcceptLanguage(locale);
+  try {
+    const response = await api.get("/get_settings");
+    const data = response?.data?.data
+    
+  } catch (error) {
+    
+  }
 
   return (
     <header className="flex flex-col sticky top-0 z-[84]">

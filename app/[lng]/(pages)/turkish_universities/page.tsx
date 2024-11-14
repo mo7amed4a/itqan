@@ -8,7 +8,7 @@ import img1 from "../../../../public/images/for-blog.png";
 import LinkApp from "../../../../components/global/LinkApp";
 import { useTranslation } from "../../../../i18n";
 import CardUniversity, { UniversityType } from "../../../../components/home/CardUniversity";
-import { api } from "../../../../lib/axios";
+import { api, setAcceptLanguage } from "../../../../lib/axios";
 import { PaginationApp } from "../../../../components/global/pagination";
 
 
@@ -29,6 +29,8 @@ export default async function UniversitiesPage({
   if (searchParams.category) {
     url = `/tukey_universities?category_id=${searchParams.category}`;
   }
+
+  setAcceptLanguage(params.lng);
   const response = await api.get(url);
   if (response?.data?.status) {
     data = response?.data?.data;

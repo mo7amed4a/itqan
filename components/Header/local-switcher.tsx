@@ -14,7 +14,6 @@ export default function LocaleSwitcher({lng}: {lng: string}) {
     const nextLocale = e.target.value;
 
     startTransition(() => {
-      // Replace the current locale with the new one in the URL
       const newPath = pathname.replace(`/${currentLocale}`, `/${nextLocale}`);
       router.replace(newPath);
     });
