@@ -1,7 +1,8 @@
 import { Button, Select } from "flowbite-react";
 import { TFunction } from "i18next";
 
-export default function HeroSection({ dataLang, locale }: {
+export default function HeroSection({ data ,dataLang, locale }: {
+  data: any,
   dataLang: TFunction<"home", undefined>,
   locale: string
 }) {
@@ -48,20 +49,13 @@ export default function HeroSection({ dataLang, locale }: {
           <div className="w-full">
             <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 bg-primary/40 rounded p-4">
               <Select id="specialty" required>
-                <option>{dataLang("hero.select_specialty")}</option>
-                <option>{dataLang('hero.medcant')}</option>
-                <option>{dataLang('hero.engeneer')}</option>
+                {data && data.specializations && data.specializations.map((e: any, i: number) => <option key={i} value={e.name}>{e.name}</option>)}
               </Select>
               <Select id="studyLevel" required>
-                <option>{dataLang('hero.choose_study')}</option>
-                <option>{dataLang('hero.master')}</option>
-                <option>{dataLang('hero.bachelor')}</option>
+              {data && data.levels && data.levels.map((e: any, i: number) => <option key={i} value={e.name}>{e.name}</option>)}
               </Select>
               <Select id="language" required>
-                <option>{dataLang('hero.select_language')}</option>
-                <option>{dataLang('hero.arabic')}</option>
-                <option>{dataLang('hero.english')}</option>
-                <option>{dataLang('hero.turkish')}</option>
+              {data && data.languages && data.languages.map((e: any, i: number) => <option key={i} value={e.name}>{e.name}</option>)}
               </Select>
               <Button color="primary">{dataLang('hero.search')}</Button>
             </div>

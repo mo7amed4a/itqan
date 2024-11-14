@@ -7,10 +7,25 @@ import { Button } from "flowbite-react";
 import Image from "next/image";
 import img1 from "../../../../public/images/for-blog.png";
 import FormBooking from "../../../../components/home/form-booking";
+import { api } from "../../../../lib/axios";
 
-export default async function Page({ params }: { params: { lng: string } }) {
+export default async function Page({ params, searchParams }: { params: { lng: string }, searchParams: {
+  category: string
+} }) {
   const lng = params.lng;
   const { t } = await useTranslation(lng);
+
+  let data = null;
+  let url = "/services";
+  if (searchParams.category) {
+    url = `/services?category_id=${searchParams.category}`;
+  }
+  const response = await api.get(url);
+  if (response?.data?.status) {
+    data = response?.data?.data;
+  } else {
+    console.log("error");
+  }
 
   return (
     <div className="my-10 space-y-10 text-start">
@@ -21,21 +36,28 @@ export default async function Page({ params }: { params: { lng: string } }) {
         <div className="flex flex-col space-y-7 mt-10">
           <div>
             <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base">
-              <li className="border-b-2 border-red-500 text-red-500">
-                <LinkApp href="/blogs" lng={lng}>
-                  خدمات طلابية
-                </LinkApp>
-              </li>
-              <li>
-                <LinkApp href="/blogs" lng={lng}>
-                  خدمات ما بعد القبول
-                </LinkApp>
-              </li>
-              <li>
-                <LinkApp href="/blogs" lng={lng}>
-                  باقاتنا
-                </LinkApp>
-              </li>
+            {data &&
+            data.cats && data.cats.length > 0 &&
+            data.cats?.map((item: any) => {
+              return (
+                <li
+                  key={item.id}
+                  className={
+                    searchParams.category === `${item.id}`
+                      ? "border-b-2 border-red-500 text-red-500"
+                      : ""
+                  }
+                >
+                  {/* <LinkApp href="/blogs" lng={lng}>{t('links.study_in_turkey')}</LinkApp> */}
+                  <LinkApp
+                    href={`/services?category=${item.id}`}
+                    lng={lng}
+                  >
+                    {item.name}
+                  </LinkApp>
+                </li>
+              );
+            })}
             </ul>
           </div>
 
@@ -44,16 +66,11 @@ export default async function Page({ params }: { params: { lng: string } }) {
               خدمات طلابية
             </h1>
             <XScroll>
-              <CardSmall text="lorem oi oid okqdmokqdm qjnqwd on jnj djnjqw qnd qwdi" />
-              <CardSmall text="lorem oi oid okqdmokqdm qjnqwd on jnj djnjqw qnd qwdi" />
-              <CardSmall text="lorem oi oid okqdmokqdm qjnqwd on jnj djnjqw qnd qwdi" />
-              <CardSmall text="lorem oi oid okqdmokqdm qjnqwd on jnj djnjqw qnd qwdi" />
-              <CardSmall text="lorem oi oid okqdmokqdm qjnqwd on jnj djnjqw qnd qwdi" />
-              <CardSmall text="lorem oi oid okqdmokqdm qjnqwd on jnj djnjqw qnd qwdi" />
-              <CardSmall text="lorem oi oid okqdmokqdm qjnqwd on jnj djnjqw qnd qwdi" />
-              <CardSmall text="lorem oi oid okqdmokqdm qjnqwd on jnj djnjqw qnd qwdi" />
-              <CardSmall text="lorem oi oid okqdmokqdm qjnqwd on jnj djnjqw qnd qwdi" />
-              <CardSmall text="lorem oi oid okqdmokqdm qjnqwd on jnj djnjqw qnd qwdi" />
+              {
+                data && data.services && data.services.map((e: any) => (
+                  <CardSmall key={e.id} imageUrl={e.image} text={e.name} />
+                ))
+              }
             </XScroll>
           </div>
         </div>

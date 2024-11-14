@@ -34,6 +34,7 @@ const RegistrationRequest = ({
 
   useEffect(() => {
     // getReq()
+    setAcceptLanguage(params.lng);
     const res = api.post(`/followup_request/${params.code}`);
     res.then(res => {
       if (res?.data?.status) {

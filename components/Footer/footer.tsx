@@ -5,11 +5,12 @@ import {
   FooterIcon,
 } from "flowbite-react";
 import {
-  BsDribbble,
   BsFacebook,
-  BsGithub,
   BsInstagram,
+  BsTiktok,
   BsTwitter,
+  BsWhatsapp,
+  BsYoutube,
 } from "react-icons/bs";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoIosCall } from "react-icons/io";
@@ -19,7 +20,7 @@ import img1 from "../../public/logo/logo-footer.png"
 import Image from "next/image";
 import { useTranslation } from "../../i18n";
 
-export default async function FooterApp({lng}: {lng: string}) {
+export default async function FooterApp({lng, data}: {lng: string, data: any}) {
   const { t } = await useTranslation(lng, "Footer");
   return (
     <Footer container className="bg-primary text-white rounded-none mt-32">
@@ -30,17 +31,18 @@ export default async function FooterApp({lng}: {lng: string}) {
             <ul className="space-y-2 text-white/80">
               <li className="flex space-x-1 items-center">
                 <IoLocationSharp />
-                <a href="">{t("address")}</a>
+                {/* <a href="">{t("address")}</a> */}
+                <a href="">{data.address}</a>
               </li>
               <li className="flex items-center space-x-1">
                 <MdEmail />
-                <a href="mailto:info@itqaneducation.com">
-                  info@itqaneducation.com
+                <a href={`mailto:${data.email}`}>
+                  {data.email}
                 </a>
               </li>
               <li className="flex items-center space-x-1">
                 <IoIosCall />
-                <a href="tel:05515566888" dir="ltr">0551 55 66 888</a>
+                <a href={`tel:${data.phone}`} dir="ltr">{data.phone}</a>
               </li>
             </ul>
           </div>
@@ -52,7 +54,8 @@ export default async function FooterApp({lng}: {lng: string}) {
                 height={200}
                 className="h-16 w-2/4 md:w-auto bg-white"
               />
-            <p className="mt-4 w-3/4 md:text-center">{t("bio")}</p>
+            {/* <p className="mt-4 w-3/4 md:text-center">{t("bio")}</p> */}
+            <p className="mt-4 w-3/4 md:text-center">{data.footer_text}</p>
             </div>
           <div className="space-y-3">
             <h2 className="text-base md:text-lg">{t("LinkApps")}</h2>
@@ -61,7 +64,7 @@ export default async function FooterApp({lng}: {lng: string}) {
                 <LinkApp href="/" lng={lng}>{t("home")}</LinkApp>
               </li>
               <li>
-                <LinkApp href="/contact-us" lng={lng}>{t("contactUs")}</LinkApp>
+                <LinkApp href="/contact" lng={lng}>{t("contactUs")}</LinkApp>
               </li>
               <li>
                 <LinkApp href="/about" lng={lng}>{t("aboutUs")}</LinkApp>
@@ -73,17 +76,21 @@ export default async function FooterApp({lng}: {lng: string}) {
         <FooterDivider />
           <div className="mt-4 flex sm:mt-0 justify-center ">
           <div className="flex gap-6 [&>div>a]:text-white/90">
-            <FooterIcon href="#" icon={BsFacebook} />
-            <FooterIcon href="#" icon={BsInstagram} />
-            <FooterIcon href="#" icon={BsTwitter} />
-            <FooterIcon href="#" icon={BsGithub} />
-            <FooterIcon href="#" icon={BsDribbble} />
+            <FooterIcon href={data.facebook} icon={BsFacebook} />
+            <FooterIcon href={data.instagram} icon={BsInstagram} />
+            <FooterIcon href={data.twitter} icon={BsTwitter} />
+            <FooterIcon href={data.whatsapp} icon={BsWhatsapp} />
+            <FooterIcon href={data.youtube} icon={BsYoutube} />
+            <FooterIcon href={data.tiktok} icon={BsTiktok} />
+            <FooterIcon href={`mailto:${data.email}`} icon={MdEmail} />
+            <FooterIcon href={`tel:${data.phone}`} icon={IoIosCall} />
           </div>
         </div>
         <div className="w-full flex items-center text-sm md:text-lg justify-center text-white gap-x-1 mt-3">
           <span>{t("copyright")}</span>
           <a href="https://mo7amed4a.vercel.app" className="hover:underline">
-            {t("siteName")}
+            {/* {t("siteName")} */}
+            {data.site_name}
           </a>
           <span>&copy; {new Date().getFullYear()}</span>
         </div>

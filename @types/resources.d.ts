@@ -48,6 +48,10 @@ interface Resources
     address: string;
     bio: string;
   };
+  pagination: {
+    next: string
+    previous: string
+  }
 }
 
 export default Resources;

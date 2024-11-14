@@ -13,7 +13,7 @@ import Image from "next/image";
 import logo from '../../public/logo/logo.png'
 import { useTranslation } from "../../i18n";
 
-export default async function HeaderApp({ locale }: {  locale: string  }) {
+export default async function HeaderApp({ locale , data}: {  locale: string, data: any  }) {
   const {t} = await useTranslation(locale, "Header");
 
   return (

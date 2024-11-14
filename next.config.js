@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
   swcMinify: true,
   images: {
-    domains: ["itqanedu.ivadso.com"]
+    domains: ["admin.itqaneducation.com"]
   }
   // experimental: {
   //   // Required: for next 13

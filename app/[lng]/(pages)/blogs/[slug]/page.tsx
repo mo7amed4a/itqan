@@ -1,7 +1,7 @@
 import React from "react";
 import { formatDate } from "../../../../../lib/moment";
 import { useTranslation as getTranslation } from "../../../../../i18n";
-import { api, setAcceptLanguage } from "../../../../../lib/axios";
+import { api } from "../../../../../lib/axios";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
@@ -15,7 +15,6 @@ export default async function page({
 }) {
     const lng = params.lng;
   const { t } = await getTranslation(lng, "blogs");
-  setAcceptLanguage(lng);
   const resp = await api.get(`/post/${params.slug}`);
   if (resp?.data?.status) {
     console.log(resp.data.msg);

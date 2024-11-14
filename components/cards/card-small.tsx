@@ -21,7 +21,7 @@ export default function CardSmall({
           height={150}
           className="w-36 h-36 group-hover:scale-105 duration-300"
         />
-        <h2 className="text-lg md:text-xl font-bold text-gray-500 group-hover:text-primary text-wrap w-full">
+        <h2 className="text-lg pt-4 md:text-xl font-bold text-gray-500 group-hover:text-primary text-wrap w-full">
           {text}
         </h2>
       </div>

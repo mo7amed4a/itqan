@@ -8,15 +8,23 @@ import CardBlog, { BlogItemType } from "../../../../components/cards/CardBlog";
 import img1 from "../../../../public/images/for-blog.png";
 import Image from "next/image";
 import { useTranslation } from "../../../../i18n";
-import { api, setAcceptLanguage } from "../../../../lib/axios";
+import { api } from "../../../../lib/axios";
 
-export default async function Blogs({ params }: { params: { lng: string } }) {
+export default async function Blogs({ params, searchParams }: { params: { lng: string }, searchParams: {
+  category: string
+} }) {  
   const lng = params.lng;
   const { t } = await useTranslation(lng, "blogs");
-  setAcceptLanguage(lng);
   const resp = await api.get("/blog");
+  let blogs = null
+  if (searchParams.category) {
+    const response = await api.get(`/blog_cat/${searchParams.category}`);
+    blogs = response?.data?.data?.posts || null;
+  }
+  else {
+    blogs = resp?.data?.data?.posts || null;
+  }
   const links = resp?.data?.data?.cats || null;
-  const blogs = resp?.data?.data?.posts || null;
   const sliders = resp?.data?.data?.sliders || null;
 
   return (
@@ -31,9 +39,9 @@ export default async function Blogs({ params }: { params: { lng: string } }) {
           {links &&
             links?.map((item: any) => {
               return (
-                <li key={item.id}>
+                <li key={item.id} className={searchParams.category === item.slug ? "border-b-2 border-red-500 text-red-500" : ""}>
                   {/* <LinkApp href="/blogs" lng={lng}>{t('links.study_in_turkey')}</LinkApp> */}
-                  <LinkApp href={`/${item.slug}`} lng={lng}>
+                  <LinkApp href={`/blogs?category=${item.slug}`} lng={lng}>
                     {item.name}
                   </LinkApp>
                 </li>
