@@ -390,11 +390,11 @@ export default function BookingFixed({ lng }: { lng: string }) {
                   </Card>
                 </div>
 
-                <div className="col-span-full flex justify-center">
+                <div className="col-span-full flex justify-center px-4">
                   <Button
                     type="submit"
                     color="primary"
-                    className="md:w-2/6 font-bold px-1 md:px-2 md:py-1 text-xs md:text-base"
+                    className="w-full md:w-2/6"
                     disabled={isSubmitting}
                   >
                     {isSubmitting
@@ -408,19 +408,19 @@ export default function BookingFixed({ lng }: { lng: string }) {
           </Formik>
           {text && (
             <div className="flex justify-center text-lg text-primary text-center w-full">
-              <div className="flex flex-col gap-y-2 items-center ">
+              <div className="flex flex-col gap-y-2 items-center text-xs md:text-base">
                 <p>{text}</p>
                 {text != null && (
                   <div className="flex gap-x-2">
-                    <Link onClick={() => setIsOpen(false)} href={`/${lng}/followup_request/${text?.split(":")[1]}`} >
-                      <Button size={"lg"} variant={"default"}>
+                    <Link  onClick={() => setIsOpen(false)} href={`/${lng}/followup_request/${text?.split(":")[1]}`} >
+                      <Button size={"sm"} variant={"default"} className="w-full">
                         {dataLang("drawer.followup_request")}
                       </Button>
                     </Link>
                     <Clipboard
                       valueToCopy={text?.split(":")[1]}
                       label={dataLang("drawer.btnCopy")}
-                      className="bg-primary hover:bg-green-600 py-3"
+                      className="bg-primary hover:bg-green-600 py-2 "
                     />
                   </div>
                 )}
