@@ -1,6 +1,5 @@
 "use client";
 import {
-  Button,
   Card,
   Clipboard,
   Drawer,
@@ -21,6 +20,16 @@ import { useTranslation } from "../../i18n/client";
 import { api, setAcceptLanguage } from "../../lib/axios";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
+import { Button } from "../ui/button";
 // import axios from "axios";
 
 type DataType = {
@@ -146,9 +155,8 @@ export default function BookingFixed({ lng }: { lng: string }) {
   };
 
   useEffect(() => {
-    setText(localStorage.getItem("msgBooking") as string|| null);
-  }, [])
-  
+    setText((localStorage.getItem("msgBooking") as string) || null);
+  }, []);
 
   return (
     <div>
@@ -184,7 +192,7 @@ export default function BookingFixed({ lng }: { lng: string }) {
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
-            {({ isSubmitting }) => (
+            {({ isSubmitting, setFieldValue, values }) => (
               <Form className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full p-0">
                 <Card className="shadow-none [&>div]:p-3 md:[&>div]:p-4">
                   <h3 className="text-base md:text-lg text-primary">
@@ -232,14 +240,42 @@ export default function BookingFixed({ lng }: { lng: string }) {
                     className="text-red-500 text-start  text-sm md:text-base"
                   />
 
-                  <Field
+                  <Select name="gender"
+                    defaultValue={values.gender}
+                    onValueChange={(value) => {
+                      console.log(value);
+                      
+                      setFieldValue("gender", value);
+                    }}
+                  >
+                    <SelectTrigger className="rtl:flex-row-reverse p-6">
+                      <SelectValue placeholder={dataLang("drawer.gender")}/>
+                    </SelectTrigger>
+                    <SelectContent className="z-[1878178]">
+                      <SelectGroup className="text-end">
+                        <SelectLabel>{dataLang("drawer.gender")}</SelectLabel>
+                        <SelectItem value="male" className="text-start w-full">
+                          Male
+                        </SelectItem>
+                        <SelectItem value="female" className="text-start w-full">
+                          Female
+                        </SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                  <ErrorMessage
+                    name="gender"
+                    component="div"
+                    className="text-red-500 text-start  text-sm md:text-base"
+                  />
+                  {/* <Field
                     name="gender"
                     as={TextInput}
                     rightIcon={lng === "ar" && BiMale}
                     icon={lng === "en" && BiMale}
                     placeholder={dataLang("drawer.gender")}
                     sizing="lg"
-                  />
+                  /> */}
                   <ErrorMessage
                     name="gender"
                     component="div"
@@ -373,12 +409,20 @@ export default function BookingFixed({ lng }: { lng: string }) {
           {text && (
             <div className="flex justify-center text-lg text-primary text-center w-full">
               <div className="flex flex-col gap-y-2 items-center ">
-              <p>{text}</p>
+                <p>{text}</p>
                 {text != null && (
-                <div className="flex gap-x-2">
-                    <Button as={Link} href={`/${lng}/followup_request/${text?.split(":")[1]}`} size="sm" className="bg-primary hover:bg-green-600" >{dataLang("drawer.followup_request")}</Button>
-                    <Clipboard valueToCopy={text?.split(":")[1]} label={dataLang("drawer.btnCopy")} className="bg-primary hover:bg-green-600 py-3" />
-                </div>
+                  <div className="flex gap-x-2">
+                    <Link onClick={() => setIsOpen(false)} href={`/${lng}/followup_request/${text?.split(":")[1]}`} >
+                      <Button size={"lg"} variant={"default"}>
+                        {dataLang("drawer.followup_request")}
+                      </Button>
+                    </Link>
+                    <Clipboard
+                      valueToCopy={text?.split(":")[1]}
+                      label={dataLang("drawer.btnCopy")}
+                      className="bg-primary hover:bg-green-600 py-3"
+                    />
+                  </div>
                 )}
               </div>
             </div>
