@@ -2,12 +2,12 @@ import React from "react";
 import { useTranslation } from "../../../../i18n";
 import LinkApp from "../../../../components/global/LinkApp";
 import CardSmall from "../../../../components/cards/card-small";
-import XScroll from "../../../../components/global/xScroll";
 import { Button } from "flowbite-react";
 import Image from "next/image";
 import img1 from "../../../../public/images/for-blog.png";
 import FormBooking from "../../../../components/home/form-booking";
-import { api } from "../../../../lib/axios";
+import { getData } from "@/lib/data";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export default async function Page({ params, searchParams }: { params: { lng: string }, searchParams: {
   category: string
@@ -20,12 +20,12 @@ export default async function Page({ params, searchParams }: { params: { lng: st
   if (searchParams.category) {
     url = `/services?category_id=${searchParams.category}`;
   }
-  const response = await api.get(url);
-  if (response?.data?.status) {
-    data = response?.data?.data;
-  } else {
-    console.log("error");
-  }
+
+  const response = await getData(url, lng);
+  data = response?.data;
+
+  // const pagination = data?.paginated_universities?.pagination || null
+
 
   return (
     <div className="my-10 space-y-10 text-start">
@@ -65,18 +65,34 @@ export default async function Page({ params, searchParams }: { params: { lng: st
             <h1 className="text-lg font-bold text-gray-500 md:text-xl">
               خدمات طلابية
             </h1>
-            <XScroll>
+            {/* <XScroll>
               {
                 data && data.services && data.services.map((e: any) => (
                   <CardSmall key={e.id} imageUrl={e.image} text={e.name} />
                 ))
               }
-            </XScroll>
+            </XScroll> */}
+
+          <Carousel dir="ltr">
+            <CarouselContent className="h-auto">
+              {data &&
+                data.services &&
+                data.services.length > 0 &&
+                data.services.map((e: any) => (
+                  <CarouselItem className="basis-1/2 md:basis-1/5 pb-8" key={e.id}>
+                    <CardSmall imageUrl={e.image} text={e.name} />
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+
           </div>
         </div>
       </section>
       <section>
-        <div className="bg-white h-96 flex flex-col space-y-10 justify-center items-center  text-center px-7">
+        <div className="bg-primary h-96 flex flex-col space-y-10 justify-center items-center  text-center px-7">
           <h1 className="text-lg md:text-2xl font-bold text-gray-500">
             احصل علي خصومات حصرية وخاصة في حال تم التسجيل من خلالنا
           </h1>

@@ -6,15 +6,18 @@ import { setAcceptLanguage } from "../../lib/axios";
 import HeaderApp from "@/components/Header/header";
 import { getData } from "@/lib/data";
 
-export async function generateMetadata({ params } : { params: { lng: string } }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { lng: string };
+}) {
   let data;
-  const response = await getData("/get_settings", params.lng);    
-  data = response?.data?.page; 
+  const response = await getData("/get_settings", params.lng);
+  data = response?.data;
   return {
-        title: data?.site_name || "itqan",
-        description:
-          data?.meta_description || "",
-      };
+    title: data?.site_name,
+    description: data?.meta_description || "",
+  };
 }
 
 // export async function generateStaticParams() {
@@ -51,7 +54,7 @@ export default async function RootLayout({
   };
 }) {
   setAcceptLanguage(lng);
-  
+
   return (
     <main dir={dir(lng)}>
       <div className="relative z-[54187198429748928972928] text-sm">

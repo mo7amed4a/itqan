@@ -1,6 +1,8 @@
 import React from "react";
 import { useTranslation as getTranslation } from "../../../../i18n";
 import ContactForm from "../../../../components/contact/ContactForm";
+import { getData } from "@/lib/data";
+import { IoIosCall } from "react-icons/io";
 
 export default async function page({
   params,
@@ -9,7 +11,11 @@ export default async function page({
     lng: string;
   };
 }) {
-    const { t: dataLang } = await getTranslation(params.lng, "contact");
+  const { t: dataLang } = await getTranslation(params.lng, "contact");
+  let data;
+  const response = await getData("/get_settings", params.lng);
+  data = response?.data;
+
   return (
     <div className="relative isolate bg-white text-start">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
@@ -45,15 +51,26 @@ export default async function page({
               </svg>
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              {dataLang('title')}
+              {dataLang("title")}
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-                {dataLang('description')}
+              {dataLang("description")}
             </p>
             <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600">
               <div className="flex gap-x-4">
                 <dt className="flex-none">
-                  <span className="sr-only"> {dataLang('email.label')}</span>
+                  <span className="sr-only"> {dataLang("address.label")}</span>
+                  <IoIosCall />
+                </dt>
+                <dd>
+                  <a href={`tel:${data.phone}`} dir="ltr">
+                    {data.phone}
+                  </a>
+                </dd>
+              </div>
+              <div className="flex gap-x-4">
+                <dt className="flex-none">
+                  <span className="sr-only"> {dataLang("email.label")}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -73,15 +90,15 @@ export default async function page({
                 <dd>
                   <a
                     className="hover:text-gray-900"
-                    href="mailto:contact@yourcompany.com"
+                    href={`mailto:${data.email}`}
                   >
-                    contact@yourcompany.com
+                    {data.email}
                   </a>
                 </dd>
               </div>
               <div className="flex gap-x-4">
                 <dt className="flex-none">
-                  <span className="sr-only"> {dataLang('address.label')}</span>
+                  <span className="sr-only"> {dataLang("address.label")}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -98,12 +115,12 @@ export default async function page({
                     ></path>
                   </svg>
                 </dt>
-                <dd>{dataLang('address.value')}</dd>
+                <dd>{data.address}</dd>
               </div>
             </dl>
           </div>
         </div>
-        <ContactForm lng={params.lng}/>
+        <ContactForm lng={params.lng} />
       </div>
     </div>
   );

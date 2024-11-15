@@ -22,8 +22,8 @@ type RegistrationRequest = {
   specialization: string;
   preferred_universities: string;
   message_text: string;
-  created_at: string;  // يمكن تحويله إلى Date إذا كنت تعمل مع Date objects
-  updated_at: string;  // يمكن تحويله إلى Date إذا كنت تعمل مع Date objects
+  created_at: string;  
+  updated_at: string;  
 };
 
 const RegistrationRequest = ({
@@ -65,7 +65,7 @@ const RegistrationRequest = ({
         <h5 className="text-2xl font-bold text-center mb-4">
           {dataLang('title')}
         </h5>
-       {!loading ? error === null ? requestData && <Table>
+       {!loading ? error === null ? requestData && <Table className='text-start'>
           <Table.Body>
             <Table.Row>
               <Table.Cell>{dataLang('code')}</Table.Cell>

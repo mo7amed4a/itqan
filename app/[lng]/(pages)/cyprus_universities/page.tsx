@@ -7,15 +7,33 @@ import Image from "next/image";
 import img1 from "../../../../public/images/for-blog.png";
 import LinkApp from "../../../../components/global/LinkApp";
 import { useTranslation } from "../../../../i18n";
-import CardUniversity from "../../../../components/home/CardUniversity";
+import CardUniversity, { UniversityType } from "../../../../components/home/CardUniversity";
+import { getData } from "@/lib/data";
+import { PaginationApp } from "@/components/global/pagination";
 
 export default async function UniversitiesPage({
   params,
+  searchParams,
 }: {
   params: { lng: string };
+  searchParams: {
+    category: string;
+  };
 }) {
   const lng = params.lng;
   const { t } = await useTranslation(lng, "cypriot_universities");
+
+  let data = null;
+  let url = "/qyprus_universities";
+  if (searchParams.category) {
+    url = `/qyprus_universities?category_id=${searchParams.category}`;
+  }
+
+  const response = await getData(url, lng);
+  data = response?.data; 
+
+  const pagination = data?.paginated_universities?.pagination || null
+
 
   return (
     <div className="my-10 container mx-auto space-y-20 p-4">
@@ -26,26 +44,29 @@ export default async function UniversitiesPage({
       </div>
       <div>
         <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base md:text-lg">
-          <li className="border-b-2 border-red-500 text-red-500">
-            <LinkApp href="/blogs" lng={lng}>
-              {t("links.cyprusUniversities")}
-            </LinkApp>
-          </li>
-          <li>
-            <LinkApp href="/blogs" lng={lng}>
-              {t("links.privateUniversities")}
-            </LinkApp>
-          </li>
-          <li>
-            <LinkApp href="/blogs" lng={lng}>
-              {t("links.internationalUniversities")}
-            </LinkApp>
-          </li>
-          <li>
-            <LinkApp href="/blogs" lng={lng}>
-              {t("links.all")}
-            </LinkApp>
-          </li>
+        {data &&
+            data.categories && data.categories.length > 0 &&
+            data.categories?.map((item: any) => {
+              return (
+                <li
+                  key={item.id}
+                  className={
+                    searchParams.category === `${item.id}`
+                      ? "border-b-2 border-red-500 text-red-500"
+                      : ""
+                  }
+                >
+                  {/* <LinkApp href="/blogs" lng={lng}>{t('links.study_in_turkey')}</LinkApp> */}
+                  <LinkApp
+                    href={`/cyprus_universities?category=${item.id}`}
+                    lng={lng}
+                  >
+                    {item.name}
+                  </LinkApp>
+                </li>
+              );
+            })}
+         
         </ul>
       </div>
 
@@ -248,34 +269,26 @@ export default async function UniversitiesPage({
       </div>
 
       <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
-        <CardUniversity />
+        {data &&
+          data.featured_universities &&
+          data.featured_universities.map((item: UniversityType) => {
+            return <CardUniversity key={item.id} university={item} />;
+          })}
       </section>
-      <div className="flex justify-center">
+      <div>
+        {pagination && pagination.total > 1 && <PaginationApp currentPage={pagination?.current_page}
+          totalPages={pagination.total}
+          lng={lng}
+        />}
+      </div>
+      {/* <div className="flex justify-center">
         <Button
           color="primary"
           className="w-64 py-2 font-bold bg-primary text-white hover:bg-white hover:text-primary"
         >
           المزيد
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }
