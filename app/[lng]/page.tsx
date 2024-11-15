@@ -3,13 +3,22 @@ import VideoCall from "../../components/home/videoCall";
 import SectionApp from "../../components/home/section";
 import CardSmall from "../../components/cards/card-small";
 import FormBooking from "../../components/home/form-booking";
-import CardUniversity, { UniversityType } from "../../components/home/CardUniversity";
+import CardUniversity, {
+  UniversityType,
+} from "../../components/home/CardUniversity";
 import WhyItqan from "../../components/home/whyItqan";
 import { Button } from "flowbite-react";
 import { useTranslation } from "../../i18n";
 import Image from "next/image";
 import img1 from "../../public/images/form-logo.png";
-import { api, setAcceptLanguage } from "../../lib/axios";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { getData } from "@/lib/data";
 
 export default async function Page({
   params: { lng },
@@ -19,14 +28,9 @@ export default async function Page({
   };
 }) {
   const { t } = await useTranslation(lng, "home");
-  // setAcceptLanguage(lng);
-  const response = await api.get("/get_home");
-  let data = null
-  if (response?.data?.status) {
-    data = response?.data?.data
-  } else {
-    console.log("error");
-  }
+  const response = await getData("/get_home", lng);
+  const data = response?.data;
+
   return (
     <main className="space-y-20">
       {data && <HeroSection data={data} dataLang={t} locale={lng} />}
@@ -36,33 +40,63 @@ export default async function Page({
           title={t("specialties.title")}
           className="container mx-auto "
         >
-          <div className="overflow-x-auto whitespace-nowrap p-4 hidden-scrollbar space-x-4">
+          <Carousel >
+            <CarouselContent className="h-auto">
+              {data &&
+                data.services &&
+                data.services.length > 0 &&
+                data.services.map((e: any) => (
+                  <CarouselItem className="basis-1/2 md:basis-1/5 pb-8" key={e.id}>
+                    <CardSmall imageUrl={e.image} text={e.name} />
+                  </CarouselItem>
+                ))}
+              {data &&
+                data.services &&
+                data.services.length > 0 &&
+                data.services.map((e: any) => (
+                  <CarouselItem className="basis-1/2 md:basis-1/5 pb-8" key={e.id}>
+                    <CardSmall imageUrl={e.image} text={e.name} />
+                  </CarouselItem>
+                ))}
+              {data &&
+                data.services &&
+                data.services.length > 0 &&
+                data.services.map((e: any) => (
+                  <CarouselItem className="basis-1/2 md:basis-1/5 pb-8" key={e.id}>
+                    <CardSmall imageUrl={e.image} text={e.name} />
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+          {/* <div className="overflow-x-auto whitespace-nowrap p-4 hidden-scrollbar space-x-4">
               {
                 data && data.services && data.services.length > 0 && data.services.map((e: any) => (
                   <CardSmall key={e.id} imageUrl={e.image} text={e.name} />
                 ))
               }
-          </div>
+          </div> */}
         </SectionApp>
         <SectionApp
           title={t("best_universities.title")}
           className="container mx-auto"
         >
           <div className="overflow-x-auto whitespace-nowrap p-4 hidden-scrollbar space-x-4 my10">
-          {
-              data && data.turkish_universities && data.turkish_universities.map((item: UniversityType)=> {
+            {data &&
+              data.turkish_universities &&
+              data.turkish_universities.map((item: UniversityType) => {
                 return (
                   <div
-                  key={item.id}
-                  className="inline-block !w-128 hover:scale-105 duration-300 cursor-pointer my-4"
-                >
-                  <div className="w-80 md:w-[23rem]">
-                    <CardUniversity university={item} />
+                    key={item.id}
+                    className="inline-block !w-128 hover:scale-105 duration-300 cursor-pointer my-4"
+                  >
+                    <div className="w-80 md:w-[23rem]">
+                      <CardUniversity university={item} />
+                    </div>
                   </div>
-                </div>
-                )
-              })
-            }
+                );
+              })}
           </div>
         </SectionApp>
         <SectionApp
@@ -70,27 +104,27 @@ export default async function Page({
           className="container mx-auto"
         >
           <div className="overflow-x-auto whitespace-nowrap p-4 hidden-scrollbar space-x-4 my10">
-            {
-              data && data.qyprus_universities && data.qyprus_universities.map((item: UniversityType)=> {
+            {data &&
+              data.qyprus_universities &&
+              data.qyprus_universities.map((item: UniversityType) => {
                 return (
                   <div
-                  key={item.id}
-                  className="inline-block !w-128 hover:scale-105 duration-300 cursor-pointer my-4"
-                >
-                  <div className="w-80 md:w-[23rem]">
-                    <CardUniversity university={item} />
+                    key={item.id}
+                    className="inline-block !w-128 hover:scale-105 duration-300 cursor-pointer my-4"
+                  >
+                    <div className="w-80 md:w-[23rem]">
+                      <CardUniversity university={item} />
+                    </div>
                   </div>
-                </div>
-                )
-              })
-            }
+                );
+              })}
           </div>
         </SectionApp>
         {data && data.settings && <WhyItqan data={data.settings} t={t} />}
 
         <section className="flex md:h-[70vh] mt-10 px-4 md:px-0 bg-white">
           <div className="md:w-9/12 flex justify-center items-center w-full py-8">
-            <div className="md:w-2/4 ">
+            <div className="w-full md:w-2/4">
               <FormBooking lng={lng} />
             </div>
           </div>
@@ -110,18 +144,20 @@ export default async function Page({
           className="container mx-auto px-4"
         >
           <div>
-            <div className="overflow-x-auto whitespace-nowrap p-4 hidden-scrollbar space-x-4 my10">
-              {
-                data && data.services && data.services.length > 0 && data.services.map((e: any) => (
-                  <CardSmall key={e.id} imageUrl={e.image} text={e.name} />
-                ))
-              }
-              {/* {[1, 2, 7, 8, 9, 66, 114, 245, 87, 5454, 54256429, 3, 4].map(
-                (e) => (
-                  <CardSmall key={e} text={"هي الحياة نص تجريبي"} />
-                )
-              )} */}
-            </div>
+          <Carousel dir="ltr">
+            <CarouselContent className="h-auto">
+              {data &&
+                data.services &&
+                data.services.length > 0 &&
+                data.services.map((e: any) => (
+                  <CarouselItem className="basis-1/2 md:basis-1/5 pb-8" key={e.id}>
+                    <CardSmall imageUrl={e.image} text={e.name} />
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
             <div className="flex justify-end">
               <Button color="primary">{t("WhatService.read_more")}</Button>
             </div>

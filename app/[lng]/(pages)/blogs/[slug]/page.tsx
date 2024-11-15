@@ -4,6 +4,7 @@ import { useTranslation as getTranslation } from "../../../../../i18n";
 import { api } from "../../../../../lib/axios";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { getData } from "@/lib/data";
 
 export default async function page({
     params
@@ -15,13 +16,14 @@ export default async function page({
 }) {
     const lng = params.lng;
   const { t } = await getTranslation(lng, "blogs");
-  const resp = await api.get(`/post/${params.slug}`);
-  if (resp?.data?.status) {
+
+  const resp = await getData(`/post/${params.slug}`, lng);
+  if (resp) {
     console.log(resp.data.msg);
   } else {
     notFound()
   }
-  const blog = resp?.data?.data?.post || null;
+  const blog = resp?.data?.post || null;
 
 
   return (

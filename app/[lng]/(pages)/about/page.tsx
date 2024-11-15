@@ -1,15 +1,39 @@
+import { getData } from "@/lib/data";
 import React from "react";
 
-export default function page() {
-  return (
+
+export async function generateMetadata({ params } : { params: { lng: string } }) {
+  let data;
+  const response = await getData("page/about-us", params.lng);    
+  data = response?.data?.page; 
+  return {
+    title: data?.meta_title,
+    description: data?.meta_description,
+    keywords: data?.meta_keywords,
+  };
+}
+
+export default async function page({
+  params,
+  searchParams,
+}: {
+  params: { lng: string };
+  searchParams: {
+    category: string;
+  };
+}) {
+  let data;
+  const response = await getData("page/about-us", params.lng);  
+  data = response?.data?.page; 
+  return data && (
     <div>
       <header className="bg-primary text-white text-center py-12">
-        <h1 className="text-4xl font-bold mt-16">About Us</h1>
+        <h1 className="text-4xl font-bold mt-16">{data.name}</h1>
       </header>
       <section className="text-center py-12 px-4">
         <h2 className="text-2xl font-bold">Mission And Values</h2>
         <p className="mt-4 text-gray-700 max-w-2xl mx-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste voluptates culpa tenetur voluptatem quas non itaque iure inventore labore a vitae, consequatur enim, laboriosam cum.
+          {data.details}
         </p>
         <div className="flex justify-center space-x-8 mt-8 animate-fadeIn">
           <div className="transition transform hover:scale-110">

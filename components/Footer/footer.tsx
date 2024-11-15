@@ -1,9 +1,4 @@
-
-import {
-  Footer,
-  FooterDivider,
-  FooterIcon,
-} from "flowbite-react";
+import { Footer, FooterDivider, FooterIcon } from "flowbite-react";
 import {
   BsFacebook,
   BsInstagram,
@@ -16,17 +11,17 @@ import { IoLocationSharp } from "react-icons/io5";
 import { IoIosCall } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import LinkApp from "../global/LinkApp";
-import img1 from "../../public/logo/logo-footer.png"
+import img1 from "../../public/logo/logo-footer.png";
 import Image from "next/image";
 import { useTranslation } from "../../i18n";
-import { api, setAcceptLanguage } from "../../lib/axios";
+import { getData } from "@/lib/data";
 
-export default async function FooterApp({lng}: {lng: string}) {
+export default async function FooterApp({ lng }: { lng: string }) {
   const { t } = await useTranslation(lng, "Footer");
-  setAcceptLanguage(lng);
-  const response = await api.get("/get_settings");
-  const data = response?.data?.data
-  return (
+  const response = await getData("/get_settings", lng);
+  const data = response?.data;
+
+  return data && (
     <Footer container className="bg-primary text-white rounded-none mt-32">
       <div className="w-full">
         <div className="flex flex-col md:flex-row md:items-center justify-around gap-y-7">
@@ -40,45 +35,51 @@ export default async function FooterApp({lng}: {lng: string}) {
               </li>
               <li className="flex items-center space-x-1">
                 <MdEmail />
-                <a href={`mailto:${data.email}`}>
-                  {data.email}
-                </a>
+                <a href={`mailto:${data.email}`}>{data.email}</a>
               </li>
               <li className="flex items-center space-x-1">
                 <IoIosCall />
-                <a href={`tel:${data.phone}`} dir="ltr">{data.phone}</a>
+                <a href={`tel:${data.phone}`} dir="ltr">
+                  {data.phone}
+                </a>
               </li>
             </ul>
           </div>
-            <div className="flex flex-col md:items-center md:text-center text-sm md:text-base">
-              <Image
-                src={img1}
-                alt="ITQAN Logo"
-                width={200}
-                height={200}
-                className="h-16 w-2/4 md:w-auto bg-white"
-              />
+          <div className="flex flex-col md:items-center md:text-center text-sm md:text-base">
+            <Image
+              src={img1}
+              alt="ITQAN Logo"
+              width={200}
+              height={200}
+              className="h-16 w-2/4 md:w-auto bg-white"
+            />
             {/* <p className="mt-4 w-3/4 md:text-center">{t("bio")}</p> */}
             <p className="mt-4 w-3/4 md:text-center">{data.footer_text}</p>
-            </div>
+          </div>
           <div className="space-y-3">
             <h2 className="text-base md:text-lg">{t("LinkApps")}</h2>
             <ul className="text-sm md:text-base">
               <li>
-                <LinkApp href="/" lng={lng}>{t("home")}</LinkApp>
+                <LinkApp href="/" lng={lng}>
+                  {t("home")}
+                </LinkApp>
               </li>
               <li>
-                <LinkApp href="/contact" lng={lng}>{t("contactUs")}</LinkApp>
+                <LinkApp href="/contact" lng={lng}>
+                  {t("contactUs")}
+                </LinkApp>
               </li>
               <li>
-                <LinkApp href="/about" lng={lng}>{t("aboutUs")}</LinkApp>
+                <LinkApp href="/about" lng={lng}>
+                  {t("aboutUs")}
+                </LinkApp>
               </li>
             </ul>
           </div>
         </div>
 
         <FooterDivider />
-          <div className="mt-4 flex sm:mt-0 justify-center ">
+        <div className="mt-4 flex sm:mt-0 justify-center ">
           <div className="flex gap-6 [&>div>a]:text-white/90">
             <FooterIcon href={data.facebook} icon={BsFacebook} />
             <FooterIcon href={data.instagram} icon={BsInstagram} />

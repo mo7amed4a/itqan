@@ -8,24 +8,30 @@ import CardBlog, { BlogItemType } from "../../../../components/cards/CardBlog";
 import img1 from "../../../../public/images/for-blog.png";
 import Image from "next/image";
 import { useTranslation } from "../../../../i18n";
-import { api } from "../../../../lib/axios";
+import { getData } from "@/lib/data";
 
-export default async function Blogs({ params, searchParams }: { params: { lng: string }, searchParams: {
-  category: string
-} }) {  
+export default async function Blogs({
+  params,
+  searchParams,
+}: {
+  params: { lng: string };
+  searchParams: {
+    category: string;
+  };
+}) {
   const lng = params.lng;
   const { t } = await useTranslation(lng, "blogs");
-  const resp = await api.get("/blog");
-  let blogs = null
+
+  let url = "/blog";
   if (searchParams.category) {
-    const response = await api.get(`/blog_cat/${searchParams.category}`);
-    blogs = response?.data?.data?.posts || null;
+    url = `/blog_cat/${searchParams.category}`;
   }
-  else {
-    blogs = resp?.data?.data?.posts || null;
-  }
-  const links = resp?.data?.data?.cats || null;
-  const sliders = resp?.data?.data?.sliders || null;
+
+  let blogs = null;
+  const resp = await getData(url, lng);
+  blogs = resp?.data?.posts || null;
+  const links = resp?.data?.cats || null;
+  const sliders = resp?.data?.sliders || null;
 
   return (
     <div className="my-10 container mx-auto space-y-20 p-4">
@@ -39,7 +45,14 @@ export default async function Blogs({ params, searchParams }: { params: { lng: s
           {links &&
             links?.map((item: any) => {
               return (
-                <li key={item.id} className={searchParams.category === item.slug ? "border-b-2 border-red-500 text-red-500" : ""}>
+                <li
+                  key={item.id}
+                  className={
+                    searchParams.category === item.slug
+                      ? "border-b-2 border-red-500 text-red-500"
+                      : ""
+                  }
+                >
                   {/* <LinkApp href="/blogs" lng={lng}>{t('links.study_in_turkey')}</LinkApp> */}
                   <LinkApp href={`/blogs?category=${item.slug}`} lng={lng}>
                     {item.name}
@@ -58,14 +71,15 @@ export default async function Blogs({ params, searchParams }: { params: { lng: s
         <CarouselApp locale={lng} className="h-[30rem] py-10">
           {sliders &&
             sliders?.map((item: any) => (
-              <div key={item.id} className=" bg-white rounded-xl grid grid-cols-1 gap-4 md:grid-cols-2 h-full shadow-xl p-3 ">
+              <div
+                key={item.id}
+                className=" bg-white rounded-xl grid grid-cols-1 gap-4 md:grid-cols-2 h-full shadow-xl p-3 "
+              >
                 <CarouselItem className="order-2 md:order-1 flex flex-col justify-center md:space-y-10 md:px-10">
                   <h1 className="text-lg font-bold text-gray-500 md:text-2xl">
                     {item.title}
                   </h1>
-                  <p className="text-sm text-gray-400">
-                    {item.content}
-                  </p>
+                  <p className="text-sm text-gray-400">{item.content}</p>
                 </CarouselItem>
                 <div
                   className={`order-1 md:order-2 h-64 md:h-full bg-center bg-cover md:bg-cover rounded-xl`}
@@ -84,9 +98,10 @@ export default async function Blogs({ params, searchParams }: { params: { lng: s
       </div>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3">
-        {blogs && blogs.map((item: BlogItemType) => <CardBlog
-          key={item.id} blog={item} lng={lng}
-        />)}
+        {blogs &&
+          blogs.map((item: BlogItemType) => (
+            <CardBlog key={item.id} blog={item} lng={lng} />
+          ))}
       </section>
       <div className="flex justify-center">
         <Button

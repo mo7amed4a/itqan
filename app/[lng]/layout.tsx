@@ -1,9 +1,21 @@
-import HeaderApp from "../../components/Header/header";
 import BookingFixed from "../../components/fixedCps/BookingFixed";
 import FooterApp from "../../components/Footer/footer";
 import { Toaster } from "react-hot-toast";
 import { dir } from "i18next";
 import { setAcceptLanguage } from "../../lib/axios";
+import HeaderApp from "@/components/Header/header";
+import { getData } from "@/lib/data";
+
+export async function generateMetadata({ params } : { params: { lng: string } }) {
+  let data;
+  const response = await getData("/get_settings", params.lng);    
+  data = response?.data?.page; 
+  return {
+        title: data?.site_name || "itqan",
+        description:
+          data?.meta_description || "",
+      };
+}
 
 // export async function generateStaticParams() {
 //   return languages.map((lng) => ({ lng }));

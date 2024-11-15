@@ -1,8 +1,9 @@
 import "./global.css";
 
 import { CustomFlowbiteTheme, Flowbite } from "flowbite-react";
-import { dir } from "i18next";
 import { cookies } from "next/headers";
+import NextTopLoader from 'nextjs-toploader';
+
 
 export default function RootLayout({
   children,
@@ -70,6 +71,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <NextTopLoader />
         <Flowbite theme={{ theme: customTheme }}>{children}</Flowbite>;
       </body>
     </html>
