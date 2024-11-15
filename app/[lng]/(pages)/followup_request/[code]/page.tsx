@@ -4,6 +4,9 @@ import { Card, Table } from 'flowbite-react';
 import { api, setAcceptLanguage } from '../../../../../lib/axios';
 import toast from 'react-hot-toast';
 import { useTranslation } from '../../../../../i18n/client';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { AlertCircle } from 'lucide-react';
 
 type RegistrationRequest = {
   id: number;
@@ -31,6 +34,8 @@ const RegistrationRequest = ({
   const { t: dataLang } = useTranslation(params.lng, "followup_request");
 
   const [requestData, setRequestData] = React.useState<RegistrationRequest | null>(null);
+  const [loading, setLoading] = React.useState<boolean>(true);
+  const [error, setError] = React.useState<string|null>(null);
 
   useEffect(() => {
     // getReq()
@@ -39,8 +44,11 @@ const RegistrationRequest = ({
     res.then(res => {
       if (res?.data?.status) {
         setRequestData(res.data.data.request)
+        setLoading(false)
       }
       else {
+        setError(res.data.msg)
+        setLoading(false)
         toast.error(res.data.msg)
       }
     }).catch(err=> {
@@ -57,7 +65,7 @@ const RegistrationRequest = ({
         <h5 className="text-2xl font-bold text-center mb-4">
           {dataLang('title')}
         </h5>
-       {requestData && <Table>
+       {!loading ? error === null ? requestData && <Table>
           <Table.Body>
             <Table.Row>
               <Table.Cell>{dataLang('code')}</Table.Cell>
@@ -116,7 +124,21 @@ const RegistrationRequest = ({
               <Table.Cell>{new Date(requestData.updated_at).toLocaleString()}</Table.Cell>
             </Table.Row>
           </Table.Body>
-        </Table>}
+        </Table> :
+            <Alert variant="destructive">
+            <AlertDescription className='text-center'>
+              {error}
+            </AlertDescription>
+          </Alert>
+        : (
+          <div className="flex flex-col space-y-3">
+          <Skeleton className="h-[50x] w-full rounded-xl" />
+          <Skeleton className="h-[50px] w-full rounded-xl" />
+          <Skeleton className="h-[50px] w-full rounded-xl" />
+          <Skeleton className="h-[50px] w-full rounded-xl" />
+          <Skeleton className="h-[50px] w-full rounded-xl" />
+        </div>
+        ) }
       </Card>
     </div>
   );
