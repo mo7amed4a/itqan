@@ -73,7 +73,7 @@ export default async function Page({ params, searchParams }: { params: { lng: st
               }
             </XScroll> */}
 
-          <Carousel dir="ltr">
+          <Carousel >
             <CarouselContent className="h-auto">
               {data &&
                 data.services &&

@@ -101,5 +101,5 @@ export default async function FooterApp({ lng }: { lng: string }) {
         </div>
       </div>
     </Footer>
-  );
+  )
 }

@@ -1,13 +1,13 @@
 import { getData } from "@/lib/data";
 import React from "react";
 
-
 export async function generateMetadata({ params } : { params: { lng: string } }) {
   let data;
+  let site = await getData("/get_settings", params.lng);
   const response = await getData("page/about-us", params.lng);    
   data = response?.data?.page; 
   return {
-    title: data?.meta_title,
+    title: `${data?.meta_title || 'About'} | ${site?.data?.site_name|| "Itqan"}`  ,
     description: data?.meta_description,
     keywords: data?.meta_keywords,
   };

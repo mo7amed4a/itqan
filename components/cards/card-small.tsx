@@ -5,8 +5,6 @@ import img1 from "../../public/images/heart.png";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "../ui/card";
@@ -20,18 +18,18 @@ export default function CardSmall({
 }) {
   return (
     <>
-      <Card className="inline-block aspect-square w-full h-full hover:scale-105 duration-300 cursor-pointer my-4 group">
-        <CardHeader className="flex justify-center items-center">
+      <Card className="flex w-full h-full py-4 px-3 hover:scale-105 duration-300 cursor-pointer md:my-4 group flex-col justify-center">
+        <CardHeader className="flex justify-center items-center p-0">
         <Image
             src={imageUrl}
             alt="alt"
             width={150}
             height={150}
-            className="w-36 h-36 group-hover:scale-105 duration-300"
+            className="size-16 md:size-24 group-hover:scale-105 duration-300"
           />
         </CardHeader>
-        <CardContent className="w-full text-center">
-          <CardTitle className="text-lg  pt-4 md:text-xl font-bold text-gray-500 group-hover:text-primary text-wrap w-full">{text}</CardTitle>
+        <CardContent className="w-full text-center p-0 h-full flex items-center">
+          <CardTitle className="text-base md:text-xl font-bold text-gray-500 group-hover:text-primary text-wrap w-full">{text}</CardTitle>
           {/* <CardDescription>{text}</CardDescription> */}
         </CardContent>
       </Card>

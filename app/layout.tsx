@@ -72,7 +72,7 @@ export default function RootLayout({
       </head>
       <body>
         <NextTopLoader />
-        <Flowbite theme={{ theme: customTheme }}>{children}</Flowbite>;
+        <Flowbite theme={{ theme: customTheme }}>{children}</Flowbite>
       </body>
     </html>
   );

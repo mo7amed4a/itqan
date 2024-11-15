@@ -8,6 +8,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { dir } from "i18next"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -16,6 +17,7 @@ type CarouselPlugin = UseCarouselParameters[1]
 
 type CarouselProps = {
   opts?: CarouselOptions
+  lng?: string
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
@@ -54,13 +56,15 @@ const Carousel = React.forwardRef<
       plugins,
       className,
       children,
+      lng,
       ...props
     },
     ref
   ) => {
     const [carouselRef, api] = useEmblaCarousel(
       {
-        ...opts,
+        ...opts, 
+        direction: dir(lng),
         axis: orientation === "horizontal" ? "x" : "y",
       },
       plugins
@@ -206,10 +210,10 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute  h-8 w-8 rounded-full",
+        "absolute  h-8 w-8 rounded-full hidden md:flex flex-col items-center",
         orientation === "horizontal"
-          ? "-start-12 top-1/2 -translate-y-1/2 rtl:translate-y-1/2"
-          : "-top-12 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 rotate-90",
+          ? "-start-12 top-1/2 -translate-y-1/2 "
+          : "-top-12 start-1/2 -translate-x-1/2",
         className
       )}
       disabled={!canScrollPrev}
@@ -235,10 +239,10 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-8 w-8 rounded-full",
+        "absolute h-8 w-8 rounded-full hidden  md:flex flex-col items-center",
         orientation === "horizontal"
-          ? "-end-12 top-1/2 -translate-y-1/2 rtl:translate-y-1/2"
-          : "-bottom-12 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 rotate-90",
+          ? "-end-12 top-1/2 -translate-y-1/2 "
+          : "-bottom-12 start-1/2 -translate-x-1/2",
         className
       )}
       disabled={!canScrollNext}

@@ -12,7 +12,7 @@ export async function getData(url: string, lng: string): Promise<any | undefined
       redirect("/error");
     }
   } catch (error) {
-    console.error("Error fetching home data:", error);
+    console.error("Error fetching home data: error");
     return undefined;
   }
 }

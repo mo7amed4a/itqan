@@ -40,7 +40,7 @@ export default async function Page({
           title={t("specialties.title")}
           className="container mx-auto "
         >
-          <Carousel >
+          <Carousel>
             <CarouselContent className="h-auto">
               {data &&
                 data.services &&
@@ -144,7 +144,7 @@ export default async function Page({
           className="container mx-auto px-4"
         >
           <div>
-          <Carousel dir="ltr">
+          <Carousel>
             <CarouselContent className="h-auto">
               {data &&
                 data.services &&
