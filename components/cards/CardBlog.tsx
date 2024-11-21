@@ -43,7 +43,7 @@ export default function CardBlog({ blog , lng}: { blog: BlogItemType , lng: stri
           <li>هندسة الحاسوب</li>
           <li>هندسة الحاسوب</li>
         </ul> */}
-          <p className="text-sm md:text-base text-gray-400">{blog.content}</p>
+          <p className="text-sm md:text-base text-gray-400" dangerouslySetInnerHTML={{ __html: blog.content }}></p>
         </div>
       </div>
     </LinkApp>

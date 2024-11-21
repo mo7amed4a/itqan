@@ -25,7 +25,7 @@ export default async function HeaderApp({ locale }: { locale: string }) {
   } catch (error) {}
 
   return (
-    <header className="flex flex-col sticky top-0 z-[84] bg-white">
+    <header className="flex flex-col sticky top-0 z-[20] bg-white">
       <div className="bg-primary ">
         <div className="flex flex-col md:flex-row justify-between py-2 px-4 md:px-10 gap-2 md:w-[90vw] mx-auto">
           <div className="flex justify-between md:justify-start gap-x-4">

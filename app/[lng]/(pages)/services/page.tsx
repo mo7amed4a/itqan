@@ -171,7 +171,7 @@ export default async function Page({
                   <h3 className="text-lg md:text-xl font-bold">
                     {housing.name}
                   </h3>
-                  <p dangerouslySetInnerHTML={{ __html: housing.description }} className="text-sm md:text-base  text-gray-500"></p>
+                  <p dangerouslySetInnerHTML={{ __html: housing.description }} className="text-sm md:text-base  text-gray-500 prose lg:prose-xl"></p>
                 </div>
               </div>
             ))}

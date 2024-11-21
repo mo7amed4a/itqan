@@ -59,14 +59,7 @@ export default async function page({
           alt="Featured Image"
         />
       </header>
-      <div className="mx-auto mt-10 max-w-screen-md space-y-12 px-4 py-10 font-serif text-lg tracking-wide text-gray-700">
-        <strong className="text-2xl font-medium">
-          
-        </strong>
-        <p>
-          {blog.content}
-        </p>
-      </div>
+      <div dangerouslySetInnerHTML={{ __html: blog.content }} className="mx-auto mt-10 max-w-screen-md space-y-12 px-4 py-10 font-serif text-lg tracking-wide text-gray-700 prose lg:prose-xl"></div>
     </article>
   );
 }

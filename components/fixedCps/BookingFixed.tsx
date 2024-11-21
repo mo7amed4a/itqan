@@ -192,7 +192,7 @@ export default function BookingFixed({ lng, child=null }: { lng: string, child?:
         open={isOpen}
         onClose={handleClose}
         position="right"
-        className="w-10/12 bg-gray-100 p-0.5 pt-4 z-[178871748748178778888888888]"
+        className="w-10/12 bg-gray-100 p-0.5 pt-4 z-[100]"
       >
         <Drawer.Header title={dataLang("drawer.register_now")} />
         <Drawer.Items>

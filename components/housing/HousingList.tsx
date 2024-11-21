@@ -9,7 +9,7 @@ const HousingList = ({ housings, t }:{
       {housings.map((housing: any) => (
         <div key={housing.id} className="bg-white rounded-lg shadow-lg p-6">
           <h2 className="text-xl font-semibold text-gray-800">{housing.name}</h2>
-          <p className="text-gray-600 mt-2" dangerouslySetInnerHTML={{ __html: housing.description }} />
+          <p className="text-gray-600 mt-2 prose lg:prose-xl" dangerouslySetInnerHTML={{ __html: housing.description }} />
           
           <div className="mt-4">
             <div className="flex justify-between text-sm text-gray-500">

@@ -32,7 +32,7 @@ export default async function page({
       </header>
       <section className="text-center py-12 px-4">
         {/* <h2 className="text-2xl font-bold">Mission And Values</h2> */}
-        <p className="mt-4 text-gray-700 max-w-2xl mx-auto" dangerouslySetInnerHTML={{ __html: data.details }}></p>
+        <p className="mt-4 text-gray-700 max-w-2xl mx-auto prose lg:prose-xl" dangerouslySetInnerHTML={{ __html: data.details }}></p>
         {/* <div className="flex justify-center space-x-8 mt-8 animate-fadeIn">
           <div className="transition transform hover:scale-110">
             <h3 className="text-xl font-bold">85+</h3>
