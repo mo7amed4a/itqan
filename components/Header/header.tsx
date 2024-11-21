@@ -10,43 +10,64 @@ import {
 import InputSearch from "./inputSearch";
 import LocalSwitcher from "./local-switcher";
 import Image from "next/image";
-import logo from '../../public/logo/logo.png'
+import logo from "../../public/logo/logo.png";
 import { useTranslation } from "../../i18n";
 import { api, setAcceptLanguage } from "../../lib/axios";
+import LinkActive from "./LinkActive";
+import BookingFixed from "../fixedCps/BookingFixed";
 
-export default async function HeaderApp({ locale}: {  locale: string}) {
-  const {t} = await useTranslation(locale, "Header");
+export default async function HeaderApp({ locale }: { locale: string }) {
+  const { t } = await useTranslation(locale, "Header");
   setAcceptLanguage(locale);
   try {
     const response = await api.get("/get_settings");
-    const data = response?.data?.data
-    
-  } catch (error) {
-    
-  }
+    const data = response?.data?.data;
+  } catch (error) {}
 
   return (
-    <header className="flex flex-col sticky top-0 z-[84]">
-      <div className=" bg-primary flex flex-col md:flex-row justify-between py-2 px-4 md:px-10 gap-2">
-        <div className="flex justify-between md:justify-start gap-x-4">
-          <div>
-            <Button color="primary"  className="border px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base" >
-              {t("booking_btn")}
+    <header className="flex flex-col sticky top-0 z-[84] bg-white">
+      <div className="bg-primary ">
+        <div className="flex flex-col md:flex-row justify-between py-2 px-4 md:px-10 gap-2 md:w-[90vw] mx-auto">
+          <div className="flex justify-between md:justify-start gap-x-4">
+            <div className="z-[7817874]">
+            <BookingFixed lng={locale} child={
+              <Button
+                color="primary"
+                className="border px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base"
+              >
+                {t("booking_btn")}
+              </Button>
+              } />
+            </div>
+            <div>
+              <Button
+                color="primary"
+                className="border px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base"
+              >
+                {t("be_our_agent")}
+              </Button>
+            </div>
+            <div>
+              <Button
+              as={Link}
+              href={`/${locale}/followup_request`}
+              color="failure"
+              className="border px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base"
+            >
+              {t("follow_up_on_the_registration_request")}
             </Button>
+            
+            </div>
           </div>
-          <div>
-            <Button color="primary" className="border px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base" >{t('be_our_agent')}</Button>
+          <div className="flex justify-between md:justify-start gap-0.5 md:gap-x-2">
+            <InputSearch placeholder={t("search_for_the_university")} />
+            <LocalSwitcher lng={locale} />
           </div>
-          <div>
-            <Button as={Link} href={`/${locale}/followup_request`} color="failure" className="border px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base">{t('follow_up_on_the_registration_request')}</Button>
-          </div>
-        </div>
-        <div className="flex justify-between md:justify-start gap-0.5 md:gap-x-2">
-          <InputSearch placeholder={t('search_for_the_university')} />
-          <LocalSwitcher lng={locale} />
         </div>
       </div>
-      <div className="px-3 md:px-10 bg-white">
+      <div
+        className="px-3 md:px-10 md:w-[90vw] md:mx-auto"
+      >
         <Navbar fluid rounded>
           <NavbarBrand as={Link} href="/">
             <Image
@@ -58,17 +79,62 @@ export default async function HeaderApp({ locale}: {  locale: string}) {
             />
           </NavbarBrand>
           <NavbarToggle />
-          <NavbarCollapse className="[&>ul>li>a]:text-base md:overflow-x-scroll xl:overflow-x-auto z-40 hidden-scrollbar">
-            <NavbarLink as={Link} href={`/${locale}/`}>{t('home')}</NavbarLink>
-            <NavbarLink as={Link} href={`/${locale}/blogs`}>{t('blog')}</NavbarLink>
-            <NavbarLink as={Link} href={`/${locale}/about`}>{t('about_us')}</NavbarLink>
-            <NavbarLink as={Link} href={`/${locale}/contact`}>{t('contact_us')}</NavbarLink>
-            <NavbarLink as={Link} href={`/${locale}/turkish_universities`}>{t('turkish_universities')}</NavbarLink>
-            <NavbarLink as={Link} href={`/${locale}/cyprus_universities`}>{t('cyprus_universities')}</NavbarLink>
-            <NavbarLink as={Link} href={`/${locale}/student_accommodation`}>{t('student_accommodation')}</NavbarLink>
-            <NavbarLink as={Link} href={`/${locale}/partial_scholarships`}>{t('partial_scholarships')}</NavbarLink>
-            <NavbarLink as={Link} href={`/${locale}/opportunities`}>{t('opportunities')}</NavbarLink>
-            <NavbarLink as={Link} href={`/${locale}/services`}>{t('services')}</NavbarLink>
+          <NavbarCollapse className="[&>ul>li>a]:text-xl [&>ul>li>a]:text-nowrap md:overflow-x-scroll 2xl:overflow-x-auto z-40 hidden-scrollbar">
+            <LinkActive as={Link} locale={locale} text={t("home")} url="" />
+            <LinkActive
+              as={Link}
+              locale={locale}
+              text={t("blog")}
+              url="blogs"
+            />
+            <LinkActive
+              as={Link}
+              locale={locale}
+              text={t("about_us")}
+              url="about"
+            />
+            <LinkActive
+              as={Link}
+              locale={locale}
+              text={t("contact_us")}
+              url="contact"
+            />
+            <LinkActive
+              as={Link}
+              locale={locale}
+              text={t("turkish_universities")}
+              url="turkish_universities"
+            />
+            <LinkActive
+              as={Link}
+              locale={locale}
+              text={t("cyprus_universities")}
+              url="cyprus_universities"
+            />
+            <LinkActive
+              as={Link}
+              locale={locale}
+              text={t("student_accommodation")}
+              url="student_accommodation"
+            />
+            <LinkActive
+              as={Link}
+              locale={locale}
+              text={t("partial_scholarships")}
+              url="partial_scholarships"
+            />
+            {/* <LinkActive
+              as={Link}
+              locale={locale}
+              text={t("opportunities")}
+              url="opportunities"
+            /> */}
+            <LinkActive
+              as={Link}
+              locale={locale}
+              text={t("services")}
+              url="services"
+            />
           </NavbarCollapse>
         </Navbar>
       </div>

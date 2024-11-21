@@ -1,6 +1,7 @@
 "use client";
 
 import { Select } from "flowbite-react";
+import { dir } from "i18next";
 import { useRouter, usePathname } from "next/navigation";
 import { ChangeEvent, useTransition } from "react";
 
@@ -10,15 +11,20 @@ export default function LocaleSwitcher({lng}: {lng: string}) {
   const pathname = usePathname(); // get the current pathname
   const currentLocale = lng; // active locale
 
+  if (typeof document != 'undefined') {
+    document.documentElement.lang = currentLocale;
+    document.documentElement.dir = dir(currentLocale);
+  }
+
   const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const nextLocale = e.target.value;
-
     startTransition(() => {
       const newPath = pathname.replace(`/${currentLocale}`, `/${nextLocale}`);
       router.replace(newPath);
+      document.documentElement.lang = nextLocale;
+      document.documentElement.dir = dir(nextLocale);
     });
   };
-
   return (
     <div>
       <Select

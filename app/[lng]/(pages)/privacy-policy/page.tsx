@@ -4,10 +4,10 @@ import React from "react";
 export async function generateMetadata({ params } : { params: { lng: string } }) {
   let data;
   let site = await getData("/get_settings", params.lng);
-  const response = await getData("page/about-us", params.lng);    
+  const response = await getData("page/privacy-policy", params.lng);    
   data = response?.data?.page; 
   return {
-    title: `${data?.meta_title || 'About'} | ${site?.data?.site_name|| "Itqan"}`  ,
+    title: `${data?.meta_title || 'privacy policy'} | ${site?.data?.site_name|| "Itqan"}`  ,
     description: data?.meta_description,
     keywords: data?.meta_keywords,
   };
@@ -23,7 +23,7 @@ export default async function page({
   };
 }) {
   let data;
-  const response = await getData("page/about-us", params.lng);  
+  const response = await getData("page/privacy-policy", params.lng);  
   data = response?.data?.page; 
   return data && (
     <div>
@@ -33,6 +33,7 @@ export default async function page({
       <section className="text-center py-12 px-4">
         {/* <h2 className="text-2xl font-bold">Mission And Values</h2> */}
         <p className="mt-4 text-gray-700 max-w-2xl mx-auto" dangerouslySetInnerHTML={{ __html: data.details }}></p>
+
         {/* <div className="flex justify-center space-x-8 mt-8 animate-fadeIn">
           <div className="transition transform hover:scale-110">
             <h3 className="text-xl font-bold">85+</h3>

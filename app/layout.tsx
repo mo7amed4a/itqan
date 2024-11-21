@@ -1,17 +1,18 @@
 import "./global.css";
 
 import { CustomFlowbiteTheme, Flowbite } from "flowbite-react";
+import { dir } from "i18next";
 import { cookies } from "next/headers";
 import NextTopLoader from 'nextjs-toploader';
 
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
 
-  const lng = cookies().get('i18next')?.value
+  const lng = await cookies().get('i18next')?.value
   const customTheme: CustomFlowbiteTheme = {
     button: {
       color: {
@@ -61,9 +62,8 @@ export default function RootLayout({
     },
   };
 
-
   return (
-    <html lang={lng} >
+    <html lang={lng} dir={dir(lng)} >
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap"

@@ -1,24 +1,18 @@
 import { TFunction } from "i18next";
 import { Button } from "../ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
 
-export default function HeroSection({
-  data,
+import { getData } from "@/lib/data";
+import FilterSelect from "./Filter";
+
+export default async function HeroSection({
   dataLang,
   locale,
 }: {
-  data: any;
   dataLang: TFunction<"home", undefined>;
   locale: string;
 }) {
+  const response = await getData("/filters", locale);
+  const data = response?.data;
   return (
     <div
       className={`bg-hero p-6 ${locale === "en" && "transform -scale-x-100"}`}
@@ -57,80 +51,7 @@ export default function HeroSection({
           </div>
 
           <div className="w-full">
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 bg-gray-900/10 rounded p-4">
-              <Select>
-                <SelectTrigger className="rtl:flex-row-reverse">
-                  <SelectValue
-                    placeholder={dataLang("hero.select_specialty")}
-                  />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup className="text-end">
-                    <SelectLabel>
-                      {dataLang("hero.select_specialty")}
-                    </SelectLabel>
-                    {data &&
-                      data.specializations &&
-                      data.specializations.map((e: any, i: number) => (
-                        <SelectItem className="text-start w-full" key={i} value={e.name}>
-                          {e.name}
-                        </SelectItem>
-                      ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-              <Select>
-                <SelectTrigger className="rtl:flex-row-reverse">
-                  <SelectValue
-                    placeholder={dataLang("hero.select_study_level")}
-                  />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>
-                      {dataLang("hero.select_study_level")}
-                    </SelectLabel>
-                    {data &&
-                      data.levels &&
-                      data.levels.map((e: any, i: number) => (
-                        <SelectItem key={i} value={e.name}>
-                          {e.name}
-                        </SelectItem>
-                      ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-              <Select>
-                <SelectTrigger className="rtl:flex-row-reverse">
-                  <SelectValue placeholder={dataLang("hero.select_language")} />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>
-                      {dataLang("hero.select_language")}
-                    </SelectLabel>
-                    {data &&
-                      data.languages &&
-                      data.languages.map((e: any, i: number) => (
-                        <SelectItem key={i} value={e.name}>
-                          {e.name}
-                        </SelectItem>
-                      ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-
-              {/* <Select id="specialty" required>
-                {data && data.specializations && data.specializations.map((e: any, i: number) => <option key={i} value={e.name}>{e.name}</option>)}
-              </Select>
-              <Select id="studyLevel" required>
-              {data && data.levels && data.levels.map((e: any, i: number) => <option key={i} value={e.name}>{e.name}</option>)}
-              </Select>
-              <Select id="language" required>
-              {data && data.languages && data.languages.map((e: any, i: number) => <option key={i} value={e.name}>{e.name}</option>)}
-              </Select> */}
-              <Button color="primary">{dataLang("hero.search")}</Button>
-            </div>
+            <FilterSelect lng={locale} data={data}/>
           </div>
         </div>
       </div>

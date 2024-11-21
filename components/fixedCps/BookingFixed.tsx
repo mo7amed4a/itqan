@@ -1,11 +1,5 @@
 "use client";
-import {
-  Card,
-  Clipboard,
-  Drawer,
-  Textarea,
-  TextInput,
-} from "flowbite-react";
+import { Card, Clipboard, Drawer, Textarea, TextInput } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { BiMale, BiPhone } from "react-icons/bi";
 import { CgFlag } from "react-icons/cg";
@@ -30,7 +24,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import { Button } from "../ui/button";
-// import axios from "axios";
+import { getData } from "@/lib/data";
 
 type DataType = {
   name: string;
@@ -46,11 +40,26 @@ type DataType = {
   message: string;
 };
 
-export default function BookingFixed({ lng }: { lng: string }) {
+interface ItemType { 
+  id: number;
+  name: string
+}
+
+interface DataHomeType {
+  levels: ItemType[];
+  specializations: ItemType[];
+  languages: ItemType[]
+  universities: ItemType[]
+}
+
+export default function BookingFixed({ lng, child=null }: { lng: string, child?: React.ReactNode | null }) {
   const { t: dataLang } = useTranslation(lng, "layOutFixed");
   const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => setIsOpen(false);
   const [text, setText] = useState<string | null>(null);
+  const [dataHome, setDataHome] = useState<DataHomeType | null>(null);
+  // const response = await getData("/get_home", lng);
+  // const data = response?.data;
 
   const validationSchema = Yup.object({
     name: Yup.string().required(dataLang("drawer.name_required")),
@@ -158,20 +167,32 @@ export default function BookingFixed({ lng }: { lng: string }) {
     setText((localStorage.getItem("msgBooking") as string) || null);
   }, []);
 
+  const getDataHome = async () => {
+    const response = await getData("/filters", lng);
+    console.log(response);
+    setDataHome(response?.data);
+  };
+
+  useEffect(() => {
+    getDataHome();
+  }, []);
+
   return (
     <div>
-      <div
-        className="fixed top-1/3 right-0 cursor-pointer bg-red-600 p-2.5 md:p-4 rtl:flex-row-reverse items-center text-sm md:text-base text-white rounded-l-xl flex z-[25789] w-[8rem] md:w-[9rem] translate-x-[5.5rem] gap-x-3 hover:translate-x-0 duration-300"
+     {child ? <div onClick={() => setIsOpen(true)}>
+      {child}
+     </div> : <div
+        className={`fixed top-1/3 right-0 cursor-pointer bg-red-600 p-2.5 md:p-4 rtl:flex-row-reverse items-center text-sm md:text-base text-white rounded-l-xl flex z-[10] w-[8rem] md:w-[9rem] translate-x-[5.5rem] gap-x-3 hover:translate-x-0 duration-300 `}
         onClick={() => setIsOpen(true)}
       >
         <FaHandPointRight className="text-white text-lg text-start md:text-2xl w-8" />
         {dataLang("drawer.register_now")}
-      </div>
+      </div>}
       <Drawer
         open={isOpen}
         onClose={handleClose}
         position="right"
-        className="w-10/12 bg-gray-100 p-0.5 pt-4 z-[178787]"
+        className="w-10/12 bg-gray-100 p-0.5 pt-4 z-[178871748748178778888888888]"
       >
         <Drawer.Header title={dataLang("drawer.register_now")} />
         <Drawer.Items>
@@ -240,24 +261,29 @@ export default function BookingFixed({ lng }: { lng: string }) {
                     className="text-red-500 text-start  text-sm md:text-base"
                   />
 
-                  <Select name="gender"
+                  <Select
+                    name="gender"
                     defaultValue={values.gender}
                     onValueChange={(value) => {
-                      console.log(value);
-                      
                       setFieldValue("gender", value);
                     }}
                   >
-                    <SelectTrigger className="rtl:flex-row-reverse p-6">
-                      <SelectValue placeholder={dataLang("drawer.gender")}/>
+                    <SelectTrigger className="rtl:flex-row-reverse py-6">
+                      <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
+                        <BiMale className="size-5 text-gray-500" />
+                        <SelectValue placeholder={dataLang("drawer.gender")} />
+                      </div>
                     </SelectTrigger>
-                    <SelectContent className="z-[1878178]">
+                    <SelectContent >
                       <SelectGroup className="text-end">
                         <SelectLabel>{dataLang("drawer.gender")}</SelectLabel>
                         <SelectItem value="male" className="text-start w-full">
                           Male
                         </SelectItem>
-                        <SelectItem value="female" className="text-start w-full">
+                        <SelectItem
+                          value="female"
+                          className="text-start w-full"
+                        >
                           Female
                         </SelectItem>
                       </SelectGroup>
@@ -276,11 +302,6 @@ export default function BookingFixed({ lng }: { lng: string }) {
                     placeholder={dataLang("drawer.gender")}
                     sizing="lg"
                   /> */}
-                  <ErrorMessage
-                    name="gender"
-                    component="div"
-                    className="text-red-500 text-start  text-sm md:text-base"
-                  />
 
                   <Field
                     name="email"
@@ -316,49 +337,173 @@ export default function BookingFixed({ lng }: { lng: string }) {
                     <h3 className="text-base md:text-lg text-primary">
                       {dataLang("drawer.university_info")}
                     </h3>
-                    <Field
+                    <Select
                       name="select_degree"
-                      as={TextInput}
-                      rightIcon={lng === "ar" && FaRegFileAlt}
-                      icon={lng === "en" && FaRegFileAlt}
-                      placeholder={dataLang("drawer.select_degree")}
-                      sizing="lg"
-                    />
+                      defaultValue={values.select_degree}
+                      onValueChange={(value) => {
+                        setFieldValue("select_degree", value);
+                      }}
+                    >
+                      <SelectTrigger className="rtl:flex-row-reverse py-6">
+                        <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
+                          <FaRegFileAlt  className="size-5 text-gray-500"/>
+                          <SelectValue
+                            placeholder={dataLang("drawer.select_degree")}
+                          />
+                        </div>
+                      </SelectTrigger>
+                      <SelectContent >
+                        <SelectGroup className="text-end">
+                          <SelectLabel>
+                            {dataLang("drawer.select_degree")}
+                          </SelectLabel>
+                          {/* @ts-ignore */}
+                          {dataHome &&
+                            dataHome?.levels &&
+                            dataHome?.levels?.length > 0 &&
+                            dataHome?.levels.map((item: any) => (
+                              <SelectItem key={item.id}
+                                value={item.name}
+                                className="text-start w-full"
+                              >
+                                {item.name}
+                              </SelectItem>
+                            ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
                     <ErrorMessage
                       name="select_degree"
                       component="div"
                       className="text-red-500 text-start  text-sm md:text-base"
                     />
-
-                    <Field
+                    
+                    <Select
                       name="language"
-                      as={TextInput}
-                      rightIcon={lng === "ar" && FaLanguage}
-                      icon={lng === "en" && FaLanguage}
-                      placeholder={dataLang("drawer.select_language")}
-                      sizing="lg"
-                    />
+                      defaultValue={values.language}
+                      onValueChange={(value) => {
+                        setFieldValue("language", value);
+                      }}
+                    >
+                      <SelectTrigger className="rtl:flex-row-reverse py-6">
+                        <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
+                          <FaLanguage  className="size-5 text-gray-500" />
+                          <SelectValue
+                            placeholder={dataLang("drawer.select_language")}
+                          />
+                        </div>
+                      </SelectTrigger>
+                      <SelectContent >
+                        <SelectGroup className="text-end">
+                          <SelectLabel>
+                            {dataLang("drawer.select_language")}
+                          </SelectLabel>
+                          {/* @ts-ignore */}
+                          {dataHome &&
+                            dataHome?.languages &&
+                            dataHome?.languages?.length > 0 &&
+                            dataHome?.languages.map((item: any) => (
+                              <SelectItem key={item.id}
+                                value={item.name}
+                                className="text-start w-full"
+                              >
+                                {item.name}
+                              </SelectItem>
+                            ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
                     <ErrorMessage
                       name="language"
                       component="div"
                       className="text-red-500 text-start  text-sm md:text-base"
                     />
 
-                    <Field
+                    <Select
                       name="specialization"
-                      as={TextInput}
-                      rightIcon={lng === "ar" && FaGraduationCap}
-                      icon={lng === "en" && FaGraduationCap}
-                      placeholder={dataLang("drawer.select_specialization")}
-                      sizing="lg"
-                    />
+                      defaultValue={values.specialization}
+                      onValueChange={(value) => {
+                        setFieldValue("specialization", value);
+                      }}
+                    >
+                      <SelectTrigger className="rtl:flex-row-reverse py-6">
+                        <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
+                          <FaGraduationCap  className="size-5 text-gray-500"/>
+                          <SelectValue
+                            placeholder={dataLang("drawer.select_specialization")}
+                          />
+                        </div>
+                      </SelectTrigger>
+                      <SelectContent >
+                        <SelectGroup className="text-end">
+                          <SelectLabel>
+                            {dataLang("drawer.select_specialization")}
+                          </SelectLabel>
+                          {/* @ts-ignore */}
+                          {dataHome &&
+                            dataHome?.specializations &&
+                            dataHome?.specializations?.length > 0 &&
+                            dataHome?.specializations.map((item: any) => (
+                              <SelectItem
+                              key={item.id}
+                                value={item.name}
+                                className="text-start w-full"
+                              >
+                                {item.name}
+                              </SelectItem>
+                            ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
                     <ErrorMessage
                       name="specialization"
                       component="div"
                       className="text-red-500 text-start  text-sm md:text-base"
                     />
 
-                    <Field
+                     <Select
+                      name="universities"
+                      defaultValue={values.universities}
+                      onValueChange={(value) => {
+                        setFieldValue("universities", value);
+                      }}
+                    >
+                      <SelectTrigger className="rtl:flex-row-reverse py-6">
+                        <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
+                          <LuGraduationCap  className="size-5 text-gray-500"/>
+                          <SelectValue
+                            placeholder={dataLang("drawer.select_universities")}
+                          />
+                        </div>
+                      </SelectTrigger>
+                      <SelectContent >
+                        <SelectGroup className="text-end">
+                          <SelectLabel>
+                            {dataLang("drawer.select_universities")}
+                          </SelectLabel>
+                          {dataHome &&
+                            dataHome?.universities &&
+                            dataHome?.universities?.length > 0 &&
+                            dataHome?.universities.map((item: any) => (
+                              <SelectItem
+                              key={item.id}
+                                value={item.name}
+                                className="text-start w-full"
+                              >
+                                {item.name}
+                              </SelectItem>
+                            ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                    <ErrorMessage
+                      name="universities"
+                      component="div"
+                      className="text-red-500 text-start  text-sm md:text-base"
+                    /> 
+
+
+                    {/* <Field
                       name="universities"
                       as={TextInput}
                       rightIcon={lng === "ar" && LuGraduationCap}
@@ -370,7 +515,7 @@ export default function BookingFixed({ lng }: { lng: string }) {
                       name="universities"
                       component="div"
                       className="text-red-500 text-start  text-sm md:text-base"
-                    />
+                    /> */}
                   </Card>
 
                   <Card className="w-full shadow-none [&>div]:p-3 md:[&>div]:p-4">
@@ -412,8 +557,15 @@ export default function BookingFixed({ lng }: { lng: string }) {
                 <p>{text}</p>
                 {text != null && (
                   <div className="flex gap-x-2">
-                    <Link  onClick={() => setIsOpen(false)} href={`/${lng}/followup_request/${text?.split(":")[1]}`} >
-                      <Button size={"sm"} variant={"default"} className="w-full">
+                    <Link
+                      onClick={() => setIsOpen(false)}
+                      href={`/${lng}/followup_request/${text?.split(":")[1]}`}
+                    >
+                      <Button
+                        size={"sm"}
+                        variant={"default"}
+                        className="w-full"
+                      >
                         {dataLang("drawer.followup_request")}
                       </Button>
                     </Link>

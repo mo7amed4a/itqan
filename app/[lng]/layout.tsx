@@ -5,6 +5,7 @@ import { dir } from "i18next";
 import { setAcceptLanguage } from "../../lib/axios";
 import HeaderApp from "@/components/Header/header";
 import { getData } from "@/lib/data";
+import TawkTo from "@/components/fixedCps/tawkTo";
 
 export async function generateMetadata({
   params,
@@ -57,14 +58,14 @@ export default async function RootLayout({
 
   return (
     <main dir={dir(lng)}>
-      <div className="relative z-[54187198429748928972928] text-sm">
+      <div className="relative z-[748811718787187841] text-sm">
         <Toaster />
       </div>
       <HeaderApp locale={lng} />
       <BookingFixed lng={lng} />
       {children}
       <FooterApp lng={lng} />
-      {/* <TawkTo /> */}
+      <TawkTo />
     </main>
   );
 }

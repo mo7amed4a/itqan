@@ -33,7 +33,7 @@ export default async function Page({
 
   return (
     <main className="space-y-20">
-      {data && <HeroSection data={data} dataLang={t} locale={lng} />}
+      {data && <HeroSection dataLang={t} locale={lng} />}
       <VideoCall dataVideoCall={t} locale={lng} />
       <div className="bg-[#f5f7f9] my-10">
         <SectionApp
@@ -43,25 +43,9 @@ export default async function Page({
           <Carousel>
             <CarouselContent className="h-auto">
               {data &&
-                data.services &&
-                data.services.length > 0 &&
-                data.services.map((e: any) => (
-                  <CarouselItem className="basis-1/2 md:basis-1/5 pb-8" key={e.id}>
-                    <CardSmall imageUrl={e.image} text={e.name} />
-                  </CarouselItem>
-                ))}
-              {data &&
-                data.services &&
-                data.services.length > 0 &&
-                data.services.map((e: any) => (
-                  <CarouselItem className="basis-1/2 md:basis-1/5 pb-8" key={e.id}>
-                    <CardSmall imageUrl={e.image} text={e.name} />
-                  </CarouselItem>
-                ))}
-              {data &&
-                data.services &&
-                data.services.length > 0 &&
-                data.services.map((e: any) => (
+                data.specializations &&
+                data.specializations.length > 0 &&
+                data.specializations.map((e: any) => (
                   <CarouselItem className="basis-1/2 md:basis-1/5 pb-8" key={e.id}>
                     <CardSmall imageUrl={e.image} text={e.name} />
                   </CarouselItem>
@@ -121,7 +105,6 @@ export default async function Page({
           </div>
         </SectionApp>
         {data && data.settings && <WhyItqan data={data.settings} t={t} />}
-
         <section className="flex md:h-[70vh] mt-10 px-4 md:px-0 bg-white">
           <div className="md:w-9/12 flex justify-center items-center w-full py-8">
             <div className="w-full md:w-2/4">
