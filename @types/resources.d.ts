@@ -8,6 +8,7 @@ import { HousingLangType } from "./@pages/housing";
 import { Partial_scholarshipsLangType } from "./@pages/partial_scholarships";
 import { ServicesLangType } from "./@pages/services";
 import { Turkish_universitiesLangType } from "./@pages/turkish_universities";
+import { UniversityDetailsType } from "./@pages/university_details";
 
 interface Resources
   extends HomeLangType,
@@ -19,7 +20,8 @@ interface Resources
     FollowupRequestType,
     ContactInfoType,
     HousingLangType,
-    ServicesLangType {
+    ServicesLangType,
+    UniversityDetailsType {
   Header: {
     be_our_agent: string;
     follow_up_on_the_registration_request: string;

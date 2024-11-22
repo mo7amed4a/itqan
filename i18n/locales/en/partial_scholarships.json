@@ -1,24 +1,35 @@
 {
-  "title": "Partial Scholarships",
-  "university": "Medipol University",
+  "title": "Partial grants",
+  "university": "Medpole University",
   "specialization": {
     "label": "Specialization",
-    "option1": "Computer Engineering",
-    "option2": "Computer Engineering",
-    "option3": "Computer Engineering",
-    "option4": "Computer Engineering"
+    "option1": " Computer engineering",
+    "option2": " Computer engineering",
+    "option3": " Computer engineering",
+    "option4": " Computer engineering"
   },
   "language": {
-    "label": "Language of Study",
+    "label": "Language of study",
     "value": "English"
   },
   "fees": {
-    "label": "Tuition Fees",
-    "value": "14000$"
+    "label": "Fees",
+    "before": "Fees are before discount",
+    "annual": "Annual fees",
+    "total": "Total fees"
   },
   "buttons": {
-    "view_university": "View University",
-    "register_scholarship": "Register for Scholarship Now"
+    "view_university": "View the university",
+    "register_scholarship": "Register for the scholarship now"
   },
-  "show_more": "Show More"
+  "show_more": "Show more",
+  "level": {
+    "label": "Academic level"
+  },
+  "city": {
+    "label": "City"
+  },
+  "study_years": {
+    "label": "Number of years of study"
+  }
 }

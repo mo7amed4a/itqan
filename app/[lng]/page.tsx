@@ -19,6 +19,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { getData } from "@/lib/data";
+import LinkApp from "@/components/global/LinkApp";
 
 export default async function Page({
   params: { lng },
@@ -46,7 +47,10 @@ export default async function Page({
                 data.specializations &&
                 data.specializations.length > 0 &&
                 data.specializations.map((e: any) => (
-                  <CarouselItem className="basis-1/2 md:basis-1/5 pb-8" key={e.id}>
+                  <CarouselItem
+                    className="basis-1/2 md:basis-1/5 pb-8"
+                    key={e.id}
+                  >
                     <CardSmall imageUrl={e.image} text={e.name} />
                   </CarouselItem>
                 ))}
@@ -76,7 +80,9 @@ export default async function Page({
                     className="inline-block !w-128 hover:scale-105 duration-300 cursor-pointer my-4"
                   >
                     <div className="w-80 md:w-[23rem]">
-                      <CardUniversity university={item} />
+                      <LinkApp href={`/universities/${item.id}`} lng={lng}>
+                        <CardUniversity university={item} />
+                      </LinkApp>
                     </div>
                   </div>
                 );
@@ -97,7 +103,9 @@ export default async function Page({
                     className="inline-block !w-128 hover:scale-105 duration-300 cursor-pointer my-4"
                   >
                     <div className="w-80 md:w-[23rem]">
-                      <CardUniversity university={item} />
+                      <LinkApp href={`/universities/${item.id}`} lng={lng}>
+                        <CardUniversity university={item} />
+                      </LinkApp>
                     </div>
                   </div>
                 );
@@ -127,20 +135,23 @@ export default async function Page({
           className="container mx-auto px-4"
         >
           <div>
-          <Carousel>
-            <CarouselContent className="h-auto">
-              {data &&
-                data.services &&
-                data.services.length > 0 &&
-                data.services.map((e: any) => (
-                  <CarouselItem className="basis-1/2 md:basis-1/5 pb-8" key={e.id}>
-                    <CardSmall imageUrl={e.image} text={e.name} />
-                  </CarouselItem>
-                ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+            <Carousel>
+              <CarouselContent className="h-auto">
+                {data &&
+                  data.services &&
+                  data.services.length > 0 &&
+                  data.services.map((e: any) => (
+                    <CarouselItem
+                      className="basis-1/2 md:basis-1/5 pb-8"
+                      key={e.id}
+                    >
+                      <CardSmall imageUrl={e.image} text={e.name} />
+                    </CarouselItem>
+                  ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
             <div className="flex justify-end">
               <Button color="primary">{t("WhatService.read_more")}</Button>
             </div>

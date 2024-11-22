@@ -28,14 +28,14 @@ export default function CardUniversity({
           width={500}
           height={500}
           className="rounded-2xl w-full"
-          src={university.image}
+          src={university.image.split('http://').join('https://')}
         />
         <Image
           alt="alt"
           width={500}
           height={500}
-          className="w-28 h-28 md:w-32 md:h-32 rounded-full absolute end-4 -bottom-16 border-4"
-          src={university.logo}
+          className="w-28 h-28 md:w-32 md:h-32 rounded-full absolute end-4 -bottom-16 border-4 bg-white"
+          src={university.logo.split('http://').join('https://')}
         />
       </div>
       <div className="p-4 mt-16 text-start">

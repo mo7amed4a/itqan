@@ -26,8 +26,9 @@ export default function CardBlog({ blog , lng}: { blog: BlogItemType , lng: stri
             width={500}
             height={500}
             className="rounded-2xl w-full"
-            src={blog.image}
+            src={`${blog.image.split('http://').join('https://')}`}
           />
+         
           <span className="rounded-md bg-primary/60 font-bold text-white text-sm p-2 absolute end-4 bottom-4 ">
             {formatDate(blog.created_at)}
           </span>
@@ -36,13 +37,6 @@ export default function CardBlog({ blog , lng}: { blog: BlogItemType , lng: stri
           <h2 className="font-bold text-base md:text-lg xl:text-xl lg:text-2xl text-gray-500">
             {blog.title}
           </h2>
-          {/* <h6 className="text-red-500 md:text-lg">أهم التخصصات</h6> */}
-          {/* <ul className="grid grid-cols-2 mt-4 md:text-lg custom-bullet">
-          <li>هندسة الحاسوب</li>
-          <li>هندسة الحاسوب</li>
-          <li>هندسة الحاسوب</li>
-          <li>هندسة الحاسوب</li>
-        </ul> */}
           <p className="text-sm md:text-base text-gray-400" dangerouslySetInnerHTML={{ __html: blog.content }}></p>
         </div>
       </div>

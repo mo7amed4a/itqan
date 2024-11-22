@@ -7,10 +7,11 @@ import Image from "next/image";
 import img1 from "../../../../public/images/for-blog.png";
 import LinkApp from "../../../../components/global/LinkApp";
 import { useTranslation } from "../../../../i18n";
-import CardUniversity, { UniversityType } from "../../../../components/home/CardUniversity";
+import CardUniversity, {
+  UniversityType,
+} from "../../../../components/home/CardUniversity";
 import { PaginationApp } from "../../../../components/global/pagination";
 import { getData } from "@/lib/data";
-
 
 export default async function UniversitiesPage({
   params,
@@ -31,9 +32,9 @@ export default async function UniversitiesPage({
   }
 
   const response = await getData(url, lng);
-  data = response?.data; 
+  data = response?.data;
 
-  const pagination = data?.paginated_universities?.pagination || null
+  const pagination = data?.paginated_universities?.pagination || null;
 
   return (
     <div className="my-10 container mx-auto space-y-20 p-4">
@@ -45,7 +46,8 @@ export default async function UniversitiesPage({
       <div>
         <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base md:text-lg">
           {data &&
-            data.categories && data.categories.length > 0 &&
+            data.categories &&
+            data.categories.length > 0 &&
             data.categories?.map((item: any) => {
               return (
                 <li
@@ -408,16 +410,24 @@ export default async function UniversitiesPage({
 
       <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {data &&
-          data.featured_universities &&
-          data.featured_universities.map((item: UniversityType) => {
-            return <CardUniversity key={item.id} university={item} />;
+          data.paginated_universities &&
+          data.paginated_universities.data &&
+          data.paginated_universities.data.map((item: UniversityType) => {
+            return (
+              <LinkApp key={item.id} href={`/universities/${item.id}`} lng={lng}>
+                <CardUniversity  university={item} />
+              </LinkApp>
+            );
           })}
       </section>
       <div>
-        {pagination && pagination.total > 1 && <PaginationApp currentPage={pagination?.current_page}
-          totalPages={pagination.total}
-          lng={lng}
-        />}
+        {pagination && pagination.total > 1 && (
+          <PaginationApp
+            currentPage={pagination?.current_page}
+            totalPages={pagination.total}
+            lng={lng}
+          />
+        )}
       </div>
       {/* <div className="flex justify-center">
         <Button

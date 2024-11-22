@@ -21,7 +21,7 @@ export default function CardSmall({
       <Card className="flex w-full h-full py-4 px-3 hover:scale-105 duration-300 cursor-pointer md:my-4 group flex-col justify-center">
         <CardHeader className="flex justify-center items-center p-0">
         <Image
-            src={imageUrl}
+            src={imageUrl.split('http://').join('https://')}
             alt="alt"
             width={150}
             height={150}

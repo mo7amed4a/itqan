@@ -270,9 +270,12 @@ export default async function UniversitiesPage({
 
       <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {data &&
-          data.featured_universities &&
-          data.featured_universities.map((item: UniversityType) => {
-            return <CardUniversity key={item.id} university={item} />;
+          data.paginated_universities &&
+          data.paginated_universities.data &&
+          data.paginated_universities.data.map((item: UniversityType) => {
+            return <LinkApp key={item.id} lng={lng} href={`/universities/${item.id}`}>
+              <CardUniversity university={item} />
+            </LinkApp>;
           })}
       </section>
       <div>

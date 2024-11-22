@@ -1,0 +1,22 @@
+{
+  "tracking_title": "درخواست را پیگیری کنید",
+  "enter_code": "کد سفارش را وارد کنید",
+  "code_require": "کد مورد نیاز است",
+  "submit_button": "ارسال کنید",
+  "title": "پیگیری درخواست ثبت نام",
+  "id": "شماره شناسایی",
+  "code": "نماد",
+  "first_name": "نام کوچک",
+  "last_name": "نام خانوادگی",
+  "country": "ایالت",
+  "gender": "جنسیت",
+  "email": "ایمیل",
+  "phone_number": "شماره تلفن",
+  "degree_level": "سطح علمی",
+  "language": "زبان",
+  "specialization": "تخصص",
+  "preferred_universities": "دانشگاه های مورد نظر",
+  "message_text": "متن پیام",
+  "created_at": "تاریخ ایجاد",
+  "updated_at": "تاریخ به روز رسانی"
+}

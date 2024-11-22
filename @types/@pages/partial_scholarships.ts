@@ -13,14 +13,25 @@ export interface Partial_scholarshipsLangType {
       label: string;
       value: string;
     };
-    fees: {
-      label: string;
-      value: string;
-    };
     buttons: {
       view_university: string;
       register_scholarship: string;
     };
     show_more: string;
+    level: {
+      label: string;
+    };
+    city: {
+      label: string;
+    };
+    study_years: {
+      label: string;
+    };
+    fees: {
+      label: string;
+      before: string;
+      annual: string;
+      total: string;
+    };
   };
 }

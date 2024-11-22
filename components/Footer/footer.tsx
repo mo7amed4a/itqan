@@ -119,6 +119,12 @@ export default async function FooterApp({ lng }: { lng: string }) {
             </a>
             <span>&copy; {new Date().getFullYear()}</span>
           </div>
+          {/* <div className="w-full flex rtl:flex-row-reverse items-center text-xs md:text-sm justify-center text-gray-200 gap-x-1">
+            <span>Powerd by</span>
+            <a href="https://mo7amed4a.vercel.app" className="hover:underline">
+              Mohamed
+            </a>
+          </div> */}
         </div>
       </Footer>
     )

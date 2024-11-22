@@ -1,0 +1,30 @@
+{
+  "university": {
+    "foundedIn": "تأسست في",
+    "globalRank": "التصنيف العالمي",
+    "languages": "اللغات"
+  },
+  "tabs": {
+    "studyPrograms": "البرامج الدراسية",
+    "studentHousing": "سكن الطلاب",
+    "faqs": "الأسئلة الشائعة"
+  },
+  "studyPrograms": {
+    "programs": "البرامج",
+    "studyYears": "سنوات الدراسة",
+    "language": "لغة الدراسة",
+    "fees": "الرسوم",
+    "annualFees": "الرسوم السنوية",
+    "grantAvailable": "منحة متاحة"
+  },
+  "housing": {
+    "capacity": "السعة",
+    "price": "السعر",
+    "beds": "الأسرّة",
+    "meals": "الوجبات",
+    "internet": "الإنترنت"
+  },
+  "specifications": {
+    "title": "مواصفات الجامعة"
+  }
+}

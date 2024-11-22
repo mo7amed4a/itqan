@@ -1,0 +1,34 @@
+{
+  "title": "دانشگاه های ترکیه ما",
+  "links": {
+    "all": "همه",
+    "istanbulEuropean": "دانشگاه های اروپایی در استانبول",
+    "istanbulAsian": "دانشگاه های آسیایی استانبول",
+    "ankara": "دانشگاه های آنکارا",
+    "mersin": "دانشگاه های مرسین",
+    "gaziantep": "دانشگاه های غازیانتاب"
+  },
+  "mostRanked": "بیشترین امتیاز",
+  "topMajors": "مهمترین تخصص ها",
+  "universityInfo": {
+    "name": "دانشگاه ابن خلدون",
+    "description": "این امر شانس دانشجو را برای به دست آوردن مشاغل معتبر یا ادامه تحصیلات تکمیلی در موسسات آموزشی معتبر در سراسر جهان افزایش می دهد.",
+    "establishmentYear": "سال تاسیس",
+    "ranking": "رتبه بندی جهانی",
+    "rankingNumber": "5746",
+    "establishedYearValue": "2020",
+    "majors": {
+      "humanSciences": "علوم انسانی",
+      "medicine": "طب انسانی",
+      "computerEngineering": "مهندسی کامپیوتر",
+      "pharmacy": "داروخانه"
+    },
+    "startingPrices": "شروع قیمت ها",
+    "priceRange": {
+      "from": "از",
+      "to": "به"
+    },
+    "registerNow": "همین الان ثبت نام کنید"
+  },
+  "show_more": "مشاهده بیشتر"
+}

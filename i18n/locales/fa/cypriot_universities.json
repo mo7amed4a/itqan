@@ -1,0 +1,32 @@
+{
+  "title": "دانشگاه های قبرس ما",
+  "links": {
+    "all": "همه",
+    "privateUniversities": "دانشگاه های خصوصی",
+    "internationalUniversities": "دانشگاه های بین المللی",
+    "cyprusUniversities": "دانشگاه های قبرس ما"
+  },
+  "mostRanked": "بیشترین امتیاز",
+  "topMajors": "مهمترین تخصص ها",
+  "universityInfo": {
+    "name": "دانشگاه ابن خلدون",
+    "description": "این امر شانس دانشجو را برای به دست آوردن مشاغل معتبر یا ادامه تحصیلات تکمیلی در موسسات آموزشی معتبر در سراسر جهان افزایش می دهد.",
+    "establishmentYear": "سال تاسیس",
+    "ranking": "رتبه بندی جهانی",
+    "rankingNumber": "5746",
+    "establishedYearValue": "2020",
+    "majors": {
+      "humanSciences": "علوم انسانی",
+      "medicine": "طب انسانی",
+      "computerEngineering": "مهندسی کامپیوتر",
+      "pharmacy": "داروخانه"
+    },
+    "startingPrices": "شروع قیمت ها",
+    "priceRange": {
+      "from": "از",
+      "to": "به"
+    },
+    "registerNow": "همین الان ثبت نام کنید"
+  },
+  "show_more": "نمایش بیشتر"
+}

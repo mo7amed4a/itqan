@@ -1,0 +1,30 @@
+{
+  "university": {
+    "foundedIn": "تاسیس شده در",
+    "globalRank": "رتبه بندی جهانی",
+    "languages": "زبان ها"
+  },
+  "tabs": {
+    "studyPrograms": "برنامه های تحصیلی",
+    "studentHousing": "مسکن دانشجویی",
+    "faqs": "سوالات متداول"
+  },
+  "studyPrograms": {
+    "programs": "برنامه ها",
+    "studyYears": "سال های تحصیل",
+    "language": "زبان مطالعه",
+    "fees": "هزینه ها",
+    "annualFees": "هزینه های سالیانه",
+    "grantAvailable": "بورس تحصیلی موجود است"
+  },
+  "housing": {
+    "capacity": "ظرفیت",
+    "price": "قیمت",
+    "beds": "تخت",
+    "meals": "وعده های غذایی",
+    "internet": "اینترنت"
+  },
+  "specifications": {
+    "title": "مشخصات دانشگاه"
+  }
+}

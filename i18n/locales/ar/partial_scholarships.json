@@ -20,5 +20,20 @@
     "view_university": "عرض الجامعة",
     "register_scholarship": "سجل في المنحة الآن"
   },
-  "show_more": "اظهار المزيد"
+  "show_more": "اظهار المزيد",
+  "level": {
+    "label": "المستوى الأكاديمي"
+  },
+  "city": {
+    "label": "المدينة"
+  },
+  "study_years": {
+    "label": "عدد سنوات الدراسة"
+  },
+  "fees": {
+    "label": "الرسوم",
+    "before": "الرسوم قبل الخصم",
+    "annual": "الرسوم السنوية",
+    "total": "إجمالي الرسوم"
+  }
 }

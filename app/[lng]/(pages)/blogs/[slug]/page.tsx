@@ -53,9 +53,9 @@ export default async function page({
             Identity
           </button>
         </div> */}
-        <Image width={500} height={500}
+        <Image width={700} height={500}
           className="sm:h-[34rem] mt-10 w-full object-contain"
-          src={blog.image}
+          src={blog.image.split('http://').join('https://')}
           alt="Featured Image"
         />
       </header>
