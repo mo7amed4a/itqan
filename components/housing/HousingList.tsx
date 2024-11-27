@@ -80,7 +80,7 @@ const HousingList = ({ housings, t }:{
             </div> */}
           </CardHeader>
           <CardContent className="md:w-2/4 p-4 md:order-2">
-            <div className="h-full">
+            <div className="h-72 md:h-full">
             {housing.images[0] ? (
             <Image
               src={housing.images[0].split("http://").join("https://")}
