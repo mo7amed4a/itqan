@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useState } from "react";
 import {
   Select,
@@ -12,15 +12,18 @@ import {
 import { Button } from "../ui/button";
 import { useTranslation } from "@/i18n/client";
 import { useRouter } from "next/navigation";
+import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
+import { SlBadge } from "react-icons/sl";
+import { FaLanguage } from "react-icons/fa6";
 
 export default function FilterSelect({
   lng,
   data,
 }: {
- lng: string
+  lng: string;
   data: any;
 }) {
-  const { t:dataLang } = useTranslation(lng, "home");
+  const { t: dataLang } = useTranslation(lng, "home");
 
   const router = useRouter(); // Router hook for navigation
   const [filters, setFilters] = useState({
@@ -46,8 +49,11 @@ export default function FilterSelect({
       <Select
         onValueChange={(value) => handleFilterChange("specialization", value)}
       >
-        <SelectTrigger className="rtl:flex-row-reverse">
-          <SelectValue placeholder={dataLang("hero.select_specialty")} />
+        <SelectTrigger className="rtl:flex-row-reverse h-14">
+          <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
+            <HiOutlineAdjustmentsHorizontal className="size-5 text-gray-500" />
+            <SelectValue placeholder={dataLang("hero.select_specialty")} />
+          </div>
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
@@ -65,8 +71,11 @@ export default function FilterSelect({
 
       {/* Select Level */}
       <Select onValueChange={(value) => handleFilterChange("level", value)}>
-        <SelectTrigger className="rtl:flex-row-reverse">
-          <SelectValue placeholder={dataLang("hero.select_study_level")} />
+        <SelectTrigger className="rtl:flex-row-reverse h-14">
+        <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
+            <FaLanguage className="size-5 text-gray-500" />
+            <SelectValue placeholder={dataLang("hero.select_study_level")} />
+          </div>
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
@@ -82,8 +91,11 @@ export default function FilterSelect({
 
       {/* Select Language */}
       <Select onValueChange={(value) => handleFilterChange("language", value)}>
-        <SelectTrigger className="rtl:flex-row-reverse">
+        <SelectTrigger className="rtl:flex-row-reverse h-14">
+        <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
+            <SlBadge className="size-5 text-gray-500" />
           <SelectValue placeholder={dataLang("hero.select_language")} />
+          </div>
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
@@ -99,16 +111,18 @@ export default function FilterSelect({
 
       {/* Search Button */}
       <div className="grid-cols-1"></div>
-    
 
       <Button
-  color="primary"
-  className="hover:bg-red-500 py-4"
-  onClick={handleSearch}
-  disabled={!filters.specialization || !filters.level || !filters.language}
->
-  {dataLang("hero.search")}
-</Button>
+        size={"xl"}
+        color="primary"
+        className="hover:bg-red-500 py-4"
+        onClick={handleSearch}
+        disabled={
+          !filters.specialization || !filters.level || !filters.language
+        }
+      >
+        {dataLang("hero.search")}
+      </Button>
     </div>
   );
 }

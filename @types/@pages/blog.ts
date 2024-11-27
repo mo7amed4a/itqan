@@ -15,6 +15,7 @@ export interface BlogLangType {
       university_accreditations: string;
       enhance_opportunities: string;
     };
+    read_more: string;
     show_more: string;
   };
 }

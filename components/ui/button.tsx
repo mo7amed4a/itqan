@@ -15,7 +15,7 @@ const buttonVariants = cva(
         outline:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:scale-x-105 duration-300 transition-all",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:scale-x-105 duration-300 transition-all",
+          "bg-secondary text-white hover:scale-x-105 duration-300 transition-all",
         ghost: "hover:bg-accent hover:text-accent-foreground hover:scale-x-105 duration-300 transition-all",
         link: "text-primary underline-offset-4 hover:underline hover:scale-x-105 duration-300 transition-all",
       },
@@ -23,6 +23,7 @@ const buttonVariants = cva(
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
+        xl: "h-14 rounded-md px-10 md:text-lg",
         icon: "h-10 w-10",
       },
     },

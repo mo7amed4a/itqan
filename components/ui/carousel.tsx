@@ -9,6 +9,9 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { dir } from "i18next"
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -210,7 +213,7 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute  h-8 w-8 rounded-full hidden md:flex flex-col items-center",
+        "absolute  h-8 w-8 rounded-full hidden md:flex flex-col items-center bg-transparent border-none",
         orientation === "horizontal"
           ? "-start-12 top-1/2 -translate-y-1/2 rtl:rotate-180"
           : "-top-12 start-1/2 -translate-x-1/2",
@@ -220,7 +223,7 @@ const CarouselPrevious = React.forwardRef<
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft className="h-4 w-4" />
+      <FaChevronLeft className="h-4 w-4 text-xl text-primary fill-primary" />
       <span className="sr-only">Previous slide</span>
     </Button>
   )
@@ -239,7 +242,7 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-8 w-8 rounded-full hidden  md:flex flex-col items-center",
+        "absolute h-8 w-8 rounded-full hidden  md:flex flex-col items-center bg-transparent border-none",
         orientation === "horizontal"
           ? "-end-12 top-1/2 -translate-y-1/2 rtl:rotate-180"
           : "-bottom-12 start-1/2 -translate-x-1/2",
@@ -249,7 +252,7 @@ const CarouselNext = React.forwardRef<
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight className="h-4 w-4" />
+      <FaChevronRight className="h-4 w-4 text-primary" />
       <span className="sr-only">Next slide</span>
     </Button>
   )

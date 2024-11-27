@@ -3,12 +3,22 @@ export interface UniversityDetailsType {
     university: {
       foundedIn: string;
       globalRank: string;
+      localRank: string;
       languages: string;
+      staff: string; 
+      studentsCount: number; 
+      nationalityCount: number;
     };
     tabs: {
       studyPrograms: string;
       studentHousing: string;
       faqs: string;
+      majors: string;
+  studyYears: string;
+  studyLanguage: string;
+  tuitionFee: string;
+  registration: string;
+  years: string;
     };
     studyPrograms: {
       programs: string;
@@ -28,5 +38,6 @@ export interface UniversityDetailsType {
     specifications: {
       title: string;
     };
+    booking_now: string
   };
 }

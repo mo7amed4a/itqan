@@ -5,7 +5,11 @@ import React from "react";
 import { useTranslation } from "../../i18n/client";
 import toast from "react-hot-toast";
 import { api, setAcceptLanguage } from "../../lib/axios";
-import { Button } from "flowbite-react";
+import { Button, Textarea, TextInput } from "flowbite-react";
+import { CiUser } from "react-icons/ci";
+import { MdEmail, MdOutlineSubtitles } from "react-icons/md";
+import { CgFlag } from "react-icons/cg";
+import { BiPhone } from "react-icons/bi";
 
 const ContactForm = ({ lng }: { lng: string }) => {
   const { t: dataLang } = useTranslation(lng, "contact");
@@ -52,21 +56,19 @@ const ContactForm = ({ lng }: { lng: string }) => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      <Form className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-32 text-start">
+      <Form className="px-6 py-10 text-start">
         <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
             <div className="sm:col-span-2">
-              <label
-                htmlFor="name"
-                className="block text-sm font-semibold leading-6 text-gray-900"
-              >
-                {dataLang("form.name")}
-              </label>
               <Field
-                type="text"
+                name="name"
                 id="name"
-                name="name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                as={TextInput}
+                rightIcon={lng === "ar" && CiUser}
+                icon={lng === "en" && CiUser}
+                placeholder={dataLang("form.name")}
+                sizing="lg"
+                className="[&>div>input]:!bg-white"
               />
               <ErrorMessage
                 name="name"
@@ -76,18 +78,17 @@ const ContactForm = ({ lng }: { lng: string }) => {
             </div>
 
             <div className="sm:col-span-2">
-              <label
-                htmlFor="email"
-                className="block text-sm font-semibold leading-6 text-gray-900"
-              >
-                {dataLang("form.email")}
-              </label>
               <Field
-                type="email"
+                name="email"
+                as={TextInput}
+                rightIcon={lng === "ar" && MdEmail}
+                icon={lng === "en" && MdEmail}
+                placeholder={dataLang("form.email")}
+                sizing="lg"
                 id="email"
-                name="email"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="[&>div>input]:!bg-white"
               />
+
               <ErrorMessage
                 name="email"
                 component="div"
@@ -96,18 +97,16 @@ const ContactForm = ({ lng }: { lng: string }) => {
             </div>
 
             <div className="sm:col-span-2">
-              <label
-                htmlFor="address"
-                className="block text-sm font-semibold leading-6 text-gray-900"
-              >
-                {dataLang("form.address")}
-              </label>
               <Field
-                type="text"
-                id="address"
                 name="address"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                as={TextInput}
+                rightIcon={lng === "ar" && CgFlag}
+                icon={lng === "en" && CgFlag}
+                placeholder={dataLang("form.address")}
+                sizing="lg"
+                className="[&>div>input]:!bg-white"
               />
+
               <ErrorMessage
                 name="address"
                 component="div"
@@ -116,17 +115,14 @@ const ContactForm = ({ lng }: { lng: string }) => {
             </div>
 
             <div className="sm:col-span-2">
-              <label
-                htmlFor="mobile"
-                className="block text-sm font-semibold leading-6 text-gray-900"
-              >
-                {dataLang("form.mobile")}
-              </label>
               <Field
-                type="text"
-                id="mobile"
                 name="mobile"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                as={TextInput}
+                rightIcon={lng === "ar" && BiPhone}
+                icon={lng === "en" && BiPhone}
+                placeholder={dataLang("form.mobile")}
+                sizing="lg"
+                className="[&>div>input]:!bg-white"
               />
               <ErrorMessage
                 name="mobile"
@@ -136,17 +132,15 @@ const ContactForm = ({ lng }: { lng: string }) => {
             </div>
 
             <div className="sm:col-span-2">
-              <label
-                htmlFor="title"
-                className="block text-sm font-semibold leading-6 text-gray-900"
-              >
-                {dataLang("form.title")}
-              </label>
               <Field
+                as={TextInput}
+                rightIcon={lng === "ar" && MdOutlineSubtitles}
+                icon={lng === "en" && MdOutlineSubtitles}
+                placeholder={dataLang("form.title")}
+                sizing="lg"
+                className="[&>div>input]:!bg-white"
                 type="text"
-                id="title"
                 name="title"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
               <ErrorMessage
                 name="title"
@@ -156,18 +150,12 @@ const ContactForm = ({ lng }: { lng: string }) => {
             </div>
 
             <div className="sm:col-span-2">
-              <label
-                htmlFor="message"
-                className="block text-sm font-semibold leading-6 text-gray-900"
-              >
-                {dataLang("form.message")}
-              </label>
               <Field
-                as="textarea"
-                id="message"
                 name="message"
+                as={Textarea}
+                className="!bg-white"
+                placeholder={dataLang("form.message")}
                 rows={4}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
               <ErrorMessage
                 name="message"

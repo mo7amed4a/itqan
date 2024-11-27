@@ -16,30 +16,52 @@ export interface BlogItemType {
 // import img1 from "../../public/images/for-blog.png";
 import LinkApp from "../global/LinkApp";
 import { formatDate } from "../../lib/moment";
-export default function CardBlog({ blog , lng}: { blog: BlogItemType , lng: string}) {
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Button } from "../ui/button";
+import { Badge } from "../ui/badge";
+export default function CardBlog({
+  blog,
+  lng,
+  textBtn
+}: {
+  blog: BlogItemType;
+  lng: string;
+  textBtn: string
+}) {
   return (
     <LinkApp lng={lng} href={`/blogs/${blog.slug}`}>
-      <div className="shadow-xl rounded-2xl p-3 hover:!scale-[1.02] duration-300">
-        <div className="relative">
+      <Card className="flex w-full border-none rounded-xl shadow-none hover:shadow-xl h-full px-3 duration-300 cursor-pointer md:my-4 group flex-col justify-center">
+          {/* <div className="bg-[#21837F]/50 rounded-xl size-full absolute inset-0 z-0"></div> */}
+        <CardHeader className="h-64 relative p-0 rounded-xl group-hover:before:bg-transparent before:bg-[#21837F]/40 before:absolute before:inset-0 before:transition-all before:duration-300 before:size-full before:z-10 overflow-hidden">
           <Image
+            src={`${blog.image.split("http://").join("https://")}`}
             alt="alt"
             width={500}
             height={500}
-            className="rounded-2xl w-full"
-            src={`${blog.image.split('http://').join('https://')}`}
+            className="size-full rounded-xl "
           />
-         
-          <span className="rounded-md bg-primary/60 font-bold text-white text-sm p-2 absolute end-4 bottom-4 ">
-            {formatDate(blog.created_at)}
-          </span>
-        </div>
-        <div className="p-4 space-y-2 text-start">
-          <h2 className="font-bold text-base md:text-lg xl:text-xl lg:text-2xl text-gray-500">
+          <Badge className="rounded-md font-bold text-white bg-blue-200/40 backdrop-blur-md absolute end-4 bottom-5 z-10">
+            {formatDate(blog.created_at).split('/').join('.')}
+          </Badge>
+        </CardHeader>
+        <CardContent className="space-y-4 px-0 py-4">
+          <CardTitle className="text-base md:text-2xl font-bold text-gray-500 group-hover:text-primary text-wrap w-full">
             {blog.title}
-          </h2>
-          <p className="text-sm md:text-base text-gray-400" dangerouslySetInnerHTML={{ __html: blog.content }}></p>
-        </div>
-      </div>
+          </CardTitle>
+          <p
+            className="text-sm md:text-base text-gray-400 line-clamp-4"
+            dangerouslySetInnerHTML={{ __html: blog.content }}
+          ></p>
+          <div className="flex justify-center">
+            <Button
+              color="primary"
+              className="w-40 py-4 group-hover:bg-secondary font-bold bg-primary text-white"
+            >
+              {textBtn}
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     </LinkApp>
   );
 }

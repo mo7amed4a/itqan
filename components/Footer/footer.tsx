@@ -23,13 +23,13 @@ export default async function FooterApp({ lng }: { lng: string }) {
 
   return (
     data && (
-      <Footer container className="bg-primary text-white rounded-none mt-32">
+      <Footer container className="bg-primary text-white rounded-none mt-32 p-0">
         <div className="w-full">
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-4 p-5">
             <div className="space-y-3 flex flex-col md:items-center md:text-start text-sm md:text-base">
               <div className="flex flex-col text-start">
-                <h2 className="text-lg text-start">{t("contactUs")}</h2>
-                <ul className="space-y-2 text-white/80">
+                <h2 className="text-lg md:text-2xl text-start">{t("contactUs")}</h2>
+                <ul className="space-y-2 text-white/80 md:text-lg ">
                   <li className="flex space-x-1 items-center">
                     <IoLocationSharp />
                     {/* <a href="">{t("address")}</a> */}
@@ -57,12 +57,12 @@ export default async function FooterApp({ lng }: { lng: string }) {
                 className="h-16 w-2/4 md:w-auto bg-white"
               />
               {/* <p className="mt-4 w-3/4 md:text-center">{t("bio")}</p> */}
-              <p className="mt-4 w-3/4 md:text-center">{data.footer_text}</p>
+              <p className="mt-4 w-3/4 md:text-center md:text-lg">{data.footer_text}</p>
             </div>
             <div className="space-y-3 flex flex-col md:items-center md:text-start text-sm md:text-base">
               <div className="flex flex-col text-start">
-                <h2 className="text-base md:text-lg">{t("LinkApps")}</h2>
-                <ul className="text-sm md:text-base text-gray-300">
+                <h2 className="text-lg md:text-2xl ">{t("LinkApps")}</h2>
+                <ul className="text-sm md:text-lg text-gray-300">
                   <li>
                     <LinkApp href="/" lng={lng}>
                       {t("home")}
@@ -98,8 +98,8 @@ export default async function FooterApp({ lng }: { lng: string }) {
             </div>
           </div>
 
-          <FooterDivider />
-          <div className="mt-4 flex sm:mt-0 justify-center ">
+          {/* <FooterDivider /> */}
+          <div className="mt-4 flex sm:mt-0 justify-center p-5">
             <div className="flex gap-6 [&>div>a]:text-white/90">
               <FooterIcon href={data.facebook} icon={BsFacebook} />
               <FooterIcon href={data.instagram} icon={BsInstagram} />
@@ -111,10 +111,9 @@ export default async function FooterApp({ lng }: { lng: string }) {
               <FooterIcon href={`tel:${data.phone}`} icon={IoIosCall} />
             </div>
           </div>
-          <div className="w-full flex items-center text-sm md:text-lg justify-center text-white gap-x-1 mt-3">
+          <div className="w-full flex items-center text-sm md:text-lg justify-center bg-gray-50/30 py-6 text-white gap-x-1 mt-3">
             <span>{t("copyright")}</span>
             <a href="https://mo7amed4a.vercel.app" className="hover:underline">
-              {/* {t("siteName")} */}
               {data.site_name}
             </a>
             <span>&copy; {new Date().getFullYear()}</span>

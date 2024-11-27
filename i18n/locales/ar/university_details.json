@@ -2,12 +2,22 @@
   "university": {
     "foundedIn": "تأسست في",
     "globalRank": "التصنيف العالمي",
-    "languages": "اللغات"
+    "languages": "اللغات",
+    "localRank": "الترتيب المحلي",
+    "staff": "طاقم الجامعة",
+    "studentsCount": "عدد الطلاب",
+    "nationalityCount": "جنسية مختلفة"
   },
   "tabs": {
-    "studyPrograms": "البرامج الدراسية",
+    "studyPrograms": "التخصصات الدراسية",
     "studentHousing": "سكن الطلاب",
-    "faqs": "الأسئلة الشائعة"
+    "faqs": "الأسئلة الشائعة",
+    "majors": "التخصصات",
+    "studyYears": "سنوات الدراسة",
+    "studyLanguage": "لغة الدراسة",
+    "tuitionFee": "القسط",
+    "registration": "التسجيل",
+    "years": "سنوات"
   },
   "studyPrograms": {
     "programs": "البرامج",
@@ -26,5 +36,6 @@
   },
   "specifications": {
     "title": "مواصفات الجامعة"
-  }
+  },
+  "booking_now": "سجل الان"
 }

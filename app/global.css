@@ -31,8 +31,12 @@ body {
   @apply relative ps-2 before:absolute before:-start-1 before:top-1 md:before:top-2 before:rounded-full before:w-1 before:h-1 before:bg-primary
 }
 
+ul.custom-bullet li {
+  @apply relative ps-2 before:absolute before:-start-1 before:top-1 md:before:top-2 before:rounded-full before:w-1 before:h-1 before:bg-secondary
+}
+
 .list {
-  @apply relative ps-2 before:absolute before:-start-1 before:top-1.5 before:rounded-full before:w-1.5 before:h-1.5 before:bg-red-500
+  @apply relative ps-2 before:absolute before:-start-1 before:top-1.5 before:rounded-full before:w-1.5 before:h-1.5 before:bg-secondary
 }
 
 @layer base {
@@ -45,7 +49,7 @@ body {
     --popover-foreground: 0 0% 3.9%;
     --primary: 178, 60%, 32%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
+    --secondary: 15, 86%, 51%;
     --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
@@ -98,4 +102,9 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+.data-\[state\=active\]\:text-foreground[data-state="active"] {
+  @apply !bg-transparent border-b-2 border-secondary !text-secondary rounded-none
 }

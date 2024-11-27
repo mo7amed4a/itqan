@@ -7,6 +7,11 @@
   "meals": "عدد الوجبات",
   "internet": "الإنترنت",
   "price": "السعر",
+  "type": "النوع",
   "no_image": "لا توجد صورة",
-  "see_details": "عرض التفاصيل"
+  "see_details": "عرض التفاصيل",
+  "viewImage": "عرض الصور",
+  "register": "تسجيل",
+  "male": "سكن ذكور",
+  "female": "سكن اناث"
 }

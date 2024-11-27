@@ -42,13 +42,13 @@ export default async function Page({
           className="container mx-auto "
         >
           <Carousel>
-            <CarouselContent className="h-auto">
+            <CarouselContent className="md:h-96">
               {data &&
                 data.specializations &&
                 data.specializations.length > 0 &&
                 data.specializations.map((e: any) => (
                   <CarouselItem
-                    className="basis-1/2 md:basis-1/5 pb-8"
+                    className="basis-1/2 md:basis-1/3 pb-8"
                     key={e.id}
                   >
                     <CardSmall imageUrl={e.image} text={e.name} />
@@ -67,51 +67,52 @@ export default async function Page({
           </div> */}
         </SectionApp>
         <SectionApp
-          title={t("best_universities.title")}
+           title={t("best_universities.title")}
           className="container mx-auto"
         >
-          <div className="overflow-x-auto whitespace-nowrap p-4 hidden-scrollbar space-x-4 my10">
+          <Carousel>
+            <CarouselContent className="px-10">
             {data &&
               data.turkish_universities &&
-              data.turkish_universities.map((item: UniversityType) => {
-                return (
-                  <div
+              data.turkish_universities.map((item: UniversityType) => (
+                  <CarouselItem
+                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pb-8"
                     key={item.id}
-                    className="inline-block !w-128 hover:scale-105 duration-300 cursor-pointer my-4"
                   >
-                    <div className="w-80 md:w-[23rem]">
-                      <LinkApp href={`/universities/${item.id}`} lng={lng}>
+                    <LinkApp href={`/universities/${item.id}`} lng={lng}>
                         <CardUniversity university={item} />
                       </LinkApp>
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </SectionApp>
         <SectionApp
           title={t("best_universitiesTwo.title")}
           className="container mx-auto"
         >
-          <div className="overflow-x-auto whitespace-nowrap p-4 hidden-scrollbar space-x-4 my10">
+          <Carousel>
+            <CarouselContent className="px-10">
             {data &&
               data.qyprus_universities &&
-              data.qyprus_universities.map((item: UniversityType) => {
-                return (
-                  <div
+              data.qyprus_universities.map((item: UniversityType) => (
+                  <CarouselItem
+                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pb-8"
                     key={item.id}
-                    className="inline-block !w-128 hover:scale-105 duration-300 cursor-pointer my-4"
                   >
-                    <div className="w-80 md:w-[23rem]">
-                      <LinkApp href={`/universities/${item.id}`} lng={lng}>
+                    <LinkApp href={`/universities/${item.id}`} lng={lng}>
                         <CardUniversity university={item} />
                       </LinkApp>
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </SectionApp>
+      
         {data && data.settings && <WhyItqan data={data.settings} t={t} />}
         <section className="flex md:h-[70vh] mt-10 px-4 md:px-0 bg-white">
           <div className="md:w-9/12 flex justify-center items-center w-full py-8">
@@ -130,33 +131,34 @@ export default async function Page({
           </div>
         </section>
 
+
+
         <SectionApp
           title={t("WhatService.title")}
-          className="container mx-auto px-4"
+          className="container mx-auto"
         >
-          <div>
-            <Carousel>
-              <CarouselContent className="h-auto">
-                {data &&
+          <Carousel>
+            <CarouselContent className="md:h-96">
+            {data &&
                   data.services &&
                   data.services.length > 0 &&
                   data.services.map((e: any) => (
-                    <CarouselItem
-                      className="basis-1/2 md:basis-1/5 pb-8"
-                      key={e.id}
-                    >
-                      <CardSmall imageUrl={e.image} text={e.name} />
-                    </CarouselItem>
-                  ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-            <div className="flex justify-end">
-              <Button color="primary">{t("WhatService.read_more")}</Button>
+                  <CarouselItem
+                    className="basis-1/2 md:basis-1/3 lg:basis-1/4 pb-8"
+                    key={e.id}
+                  >
+                    <CardSmall imageUrl={e.image} text={e.name} />
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          <div className="flex justify-end">
+              <Button color="primary" className="hover:bg-secondary hover:text-white">{t("WhatService.read_more")}</Button>
             </div>
-          </div>
+          </Carousel>
         </SectionApp>
+        
       </div>
     </main>
   );

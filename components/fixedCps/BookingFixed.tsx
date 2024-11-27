@@ -58,8 +58,7 @@ export default function BookingFixed({ lng, child=null }: { lng: string, child?:
   const handleClose = () => setIsOpen(false);
   const [text, setText] = useState<string | null>(null);
   const [dataHome, setDataHome] = useState<DataHomeType | null>(null);
-  // const response = await getData("/get_home", lng);
-  // const data = response?.data;
+
 
   const validationSchema = Yup.object({
     name: Yup.string().required(dataLang("drawer.name_required")),
@@ -294,14 +293,6 @@ export default function BookingFixed({ lng, child=null }: { lng: string, child?:
                     component="div"
                     className="text-red-500 text-start  text-sm md:text-base"
                   />
-                  {/* <Field
-                    name="gender"
-                    as={TextInput}
-                    rightIcon={lng === "ar" && BiMale}
-                    icon={lng === "en" && BiMale}
-                    placeholder={dataLang("drawer.gender")}
-                    sizing="lg"
-                  /> */}
 
                   <Field
                     name="email"

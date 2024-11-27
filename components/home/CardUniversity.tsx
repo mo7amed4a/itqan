@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import img1 from "../../public/images/romantic-fall-scenery-countryside-road-in-foggy-autumn-morning-free-image.webp";
+import { Button } from "../ui/button";
 export type UniversityType = {
   id: number;
   image: string;
@@ -21,25 +21,25 @@ export default function CardUniversity({
   university?: UniversityType
 }) {
   return university && (
-    <div className="shadow-xl rounded-2xl p-3 hover:!scale-[1.02] duration-300">
+    <div className="hover:shadow-xl bg-white rounded-2xl p-3 hover:!scale-[1.02] duration-300 group">
       <div className="relative">
         <Image
           alt="alt"
           width={500}
           height={500}
-          className="rounded-2xl w-full"
+          className="rounded-2xl h-52 w-full"
           src={university.image.split('http://').join('https://')}
         />
         <Image
           alt="alt"
           width={500}
           height={500}
-          className="w-28 h-28 md:w-32 md:h-32 rounded-full absolute end-4 -bottom-16 border-4 bg-white"
+          className="size-24 md:size-28 rounded-full absolute start-4 -bottom-16 border-4 bg-white"
           src={university.logo.split('http://').join('https://')}
         />
       </div>
       <div className="p-4 mt-16 text-start">
-        <h2 className="font-bold text-lg sm:text-xl md:text-2xl text-primary">
+        <h2 className="font-bold text-lg sm:text-xl md:text-2xl text-primary line-clamp-1">
           {university.name}
         </h2>
         <p className="text-sm text-gray-500">{university.description}</p>
@@ -51,6 +51,9 @@ export default function CardUniversity({
             ))
           }
         </ul>
+        <div className="flex justify-center mt-2">
+          <Button className="group-hover:bg-secondary">سجل الان</Button>
+        </div>
       </div>
     </div>
   );

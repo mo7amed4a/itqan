@@ -8,7 +8,10 @@ export interface HousingLangType {
     meals: string;
     internet: string;
     price: string;
+    type: String;
     no_image: string;
     see_details: string;
+    viewImage: string;
+    register: string;
   };
 }

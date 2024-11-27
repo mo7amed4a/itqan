@@ -51,8 +51,7 @@ export default async function HeaderApp({ locale }: { locale: string }) {
               <Button
               as={Link}
               href={`/${locale}/followup_request`}
-              color="failure"
-              className="border px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base"
+              className="bg-secondary text-white border border-white px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base"
             >
               {t("follow_up_on_the_registration_request")}
             </Button>
