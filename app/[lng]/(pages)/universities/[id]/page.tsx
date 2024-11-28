@@ -17,6 +17,7 @@ import img3 from "../../../../../public/images/sp/3.png";
 import img4 from "../../../../../public/images/sp/4.png";
 import img5 from "../../../../../public/images/sp/5.png";
 import StudyProgramsTabs from "@/components/universities/study-programs-tabs";
+import HousingList from "@/components/housing/HousingList";
 
 
 // This is a mock of the data. In a real application, you'd fetch this data from an API.
@@ -490,27 +491,26 @@ export default async function UniversityInfo({
               </div>
               <div className="space-y-2 text-gray-500">
                 <h1 className="text-lg font-[600]">{university.name}</h1>
-                <h1 className="text-lg font-[600]">{university.name}</h1>
                 <p className="text-sm text-primary">turkish - jkn</p>
                 <span className="text-sm text-secondary">komkm</span>
               </div>
             </div>
-            <div className="text-gray-500">
-              <p
-                dangerouslySetInnerHTML={{ __html: university.description }}
+            <div className="text-gray-500 py-4">
+              <p className="line-clamp-4"
+                dangerouslySetInnerHTML={{ __html: university.description.slice(0, 300) }}
               ></p>
             </div>
             <div className="text-sm flex text-center gap-4 justify-center">
               <div className="bg-gray-50 py-3 px-5 space-y-2 rounded-lg">
-                <h2 className="text-primary text-base">الترتيب العالمي</h2>
+                <h2 className="text-primary text-base">{t('university.globalRank')}</h2>
                 <p className="text-secondary">{university.global_rank}</p>
               </div>
               <div className="bg-gray-50 py-3 px-5 space-y-2 rounded-lg">
-                <h2 className="text-primary text-base">الترتيب المحلي</h2>
+                <h2 className="text-primary text-base">{t('university.localRank')}</h2>
                 <p className="text-secondary">{university.local_rate}</p>
               </div>
               <div className="bg-gray-50 py-3 px-5 space-y-2 rounded-lg">
-                <h2 className="text-primary text-base">عدد الطلاب</h2>
+                <h2 className="text-primary text-base">{t('university.studentsCount')}</h2>
                 <p className="text-secondary">{university.student_count}</p>
               </div>
             </div>
@@ -526,11 +526,11 @@ export default async function UniversityInfo({
           </CardContent>
         </Card>
 
-        <div className="bg-white space-y-7">
+        <div className="bg-white space-y-7 text-gray-500">
           <Card className="border-none shadow-none">
             <CardHeader>
               <h1 className="text-lg md:text-xl font-bold my-2">
-                {t("university.location")}
+                {t("university.video")} {university.name}
               </h1>
             </CardHeader>
             <CardContent className="h-[30rem]">
@@ -557,10 +557,10 @@ export default async function UniversityInfo({
               )}
             </CardContent>
           </Card>
-          <div>
-            <h1 className="text-lg md:text-xl font-bold">صور عن الجامعة</h1>
+          <div className="py-10">
+            <h1 className="text-lg md:text-xl font-bold px-4">{t('university.photo')}</h1>
           </div>
-          <div className="flex items-stretch gap-4 h-[30rem] rounded-xl ">
+         {  university.photo_album.length > 0  && <div className="flex items-stretch gap-4 h-[30rem] rounded-xl px-4">
             <div className="flex flex-col w-1/3 gap-y-2 -mt-1">
               <img
                 src={
@@ -592,10 +592,11 @@ export default async function UniversityInfo({
                 className="h-full w-full object-cover rounded-2xl"
               />
             </div>
-          </div>
+          </div>}
         </div>
 
-        <div>
+        <div className="space-y-7 text-gray-500 mt-10 py-10">
+          <h1 className="text-lg md:text-xl font-bold px-4">{t('university.features')}</h1>
           <div className="w-4/5 mx-auto">
             <Card className="flex items-center border-none shadow-none gap-4 p-3 md:gap-6 group hover:shadow-2xl">
               <CardHeader className="p-0">
@@ -609,6 +610,7 @@ export default async function UniversityInfo({
             </Card>
           </div>
         </div>
+
         <Card className="border-none shadow-none rounded-none bg-primary py-10">
           <CardHeader>
             <h1 className="text-white text-lg md:text-xl font-bold">{university.name}</h1>
@@ -707,6 +709,20 @@ export default async function UniversityInfo({
   <h1 className="text-2xl font-bold mb-4">{t('tabs.studyPrograms')}</h1>
         <StudyProgramsTabs studyPrograms={data.study_programs} lng={lng}/>
 </div>
+
+
+<div className="px-4 py-10 mt-10 bg-white rounded-md">
+
+<div className="prose prose-h3:text-primary prose-h1:text-primary prose-h2:text-primary prose-h4:text-primary prose-h3:py-0" dangerouslySetInnerHTML={{__html: university.description}}></div>
+</div>
+
+<div className="px-4 py-10 mt-10 rounded-md">
+<h1 className="text-lg md:text-xl font-bold mb-4">{t('university.studentHousings')}</h1>
+{student_housings && student_housings?.length > 0 && (
+        <HousingList t={t} housings={student_housings} />
+      )}
+
+      </div>
 
         {/* <Card className="mb-8 border-none">
           <CardHeader>

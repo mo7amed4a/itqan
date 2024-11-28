@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 import { SlBadge } from "react-icons/sl";
 import { FaLanguage } from "react-icons/fa6";
+import Image from "next/image";
 
 export default function FilterSelect({
   lng,
@@ -61,8 +62,12 @@ export default function FilterSelect({
               {dataLang("hero.select_specialty")}
             </SelectLabel>
             {data?.specializations?.map((e: any, i: number) => (
-              <SelectItem key={i} value={e.name}>
-                {e.name}
+              <SelectItem key={i} value={e.id}>
+                <p>{e.name}</p>
+                {/* <div className="flex items-center gap-4 w-full">
+                  <Image className="size-6" src={e.image} width={500} height={500} alt="" />
+                  <p>{e.name}</p>
+                </div> */}
               </SelectItem>
             ))}
           </SelectGroup>
@@ -81,7 +86,7 @@ export default function FilterSelect({
           <SelectGroup>
             <SelectLabel>{dataLang("hero.select_study_level")}</SelectLabel>
             {data?.levels?.map((e: any, i: number) => (
-              <SelectItem key={i} value={e.name}>
+              <SelectItem key={i} value={e.id}>
                 {e.name}
               </SelectItem>
             ))}
@@ -101,7 +106,7 @@ export default function FilterSelect({
           <SelectGroup>
             <SelectLabel>{dataLang("hero.select_language")}</SelectLabel>
             {data?.languages?.map((e: any, i: number) => (
-              <SelectItem key={i} value={e.name}>
+              <SelectItem key={i} value={e.id}>
                 {e.name}
               </SelectItem>
             ))}

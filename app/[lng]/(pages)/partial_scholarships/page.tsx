@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: { lng: string } }) {
       <div className="flex flex-col space-y-7 mt-10">
         {/* here */}
         {data && data?.data &&
-          data.data.map((item: any) => <CardFull lng={lng} key={item.id} t={t} data={item} />)}
+          data.data.map((item: any) => <CardFull lng={lng} key={item.id} data={item} />)}
       </div>
     </div>
   );

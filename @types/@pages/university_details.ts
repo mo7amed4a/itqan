@@ -5,20 +5,24 @@ export interface UniversityDetailsType {
       globalRank: string;
       localRank: string;
       languages: string;
-      staff: string; 
-      studentsCount: number; 
+      staff: string;
+      studentsCount: number;
       nationalityCount: number;
+      video: string;
+      photo: string;
+      features: string;
+      studentHousings: string;
     };
     tabs: {
       studyPrograms: string;
       studentHousing: string;
       faqs: string;
       majors: string;
-  studyYears: string;
-  studyLanguage: string;
-  tuitionFee: string;
-  registration: string;
-  years: string;
+      studyYears: string;
+      studyLanguage: string;
+      tuitionFee: string;
+      registration: string;
+      years: string;
     };
     studyPrograms: {
       programs: string;
@@ -38,6 +42,6 @@ export interface UniversityDetailsType {
     specifications: {
       title: string;
     };
-    booking_now: string
+    booking_now: string;
   };
 }

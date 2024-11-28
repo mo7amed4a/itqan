@@ -6,7 +6,11 @@
     "localRank": "الترتيب المحلي",
     "staff": "طاقم الجامعة",
     "studentsCount": "عدد الطلاب",
-    "nationalityCount": "جنسية مختلفة"
+    "nationalityCount": "جنسية مختلفة",
+    "video": "فيديو تعريفي عن",
+    "photo": "صور عن الجامعة",
+    "features": "مميزات عن الجامعة",
+    "studentHousings": "احرم الجامعة وأماكن تواجدها"
   },
   "tabs": {
     "studyPrograms": "التخصصات الدراسية",

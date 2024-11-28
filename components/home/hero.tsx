@@ -29,8 +29,8 @@ export default async function HeroSection({
             locale === "en" && "transform -scale-x-100"
           }`}
         >
-          <h1 className="text-3xl lg:text-5xl font-bold text-primary">
-            {dataLang("hero.title")}
+          <h1 className="text-3xl lg:text-5xl font-bold text-primary !leading-[1.35]">
+              {dataLang("hero.title")}
           </h1>
           <h2 className="text-xl lg:text-3xl text-secondary font-bold">
             {dataLang("hero.subtitle")}
