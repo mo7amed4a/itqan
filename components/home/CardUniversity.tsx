@@ -15,10 +15,12 @@ export type UniversityType = {
   max_annual_fees: number;
 };
 
-export default function CardUniversity({
-  university
+export default async function CardUniversity({
+  university,
+  major
 }:{
-  university?: UniversityType
+  university?: UniversityType,
+  major: string
 }) {
   return university && (
     <div className="hover:shadow-xl bg-white rounded-2xl p-3 hover:!scale-[1.02] duration-300 group">
@@ -43,7 +45,7 @@ export default function CardUniversity({
           {university.name}
         </h2>
         <p className="text-sm text-gray-500">{university.description}</p>
-        <h6 className="text-red-500 text-base md:text-lg">أهم التخصصات</h6>
+        <h6 className="text-red-500 text-base md:text-lg">{major}</h6>
         <ul className="grid grid-cols-2 mt-4 text-xs md:text-lg text-start custom-bullet">
           {
             university?.first_programs?.length > 0 && university.first_programs.map((item, index) => (

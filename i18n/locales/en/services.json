@@ -1,19 +1,19 @@
 {
-  "titlePage": "Services",
-  "sectionText": "Get exclusive discounts, especially if you register through us",
+  "titlePage": "Our services",
+  "sectionText": " Get exclusive discounts, especially if you register through us",
   "sectionText2": "Get admission to private universities for free and within only 24 hours",
   "post_admission_services": "Post-admission services",
   "sectionButton": "Register now",
   "contactUs": {
     "title": "Register with us now",
-    "subtitle": "Let’s Connect with You We Are Available",
-    "hour": " Around the Clock",
+    "subtitle": "Let us contact you. We are available on",
+    "hour": "around the clock",
     "points": {
-      "a": "You can rely on one of our team members to successfully start your academic journey.",
-      "b": "No matter your inquiry, rest assured that we will provide you with free consultation.",
+      "a": "You can enlist the help of one of our team members to start your academic journey successfully.",
+      "b": "Whatever your inquiry, rest assured that we will provide you with free consultation.",
       "c": "We guarantee admission to the best Turkish universities.",
-      "d": "We are committed to providing our services in the best way possible.",
-      "e": "We shape your academic future and support you until you settle."
+      "d": "We are committed to providing our services in the best way.",
+      "e": "We chart your academic future and support you until stability."
     }
   }
 }

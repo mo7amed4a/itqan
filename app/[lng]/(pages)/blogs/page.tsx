@@ -54,7 +54,9 @@ export default async function Blogs({
                   className={
                     searchParams.category === item.slug
                       ? "border-b-2 border-red-500 text-red-500"
-                      : index === 0 ? "border-b-2 border-red-500 text-red-500" : ""
+                      : !searchParams.category && index === 0
+                      ? "border-b-2 border-red-500 text-red-500"
+                      : ""
                   }
                 >
                   <LinkApp href={`/blogs?category=${item.slug}`} lng={lng}>
@@ -84,7 +86,7 @@ export default async function Blogs({
                         {item.title}
                       </h1>
                       <p
-                        className="text-sm text-gray-400"
+                        className="text-sm text-gray-400 prose"
                         dangerouslySetInnerHTML={{ __html: item.content }}
                       ></p>
                     </div>

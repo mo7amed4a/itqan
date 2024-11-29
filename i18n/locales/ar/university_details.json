@@ -10,12 +10,15 @@
     "video": "فيديو تعريفي عن",
     "photo": "صور عن الجامعة",
     "features": "مميزات عن الجامعة",
-    "studentHousings": "احرم الجامعة وأماكن تواجدها"
+    "studentHousings": "احرم الجامعة وأماكن تواجدها",
+    "languagesStudy": "لغات التدريس في",
+    "languagesStudyAvailable": "تتيج",
+    "languagesStudyMoreLanguages": "فرصة الدراسة بالعديد من اللغات",
+    "faqs": "سؤال وجواب عن الجامعة"
   },
   "tabs": {
     "studyPrograms": "التخصصات الدراسية",
     "studentHousing": "سكن الطلاب",
-    "faqs": "الأسئلة الشائعة",
     "majors": "التخصصات",
     "studyYears": "سنوات الدراسة",
     "studyLanguage": "لغة الدراسة",

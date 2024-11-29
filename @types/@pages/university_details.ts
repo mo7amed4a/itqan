@@ -12,6 +12,10 @@ export interface UniversityDetailsType {
       photo: string;
       features: string;
       studentHousings: string;
+      languagesStudy: string;
+      languagesStudyAvailable: string;
+      languagesStudyMoreLanguages: string;
+      faqs: string;
     };
     tabs: {
       studyPrograms: string;

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -15,15 +15,25 @@ import { useRouter } from "next/navigation";
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 import { SlBadge } from "react-icons/sl";
 import { FaLanguage } from "react-icons/fa6";
-import Image from "next/image";
+import { getData } from "@/lib/data";
+import { Skeleton } from "../ui/skeleton";
+import { MdOutlineAccessTimeFilled } from "react-icons/md";
 
 export default function FilterSelect({
   lng,
-  data,
+  col=false
 }: {
   lng: string;
-  data: any;
+  col?: boolean
 }) {
+  const [data, setData] = useState<any>(null)
+  useEffect(() => {
+    (async() => {
+      const response = await getData("/filters", lng);
+      setData(response?.data)
+    })()
+  }, [])
+
   const { t: dataLang } = useTranslation(lng, "home");
 
   const router = useRouter(); // Router hook for navigation
@@ -31,21 +41,26 @@ export default function FilterSelect({
     specialization: "",
     level: "",
     language: "",
+    years: "",
   });
 
   // Function to update filter values
   const handleFilterChange = (field: string, value: string) => {
-    setFilters((prevFilters) => ({ ...prevFilters, [field]: value }));
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [field]: value === "null" ? "" : value,
+    }));
   };
+  
 
   // Function to navigate to the desired URL
   const handleSearch = () => {
     const queryParams = new URLSearchParams(filters).toString();
-    router.push(`/programs?${queryParams}&years=3`);
+    router.push(`/programs?${queryParams}`);
   };
 
-  return (
-    <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 bg-gray-900/10 rounded p-4">
+  return data ? (
+    <div className={`mt-6 grid grid-cols-1 ${col ? '' : 'md:grid-cols-3 bg-gray-900/10'} gap-4 rounded p-4`}>
       {/* Select Specialization */}
       <Select
         onValueChange={(value) => handleFilterChange("specialization", value)}
@@ -61,6 +76,7 @@ export default function FilterSelect({
             <SelectLabel className="w-full">
               {dataLang("hero.select_specialty")}
             </SelectLabel>
+            <SelectItem value={'null'}>{dataLang("hero.select_none")}</SelectItem>
             {data?.specializations?.map((e: any, i: number) => (
               <SelectItem key={i} value={e.id}>
                 <p>{e.name}</p>
@@ -85,6 +101,7 @@ export default function FilterSelect({
         <SelectContent>
           <SelectGroup>
             <SelectLabel>{dataLang("hero.select_study_level")}</SelectLabel>
+            <SelectItem value={'null'}>{dataLang("hero.select_none")}</SelectItem>
             {data?.levels?.map((e: any, i: number) => (
               <SelectItem key={i} value={e.id}>
                 {e.name}
@@ -105,6 +122,7 @@ export default function FilterSelect({
         <SelectContent>
           <SelectGroup>
             <SelectLabel>{dataLang("hero.select_language")}</SelectLabel>
+            <SelectItem value={'null'}>{dataLang("hero.select_none")}</SelectItem>
             {data?.languages?.map((e: any, i: number) => (
               <SelectItem key={i} value={e.id}>
                 {e.name}
@@ -114,6 +132,27 @@ export default function FilterSelect({
         </SelectContent>
       </Select>
 
+      {/* Select Year */}
+      {col && <Select onValueChange={(value) => handleFilterChange("years", value)}>
+        <SelectTrigger className="rtl:flex-row-reverse h-14">
+        <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
+            <MdOutlineAccessTimeFilled className="size-5 text-gray-500" />
+            <SelectValue placeholder={dataLang("hero.select_years")} />
+          </div>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>{dataLang("hero.select_years")}</SelectLabel>
+            <SelectItem value={'null'}>{dataLang("hero.select_none")}</SelectItem>
+            {[...new Array(6)].map((e: any, i: number) => (
+              <SelectItem key={i} value={`${i + 1}`}>
+                {i + 1}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>}
+
       {/* Search Button */}
       <div className="grid-cols-1"></div>
 
@@ -122,12 +161,22 @@ export default function FilterSelect({
         color="primary"
         className="hover:bg-red-500 py-4"
         onClick={handleSearch}
-        disabled={
-          !filters.specialization || !filters.level || !filters.language
-        }
+        // disabled={
+        //   !filters.specialization || !filters.level || !filters.language
+        // }
       >
         {dataLang("hero.search")}
       </Button>
+    </div>
+  ) : (
+    <div className={`mt-6 grid grid-cols-1 ${col ? '' : 'md:grid-cols-3 bg-gray-900/10'} gap-4 rounded p-4`}>
+      <Skeleton className="h-12 w-full rounded-xl bg-white" />
+      <Skeleton className="h-12 w-full rounded-xl bg-white" />
+      <Skeleton className="h-12 w-full rounded-xl bg-white" />
+      
+      {!col ? <div className="flex col-span-full justify-center">
+        <Skeleton className="h-12 w-2/4" />
+      </div> : <Skeleton className="h-12 w-full rounded-xl bg-white" /> }
     </div>
   );
 }

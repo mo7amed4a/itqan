@@ -1,15 +1,15 @@
 {
-  "siteName": "Itqan Educational",
+  "siteName": "For educational mastery",
   "copyright": "All rights reserved",
   "home": "Home",
-  "aboutUs": "About Us",
-  "contactUs": "Contact Us",
-  "services": "Our Services",
-  "links": "Useful Links",
-  "address": "Istanbul - Fatih - Vezneciler Station",
-  "bio": "A leading academic consulting company in the field of registering students in Turkish universities, international schools, and language institutes.",
-  "LinkApps": "More Links",
-  "TOS": "TOS",
+  "aboutUs": "Who are we?",
+  "contactUs": "Contact us",
+  "services": "Our services",
+  "links": "Related links",
+  "address": "Istanbul - Fatih - Hotelzade Station",
+  "bio": "A leading academic consulting company in the field of student registration in Turkish universities, international schools and language institutes.",
+  "LinkApps": "Other links",
+  "TOS": "Terms of Service",
   "agents": "Agents",
-  "privacyPolicy": "Privacy Policy"
+  "privacyPolicy": "privacy policy"
 }

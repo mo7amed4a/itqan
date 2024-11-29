@@ -34,7 +34,7 @@ export default async function CardFull({ data, lng }: CardFullProps) {
   const {t} = await useTranslation(lng, "partial_scholarships")
   return (
     <div className="bg-white rounded-xl p-4 flex flex-col md:flex-row text-start hover:shadow">
-      <div className="lg:w-1/4 p-4 hidden lg:block">
+      <div className="lg:w-1/4 h-full items-center p-4 hidden lg:flex">
         <Image
           src={data.logo.split("http://").join("https://")}
           className="rounded-full w-52"
@@ -82,12 +82,12 @@ export default async function CardFull({ data, lng }: CardFullProps) {
           <p className="text-base text-gray-500">{data.city_name}</p>
         </div>
 
-        {/* <div className="flex gap-x-2 md:items-center">
+        <div className="flex gap-x-2 md:items-center">
           <h3 className="flex gap-x-2 text-primary text-base font-bold text-start">
             {t("study_years.label")}:
           </h3>
           <p className="text-base text-gray-500">{data.study_years}</p>
-        </div> */}
+        </div>
 
         <div className="flex flex-col md:flex-row md:gap-4 md:items-start">
           <h3 className="flex gap-x-2 text-primary text-base font-bold text-start">
@@ -114,10 +114,12 @@ export default async function CardFull({ data, lng }: CardFullProps) {
         </div>
 
         <div className="flex gap-x-4 w-full mt-4">
-          <Button color="primary" className="md:w-1/4 bg-primary text-white">
-            {t("buttons.register_scholarship")}
-          </Button>
-          <div className="md:w-1/4">
+          <div className="">
+            <Button color="primary" className="bg-primary text-white">
+              {t("buttons.register_scholarship")}
+            </Button>
+          </div>
+          <div className="">
             <LinkApp href={`/universities/${data.id}`} lng={lng}>
               <Button className="md:w-full bg-secondary">
                 {t("buttons.view_university")}

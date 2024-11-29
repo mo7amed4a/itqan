@@ -1,31 +1,48 @@
 {
-    "university": {
-      "foundedIn": "Founded in",
-      "globalRank": "Global Rank",
-      "languages": "Languages"
-    },
-    "tabs": {
-      "studyPrograms": "Study Programs",
-      "studentHousing": "Student Housing",
-      "faqs": "FAQs"
-    },
-    "studyPrograms": {
-      "programs": "Programs",
-      "studyYears": "Study Years",
-      "language": "Language",
-      "fees": "Fees",
-      "annualFees": "Annual Fees",
-      "grantAvailable": "Grant Available"
-    },
-    "housing": {
-      "capacity": "Capacity",
-      "price": "Price",
-      "beds": "Beds",
-      "meals": "Meals",
-      "internet": "Internet"
-    },
-    "specifications": {
-      "title": "University Specifications"
-    }
-  }
-  
+  "university": {
+    "foundedIn": "Founded in",
+    "globalRank": "Global rankings",
+    "languages": "Languages",
+    "localRank": "Local ranking",
+    "staff": "University staff",
+    "studentsCount": "Number of students",
+    "nationalityCount": "Different nationality",
+    "video": "Introductory video about",
+    "photo": "Pictures about the university",
+    "features": "Advantages about the university",
+    "studentHousings": "The university campus and its locations",
+    "languagesStudy": "Languages ​​of instruction in",
+    "languagesStudyAvailable": "Tteg",
+    "languagesStudyMoreLanguages": "The opportunity to study in many languages",
+    "faqs": "Question and answer about the university"
+  },
+  "tabs": {
+    "studyPrograms": "Academic majors",
+    "studentHousing": "Student housing",
+    "majors": "Specialties",
+    "studyYears": "Years of study",
+    "studyLanguage": "Language of study",
+    "tuitionFee": "Installment",
+    "registration": "Registration",
+    "years": "years"
+  },
+  "studyPrograms": {
+    "programs": "Programs",
+    "studyYears": "Years of study",
+    "language": "Language of study",
+    "fees": "Fees",
+    "annualFees": "Annual fees",
+    "grantAvailable": "Grant available"
+  },
+  "housing": {
+    "capacity": "Capacity",
+    "price": "Price",
+    "beds": "Beds",
+    "meals": "Meals",
+    "internet": "Internet"
+  },
+  "specifications": {
+    "title": "University specifications"
+  },
+  "booking_now": "Register now"
+}

@@ -1,18 +1,19 @@
 {
-  "title": "Blog - Latest News",
+  "title": "Blog - latest news",
   "links": {
-    "study_in_turkey": "Study in Turkey",
-    "living_in_turkey": "Living in Turkey",
-    "university_specialties": "University Specialties",
-    "distance_study": "Distance Study",
-    "turkish_scholarships": "Turkish Scholarships",
-    "self_development": "Self Development",
-    "all": "All"
+    "study_in_turkey": "Study in Türkiye",
+    "living_in_turkey": "Living in Türkiye",
+    "university_specialties": "University majors",
+    "distance_study": "Distance learning",
+    "turkish_scholarships": "Turkish scholarships",
+    "self_development": "Self development",
+    "all": "everyone"
   },
-  "most_visited": "Most Visited",
+  "most_visited": "Most visited",
   "slide": {
-    "university_accreditations": "Here are all Aydin University accreditations - Learn about them now",
-    "enhance_opportunities": "This enhances students' chances to get prestigious jobs or pursue higher studies in recognized educational institutions worldwide"
+    "university_accreditations": "Here are all of Aiden University's accreditations - learn about them now",
+    "enhance_opportunities": "This enhances the student's chances of obtaining prestigious jobs or pursuing graduate studies in recognized educational institutions around the world"
   },
-  "show_more": "Show More"
+  "read_more": "Read more",
+  "show_more": "View more"
 }

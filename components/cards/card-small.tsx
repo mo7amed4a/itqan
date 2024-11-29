@@ -7,9 +7,11 @@ import { Card, CardHeader, CardTitle } from "../ui/card";
 export default function CardSmall({
   imageUrl = img1,
   text = "title",
+  services=false
 }: {
   imageUrl?: any;
   text?: string;
+  services?: boolean
 }) {
   return (
     <>
@@ -22,7 +24,7 @@ export default function CardSmall({
             height={500}
             className="size-16 md:size-36 group-hover:scale-105 duration-300"
           />
-          <CardTitle className="text-base md:text-2xl font-bold text-gray-500 group-hover:text-primary text-wrap w-full">
+          <CardTitle className={`text-gray-500 group-hover:text-primary text-wrap w-full text-base md:text-2xl  ${services ? "font-normal" : "font-bold"}`}>
             {text}
           </CardTitle>
         </CardHeader>

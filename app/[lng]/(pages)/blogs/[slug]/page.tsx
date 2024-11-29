@@ -33,26 +33,6 @@ export default async function page({
         <h1 className="mt-2 text-3xl font-bold text-gray-900 sm:text-5xl">
           {blog.title}
         </h1>
-        {/* <p className="mt-6 text-lg text-gray-700">
-          {post.}
-        </p> */}
-        {/* <div
-          className="mt-6 flex flex-wrap justify-center gap-2"
-          aria-label="Tags"
-        >
-          <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">
-            Marketing
-          </button>
-          <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">
-            Branding
-          </button>
-          <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">
-            Digital
-          </button>
-          <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">
-            Identity
-          </button>
-        </div> */}
         <Image width={700} height={500}
           className="sm:h-[34rem] mt-10 w-full object-contain"
           src={blog.image.split('http://').join('https://')}

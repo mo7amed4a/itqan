@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { TabsComponent } from "@/components/universities/TabApp";
+import { FaqsComponent } from "@/components/universities/TabApp";
 import { useTranslation } from "@/i18n";
 import { getData } from "@/lib/data";
 
@@ -16,9 +16,10 @@ import img2 from "../../../../../public/images/sp/2.png";
 import img3 from "../../../../../public/images/sp/3.png";
 import img4 from "../../../../../public/images/sp/4.png";
 import img5 from "../../../../../public/images/sp/5.png";
+import imgChat from "../../../../../public/images/chat.png";
 import StudyProgramsTabs from "@/components/universities/study-programs-tabs";
 import HousingList from "@/components/housing/HousingList";
-
+import FilterSelect from "@/components/home/Filter";
 
 // This is a mock of the data. In a real application, you'd fetch this data from an API.
 const universityData = {
@@ -105,6 +106,8 @@ export default async function UniversityInfo({
   const { lng, id } = params;
 
   const { t } = await useTranslation(lng, "university_details");
+  const { t: tHousing } = await useTranslation(lng, "housing");
+
   let data: any = {
     university: {
       id: 24,
@@ -496,21 +499,30 @@ export default async function UniversityInfo({
               </div>
             </div>
             <div className="text-gray-500 py-4">
-              <p className="line-clamp-4"
-                dangerouslySetInnerHTML={{ __html: university.description.slice(0, 300) }}
+              <p
+                className="line-clamp-4"
+                dangerouslySetInnerHTML={{
+                  __html: university.description.slice(0, 300),
+                }}
               ></p>
             </div>
             <div className="text-sm flex text-center gap-4 justify-center">
               <div className="bg-gray-50 py-3 px-5 space-y-2 rounded-lg">
-                <h2 className="text-primary text-base">{t('university.globalRank')}</h2>
+                <h2 className="text-primary text-base">
+                  {t("university.globalRank")}
+                </h2>
                 <p className="text-secondary">{university.global_rank}</p>
               </div>
               <div className="bg-gray-50 py-3 px-5 space-y-2 rounded-lg">
-                <h2 className="text-primary text-base">{t('university.localRank')}</h2>
+                <h2 className="text-primary text-base">
+                  {t("university.localRank")}
+                </h2>
                 <p className="text-secondary">{university.local_rate}</p>
               </div>
               <div className="bg-gray-50 py-3 px-5 space-y-2 rounded-lg">
-                <h2 className="text-primary text-base">{t('university.studentsCount')}</h2>
+                <h2 className="text-primary text-base">
+                  {t("university.studentsCount")}
+                </h2>
                 <p className="text-secondary">{university.student_count}</p>
               </div>
             </div>
@@ -533,16 +545,9 @@ export default async function UniversityInfo({
                 {t("university.video")} {university.name}
               </h1>
             </CardHeader>
+              {university.video != null && (
             <CardContent className="h-[30rem]">
-              {university.video === null ? (
-                <Image
-                  src={university.image.split("http://").join("https://")}
-                  alt=""
-                  width={500}
-                  height={500}
-                  className="size-full rounded-xl"
-                />
-              ) : (
+               
                 <iframe
                   className="size-full rounded-xl"
                   width={1280}
@@ -554,49 +559,55 @@ export default async function UniversityInfo({
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
                 />
-              )}
             </CardContent>
+              )}
           </Card>
           <div className="py-10">
-            <h1 className="text-lg md:text-xl font-bold px-4">{t('university.photo')}</h1>
+            <h1 className="text-lg md:text-xl font-bold px-4">
+              {t("university.photo")}
+            </h1>
           </div>
-         {  university.photo_album.length > 0  && <div className="flex items-stretch gap-4 h-[30rem] rounded-xl px-4">
-            <div className="flex flex-col w-1/3 gap-y-2 -mt-1">
-              <img
-                src={
-                  university.photo_album.length > 0 &&
-                  university.photo_album[0].split("http://").join("https://")
-                }
-                alt="photo_album image 1"
-                className="w-full h-1/2 object-cover rounded-2xl"
-              />
-              <img
-                src={
-                  university.photo_album.length >= 2 &&
-                  university.photo_album[1].university.image
-                    .split("http://")
-                    .join("https://")
-                }
-                alt="photo_album image 2"
-                className="w-full h-1/2 object-cover rounded-2xl"
-              />
-            </div>
+          {university.photo_album.length > 0 && (
+            <div className="flex items-stretch gap-4 h-[30rem] rounded-xl px-4">
+              <div className="flex flex-col w-1/3 gap-y-2 -mt-1">
+                <img
+                  src={
+                    university.photo_album.length > 0 &&
+                    university.photo_album[0].split("http://").join("https://")
+                  }
+                  alt="photo_album image 1"
+                  className="w-full h-1/2 object-cover rounded-2xl"
+                />
+                <img
+                  src={
+                    university.photo_album.length >= 2 &&
+                    university.photo_album[1].university.image
+                      .split("http://")
+                      .join("https://")
+                  }
+                  alt="photo_album image 2"
+                  className="w-full h-1/2 object-cover rounded-2xl"
+                />
+              </div>
 
-            <div className="w-2/3">
-              <img
-                src={
-                  university.photo_album.length >= 3 &&
-                  university.photo_album[2].split("http://").join("https://")
-                }
-                alt="photo_album image 3"
-                className="h-full w-full object-cover rounded-2xl"
-              />
+              <div className="w-2/3">
+                <img
+                  src={
+                    university.photo_album.length >= 3 &&
+                    university.photo_album[2].split("http://").join("https://")
+                  }
+                  alt="photo_album image 3"
+                  className="h-full w-full object-cover rounded-2xl"
+                />
+              </div>
             </div>
-          </div>}
+          )}
         </div>
 
-        <div className="space-y-7 text-gray-500 mt-10 py-10">
-          <h1 className="text-lg md:text-xl font-bold px-4">{t('university.features')}</h1>
+        {/* <div className="space-y-7 text-gray-500 mt-10 py-10">
+          <h1 className="text-lg md:text-xl font-bold px-4">
+            {t("university.features")}
+          </h1>
           <div className="w-4/5 mx-auto">
             <Card className="flex items-center border-none shadow-none gap-4 p-3 md:gap-6 group hover:shadow-2xl">
               <CardHeader className="p-0">
@@ -609,16 +620,18 @@ export default async function UniversityInfo({
               </CardContent>
             </Card>
           </div>
-        </div>
+        </div> */}
 
         <Card className="border-none shadow-none rounded-none bg-primary py-10">
           <CardHeader>
-            <h1 className="text-white text-lg md:text-xl font-bold">{university.name}</h1>
+            <h1 className="text-white text-lg md:text-xl font-bold">
+              {university.name}
+            </h1>
           </CardHeader>
           <CardContent className="text-center grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             <Card className="border-none shadow-none group">
               <CardHeader className="flex justify-center items-center">
-              <Image
+                <Image
                   src={img1}
                   alt=""
                   width={500}
@@ -627,7 +640,9 @@ export default async function UniversityInfo({
                 />
               </CardHeader>
               <CardContent>
-                <h1 className="text-lg md:text-xl font-bold text-primary">{t("university.globalRank")}</h1>
+                <h1 className="text-lg md:text-xl font-bold text-primary">
+                  {t("university.globalRank")}
+                </h1>
               </CardContent>
               <CardFooter className="flex justify-center border-t py-3">
                 <p>{university.global_rank}</p>
@@ -635,7 +650,7 @@ export default async function UniversityInfo({
             </Card>
             <Card className="border-none shadow-none group">
               <CardHeader className="flex justify-center items-center">
-              <Image
+                <Image
                   src={img2}
                   alt=""
                   width={500}
@@ -644,7 +659,9 @@ export default async function UniversityInfo({
                 />
               </CardHeader>
               <CardContent>
-                <h1 className="text-lg md:text-xl font-bold text-primary">{t("university.localRank")}</h1>
+                <h1 className="text-lg md:text-xl font-bold text-primary">
+                  {t("university.localRank")}
+                </h1>
               </CardContent>
               <CardFooter className="flex justify-center border-t py-3">
                 <p>{university.local_rate}</p>
@@ -652,7 +669,7 @@ export default async function UniversityInfo({
             </Card>
             <Card className="border-none shadow-none group">
               <CardHeader className="flex justify-center items-center">
-              <Image
+                <Image
                   src={img4}
                   alt=""
                   width={500}
@@ -661,7 +678,9 @@ export default async function UniversityInfo({
                 />
               </CardHeader>
               <CardContent>
-                <h1 className="text-lg md:text-xl font-bold text-primary">{t("university.studentsCount")}</h1>
+                <h1 className="text-lg md:text-xl font-bold text-primary">
+                  {t("university.studentsCount")}
+                </h1>
               </CardContent>
               <CardFooter className="flex justify-center border-t py-3">
                 <p>{university.student_count}</p>
@@ -669,7 +688,7 @@ export default async function UniversityInfo({
             </Card>
             <Card className="border-none shadow-none group">
               <CardHeader className="flex justify-center items-center">
-              <Image
+                <Image
                   src={img3}
                   alt=""
                   width={500}
@@ -678,7 +697,9 @@ export default async function UniversityInfo({
                 />
               </CardHeader>
               <CardContent>
-                <h1 className="text-lg md:text-xl font-bold text-primary">{t("university.staff")}</h1>
+                <h1 className="text-lg md:text-xl font-bold text-primary">
+                  {t("university.staff")}
+                </h1>
               </CardContent>
               <CardFooter className="flex justify-center border-t py-3">
                 <p>{university.teachers_count}</p>
@@ -686,7 +707,7 @@ export default async function UniversityInfo({
             </Card>
             <Card className="border-none shadow-none group">
               <CardHeader className="flex justify-center items-center">
-              <Image
+                <Image
                   src={img5}
                   alt=""
                   width={500}
@@ -695,7 +716,9 @@ export default async function UniversityInfo({
                 />
               </CardHeader>
               <CardContent>
-                <h1 className="text-lg md:text-xl font-bold text-primary">{t("university.nationalityCount")}</h1>
+                <h1 className="text-lg md:text-xl font-bold text-primary">
+                  {t("university.nationalityCount")}
+                </h1>
               </CardContent>
               <CardFooter className="flex justify-center border-t py-3">
                 <p>{university.national_count}</p>
@@ -704,84 +727,73 @@ export default async function UniversityInfo({
           </CardContent>
         </Card>
 
+        <div className="my-8 lg:py-24 px-4 bg-white">
+          <h1 className="text-2xl font-bold mb-4">{t("tabs.studyPrograms")}</h1>
+          <div className="flex justify-between items-center flex-col lg:flex-row">
+            <StudyProgramsTabs studyPrograms={data.study_programs} lng={lng} />
+            <div className="lg:w-1/4 w-full">
+              <FilterSelect col lng={lng} />
+            </div>
+          </div>
+        </div>
 
-<div className="my-8">
-  <h1 className="text-2xl font-bold mb-4">{t('tabs.studyPrograms')}</h1>
-        <StudyProgramsTabs studyPrograms={data.study_programs} lng={lng}/>
-</div>
-
-
-<div className="px-4 py-10 mt-10 bg-white rounded-md">
-
-<div className="prose prose-h3:text-primary prose-h1:text-primary prose-h2:text-primary prose-h4:text-primary prose-h3:py-0" dangerouslySetInnerHTML={{__html: university.description}}></div>
-</div>
-
-<div className="px-4 py-10 mt-10 rounded-md">
-<h1 className="text-lg md:text-xl font-bold mb-4">{t('university.studentHousings')}</h1>
-{student_housings && student_housings?.length > 0 && (
-        <HousingList t={t} housings={student_housings} />
-      )}
-
-      </div>
-
-        {/* <Card className="mb-8 border-none">
-          <CardHeader>
-            <div className="flex items-center space-x-4">
+        <div className="px-4 py-10 mt-10 rounded-md md:text-lg md:-space-y-8">
+          <h1 className="text-lg md:text-xl font-bold">
+            {t("university.languagesStudy")} {university.name}
+          </h1>
+          <div className="flex flex-col lg:flex-row justify-between">
+            <div className="flex flex-col justify-center space-y-6">
+              <p className="text-primary">
+                {t("university.languagesStudyAvailable")} {university.name}{" "}
+                {t("university.languagesStudyMoreLanguages")}
+              </p>
+              <ul className="custom-bullet">
+                {university.languages &&
+                  university.languages.length > 0 &&
+                  university.languages.map((language: any, index: number) => (
+                    <li key={index}>{language.name}</li>
+                  ))}
+              </ul>
+            </div>
+            <div>
               <Image
-                src={university.logo.split("http://").join("https://")}
-                alt={university.name}
-                width={100}
-                height={100}
-                className="rounded-full"
+                className="size-full hover:scale-105 duration-300 transition-all"
+                src={imgChat}
+                width={400}
+                height={400}
+                alt="chat"
               />
-              <div className="space-y-1"> 
-                <CardTitle>{university.name}</CardTitle>
-                <CardDescription>
-                  {t("university.foundedIn")} {university.found_year} •{" "}
-                  {t("university.globalRank")}: {university.global_rank}
-                </CardDescription>
-              </div>
             </div>
-          </CardHeader>
-          <CardContent>
-            <Image
-              src={university.image.split("http://").join("https://")}
-              alt={university.name}
-              width={800}
-              height={400}
-              className="w-full rounded-lg mb-4"
-            />
-            <div dangerouslySetInnerHTML={{ __html: university.description }} />
-            <div className="mt-4">
-              <strong>{t("university.languages")}:</strong>{" "}
-              {university.languages.map((lang: any) => lang.name).join(", ")}
-            </div>
-          </CardContent>
-        </Card> */}
+          </div>
+        </div>
 
-        {/* <TabsComponent
-          lng={lng}
-          studyPrograms={study_programs}
-          studentHousings={student_housings}
-          faqs={faqs}
-        /> */}
-
-        {/* <Card>
-          <CardHeader>
-            <CardTitle>{t("specifications.title")}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="list-disc pl-5">
-              {specifications && specifications.length > 0 && 
-              Object.keys(specifications).map((key: any) => (
-                <li key={specifications[key].id}>
-                  {specifications[key].name}
-                </li>
-              ))
-              }
-            </ul>
-          </CardContent>
-        </Card> */}
+        <div className="px-4 py-10 mt-10 bg-white rounded-md">
+          <div
+            className="prose prose-h3:text-primary prose-h1:text-primary prose-h2:text-primary prose-h4:text-primary prose-h3:py-0"
+            dangerouslySetInnerHTML={{ __html: university?.description }}
+          ></div>
+        </div>
+        {faqs && <div className="px-4 py-10 mt-10 space-y-6">
+          <h1 className="text-lg md:text-xl font-bold">{t("university.faqs")}</h1>
+          <div className="lg:w-3/5">
+          <FaqsComponent
+            lng={lng}
+            studyPrograms={study_programs}
+            studentHousings={student_housings}
+            faqs={faqs}
+          />
+          </div>
+        </div>}
+        <div className="px-4 py-10 mt-10 rounded-md">
+          <h1 className="text-lg md:text-xl font-bold mb-4">
+            {t("university.studentHousings")}
+          </h1>
+          <div className="grid gap-4">
+            {student_housings && student_housings?.length > 0 && (
+              <HousingList t={tHousing} housings={student_housings} />
+            )}
+          </div>
+        </div>
       </div>
     );
   } else

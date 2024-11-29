@@ -1,5 +1,6 @@
 export interface HomeLangType {
   home: {
+    topMajors: string;
     hero: {
       title: string;
       subtitle: string;
@@ -7,6 +8,8 @@ export interface HomeLangType {
       steps: string;
       choose_study: string;
       select_specialty: string;
+      select_years: string;
+      select_none: string;
       select_study_level: string;
       select_language: string;
       search: string;

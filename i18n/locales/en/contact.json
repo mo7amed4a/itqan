@@ -1,31 +1,31 @@
 {
-  "title": "Contact Us",
-  "description": "Feel free to reach out to us for any inquiries or assistance. We're here to help!",
+  "title": "Contact us",
+  "description": "Do not hesitate to contact us for any inquiries or assistance. ",
   "email": {
-    "label": "Email",
+    "label": "e-mail",
     "value": "contact@yourcompany.com"
   },
   "address": {
-    "label": "Address",
+    "label": "the address",
     "value": "123 Main Street, Cityville"
   },
   "form": {
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "submit": "Send message",
-    "mobile": "Mobile number",
-    "title": "Subject",
-    "address": "Address",
+    "name": "the name",
+    "email": "e-mail",
+    "message": "message",
+    "submit": "Send the message",
+    "mobile": "phone number",
+    "title": "Topic title",
+    "address": "the address",
     "validation": {
-      "name": "Name is required",
+      "name": "Name required",
       "email": {
-        "required": "Email is required",
-        "invalid": "Invalid email address"
+        "required": "Email required",
+        "invalid": "Email is incorrect"
       },
-      "address": "Address is required",
-      "mobile": "Mobile number is required",
-      "title": "Subject is required",
+      "address": "Address required",
+      "mobile": "Phone number required",
+      "title": "Topic title is required",
       "message": "Message is required"
     }
   }

@@ -2,7 +2,6 @@ import React from "react";
 import { useTranslation } from "../../../../i18n";
 import LinkApp from "../../../../components/global/LinkApp";
 import CardSmall from "../../../../components/cards/card-small";
-import { Button } from "flowbite-react";
 import Image from "next/image";
 import img1 from "../../../../public/images/for-blog.png";
 import FormBooking from "../../../../components/home/form-booking";
@@ -14,6 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
 
 export default async function Page({
   params,
@@ -38,7 +38,7 @@ export default async function Page({
   const dataHousings = res?.data;
 
   return (
-    <div className="my-10 space-y-10 text-start">
+    <div className="mt-10 space-y-10 text-start">
       <h1 className="text-center text-xl md:text-2xl font-bold text-gray-500 capitalize">
         {t("titlePage")}
       </h1>
@@ -49,12 +49,14 @@ export default async function Page({
               {data &&
                 data.cats &&
                 data.cats.length > 0 &&
-                data.cats?.map((item: any) => {
+                data.cats?.map((item: any, index: number) => {
                   return (
                     <li
                       key={item.id}
                       className={
                         searchParams.category === `${item.id}`
+                          ? "border-b-2 border-red-500 text-red-500"
+                          : !searchParams.category && index === 0
                           ? "border-b-2 border-red-500 text-red-500"
                           : ""
                       }
@@ -102,7 +104,11 @@ export default async function Page({
                         className="basis-1/2 md:basis-1/5 pb-8"
                         key={item.id}
                       >
-                        <CardSmall imageUrl={item.image} text={item.name} />
+                        <CardSmall
+                          services
+                          imageUrl={item.image}
+                          text={item.name}
+                        />
                       </CarouselItem>
                     ))}
                 </CarouselContent>
@@ -113,17 +119,21 @@ export default async function Page({
           ) : (
             <div className="space-y-10">
               <h1 className="text-lg font-bold text-gray-500 md:text-xl">
-                {data.services[0].name}
+                {data?.services[0]?.name}
               </h1>
 
               <Carousel>
                 <CarouselContent className="h-auto">
-                  {data.services[0].services.map((item: any) => (
+                  {data?.services[0]?.services?.map((item: any) => (
                     <CarouselItem
                       className="basis-1/2 md:basis-1/5 pb-8"
                       key={item.id}
                     >
-                      <CardSmall imageUrl={item.image} text={item.name} />
+                      <CardSmall
+                        services
+                        imageUrl={item.image}
+                        text={item.name}
+                      />
                     </CarouselItem>
                   ))}
                 </CarouselContent>
@@ -135,12 +145,11 @@ export default async function Page({
         </div>
       </section>
       <section>
-        <div className="bg-primary h-96 flex flex-col space-y-10 justify-center items-center  text-center px-7">
-          <h1 className="text-lg md:text-2xl font-bold text-gray-100">
+        <div className="bg-white h-96 flex flex-col space-y-10 justify-center items-center  text-center px-7">
+          <h1 className="text-lg md:text-2xl font-bold text-gray-500">
             {t("sectionText")}
           </h1>
           <Button
-            color="primary"
             size="lg"
             className="bg-primary text-white hover:bg-white hover:text-primary"
           >
@@ -150,42 +159,53 @@ export default async function Page({
       </section>
       <section className="container mx-auto  px-4">
         <h1 className="my-10 text-lg md:text-2xl font-bold text-gray-500">
-          {t('post_admission_services')}
+          {t("post_admission_services")}
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {dataHousings &&
             dataHousings?.housings &&
             dataHousings?.housings?.length > 0 &&
-            dataHousings?.housings?.map((housing: any) => (<div
+            dataHousings?.housings?.map((housing: any) => (
+              <div
                 key={housing.id}
-                className="bg-white rounded-xl flex flex-col md:flex-row items-center gap-8 text-center md:text-start overflow-hidden"
+                className="bg-white group hover:shadow-xl hover:scale-105 duration-300 transition-all rounded-xl flex flex-col md:flex-row items-center gap-8 text-center md:text-start overflow-hidden p-4"
               >
-                <Image
-                  src={housing.images[0]||''}
-                  className="w-full md:w-auto h-40 md:h-auto"
-                  alt="alt"
-                  width={150}
-                  height={150}
-                />
+                {housing?.images[0] ? (
+                  <Image
+                    src={
+                      housing?.images[0]?.image
+                        .split("http://")
+                        .join("https://") || ""
+                    }
+                    className="w-full h-64 md:w-32 md:h-28 group-hover:scale-105 duration-300 transition-all"
+                    alt="alt"
+                    width={700}
+                    height={700}
+                  />
+                ) : (
+                  <div className="bg-gray-200 w-full h-64 md:w-32 md:h-28 rounded-md group-hover:scale-105 duration-300 transition-all"></div>
+                )}
                 <div className="space-y-2 py-8">
-                  <h3 className="text-lg md:text-xl font-bold">
+                  <h3 className="text-lg md:text-xl font-bold group-hover:text-primary">
                     {housing.name}
                   </h3>
-                  <p dangerouslySetInnerHTML={{ __html: housing.description }} className="text-sm md:text-base  text-gray-500 prose lg:prose-xl"></p>
+                  <p
+                    dangerouslySetInnerHTML={{ __html: housing.description }}
+                    className="text-sm md:text-base  text-gray-500 prose lg:prose-xl"
+                  ></p>
                 </div>
               </div>
             ))}
         </div>
       </section>
       <section>
-        <div className="bg-primary/80 h-96 flex flex-col space-y-10 justify-center items-center px-7 text-center">
-          <h1 className="text-lg md:text-3xl font-bold text-primary">
+        <div className="bg-primary h-96 flex flex-col space-y-10 justify-center items-center px-7 text-center">
+          <h1 className="text-lg md:text-3xl font-bold text-white">
             {t("sectionText2")}
           </h1>
           <Button
-            color="primary"
             size="lg"
-            className="bg-red-500 text-white hover:bg-white hover:text-red-500"
+            className="bg-secondary text-white hover:bg-white hover:text-red-500"
           >
             {t("sectionButton")}
           </Button>
@@ -205,12 +225,11 @@ export default async function Page({
             </div>
           </div>
           <div className="p-4 md:p-8">
-            <h2 className="text-base md:text-2xl font-bold text-primary">
+            <h2 className="text-base md:text-3xl font-bold text-primary lg:w-3/5 !leading-[1.35]">
               {t("contactUs.subtitle")}
               <span className="text-red-500"> {t("contactUs.hour")}</span>
             </h2>
-
-            <ul className="mt-8 text-base md:text-lg text-gray-500">
+            <ul className="mt-8 text-base md:text-xl text-gray-500 space-y-3 !leading-[1.45]">
               <li className="list">{t("contactUs.points.a")}</li>
               <li className="list">{t("contactUs.points.b")}</li>
               <li className="list">{t("contactUs.points.c")}</li>

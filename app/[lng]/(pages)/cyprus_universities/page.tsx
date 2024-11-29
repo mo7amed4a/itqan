@@ -181,7 +181,7 @@ export default async function UniversitiesPage({
                 lng={lng}
                 href={`/universities/${item.id}`}
               >
-                <CardUniversity university={item} />
+                <CardUniversity major={t('topMajors')}  university={item} />
               </LinkApp>
             );
           })}

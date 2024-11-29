@@ -80,7 +80,7 @@ export default async function Page({
                     key={item.id}
                   >
                     <LinkApp href={`/universities/${item.id}`} lng={lng}>
-                        <CardUniversity university={item} />
+                        <CardUniversity major={t('topMajors')}  university={item} />
                       </LinkApp>
                   </CarouselItem>
                 ))}
@@ -103,7 +103,7 @@ export default async function Page({
                     key={item.id}
                   >
                     <LinkApp href={`/universities/${item.id}`} lng={lng}>
-                        <CardUniversity university={item} />
+                        <CardUniversity major={t('topMajors')} university={item} />
                       </LinkApp>
                   </CarouselItem>
                 ))}

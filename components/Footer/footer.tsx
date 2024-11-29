@@ -23,7 +23,7 @@ export default async function FooterApp({ lng }: { lng: string }) {
 
   return (
     data && (
-      <Footer container className="bg-primary text-white rounded-none mt-32 p-0">
+      <Footer container className="bg-primary text-white rounded-none p-0">
         <div className="w-full">
           <div className="grid md:grid-cols-3 gap-4 p-5">
             <div className="space-y-3 flex flex-col md:items-center md:text-start text-sm md:text-base">

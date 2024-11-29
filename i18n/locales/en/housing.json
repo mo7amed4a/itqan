@@ -7,6 +7,11 @@
   "meals": "Meals",
   "internet": "Internet",
   "price": "Price",
-  "no_image": "No Image",
-  "see_details": "See Details"
+  "type": "Type",
+  "no_image": "There is no photo",
+  "see_details": "View details",
+  "viewImage": "View photos",
+  "register": "registration",
+  "male": "Boys housing",
+  "female": "Female housing"
 }

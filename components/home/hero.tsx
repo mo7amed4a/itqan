@@ -11,8 +11,7 @@ export default async function HeroSection({
   dataLang: TFunction<"home", undefined>;
   locale: string;
 }) {
-  const response = await getData("/filters", locale);
-  const data = response?.data;
+ 
   return (
     <div
       className={`bg-hero p-6 ${locale === "en" && "transform -scale-x-100"}`}
@@ -50,7 +49,7 @@ export default async function HeroSection({
           </div>
 
           <div className="w-full">
-            <FilterSelect lng={locale} data={data} />
+            <FilterSelect lng={locale} />
           </div>
         </div>
       </div>

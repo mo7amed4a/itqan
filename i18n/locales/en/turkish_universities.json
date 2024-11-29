@@ -1,34 +1,34 @@
 {
-  "title": "Turkish Universities",
+  "title": "Our Turkish universities",
   "links": {
-    "all": "All",
-    "istanbulEuropean": "Istanbul European Universities",
-    "istanbulAsian": "Istanbul Asian Universities",
-    "ankara": "Ankara Universities",
-    "mersin": "Mersin Universities",
-    "gaziantep": "Gaziantep Universities"
+    "all": "everyone",
+    "istanbulEuropean": "European universities in Istanbul",
+    "istanbulAsian": "Istanbul Asian universities",
+    "ankara": "Ankara universities",
+    "mersin": "Mersin universities",
+    "gaziantep": "Gaziantep universities"
   },
-  "topMajors": "Top Majors",
-  "mostRanked": "Most Ranked",
+  "mostRanked": "Most rated",
+  "topMajors": "The most important specialties",
   "universityInfo": {
-    "name": "Ibn Khaldun University",
-    "description": "This enhances the student's chances of getting prestigious jobs or pursuing higher studies in recognized educational institutions around the world.",
-    "establishmentYear": "Year of Establishment",
-    "ranking": "Global Ranking",
+    "name": "Ibn Khaldoun University",
+    "description": "This enhances the student's chances of obtaining prestigious jobs or pursuing graduate studies in recognized educational institutions around the world.",
+    "establishmentYear": "Year of establishment",
+    "ranking": "Global ranking",
     "rankingNumber": "5746",
     "establishedYearValue": "2020",
     "majors": {
-      "humanSciences": "Human Sciences",
-      "medicine": "Human Medicine",
-      "computerEngineering": "Computer Engineering",
+      "humanSciences": "humanities",
+      "medicine": "Human medicine",
+      "computerEngineering": "Computer engineering",
       "pharmacy": "Pharmacy"
     },
-    "startingPrices": "Prices Start",
+    "startingPrices": "Prices start",
     "priceRange": {
-      "from": "From",
-      "to": "To"
+      "from": "from",
+      "to": "to"
     },
-    "registerNow": "Register Now"
+    "registerNow": "Register now"
   },
-  "show_more": "Show More"
+  "show_more": "View more"
 }

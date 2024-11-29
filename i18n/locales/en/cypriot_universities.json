@@ -1,32 +1,32 @@
 {
-  "title": "Cypriot Universities",
+  "title": "Our Cypriot universities",
   "links": {
-    "all": "All",
-    "privateUniversities": "Private Universities",
-    "internationalUniversities": "International Universities",
-    "cyprusUniversities": "Our Cypriot Universities"
+    "all": "everyone",
+    "privateUniversities": "Private universities",
+    "internationalUniversities": "International universities",
+    "cyprusUniversities": "Our Cypriot universities"
   },
-  "mostRanked": "Most Ranked",
-  "topMajors": "Top Majors",
+  "mostRanked": "Most rated",
+  "topMajors": "The most important specialties",
   "universityInfo": {
-    "name": "Ibn Khaldun University",
-    "description": "This enhances the student's chances of getting prestigious jobs or pursuing higher studies in recognized educational institutions around the world.",
-    "establishmentYear": "Year of Establishment",
-    "ranking": "Global Ranking",
+    "name": "Ibn Khaldoun University",
+    "description": "This enhances the student's chances of obtaining prestigious jobs or pursuing graduate studies in recognized educational institutions around the world.",
+    "establishmentYear": "Year of establishment",
+    "ranking": "Global ranking",
     "rankingNumber": "5746",
     "establishedYearValue": "2020",
     "majors": {
-      "humanSciences": "Human Sciences",
-      "medicine": "Human Medicine",
-      "computerEngineering": "Computer Engineering",
+      "humanSciences": "humanities",
+      "medicine": "Human medicine",
+      "computerEngineering": "Computer engineering",
       "pharmacy": "Pharmacy"
     },
-    "startingPrices": "Prices Start",
+    "startingPrices": "Prices start",
     "priceRange": {
       "from": "from",
       "to": "to"
     },
-    "registerNow": "Register Now"
+    "registerNow": "Register now"
   },
   "show_more": "Show More"
 }

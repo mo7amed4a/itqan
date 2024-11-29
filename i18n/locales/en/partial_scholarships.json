@@ -12,12 +12,6 @@
     "label": "Language of study",
     "value": "English"
   },
-  "fees": {
-    "label": "Fees",
-    "before": "Fees are before discount",
-    "annual": "Annual fees",
-    "total": "Total fees"
-  },
   "buttons": {
     "view_university": "View the university",
     "register_scholarship": "Register for the scholarship now"
@@ -31,5 +25,11 @@
   },
   "study_years": {
     "label": "Number of years of study"
+  },
+  "fees": {
+    "label": "Fees",
+    "before": "Fees are before discount",
+    "annual": "Annual fees",
+    "total": "Total fees"
   }
 }

@@ -6,6 +6,7 @@ import { FollowupRequestType } from "./@pages/followup_request";
 import { HomeLangType } from "./@pages/home";
 import { HousingLangType } from "./@pages/housing";
 import { Partial_scholarshipsLangType } from "./@pages/partial_scholarships";
+import { ProgramType } from "./@pages/program";
 import { ServicesLangType } from "./@pages/services";
 import { Turkish_universitiesLangType } from "./@pages/turkish_universities";
 import { UniversityDetailsType } from "./@pages/university_details";
@@ -21,7 +22,8 @@ interface Resources
     ContactInfoType,
     HousingLangType,
     ServicesLangType,
-    UniversityDetailsType {
+    UniversityDetailsType,
+    ProgramType {
   Header: {
     be_our_agent: string;
     follow_up_on_the_registration_request: string;

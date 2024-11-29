@@ -12,10 +12,6 @@
     "label": "لغة الدراسة",
     "value": "الإنجليزية"
   },
-  "fees": {
-    "label": "الرسوم",
-    "value": "14000$"
-  },
   "buttons": {
     "view_university": "عرض الجامعة",
     "register_scholarship": "سجل في المنحة الآن"

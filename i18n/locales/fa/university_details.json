@@ -2,12 +2,29 @@
   "university": {
     "foundedIn": "تاسیس شده در",
     "globalRank": "رتبه بندی جهانی",
-    "languages": "زبان ها"
+    "languages": "زبان ها",
+    "localRank": "رتبه بندی محلی",
+    "staff": "کارکنان دانشگاه",
+    "studentsCount": "تعداد دانش آموزان",
+    "nationalityCount": "ملیت متفاوت",
+    "video": "ویدیوی معرفی در مورد",
+    "photo": "عکس هایی در مورد دانشگاه",
+    "features": "مزایای دانشگاه",
+    "studentHousings": "محوطه دانشگاه و مکان های آن",
+    "languagesStudy": "زبان های آموزشی در",
+    "languagesStudyAvailable": "Tteg",
+    "languagesStudyMoreLanguages": "فرصتی برای تحصیل به زبان های مختلف",
+    "faqs": "پرسش و پاسخ در مورد دانشگاه"
   },
   "tabs": {
-    "studyPrograms": "برنامه های تحصیلی",
+    "studyPrograms": "رشته های دانشگاهی",
     "studentHousing": "مسکن دانشجویی",
-    "faqs": "سوالات متداول"
+    "majors": "تخصص ها",
+    "studyYears": "سال های تحصیل",
+    "studyLanguage": "زبان مطالعه",
+    "tuitionFee": "قسط",
+    "registration": "ثبت نام",
+    "years": "سال"
   },
   "studyPrograms": {
     "programs": "برنامه ها",
@@ -15,7 +32,7 @@
     "language": "زبان مطالعه",
     "fees": "هزینه ها",
     "annualFees": "هزینه های سالیانه",
-    "grantAvailable": "بورس تحصیلی موجود است"
+    "grantAvailable": "کمک هزینه در دسترس است"
   },
   "housing": {
     "capacity": "ظرفیت",
@@ -26,5 +43,6 @@
   },
   "specifications": {
     "title": "مشخصات دانشگاه"
-  }
+  },
+  "booking_now": "همین الان ثبت نام کنید"
 }

@@ -1,14 +1,5 @@
-import LinkApp from "../../../../components/global/LinkApp";
-import CardUniversity from "../../../../components/home/CardUniversity";
-
-import { Button, Carousel } from "flowbite-react";
 import React from "react";
 import { useTranslation } from "../../../../i18n";
-import Image from "next/image";
-import img1 from "../../../../public/images/for-blog.png";
-import CarouselApp, {
-  CarouselItem,
-} from "../../../../components/global/Carousel";
 import { getData } from "@/lib/data";
 import HousingList from "@/components/housing/HousingList";
 

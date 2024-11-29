@@ -48,7 +48,7 @@ export default function StudyProgramsTabs({ studyPrograms, lng }: StudyProgramsT
 
   return (
     <Tabs value={activeTab} dir={dir(lng)} onValueChange={setActiveTab} className="w-full">
-      <TabsList className="flex gap-4 w-full justify-start rounded-none mb-8">
+      <TabsList className="flex gap-4 w-full justify-start rounded-none mb-8 bg-transparent">
         {studyPrograms.map((level) => (
           <TabsTrigger className="bg-transparent" key={level?.level_id} value={level?.level_id?.toString() || ''}>
             {level?.level_name}
