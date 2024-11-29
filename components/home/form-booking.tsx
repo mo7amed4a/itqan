@@ -63,7 +63,7 @@ export default function FormBooking({lng}:{lng: string}) {
           {({ isSubmitting }) => (
             <div className="flex flex-col space-y-10 items-center w-full">
               <h2 className="text-lg md:text-2xl lg:text-3xl font-bold text-gray-500">{dataLang('form_booking.title')}</h2>
-              <Form className="grid grid-cols-1 gap-4 w-full p-6 bg-white shadow-lg rounded-lg">
+              <Form className="grid grid-cols-1 gap-4 w-full p-6 ">
               <div className="flex flex-col gap-4">
                 <Field
                   name="name"
@@ -71,7 +71,7 @@ export default function FormBooking({lng}:{lng: string}) {
                   rightIcon={CiUser}
                   placeholder={dataLang('form_booking.name')}
                   sizing="lg"
-                  className="text-right"
+                  className="text-right [&>div>input]:!bg-white"
                 />
                 <ErrorMessage
                   name="name"
@@ -85,7 +85,7 @@ export default function FormBooking({lng}:{lng: string}) {
                   rightIcon={MdEmail}
                   placeholder={dataLang('form_booking.email')}
                   sizing="lg"
-                  className="text-right"
+                  className="text-right [&>div>input]:!bg-white"
                 />
                 <ErrorMessage
                   name="email"
@@ -99,7 +99,7 @@ export default function FormBooking({lng}:{lng: string}) {
                   rightIcon={FaWhatsapp}
                   placeholder={dataLang('form_booking.mobile_w')}
                   sizing="lg"
-                  className="text-right"
+                  className="text-right [&>div>input]:!bg-white"
                 />
                 <ErrorMessage
                   name="mobile"

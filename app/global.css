@@ -39,6 +39,13 @@ ul.custom-bullet li {
   @apply relative ps-2 before:absolute before:-start-1 before:top-1.5 before:rounded-full before:w-1.5 before:h-1.5 before:bg-secondary
 }
 
+.shadow-all:hover {
+  box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.25);
+-webkit-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.25);
+-moz-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.25);
+  /* @apply hover:shadow-[0_6px_8px_-2px_rgba(0,0,0,0.1),0_-6px_8px_-2px_rgba(0,0,0,0.1),6px_0_8px_-2px_rgba(0,0,0,0.1),-6px_0_8px_-2px_rgba(0,0,0,0.1)] */
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

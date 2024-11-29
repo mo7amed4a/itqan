@@ -17,6 +17,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { CustomCarousel } from "@/components/ui/CustomCarousel";
+import ShowMoreBtn from "@/components/global/ShowMore";
 
 export default async function UniversitiesPage({
   params,
@@ -25,6 +26,7 @@ export default async function UniversitiesPage({
   params: { lng: string };
   searchParams: {
     category: string;
+    page: string;
   };
 }) {
   const lng = params.lng;
@@ -34,6 +36,11 @@ export default async function UniversitiesPage({
   let url = "/tukey_universities";
   if (searchParams.category) {
     url = `/tukey_universities?category_id=${searchParams.category}`;
+  }
+  if (searchParams.page) {
+    const params = new URLSearchParams(searchParams.toString())
+    params.set("page", searchParams.page)
+    url += `?${params.toString()}`;
   }
 
   const response = await getData(url, lng);
@@ -181,7 +188,7 @@ export default async function UniversitiesPage({
                 href={`/universities/${item.id}`}
                 lng={lng}
               >
-                <CardUniversity major={t('topMajors')} university={item} />
+                <CardUniversity major={t('topMajors')} btnText={t('universityInfo.registerNow')} university={item} />
               </LinkApp>
             );
           })}
@@ -196,12 +203,7 @@ export default async function UniversitiesPage({
         )}
       </div> */}
       <div className="flex justify-center mt-10">
-        <Button
-          color="primary"
-          className="w-64 py-2 font-bold bg-primary text-white hover:bg-white hover:text-primary"
-        >
-          {t("show_more")}
-        </Button>
+       <ShowMoreBtn page={searchParams.page} text={t('show_more')} />
       </div>
     </div>
   );

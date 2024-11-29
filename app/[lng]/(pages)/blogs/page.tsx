@@ -13,6 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import ShowMoreBtn from "@/components/global/ShowMore";
 
 export default async function Blogs({
   params,
@@ -21,6 +22,7 @@ export default async function Blogs({
   params: { lng: string };
   searchParams: {
     category: string;
+    page: string;
   };
 }) {
   const lng = params.lng;
@@ -29,6 +31,11 @@ export default async function Blogs({
   let url = "/blog";
   if (searchParams.category) {
     url = `/blog_cat/${searchParams.category}`;
+  }
+  if (searchParams.page) {
+    const params = new URLSearchParams(searchParams.toString())
+    params.set("page", searchParams.page)
+    url += `?${params.toString()}`;
   }
 
   let blogs = null;
@@ -115,12 +122,7 @@ export default async function Blogs({
           ))}
       </section>
       <div className="flex justify-center">
-        <Button
-          color="primary"
-          className="w-64 py-2 font-bold bg-primary text-white"
-        >
-          {t("show_more")}
-        </Button>
+       <ShowMoreBtn page={searchParams.page} text={t('show_more')} />
       </div>
     </div>
   );

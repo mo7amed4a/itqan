@@ -65,6 +65,7 @@ export default async function RootLayout({
   return (
     <html lang={lng} dir={dir(lng)} >
       <head>
+        <link rel="icon" href="https://admin.itqaneducation.com/admin_assets/assets/images/favicon.ico" />
         <link
           href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap"
           rel="stylesheet"

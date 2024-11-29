@@ -36,9 +36,12 @@ export default function LocaleSwitcher({ lng }: { lng: string }) {
       defaultValue={currentLocale}
       onValueChange={onSelectChange}
       disabled={isPending}
+      
     >
-      <SelectTrigger className="w-[120px]">
-        <SelectValue placeholder="Select language" />
+      <SelectTrigger className="w-[120px] bg-transparent !text-white focus:ring-0 focus:outline-none focus-visible:ring-0 focus:border-none">
+        <div className="!text-white">
+          <SelectValue placeholder="Select language" />
+        </div>
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="en">English</SelectItem>

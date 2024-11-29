@@ -3,7 +3,7 @@ import { useTranslation } from "../../../../i18n";
 import LinkApp from "../../../../components/global/LinkApp";
 import CardSmall from "../../../../components/cards/card-small";
 import Image from "next/image";
-import img1 from "../../../../public/images/for-blog.png";
+import img1 from "../../../../public/images/services_page.png";
 import FormBooking from "../../../../components/home/form-booking";
 import { getData } from "@/lib/data";
 import {
@@ -198,8 +198,8 @@ export default async function Page({
             ))}
         </div>
       </section>
-      <section>
-        <div className="bg-primary h-96 flex flex-col space-y-10 justify-center items-center px-7 text-center">
+      <section className="relative bg-primary">
+        <div className="relative z-10 h-96 bg-transparent flex flex-col space-y-10 justify-center items-center px-7 text-center">
           <h1 className="text-lg md:text-3xl font-bold text-white">
             {t("sectionText2")}
           </h1>
@@ -210,6 +210,13 @@ export default async function Page({
             {t("sectionButton")}
           </Button>
         </div>
+        <Image 
+          alt="alt"
+          width={2500}
+          height={2500}
+          src={img1}
+          className="absolute inset-0 size-full z-0 opacity-35"
+        />
       </section>
 
       <section className="bg-white py-10">

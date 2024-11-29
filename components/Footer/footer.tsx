@@ -52,16 +52,16 @@ export default async function FooterApp({ lng }: { lng: string }) {
               <Image
                 src={img1}
                 alt="ITQAN Logo"
-                width={200}
-                height={200}
-                className="h-16 w-2/4 md:w-auto bg-white"
+                width={400}
+                height={400}
+                className="h-16 w-2/4 md:h-20 md:w-auto"
               />
               {/* <p className="mt-4 w-3/4 md:text-center">{t("bio")}</p> */}
-              <p className="mt-4 w-3/4 md:text-center md:text-lg">{data.footer_text}</p>
+              <p className="mt-8 w-3/4 md:text-center md:text-lg">{data.footer_text}</p>
             </div>
             <div className="space-y-3 flex flex-col md:items-center md:text-start text-sm md:text-base">
-              <div className="flex flex-col text-start">
-                <h2 className="text-lg md:text-2xl ">{t("LinkApps")}</h2>
+              <div className="flex flex-col text-end">
+                <h2 className="text-lg md:text-2xl">{t("links")}</h2>
                 <ul className="text-sm md:text-lg text-gray-300">
                   <li>
                     <LinkApp href="/" lng={lng}>

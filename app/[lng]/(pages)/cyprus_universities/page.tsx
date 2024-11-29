@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { CustomCarousel } from "@/components/ui/CustomCarousel";
+import ShowMoreBtn from "@/components/global/ShowMore";
 
 export default async function UniversitiesPage({
   params,
@@ -22,6 +23,7 @@ export default async function UniversitiesPage({
   params: { lng: string };
   searchParams: {
     category: string;
+    page: string;
   };
 }) {
   const lng = params.lng;
@@ -31,6 +33,12 @@ export default async function UniversitiesPage({
   let url = "/qyprus_universities";
   if (searchParams.category) {
     url = `/qyprus_universities?category_id=${searchParams.category}`;
+  }
+
+  if (searchParams.page) {
+    const params = new URLSearchParams(searchParams.toString())
+    params.set("page", searchParams.page)
+    url += `?${params.toString()}`;
   }
 
   const response = await getData(url, lng);
@@ -181,7 +189,7 @@ export default async function UniversitiesPage({
                 lng={lng}
                 href={`/universities/${item.id}`}
               >
-                <CardUniversity major={t('topMajors')}  university={item} />
+                <CardUniversity major={t('topMajors')} btnText={t('universityInfo.registerNow')}  university={item} />
               </LinkApp>
             );
           })}
@@ -196,12 +204,7 @@ export default async function UniversitiesPage({
         )} */}
       </div>
       <div className="flex justify-center mt-10">
-        <Button
-          color="primary"
-          className="w-64 py-2 font-bold bg-primary text-white hover:bg-white hover:text-primary"
-        >
-          المزيد
-        </Button>
+       <ShowMoreBtn page={searchParams.page} text={t('show_more')} />
       </div>
     </div>
   );

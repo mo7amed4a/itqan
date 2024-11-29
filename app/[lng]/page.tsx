@@ -11,6 +11,7 @@ import { Button } from "flowbite-react";
 import { useTranslation } from "../../i18n";
 import Image from "next/image";
 import img1 from "../../public/images/form-logo.png";
+import img2 from "../../public/images/bg-form.png";
 import {
   Carousel,
   CarouselContent,
@@ -20,6 +21,7 @@ import {
 } from "@/components/ui/carousel";
 import { getData } from "@/lib/data";
 import LinkApp from "@/components/global/LinkApp";
+import VideoTwo from "@/components/home/videoTwo";
 
 export default async function Page({
   params: { lng },
@@ -33,9 +35,12 @@ export default async function Page({
   const data = response?.data;
 
   return (
-    <main className="space-y-20">
+    <main className="space-y-">
       {data && <HeroSection dataLang={t} locale={lng} />}
-      <VideoCall dataVideoCall={t} locale={lng} />
+      <section className="bg-white py-8">
+        <VideoTwo  text={t('videoCall.text')} btn={t('videoCall.booking_now')} lng={lng} />
+        {/* <VideoCall dataVideoCall={t} locale={lng} /> */}
+      </section>
       <div className="bg-[#f5f7f9] my-10">
         <SectionApp
           title={t("specialties.title")}
@@ -80,7 +85,7 @@ export default async function Page({
                     key={item.id}
                   >
                     <LinkApp href={`/universities/${item.id}`} lng={lng}>
-                        <CardUniversity major={t('topMajors')}  university={item} />
+                        <CardUniversity major={t('topMajors')} btnText={t('form_booking.submit')} university={item} />
                       </LinkApp>
                   </CarouselItem>
                 ))}
@@ -103,7 +108,7 @@ export default async function Page({
                     key={item.id}
                   >
                     <LinkApp href={`/universities/${item.id}`} lng={lng}>
-                        <CardUniversity major={t('topMajors')} university={item} />
+                        <CardUniversity major={t('topMajors')} btnText={t('form_booking.submit')} university={item} />
                       </LinkApp>
                   </CarouselItem>
                 ))}
@@ -114,19 +119,26 @@ export default async function Page({
         </SectionApp>
       
         {data && data.settings && <WhyItqan data={data.settings} t={t} />}
-        <section className="flex md:h-[70vh] mt-10 px-4 md:px-0 bg-white">
-          <div className="md:w-9/12 flex justify-center items-center w-full py-8">
-            <div className="w-full md:w-2/4">
+        <section className="flex md:h-[70vh] px-4 md:px-0 bg-white">
+          <div className="md:w-9/12 flex justify-center items-center w-full py-8 relative">
+            <div className="w-full md:w-2/4 relative z-10">
               <FormBooking lng={lng} />
             </div>
+            <Image
+              src={img2}
+              alt="form"
+              className="absolute size-full mx-auto opacity-60"
+              width={2000}
+              height={2000}
+            />
           </div>
-          <div className="hidden md:block md:w-3/12">
+          <div className="hidden md:flex md:w-4/12 bg-primary items-center justify-center">
             <Image
               src={img1}
               alt="form"
-              className="h-full w-full"
-              width={500}
-              height={500}
+              className="w-10/12 h-72 mx-auto"
+              width={700}
+              height={700}
             />
           </div>
         </section>
@@ -137,26 +149,22 @@ export default async function Page({
           title={t("WhatService.title")}
           className="container mx-auto"
         >
-          <Carousel>
-            <CarouselContent className="md:h-96">
+          <div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 w-full gap-4 px-4">
             {data &&
                   data.services &&
                   data.services.length > 0 &&
-                  data.services.map((e: any) => (
-                  <CarouselItem
-                    className="basis-1/2 md:basis-1/3 lg:basis-1/4 pb-8"
-                    key={e.id}
-                  >
-                    <CardSmall imageUrl={e.image} text={e.name} />
-                  </CarouselItem>
+                  data.services.slice(0, 4).map((e: any) => (
+                    <div className="pb-8" key={e.id}>
+                      <CardSmall services imageUrl={e.image} text={e.name} />
+                    </div>
                 ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          <div className="flex justify-end">
-              <Button color="primary" className="hover:bg-secondary hover:text-white">{t("WhatService.read_more")}</Button>
-            </div>
-          </Carousel>
+          </div>
+
+          <LinkApp href="/services" lng={lng} className="flex justify-center">
+              <Button color="primary" size="xl" className="hover:bg-secondary hover:text-white">{t("WhatService.read_more")}</Button>
+            </LinkApp>
+          </div>
         </SectionApp>
         
       </div>

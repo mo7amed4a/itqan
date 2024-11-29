@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  Button,
   Navbar,
   NavbarBrand,
   NavbarCollapse,
@@ -15,6 +14,8 @@ import { useTranslation } from "../../i18n";
 import { api, setAcceptLanguage } from "../../lib/axios";
 import LinkActive from "./LinkActive";
 import BookingFixed from "../fixedCps/BookingFixed";
+import LinkApp from "../global/LinkApp";
+import { Button } from "../ui/button";
 
 export default async function HeaderApp({ locale }: { locale: string }) {
   const { t } = await useTranslation(locale, "Header");
@@ -28,12 +29,12 @@ export default async function HeaderApp({ locale }: { locale: string }) {
     <header className="flex flex-col sticky top-0 z-[20] bg-white">
       <div className="bg-primary ">
         <div className="flex flex-col md:flex-row justify-between py-2 px-4 md:px-10 gap-2 md:w-[90vw] mx-auto">
-          <div className="flex justify-between md:justify-start gap-x-4">
+          <div className="flex justify-between md:justify-start gap-4">
             <div className="z-[7817874]">
             <BookingFixed lng={locale} child={
               <Button
                 color="primary"
-                className="border px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base"
+                className="border text-wrap px-4 hover:!scale-x-100 py-0 text-[10px] md:px-2 md:text-base"
               >
                 {t("booking_btn")}
               </Button>
@@ -42,23 +43,23 @@ export default async function HeaderApp({ locale }: { locale: string }) {
             <div>
               <Button
                 color="primary"
-                className="border px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base"
+                className="border hover:!scale-x-100 px-4 py-0 text-[10px] md:px-2 md:text-base"
               >
                 {t("be_our_agent")}
               </Button>
             </div>
             <div>
-              <Button
-              as={Link}
-              href={`/${locale}/followup_request`}
-              className="bg-secondary text-white border border-white px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base"
-            >
-              {t("follow_up_on_the_registration_request")}
-            </Button>
+              <LinkApp href={`/${locale}/followup_request`} lng={locale} >
+                  <Button
+                  className="bg-secondary hover:!scale-x-100 text-white border border-white px-4 py-0 text-[10px] md:px-2 md:text-base"
+                >
+                  {t("follow_up_on_the_registration_request")}
+                </Button>
+                </LinkApp>
             
             </div>
           </div>
-          <div className="flex justify-between md:justify-start gap-0.5 md:gap-x-2">
+          <div className="flex justify-between md:justify-start gap-4">
             <InputSearch placeholder={t("search_for_the_university")} />
             <LocalSwitcher lng={locale} />
           </div>
@@ -68,17 +69,19 @@ export default async function HeaderApp({ locale }: { locale: string }) {
         className="px-3 md:px-10 md:w-[90vw] md:mx-auto"
       >
         <Navbar fluid rounded>
-          <NavbarBrand as={Link} href="/">
+          <NavbarBrand as={"div"}>
+            <LinkApp href="/" lng={locale} >
             <Image
               src={logo}
-              className="w-24 md:w-36 h-10 md:h-full bg-contain"
+              className="w-32 md:w-44 h-12 md:h-full bg-contain"
               alt="app Logo"
               width={"200"}
               height={"200"}
             />
+            </LinkApp>
           </NavbarBrand>
           <NavbarToggle />
-          <NavbarCollapse className="[&>ul>li>a]:text-xl [&>ul>li>a]:text-nowrap md:overflow-x-scroll 2xl:overflow-x-auto z-40 hidden-scrollbar">
+          <NavbarCollapse className="[&>ul>li>a]:text-xl [&>ul>li>a]:text-nowrap rtl:lg:[&>ul>li]:ps-2 md:overflow-x-scroll 2xl:overflow-x-auto z-40 hidden-scrollbar">
             <LinkActive as={Link} locale={locale} text={t("home")} url="" />
             <LinkActive
               as={Link}

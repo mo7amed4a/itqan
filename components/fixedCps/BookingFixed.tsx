@@ -178,7 +178,7 @@ export default function BookingFixed({ lng, child=null }: { lng: string, child?:
 
   return (
     <div>
-     {child ? <div onClick={() => setIsOpen(true)}>
+     {child ? <div className="-mt-0 flex items-start p-0 m-0" onClick={() => setIsOpen(true)}>
       {child}
      </div> : <div
         className={`fixed top-1/3 right-0 cursor-pointer bg-secondary p-2.5 md:p-4 rtl:flex-row-reverse items-center text-sm md:text-base text-white rounded-l-xl flex z-[10] w-[8rem] md:w-[9rem] translate-x-[5.5rem] gap-x-3 hover:translate-x-0 duration-300 `}

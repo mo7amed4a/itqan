@@ -17,13 +17,15 @@ export type UniversityType = {
 
 export default async function CardUniversity({
   university,
-  major
+  major,
+  btnText
 }:{
   university?: UniversityType,
-  major: string
+  major: string,
+  btnText: string
 }) {
   return university && (
-    <div className="hover:shadow-xl bg-white rounded-2xl p-3 hover:!scale-[1.02] duration-300 group">
+    <div className="hover:shadow-xl bg-white rounded-2xl p-3 shadow-all duration-300 group">
       <div className="relative">
         <Image
           alt="alt"
@@ -54,7 +56,7 @@ export default async function CardUniversity({
           }
         </ul>
         <div className="flex justify-center mt-2">
-          <Button className="group-hover:bg-secondary">سجل الان</Button>
+          <Button className="group-hover:bg-secondary">{btnText}</Button>
         </div>
       </div>
     </div>

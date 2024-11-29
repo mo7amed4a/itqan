@@ -30,15 +30,15 @@ export default function CardBlog({
 }) {
   return (
     <LinkApp lng={lng} href={`/blogs/${blog.slug}`}>
-      <Card className="flex w-full border-none rounded-xl shadow-none hover:shadow-xl h-full px-3 duration-300 cursor-pointer md:my-4 group flex-col justify-center">
+      <Card className="flex w-full border-none rounded-3xl shadow-none hover:shadow-xl h-full px-3 duration-300 cursor-pointer md:my-4 group flex-col justify-center">
           {/* <div className="bg-[#21837F]/50 rounded-xl size-full absolute inset-0 z-0"></div> */}
-        <CardHeader className="h-64 relative p-0 rounded-xl group-hover:before:bg-transparent before:bg-[#21837F]/40 before:absolute before:inset-0 before:transition-all before:duration-300 before:size-full before:z-10 overflow-hidden">
+        <CardHeader className="h-64 relative p-0 rounded-3xl group-hover:before:bg-transparent before:bg-[#21837F]/40 before:absolute before:inset-0 before:transition-all before:duration-300 before:size-full before:z-10 overflow-hidden">
           <Image
             src={`${blog.image.split("http://").join("https://")}`}
             alt="alt"
             width={500}
             height={500}
-            className="size-full rounded-xl "
+            className="size-full rounded-3xl"
           />
           <Badge className="rounded-md font-bold text-white bg-blue-200/40 backdrop-blur-md absolute end-4 bottom-5 z-10">
             {formatDate(blog.created_at).split('/').join('.')}
