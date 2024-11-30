@@ -14,7 +14,8 @@
     "languagesStudy": "Languages ​​of instruction in",
     "languagesStudyAvailable": "Tteg",
     "languagesStudyMoreLanguages": "The opportunity to study in many languages",
-    "faqs": "Question and answer about the university"
+    "faqs": "Question and answer about the university",
+     "confessions": "Recognitions obtained by the university"
   },
   "tabs": {
     "studyPrograms": "Academic majors",
@@ -44,5 +45,10 @@
   "specifications": {
     "title": "University specifications"
   },
+  "description": "More details about",
+  "readMore": "Show more",
+  "readLess": "Offer less",
+  "howTo": "How to apply in ",
+  "Time": "Registration dates for ",
   "booking_now": "Register now"
 }

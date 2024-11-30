@@ -14,7 +14,8 @@
     "languagesStudy": "زبان های آموزشی در",
     "languagesStudyAvailable": "Tteg",
     "languagesStudyMoreLanguages": "فرصتی برای تحصیل به زبان های مختلف",
-    "faqs": "پرسش و پاسخ در مورد دانشگاه"
+    "faqs": "پرسش و پاسخ در مورد دانشگاه",
+     "confessions": "تقدیرنامه های کسب شده توسط دانشگاه"
   },
   "tabs": {
     "studyPrograms": "رشته های دانشگاهی",
@@ -44,5 +45,10 @@
   "specifications": {
     "title": "مشخصات دانشگاه"
   },
+  "description": "جزئیات بیشتر در مورد",
+  "readMore": "نمایش بیشتر",
+  "readLess": "کمتر پیشنهاد دهید",
+  "howTo": "نحوه درخواست در ",
+  "Time": "تاریخ های ثبت نام برای ",
   "booking_now": "همین الان ثبت نام کنید"
 }

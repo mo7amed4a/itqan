@@ -159,7 +159,7 @@ export default function FilterSelect({
       <Button
         size={"xl"}
         color="primary"
-        className="hover:bg-red-500 py-4"
+        className="hover:bg-secondary py-4"
         onClick={handleSearch}
         // disabled={
         //   !filters.specialization || !filters.level || !filters.language

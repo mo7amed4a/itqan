@@ -16,6 +16,7 @@ export interface UniversityDetailsType {
       languagesStudyAvailable: string;
       languagesStudyMoreLanguages: string;
       faqs: string;
+      confessions: string;
     };
     tabs: {
       studyPrograms: string;
@@ -46,6 +47,11 @@ export interface UniversityDetailsType {
     specifications: {
       title: string;
     };
+    description: string;
+    readMore:string;
+    readLess: string;
+    howTo: string;
+    Time: string;
     booking_now: string;
   };
 }

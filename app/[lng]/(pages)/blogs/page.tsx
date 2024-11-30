@@ -85,27 +85,29 @@ export default async function Blogs({
               sliders?.map((item: any) => (
                 <CarouselItem
                   key={item.id}
-                  className="grid md:grid-cols-2 h-full bg-white rounded-xl hover:shadow-md"
+                  className=" h-full bg-white rounded-xl hover:shadow-md"
                 >
-                  <div className="h-full flex items-center order-2 p-4">
-                    <div className="space-y-5">
-                      <h1 className="text-lg font-bold text-gray-500 md:text-2xl">
-                        {item.title}
-                      </h1>
-                      <p
-                        className="text-sm text-gray-400 prose"
-                        dangerouslySetInnerHTML={{ __html: item.content }}
-                      ></p>
+                  <div className="w-full h-full grid md:grid-cols-2">
+                    <div className="h-full flex items-center order-2 p-4">
+                      <div className="space-y-5 lg:!space-y-10 lg:w-11/12 mx-auto">
+                        <h1 className="text-lg font-bold text-gray-500 md:text-3xl">
+                          {item.title}
+                        </h1>
+                        <p
+                          className="text-sm md:text-base text-gray-600 prose line-clamp-2"
+                          dangerouslySetInnerHTML={{ __html: item.content }}
+                        ></p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-4 order-1 md:order-2">
-                    <Image
-                      src={img1}
-                      alt="img"
-                      width={300}
-                      height={300}
-                      className="w-full h-full object-cover rounded-xl"
-                    />
+                    <div className="p-4 order-1 md:order-2">
+                      <Image
+                        src={img1}
+                        alt="img"
+                        width={2300}
+                        height={2300}
+                        className="w-full h-full object-cover rounded-xl"
+                      />
+                    </div>
                   </div>
                 </CarouselItem>
               ))}

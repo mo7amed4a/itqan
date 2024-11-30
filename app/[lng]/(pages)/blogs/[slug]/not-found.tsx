@@ -16,7 +16,7 @@ export default function notFound() {
           <Button as={Link}
             href="/"
             color="primary"
-            // className="px-8 py-4 text-xl font-semibold rounded bg-purple-600 text-gray-50 hover:text-gray-200"
+            className="hover:bg-secondary hover:text-white"
           >
             Back to home
           </Button>

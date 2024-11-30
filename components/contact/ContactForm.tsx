@@ -5,11 +5,12 @@ import React from "react";
 import { useTranslation } from "../../i18n/client";
 import toast from "react-hot-toast";
 import { api, setAcceptLanguage } from "../../lib/axios";
-import { Button, Textarea, TextInput } from "flowbite-react";
+import {Textarea, TextInput } from "flowbite-react";
 import { CiUser } from "react-icons/ci";
 import { MdEmail, MdOutlineSubtitles } from "react-icons/md";
 import { CgFlag } from "react-icons/cg";
 import { BiPhone } from "react-icons/bi";
+import { Button } from "../ui/button";
 
 const ContactForm = ({ lng }: { lng: string }) => {
   const { t: dataLang } = useTranslation(lng, "contact");
@@ -165,10 +166,10 @@ const ContactForm = ({ lng }: { lng: string }) => {
             </div>
           </div>
 
-          <Button
+          <Button size="xl"
             type="submit"
             color="primary"
-            className="w-full font-bold py-2 text-white bg-primary mt-4"
+            className="w-full !text-base hover:!scale-x-0 font-bold text-white bg-primary hover:bg-secondary mt-4"
           >
             {dataLang("form.submit")}
           </Button>

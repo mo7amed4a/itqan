@@ -162,9 +162,9 @@ export default function BookingFixed({ lng, child=null }: { lng: string, child?:
     }
   };
 
-  useEffect(() => {
-    setText((localStorage.getItem("msgBooking") as string) || null);
-  }, []);
+  // useEffect(() => {
+  //   // setText((localStorage.getItem("msgBooking") as string) || null);
+  // }, []);
 
   const getDataHome = async () => {
     const response = await getData("/filters", lng);

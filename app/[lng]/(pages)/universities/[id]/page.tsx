@@ -1,100 +1,275 @@
-import Image from "next/image";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { FaqsComponent } from "@/components/universities/TabApp";
-import { useTranslation } from "@/i18n";
 import { getData } from "@/lib/data";
+import CardUniOne from "@/components/universities/template/CardUniOne";
+import CardVideo from "@/components/universities/template/CardVedio";
+import CardConfessions from "@/components/universities/template/CardConfessions";
+import CardRank from "@/components/universities/template/CardRank";
+import CardTableData from "@/components/universities/template/CardTableData";
+import CardLanguage from "@/components/universities/template/CardLanguage";
+import CardConditionsAndRegistration from "@/components/universities/template/CardConditionsAndRegistration";
+import CardFaqs from "@/components/universities/template/CardFaqs";
+import CardDetails from "@/components/universities/template/CardDetails";
+import CardHouse from "@/components/universities/template/CardHouse";
 
-import img1 from "../../../../../public/images/sp/1.png";
-import img2 from "../../../../../public/images/sp/2.png";
-import img3 from "../../../../../public/images/sp/3.png";
-import img4 from "../../../../../public/images/sp/4.png";
-import img5 from "../../../../../public/images/sp/5.png";
-import imgChat from "../../../../../public/images/chat.png";
-import StudyProgramsTabs from "@/components/universities/study-programs-tabs";
-import HousingList from "@/components/housing/HousingList";
-import FilterSelect from "@/components/home/Filter";
-
-// This is a mock of the data. In a real application, you'd fetch this data from an API.
 const universityData = {
-  success: true,
   data: {
     university: {
-      id: 15,
-      name: "Istanbul Aydin University",
-      logo: "http://admin.itqaneducation.com/storage/universities/c0zsrXLjfKX3fk2PX0iaRVKXVDgKWYCedUGqQMsH.png",
+      id: 40,
+      slug: "atilim-university",
+      category_id: 13,
+      country: "2",
+      city_id: 2,
+      type: "3",
+      international_rate: 1000,
+      local_rate: 1000,
+      student_count: 10000,
+      teachers_count: 450,
+      national_count: 21,
+      logo: "http://admin.itqaneducation.com/storage/universities/IzUa0wBpzpqmuo99KHJyxIYCO7Lnb1dUN3KzX8Be.png",
       image:
-        "http://admin.itqaneducation.com/storage/universities/PLDXxusKEA17qwX6SiyFFtjItsZJy2RsUSv7VTUl.jpg",
+        "http://admin.itqaneducation.com/storage/universities/nY4chpB42uPDRL1c8DbIgOyUQv68yOvfwghLxuc8.jpg",
+      video: "https://www.youtube.com/watch?v=wGBDWdTGDxE",
+      is_featured: 0,
+      photo_album: [],
+      confessions: [
+        {
+          name: "iLEDAK",
+          image:
+            "http://admin.itqaneducation.com/storage/confensions/TvDd5P3t99jl1QaZtTXn2UWOMwW0AEV2QJm7caDI.png",
+        },
+        {
+          name: "MUDEK",
+          image:
+            "http://admin.itqaneducation.com/storage/confensions/jsgS3It92c0CM4sSAVUUd1JzWgkCgT2YgtL5K781.png",
+        },
+        {
+          name: "CEA",
+          image:
+            "http://admin.itqaneducation.com/storage/confensions/ULWDkxw0CdLMfd2yx3V7JkvzTGhynPwstqCrqeP9.png",
+        },
+      ],
+      languages: [
+        {
+          name: "التركية",
+        },
+        {
+          name: "الانجليزية",
+        },
+      ],
+      found_year: 1997,
+      global_rank: 250,
+      name: "جامعة اتيليم",
       description:
-        "<p>Istanbul Aydin University<br />\r\nEstablishment of Istanbul Aydin University and its prestigious position</p>\r\n\r\n<p>&nbsp;</p>",
-      languages: [{ name: "Turkish" }, { name: "English" }],
-      found_year: 1000,
-      global_rank: 1000,
+        "<p>تأسست جامعة أتيليم في العاصمة التركية أنقرة في 15 يوليو 1997، وتعد من أبرز الجامعات الخاصة في تركيا. تشتهر الجامعة بتركيزها على البحث العلمي المتقدم وتطوير التكنولوجيا، مما جعلها وجهة متميزة للطلاب الباحثين عن التعليم ذو الجودة العالية.</p>\r\n\r\n<p>تتميز جامعة أتيليم بدمج التعليم النظري مع البحث والتطبيق العملي، لتضمن تجهيز طلابها بالمعرفة والمهارات اللازمة للمنافسة في سوق العمل. كما تهدف إلى إعداد جيل من الخريجين القادرين على المنافسة على المستوى العالمي في مختلف المجالات، مع التركيز على تطوير القدرات الأكاديمية واكتساب الخبرات العملية.</p>\r\n\r\n<p>للحصول على توجيهات ودعم خلال رحلتك الدراسية، يمكنك الاعتماد على فريق إرشاد متخصص يساهم في تحقيق نجاحك الأكاديمي والمستقبلي.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3>تصنيف جامعة أتيليم أنقرة: التميز والريادة في التعليم والبحث</h3>\r\n\r\n<p>جامعة أتيليم في أنقرة تُعتبر من أبرز الجامعات الخاصة في تركيا، حيث حققت مكانة مرموقة في التصنيفات الدولية والمحلية بفضل جودة التعليم والبحث العلمي المتميز.</p>\r\n\r\n<ol>\r\n\t<li>\r\n\t<p><strong>تصنيف &quot;تايمز للتعليم العالي&quot; (THE):</strong></p>\r\n\r\n\t<ul>\r\n\t\t<li>حازت على المركز الثاني بين الجامعات التركية في أبحاث العلوم الفيزيائية.</li>\r\n\t\t<li>جاءت في المرتبة الرابعة بشكل عام بين الجامعات التركية.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>تصنيف &quot;SCIMAGO&quot;:</strong></p>\r\n\r\n\t<ul>\r\n\t\t<li>احتلت المرتبة 21 بين الجامعات التركية.</li>\r\n\t\t<li>جاءت في المركز السادس بين الجامعات الخاصة.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>تصنيف &quot;URAP&quot; و&quot;Webometrics&quot;:</strong></p>\r\n\r\n\t<ul>\r\n\t\t<li>تمركزت في المرتبتين 42 و43 على التوالي، مما يعكس قوة حضورها الأكاديمي والبحثي.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>تصنيف &quot;QS&quot;:</strong></p>\r\n\r\n\t<ul>\r\n\t\t<li>صُنّفت ضمن أفضل 250 جامعة في منطقة &quot;أوروبا الناشئة وآسيا الوسطى&quot;، مما يدل على مكانتها الإقليمية المتميزة.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>الجامعات الريادية والمبتكرة:</strong></p>\r\n\r\n\t<ul>\r\n\t\t<li>حازت على المركز الأول في تصنيف الجامعات الريادية والمبتكرة الذي أصدرته وزارة العلوم والصناعة والتكنولوجيا التركية.</li>\r\n\t</ul>\r\n\t</li>\r\n</ol>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3>اعترافات جامعة أتيليم أنقرة</h3>\r\n\r\n<p>جامعة أتيليم تُعد واحدة من الجامعات التركية المرموقة التي تحظى باعتراف دولي واسع، إلى جانب مشاركتها في برامج تبادل طلابي عالمية مثل برنامج إيراسموس+:</p>\r\n\r\n<p><strong>برنامج إيراسموس+</strong></p>\r\n\r\n<ul>\r\n\t<li>جامعة أتيليم عضو فاعل في برنامج Erasmus+ الشهير للتبادل الطلابي.</li>\r\n\t<li>يوفر البرنامج فرصًا للطلاب للدراسة في أكثر من 33 دولة أوروبية، مما يتيح لهم تجربة أكاديمية وثقافية مميزة على المستوى الدولي.</li>\r\n\t<li>الطلاب المسجلون في الجامعة يمكنهم التقديم لهذا البرنامج، مما يمكنهم من متابعة دراستهم لفصل دراسي أو عام كامل في جامعات أوروبية مرموقة.</li>\r\n</ul>\r\n\r\n<p><strong>الاعترافات الدولية والعربية</strong></p>\r\n\r\n<ul>\r\n\t<li>الجامعة تحظى باعتراف العديد من الدول العربية، ومنها:\r\n\t<ul>\r\n\t\t<li>مصر، لبنان، سوريا، الأردن، اليمن، قطر، وفلسطين.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>كما أنها معترف بها رسميًا في دول الاتحاد الأوروبي، مما يجعل شهادتها مقبولة عالميًا في سوق العمل والتعليم العالي.</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>تخصصات البكالوريوس في جامعة اتيليم:</strong></p>\r\n\r\n<p><br />\r\n&nbsp;</p>\r\n\r\n<p>&nbsp;الطب البشري</p>\r\n\r\n<p>&nbsp;التمريض</p>\r\n\r\n<p>العلاج الطبيعي وإعادة التأهيل</p>\r\n\r\n<p>هندسة الطيران</p>\r\n\r\n<p>هندسة الفضاء الجوي</p>\r\n\r\n<p>إدارة الطيران</p>\r\n\r\n<p>هندسة الكمبيوتر</p>\r\n\r\n<p>هندسة نظم المعلومات</p>\r\n\r\n<p>هندسة الكهرباء والالكترون</p>\r\n\r\n<p>هندسة التصنيع</p>\r\n\r\n<p>الهندسة المدنية</p>\r\n\r\n<p>الهندسة المعمارية</p>\r\n\r\n<p>الهندسة الكيميائية و الكيمياء التطبيقية</p>\r\n\r\n<p>الهندسة الميكانيكية</p>\r\n\r\n<p>هندسة الميكاترونكس</p>\r\n\r\n<p>هندسة السيارات</p>\r\n\r\n<p>هندسة نظم الطاقة</p>\r\n\r\n<p>هندسة البرمجيات</p>\r\n\r\n<p>هندسة المعادن والمواد</p>\r\n\r\n<p>الطائرات الكهربائية الالكترونية</p>\r\n\r\n<p>الاقتصاد</p>\r\n\r\n<p>العلاقات العامة و الدعاية و الإعلان</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>إدارة الأعمال</p>\r\n\r\n<p>العلاقات الدولية</p>\r\n\r\n<p>السياحة و إدارة الفنادق</p>\r\n\r\n<p>إدارة الأعمال</p>\r\n\r\n<p>العلوم السياسية و الإدارة العامة</p>\r\n\r\n<p>الإدارة</p>\r\n\r\n<p>المالية</p>\r\n\r\n<p>الاقتصاد</p>\r\n\r\n<p>التغذية و علم التغذية</p>\r\n\r\n<p>التصميم الجرافيكي</p>\r\n\r\n<p>العمارة الداخلية و التصميم البيئي</p>\r\n\r\n<p>علم النفس</p>\r\n\r\n<p>اللغة الانجليزية و آدابها</p>\r\n\r\n<p>الترجمة</p>\r\n\r\n<p>الحقوق</p>\r\n\r\n<p>التجارة الدولية والخدمات اللوجستية</p>\r\n\r\n<p>الإدارة السياحية</p>\r\n\r\n<p>صيانة هياكل الطائرات والمحركات</p>\r\n\r\n<p>علم التغذية و البرامج الغذائية</p>\r\n\r\n<p>تصميم الأزياء</p>\r\n\r\n<p>الرياضيات</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3>البحث العلمي في جامعة أتيليم أنقرة</h3>\r\n\r\n<p>تولي جامعة أتيليم اهتمامًا كبيرًا بالبحث العلمي، وتتبنى برامج ومبادرات متميزة لدعم الطلاب والباحثين في مجالات مختلفة، منها:</p>\r\n\r\n<p><strong>برنامج تنظيم مشاريع أبحاث البكالوريوس (LAP)</strong></p>\r\n\r\n<p>هذا البرنامج يُعد من أبرز برامج الجامعة، حيث يهدف إلى:</p>\r\n\r\n<ol>\r\n\t<li>تدريب الباحثين من الطلاب المبدعين: يعمل البرنامج على تعزيز مهارات البحث والابتكار لدى الطلاب من خلال تنفيذ مشاريع بحثية هادفة.</li>\r\n\t<li>الدعم المالي: يُقدم البرنامج منحًا دراسية تصل إلى 1000 ليرة تركية لكل طالب، وميزانية إجمالية لكل مشروع تصل إلى 15,000 ليرة تركية.</li>\r\n\t<li>تنفيذ مشاريع متعددة: يشمل البرنامج ثلاثة مجالات رئيسية:\r\n\t<ul>\r\n\t\t<li>البحوث الأساسية.</li>\r\n\t\t<li>التطوير التجريبي.</li>\r\n\t\t<li>المنتجات المبتكرة.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>التعاون والمشاركة: يتم عرض المشاريع النهائية في معارض وعروض تقديمية سنوية، مما يتيح للطلاب فرصة التعاون مع الشركات داخل الجامعة وخارجها.</li>\r\n</ol>\r\n\r\n<p>مركز التميز لتشكيل المعادن (MFCE)</p>\r\n\r\n<p>يُعتبر مركزًا بحثيًا فريدًا في تركيا وأحد أكثر المراكز تطورًا في أوروبا:</p>\r\n\r\n<ol>\r\n\t<li>التأسيس: أُنشئ المركز عام 2010 بدعم من وزارة التنمية التركية وجامعة أتيليم.</li>\r\n\t<li>الريادة: يُعد المركز البحثي الأول والوحيد في تركيا المتخصص في تشكيل المعادن.</li>\r\n\t<li>الأهداف:\r\n\t<ul>\r\n\t\t<li>دعم صناعة تشكيل المعادن التركية.</li>\r\n\t\t<li>تطوير تقنيات تصنيع متقدمة ومكونات ذات قيمة مضافة عالية.</li>\r\n\t\t<li>تصنيع مواد جديدة ومتطورة.</li>\r\n\t\t<li>استكشاف خيارات تصنيع موفرة للطاقة.</li>\r\n\t</ul>\r\n\t</li>\r\n</ol>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3>الإجراءات والأوراق المطلوبة للتسجيل في جامعة أتيليم أنقرة</h3>\r\n\r\n<p>لإتمام عملية التسجيل بنجاح في جامعة أتيليم بأنقرة، يجب تقديم الوثائق التالية:</p>\r\n\r\n<p>1. <strong>جواز السفر</strong></p>\r\n\r\n<ul>\r\n\t<li>نسخة من جواز السفر مع إحضار الأصل للفحص (يُعاد للطلاب بعد التدقيق).</li>\r\n</ul>\r\n\r\n<p>2. <strong>صور شخصية</strong></p>\r\n\r\n<ul>\r\n\t<li>تقديم 6 صور شخصية حديثة.</li>\r\n</ul>\r\n\r\n<p>3. <strong>شهادة الثانوية العامة</strong></p>\r\n\r\n<ul>\r\n\t<li>نسخة مترجمة إلى اللغة الإنجليزية أو التركية ومصدقة من جهة معتمدة.</li>\r\n</ul>\r\n\r\n<p>4. <strong>شهادات اللغة</strong></p>\r\n\r\n<ul>\r\n\t<li>شهادة أصلية لإجادة اللغة الإنجليزية (معترف بها دوليًا) إذا كانت مطلوبة للبرنامج، بشرط أن تكون معتمدة من كلية اللغات الأجنبية في جامعة أتيليم.</li>\r\n\t<li>شهادة أصلية لإجادة اللغة التركية إذا كان البرنامج يتطلب الدراسة باللغة التركية.</li>\r\n</ul>\r\n\r\n<p>5. <strong>اختبار Y&Ouml;S</strong></p>\r\n\r\n<ul>\r\n\t<li>لا يُشترط اجتياز اختبار Y&Ouml;S عند التسجيل في الجامعات الخاصة مثل جامعة أتيليم.</li>\r\n</ul>\r\n\r\n<p><strong>ملاحظات مهمة</strong></p>\r\n\r\n<ul>\r\n\t<li>تأكد من أن جميع المستندات مستوفاة وصحيحة لتجنب أي تأخير في عملية التسجيل.</li>\r\n\t<li>الالتزام بالمواعيد النهائية التي تحددها الجامعة لتقديم الطلبات.</li>\r\n</ul>",
     },
     faqs: [
       {
-        id: 6,
-        question: "why register with us?",
+        id: 62,
+        question: "ما هي تكاليف الدراسة في جامعة أتيليم؟",
         answer:
-          "<p>loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;</p>",
+          "<p>&nbsp;</p>\r\n\r\n<p>تختلف التكاليف حسب البرنامج الدراسي. تقدم جامعة أتيليم برامج بكاليروس ودراسات عُليا، ويختلف رسوم الدراسة حسب التخصص. للحصول على تفاصيل دقيقة حول الرسوم، يُنصح بزيارة الموقع الرسمي للجامعة أو الاتصال بمكتب القبول.</p>",
       },
       {
-        id: 7,
-        question: "can start study immediatly?",
+        id: 63,
+        question: "هل توفر الجامعة برامج تعليمية باللغة الإنجليزية؟",
         answer:
-          "<p>loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;loreum inspeum&nbsp;</p>",
+          "<p>&nbsp;</p>\r\n\r\n<p>نعم، تقدم جامعة أتيليم العديد من البرامج الدراسية باللغة الإنجليزية في مجالات مثل الهندسة، إدارة الأعمال، والاقتصاد. يجب على الطلاب إثبات مهاراتهم في اللغة الإنجليزية من خلال شهادات معترف بها مثل TOEFL أو IELTS.</p>",
+      },
+      {
+        id: 64,
+        question: "هل تقدم جامعة أتيليم منحاً دراسية؟",
+        answer:
+          "<p>&nbsp;</p>\r\n\r\n<p>تقدم الجامعة بعض المنح الدراسية للطلاب المتفوقين والتي تتراوح بين خصومات على الرسوم الدراسية إلى منح جزئية. للحصول على معلومات أكثر حول المنح الدراسية، يُنصح بمراجعة مكتب المنح في الجامعة.</p>",
       },
     ],
     study_programs: [
       {
-        level_id: 4,
-        level_name: "Master",
+        level_id: 3,
+        level_name: "Bachelor 11",
         programs: [
           {
-            id: 6,
-            specialization_name: "Medicine",
-            study_years: 544,
-            study_language: "arabic",
-            fees: "54.00",
-            annual_fees: 45,
-            has_grant: 1,
+            id: 103,
+            specialization_id: 6,
+            specialization_name: "الهندسة",
+            study_years: 5,
+            study_language: "en",
+            fees: "8000.00",
+            annual_fees: 9165,
+            has_grant: null,
+            old_fees: null,
           },
-          // ... other programs
+          {
+            id: 104,
+            specialization_id: 9,
+            specialization_name: "إدارة الأعمال",
+            study_years: 4,
+            study_language: "en , tu",
+            fees: "8000.00",
+            annual_fees: 9800,
+            has_grant: null,
+            old_fees: null,
+          },
+          {
+            id: 105,
+            specialization_id: 10,
+            specialization_name: "الاقتصاد",
+            study_years: 4,
+            study_language: "en , tu",
+            fees: "8000.00",
+            annual_fees: 9800,
+            has_grant: null,
+            old_fees: null,
+          },
+        ],
+      },
+      {
+        level_id: 4,
+        level_name: "ماجستير",
+        programs: [
+          {
+            id: 149,
+            specialization_id: 8,
+            specialization_name: "الصيدلة",
+            study_years: 3,
+            study_language: "ar",
+            fees: "233.00",
+            annual_fees: 322,
+            has_grant: 1,
+            old_fees: 233,
+          },
+        ],
+      },
+    ],
+    conditions: [
+      {
+        level_id: 3,
+        level_name: "Bachelor 11",
+        conditions: [
+          {
+            id: 43,
+            conditions:
+              "<p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق &quot;ليتراسيت&quot; (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل &quot;ألدوس بايج مايكر&quot; (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.</p>",
+          },
+        ],
+      },
+      {
+        level_id: 4,
+        level_name: "ماجستير",
+        conditions: [
+          {
+            id: 44,
+            conditions:
+              "<p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق &quot;ليتراسيت&quot; (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل &quot;ألدوس بايج مايكر&quot; (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.</p>",
+          },
+        ],
+      },
+      {
+        level_id: 7,
+        level_name: "الدكتوراة",
+        conditions: [
+          {
+            id: 45,
+            conditions:
+              "<p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق &quot;ليتراسيت&quot; (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل &quot;ألدوس بايج مايكر&quot; (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.</p>",
+          },
+        ],
+      },
+      {
+        level_id: 8,
+        level_name: "معهد سنتين",
+        conditions: [
+          {
+            id: 46,
+            conditions:
+              "<p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق &quot;ليتراسيت&quot; (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل &quot;ألدوس بايج مايكر&quot; (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.</p>",
+          },
+        ],
+      },
+    ],
+    registration_dates: [
+      {
+        level_id: 3,
+        level_name: "Bachelor 11",
+        conditions: [
+          {
+            id: 43,
+            registration_dates:
+              "<p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق &quot;ليتراسيت&quot; (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل &quot;ألدوس بايج مايكر&quot; (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.</p>",
+          },
+        ],
+      },
+      {
+        level_id: 4,
+        level_name: "ماجستير",
+        conditions: [
+          {
+            id: 44,
+            registration_dates:
+              "<p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق &quot;ليتراسيت&quot; (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل &quot;ألدوس بايج مايكر&quot; (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.</p>",
+          },
+        ],
+      },
+      {
+        level_id: 7,
+        level_name: "الدكتوراة",
+        conditions: [
+          {
+            id: 45,
+            registration_dates:
+              "<p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق &quot;ليتراسيت&quot; (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل &quot;ألدوس بايج مايكر&quot; (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.</p>",
+          },
+        ],
+      },
+      {
+        level_id: 8,
+        level_name: "معهد سنتين",
+        conditions: [
+          {
+            id: 46,
+            registration_dates:
+              "<p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق &quot;ليتراسيت&quot; (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل &quot;ألدوس بايج مايكر&quot; (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.</p>",
+          },
         ],
       },
     ],
     student_housings: [
       {
-        id: 13,
-        capacity: 200,
-        type: "female_housing",
-        price: "345.00",
-        city: "1",
-        beds: 3,
+        id: 39,
+        capacity: 500,
+        type: "male_housing",
+        price: "2000.00",
+        city: "2",
+        beds: 250,
         meals: 3,
-        internet: 100,
-        name: "housing 1",
-        description:
-          "<p>housing 1housing 1housing 1housing 1housing 1housing 1housing 1</p>",
+        internet: 2000,
+        name: "السكن الجامعي في جامعة اتيليم",
+        description: "<p>السكن الجامعي في جامعة اتيليم</p>",
         images: [
-          "http://admin.itqaneducation.com/storage/universities/MQi7I6luw5biDcgPRJpSfZL0xgqSQVTo2Ud5AmmD.png",
-          // ... other images
+          "http://admin.itqaneducation.com/storage/universities/o91IOah6YE4HZ68nkSjbeo2x0hiHAdu1mX5Xi6ZL.webp",
         ],
       },
-      // ... other housings
-    ],
-    specifications: [
       {
-        id: 82,
-        name: "The university offers the possibility of studying more than 60 specializations in various fields for bachelor's and master's degrees.",
+        id: 52,
+        capacity: 122,
+        type: "male_housing",
+        price: "1233.00",
+        city: "2",
+        beds: 321,
+        meals: 123,
+        internet: 321,
+        name: "جامعة جيدك",
+        description: "<p>testtest</p>",
+        images: [
+          "http://admin.itqaneducation.com/storage/universities/Ji9Z5hu1SwpY3nQq6FUJ0dQBUEQhCY6kFOehchFG.jpg",
+          "http://admin.itqaneducation.com/storage/universities/7ipzUKBzkuiE6VvRrvtu17H3eqDbZ5IZ0YgnXUQB.jpg",
+        ],
       },
     ],
+    specifications: {
+      "1": {
+        id: 539,
+        name: "جامعة اتيليم",
+      },
+    },
   },
 };
 
@@ -104,369 +279,7 @@ export default async function UniversityInfo({
   params: { lng: string; id: string };
 }) {
   const { lng, id } = params;
-
-  const { t } = await useTranslation(lng, "university_details");
-  const { t: tHousing } = await useTranslation(lng, "housing");
-
-  let data: any = {
-    university: {
-      id: 24,
-      slug: "istanbul-aydin-university",
-      category_id: 13,
-      country: "2",
-      city_id: 1,
-      type: "3",
-      international_rate: 1000,
-      local_rate: 1000,
-      student_count: 15000,
-      teachers_count: 15000,
-      national_count: 500,
-      logo: "http://admin.itqaneducation.com/storage/universities/bgJ93iELuIEgupJGN2DPkekapnzgkaJaAGsh56Xg.png",
-      image:
-        "http://admin.itqaneducation.com/storage/universities/DuX59TXhxImHuZUK7pmo5bG2g0HTsrigAA6MHN4t.jpg",
-      video: "https://www.youtube.com/watch?v=wGBDWdTGDxE",
-      is_featured: 1,
-      photo_album: [],
-      confessions: [
-        {
-          name: "mudek",
-          image:
-            "http://admin.itqaneducation.com/storage/confensions/jsgS3It92c0CM4sSAVUUd1JzWgkCgT2YgtL5K781.png",
-        },
-        {
-          name: "cea",
-          image:
-            "http://admin.itqaneducation.com/storage/confensions/ULWDkxw0CdLMfd2yx3V7JkvzTGhynPwstqCrqeP9.png",
-        },
-      ],
-      languages: [
-        {
-          name: "Turkish",
-        },
-        {
-          name: "English",
-        },
-      ],
-      found_year: 2007,
-      global_rank: 600,
-      name: "Istanbul Aydin University",
-      description: "\u003Cp\u003EIstanbul Aydin University\u003C/p\u003E",
-    },
-    faqs: [
-      {
-        id: 17,
-        question:
-          "Istanbul Aydin University Accreditations and Their Importance",
-        answer:
-          "\u003Cp\u003EIstanbul Aydin University Accreditations and Their Importance\u003C/p\u003E",
-      },
-      {
-        id: 18,
-        question: "The importance of academic accreditation",
-        answer:
-          "\u003Cp\u003EThe importance of academic accreditation\u003C/p\u003E",
-      },
-      {
-        id: 19,
-        question: "Istanbul Aydin University Confessions",
-        answer:
-          "\u003Cp\u003EIstanbul Aydin University Confessions\u003C/p\u003E",
-      },
-    ],
-    study_programs: [
-      {
-        level_id: 3,
-        level_name: "Bachelor",
-        programs: [
-          {
-            id: 29,
-            specialization_id: 5,
-            specialization_name: "Medicine",
-            study_years: 6,
-            study_language: "en",
-            fees: "22000.00",
-            annual_fees: 4000,
-            has_grant: null,
-            old_fees: null,
-          },
-          {
-            id: 30,
-            specialization_id: 6,
-            specialization_name: "Engineering",
-            study_years: 4,
-            study_language: "en , tu",
-            fees: "22000.00",
-            annual_fees: 4000,
-            has_grant: null,
-            old_fees: null,
-          },
-          {
-            id: 31,
-            specialization_id: 9,
-            specialization_name: "Business Administration",
-            study_years: 4,
-            study_language: "en , tu",
-            fees: "22000.00",
-            annual_fees: 4000,
-            has_grant: null,
-            old_fees: null,
-          },
-          {
-            id: 32,
-            specialization_id: 10,
-            specialization_name: "Economics",
-            study_years: 4,
-            study_language: "en , tu",
-            fees: "22000.00",
-            annual_fees: 4000,
-            has_grant: null,
-            old_fees: null,
-          },
-        ],
-      },
-      {
-        level_id: 4,
-        level_name: "Master",
-        programs: [
-          {
-            id: 33,
-            specialization_id: 9,
-            specialization_name: "Business Administration",
-            study_years: 4,
-            study_language: "en",
-            fees: "22000.00",
-            annual_fees: 4000,
-            has_grant: null,
-            old_fees: null,
-          },
-          {
-            id: 34,
-            specialization_id: 6,
-            specialization_name: "Engineering",
-            study_years: 2,
-            study_language: "en",
-            fees: "22000.00",
-            annual_fees: 4000,
-            has_grant: null,
-            old_fees: null,
-          },
-          {
-            id: 35,
-            specialization_id: 5,
-            specialization_name: "Medicine",
-            study_years: 4,
-            study_language: "en",
-            fees: "22000.00",
-            annual_fees: 4000,
-            has_grant: null,
-            old_fees: null,
-          },
-        ],
-      },
-      {
-        level_id: 8,
-        level_name: "Diploma (2 years)",
-        programs: [
-          {
-            id: 36,
-            specialization_id: 5,
-            specialization_name: "Medicine",
-            study_years: 4,
-            study_language: "en",
-            fees: "22000.00",
-            annual_fees: 4000,
-            has_grant: null,
-            old_fees: null,
-          },
-          {
-            id: 37,
-            specialization_id: 6,
-            specialization_name: "Engineering",
-            study_years: 4,
-            study_language: "en",
-            fees: "20000.00",
-            annual_fees: 4000,
-            has_grant: null,
-            old_fees: null,
-          },
-          {
-            id: 38,
-            specialization_id: 9,
-            specialization_name: "Business Administration",
-            study_years: 4,
-            study_language: "tu",
-            fees: "22000.00",
-            annual_fees: 4000,
-            has_grant: null,
-            old_fees: null,
-          },
-        ],
-      },
-    ],
-    conditions: [
-      {
-        level_id: 3,
-        level_name: "Bachelor",
-        conditions: [
-          {
-            id: 31,
-            conditions:
-              "\u003Cp\u003ELanguage Requirements and Application for Study Programs\u003Cbr /\u003E\r\nAccepted Language Certificates\u003Cbr /\u003E\r\n- TOEFL (IBT 79) or PTE (55) or IAU English Proficiency Examination (B2) score.\u003Cbr /\u003E\r\n- Turkish Proficiency Certificate (T&Ouml;MER B1).\u003C/p\u003E\r\n\r\n\u003Cp\u003EFor Pharmacy, Dentistry and Medicine programs, T&Ouml;MER C1 certificate is required.\u003C/p\u003E\r\n\r\n\u003Cp\u003ERequired Documents:\u003Cbr /\u003E\r\n1. If the student has Turkish citizenship:\u003Cbr /\u003E\r\n- Copy of foreign passport and identity record (vukuatlı n&uuml;fus kayıt &ouml;rneği) from the Population Directorate or name equivalence certificate (isim denlik belgesi) from E-devlet.\u003C/p\u003E\r\n\r\n\u003Cp\u003E2. The following documents must be submitted and stamped and translated into English/Turkish:\u003Cbr /\u003E\r\n- Official transcript and diploma.\u003C/p\u003E\r\n\r\n\u003Cp\u003E3. For students studying under the British Cambridge system:\u003Cbr /\u003E\r\nFor medical specialties:\u003Cbr /\u003E\r\nAt least two full A-level courses in Biology and Chemistry.\u003Cbr /\u003E\r\nFor Engineering majors:\u003C/p\u003E\r\n\r\n\u003Cp\u003EAt least two full A-level courses in Physics and Mathematics.\u003C/p\u003E\r\n\r\n\u003Cp\u003E4. Documents must be in pdf format.\u003C/p\u003E\r\n\r\n\u003Cp\u003EEnsure that all required documents are submitted correctly and in the specified formats.\u003C/p\u003E",
-          },
-          {
-            id: 33,
-            conditions:
-              "\u003Cp\u003ELanguage Requirements and Application for Study Programs\u003Cbr /\u003E\r\nAccepted Language Certificates\u003Cbr /\u003E\r\n- TOEFL (IBT 79) or PTE (55) or IAU English Proficiency Examination (B2) score.\u003Cbr /\u003E\r\n- Turkish Proficiency Certificate (T&Ouml;MER B1).\u003C/p\u003E\r\n\r\n\u003Cp\u003EFor Pharmacy, Dentistry and Medicine programs, T&Ouml;MER C1 certificate is required.\u003C/p\u003E\r\n\r\n\u003Cp\u003ERequired Documents:\u003Cbr /\u003E\r\n1. If the student has Turkish citizenship:\u003Cbr /\u003E\r\n- Copy of foreign passport and identity record (vukuatlı n&uuml;fus kayıt &ouml;rneği) from the Population Directorate or name equivalence certificate (isim denlik belgesi) from E-devlet.\u003C/p\u003E\r\n\r\n\u003Cp\u003E2. The following documents must be submitted and stamped and translated into English/Turkish:\u003Cbr /\u003E\r\n- Official transcript and diploma.\u003C/p\u003E\r\n\r\n\u003Cp\u003E3. For students studying under the British Cambridge system:\u003Cbr /\u003E\r\nFor medical specialties:\u003Cbr /\u003E\r\nAt least two full A-level courses in Biology and Chemistry.\u003Cbr /\u003E\r\nFor Engineering majors:\u003C/p\u003E\r\n\r\n\u003Cp\u003EAt least two full A-level courses in Physics and Mathematics.\u003C/p\u003E\r\n\r\n\u003Cp\u003E4. Documents must be in pdf format.\u003C/p\u003E\r\n\r\n\u003Cp\u003EEnsure that all required documents are submitted correctly and in the specified formats.\u003C/p\u003E",
-          },
-        ],
-      },
-      {
-        level_id: 4,
-        level_name: "Master",
-        conditions: [
-          {
-            id: 32,
-            conditions:
-              "\u003Cp\u003ELanguage Requirements and Application for Study Programs\u003Cbr /\u003E\r\nAccepted Language Certificates\u003Cbr /\u003E\r\n- TOEFL (IBT 79) or PTE (55) or IAU English Proficiency Examination (B2) score.\u003Cbr /\u003E\r\n- Turkish Proficiency Certificate (T&Ouml;MER B1).\u003C/p\u003E\r\n\r\n\u003Cp\u003EFor Pharmacy, Dentistry and Medicine programs, T&Ouml;MER C1 certificate is required.\u003C/p\u003E\r\n\r\n\u003Cp\u003ERequired Documents:\u003Cbr /\u003E\r\n1. If the student has Turkish citizenship:\u003Cbr /\u003E\r\n- Copy of foreign passport and identity record (vukuatlı n&uuml;fus kayıt &ouml;rneği) from the Population Directorate or name equivalence certificate (isim denlik belgesi) from E-devlet.\u003C/p\u003E\r\n\r\n\u003Cp\u003E2. The following documents must be submitted and stamped and translated into English/Turkish:\u003Cbr /\u003E\r\n- Official transcript and diploma.\u003C/p\u003E\r\n\r\n\u003Cp\u003E3. For students studying under the British Cambridge system:\u003Cbr /\u003E\r\nFor medical specialties:\u003Cbr /\u003E\r\nAt least two full A-level courses in Biology and Chemistry.\u003Cbr /\u003E\r\nFor Engineering majors:\u003C/p\u003E\r\n\r\n\u003Cp\u003EAt least two full A-level courses in Physics and Mathematics.\u003C/p\u003E\r\n\r\n\u003Cp\u003E4. Documents must be in pdf format.\u003C/p\u003E\r\n\r\n\u003Cp\u003EEnsure that all required documents are submitted correctly and in the specified formats.\u003C/p\u003E",
-          },
-          {
-            id: 34,
-            conditions:
-              "\u003Cp\u003ELanguage Requirements and Application for Study Programs\u003Cbr /\u003E\r\nAccepted Language Certificates\u003Cbr /\u003E\r\n- TOEFL (IBT 79) or PTE (55) or IAU English Proficiency Examination (B2) score.\u003Cbr /\u003E\r\n- Turkish Proficiency Certificate (T&Ouml;MER B1).\u003C/p\u003E\r\n\r\n\u003Cp\u003EFor Pharmacy, Dentistry and Medicine programs, T&Ouml;MER C1 certificate is required.\u003C/p\u003E\r\n\r\n\u003Cp\u003ERequired Documents:\u003Cbr /\u003E\r\n1. If the student has Turkish citizenship:\u003Cbr /\u003E\r\n- Copy of foreign passport and identity record (vukuatlı n&uuml;fus kayıt &ouml;rneği) from the Population Directorate or name equivalence certificate (isim denlik belgesi) from E-devlet.\u003C/p\u003E\r\n\r\n\u003Cp\u003E2. The following documents must be submitted and stamped and translated into English/Turkish:\u003Cbr /\u003E\r\n- Official transcript and diploma.\u003C/p\u003E\r\n\r\n\u003Cp\u003E3. For students studying under the British Cambridge system:\u003Cbr /\u003E\r\nFor medical specialties:\u003Cbr /\u003E\r\nAt least two full A-level courses in Biology and Chemistry.\u003Cbr /\u003E\r\nFor Engineering majors:\u003C/p\u003E\r\n\r\n\u003Cp\u003EAt least two full A-level courses in Physics and Mathematics.\u003C/p\u003E\r\n\r\n\u003Cp\u003E4. Documents must be in pdf format.\u003C/p\u003E\r\n\r\n\u003Cp\u003EEnsure that all required documents are submitted correctly and in the specified formats.\u003C/p\u003E",
-          },
-        ],
-      },
-      {
-        level_id: 7,
-        level_name: "PhD",
-        conditions: [
-          {
-            id: 35,
-            conditions:
-              "\u003Cp\u003ELanguage Requirements and Application for Study Programs\u003Cbr /\u003E\r\nAccepted Language Certificates\u003Cbr /\u003E\r\n- TOEFL (IBT 79) or PTE (55) or IAU English Proficiency Examination (B2) score.\u003Cbr /\u003E\r\n- Turkish Proficiency Certificate (T&Ouml;MER B1).\u003C/p\u003E\r\n\r\n\u003Cp\u003EFor Pharmacy, Dentistry and Medicine programs, T&Ouml;MER C1 certificate is required.\u003C/p\u003E\r\n\r\n\u003Cp\u003ERequired Documents:\u003Cbr /\u003E\r\n1. If the student has Turkish citizenship:\u003Cbr /\u003E\r\n- Copy of foreign passport and identity record (vukuatlı n&uuml;fus kayıt &ouml;rneği) from the Population Directorate or name equivalence certificate (isim denlik belgesi) from E-devlet.\u003C/p\u003E\r\n\r\n\u003Cp\u003E2. The following documents must be submitted and stamped and translated into English/Turkish:\u003Cbr /\u003E\r\n- Official transcript and diploma.\u003C/p\u003E\r\n\r\n\u003Cp\u003E3. For students studying under the British Cambridge system:\u003Cbr /\u003E\r\nFor medical specialties:\u003Cbr /\u003E\r\nAt least two full A-level courses in Biology and Chemistry.\u003Cbr /\u003E\r\nFor Engineering majors:\u003C/p\u003E\r\n\r\n\u003Cp\u003EAt least two full A-level courses in Physics and Mathematics.\u003C/p\u003E\r\n\r\n\u003Cp\u003E4. Documents must be in pdf format.\u003C/p\u003E\r\n\r\n\u003Cp\u003EEnsure that all required documents are submitted correctly and in the specified formats.\u003C/p\u003E",
-          },
-        ],
-      },
-      {
-        level_id: 8,
-        level_name: "Diploma (2 years)",
-        conditions: [
-          {
-            id: 36,
-            conditions:
-              "\u003Cp\u003ELanguage Requirements and Application for Study Programs\u003Cbr /\u003E\r\nAccepted Language Certificates\u003Cbr /\u003E\r\n- TOEFL (IBT 79) or PTE (55) or IAU English Proficiency Examination (B2) score.\u003Cbr /\u003E\r\n- Turkish Proficiency Certificate (T&Ouml;MER B1).\u003C/p\u003E\r\n\r\n\u003Cp\u003EFor Pharmacy, Dentistry and Medicine programs, T&Ouml;MER C1 certificate is required.\u003C/p\u003E\r\n\r\n\u003Cp\u003ERequired Documents:\u003Cbr /\u003E\r\n1. If the student has Turkish citizenship:\u003Cbr /\u003E\r\n- Copy of foreign passport and identity record (vukuatlı n&uuml;fus kayıt &ouml;rneği) from the Population Directorate or name equivalence certificate (isim denlik belgesi) from E-devlet.\u003C/p\u003E\r\n\r\n\u003Cp\u003E2. The following documents must be submitted and stamped and translated into English/Turkish:\u003Cbr /\u003E\r\n- Official transcript and diploma.\u003C/p\u003E\r\n\r\n\u003Cp\u003E3. For students studying under the British Cambridge system:\u003Cbr /\u003E\r\nFor medical specialties:\u003Cbr /\u003E\r\nAt least two full A-level courses in Biology and Chemistry.\u003Cbr /\u003E\r\nFor Engineering majors:\u003C/p\u003E\r\n\r\n\u003Cp\u003EAt least two full A-level courses in Physics and Mathematics.\u003C/p\u003E\r\n\r\n\u003Cp\u003E4. Documents must be in pdf format.\u003C/p\u003E\r\n\r\n\u003Cp\u003EEnsure that all required documents are submitted correctly and in the specified formats.\u003C/p\u003E",
-          },
-        ],
-      },
-    ],
-    registration_dates: [
-      {
-        level_id: 3,
-        level_name: "Bachelor",
-        conditions: [
-          {
-            id: 31,
-            registration_dates:
-              "\u003Cp\u003EEnsure that all required documents are submitted correctly and in the specified formats.\u003C/p\u003E",
-          },
-          {
-            id: 33,
-            registration_dates:
-              "\u003Cp\u003ELanguage Requirements and Application for Study Programs\u003Cbr /\u003E\r\nAccepted Language Certificates\u003Cbr /\u003E\r\n- TOEFL (IBT 79) or PTE (55) or IAU English Proficiency Examination (B2) score.\u003Cbr /\u003E\r\n- Turkish Proficiency Certificate (T&Ouml;MER B1).\u003C/p\u003E\r\n\r\n\u003Cp\u003EFor Pharmacy, Dentistry and Medicine programs, T&Ouml;MER C1 certificate is required.\u003C/p\u003E\r\n\r\n\u003Cp\u003ERequired Documents:\u003Cbr /\u003E\r\n1. If the student has Turkish citizenship:\u003Cbr /\u003E\r\n- Copy of foreign passport and identity record (vukuatlı n&uuml;fus kayıt &ouml;rneği) from the Population Directorate or name equivalence certificate (isim denlik belgesi) from E-devlet.\u003C/p\u003E\r\n\r\n\u003Cp\u003E2. The following documents must be submitted and stamped and translated into English/Turkish:\u003Cbr /\u003E\r\n- Official transcript and diploma.\u003C/p\u003E\r\n\r\n\u003Cp\u003E3. For students studying under the British Cambridge system:\u003Cbr /\u003E\r\nFor medical specialties:\u003Cbr /\u003E\r\nAt least two full A-level courses in Biology and Chemistry.\u003Cbr /\u003E\r\nFor Engineering majors:\u003C/p\u003E\r\n\r\n\u003Cp\u003EAt least two full A-level courses in Physics and Mathematics.\u003C/p\u003E\r\n\r\n\u003Cp\u003E4. Documents must be in pdf format.\u003C/p\u003E\r\n\r\n\u003Cp\u003EEnsure that all required documents are submitted correctly and in the specified formats.\u003C/p\u003E",
-          },
-        ],
-      },
-      {
-        level_id: 4,
-        level_name: "Master",
-        conditions: [
-          {
-            id: 32,
-            registration_dates:
-              "\u003Cp\u003EEnsure that all required documents are submitted correctly and in the specified formats.\u003C/p\u003E",
-          },
-          {
-            id: 34,
-            registration_dates:
-              "\u003Cp\u003ELanguage Requirements and Application for Study Programs\u003Cbr /\u003E\r\nAccepted Language Certificates\u003Cbr /\u003E\r\n- TOEFL (IBT 79) or PTE (55) or IAU English Proficiency Examination (B2) score.\u003Cbr /\u003E\r\n- Turkish Proficiency Certificate (T&Ouml;MER B1).\u003C/p\u003E\r\n\r\n\u003Cp\u003EFor Pharmacy, Dentistry and Medicine programs, T&Ouml;MER C1 certificate is required.\u003C/p\u003E\r\n\r\n\u003Cp\u003ERequired Documents:\u003Cbr /\u003E\r\n1. If the student has Turkish citizenship:\u003Cbr /\u003E\r\n- Copy of foreign passport and identity record (vukuatlı n&uuml;fus kayıt &ouml;rneği) from the Population Directorate or name equivalence certificate (isim denlik belgesi) from E-devlet.\u003C/p\u003E\r\n\r\n\u003Cp\u003E2. The following documents must be submitted and stamped and translated into English/Turkish:\u003Cbr /\u003E\r\n- Official transcript and diploma.\u003C/p\u003E\r\n\r\n\u003Cp\u003E3. For students studying under the British Cambridge system:\u003Cbr /\u003E\r\nFor medical specialties:\u003Cbr /\u003E\r\nAt least two full A-level courses in Biology and Chemistry.\u003Cbr /\u003E\r\nFor Engineering majors:\u003C/p\u003E\r\n\r\n\u003Cp\u003EAt least two full A-level courses in Physics and Mathematics.\u003C/p\u003E\r\n\r\n\u003Cp\u003E4. Documents must be in pdf format.\u003C/p\u003E\r\n\r\n\u003Cp\u003EEnsure that all required documents are submitted correctly and in the specified formats.\u003C/p\u003E",
-          },
-        ],
-      },
-      {
-        level_id: 7,
-        level_name: "PhD",
-        conditions: [
-          {
-            id: 35,
-            registration_dates:
-              "\u003Cp\u003EEnsure that all required documents are submitted correctly and in the specified formats.\u003C/p\u003E",
-          },
-        ],
-      },
-      {
-        level_id: 8,
-        level_name: "Diploma (2 years)",
-        conditions: [
-          {
-            id: 36,
-            registration_dates:
-              "\u003Cp\u003EEnsure that all required documents are submitted correctly and in the specified formats.\u003C/p\u003E",
-          },
-        ],
-      },
-    ],
-    student_housings: [
-      {
-        id: 20,
-        capacity: 3000,
-        type: "female_housing",
-        price: "1700.00",
-        city: "1",
-        beds: 265,
-        meals: 3,
-        internet: 2000,
-        name: "Istanbul Aydin University Residence",
-        description:
-          "\u003Cp\u003EIstanbul Aydin University Residence\u003C/p\u003E",
-        images: [
-          "http://admin.itqaneducation.com/storage/universities/8eX3IfTROD0Oosf8tsN5KbFO268PEK0kFPtJcQHG.webp",
-        ],
-      },
-      {
-        id: 22,
-        capacity: 260,
-        type: "female_housing",
-        price: "1700.00",
-        city: "1",
-        beds: 260,
-        meals: 3,
-        internet: 2000,
-        name: "City Residence",
-        description: "\u003Cp\u003ECity Residence\u003C/p\u003E",
-        images: [
-          "http://admin.itqaneducation.com/storage/universities/1wVzC3C04v1fZ0Dn3APXLsrnytaHGYqom0jK2NjM.webp",
-        ],
-      },
-    ],
-    specifications: {
-      "0": {
-        id: 379,
-        name: "Istanbul Aydin University",
-      },
-      "3": {
-        id: 382,
-        name: "Istanbul Aydin University",
-      },
-      "6": {
-        id: 385,
-        name: "Istanbul Aydin University",
-      },
-      "9": {
-        id: 388,
-        name: "Istanbul Aydin University",
-      },
-    },
-  };
+  let data: any = null;
   const response = await getData(`/universities/${id}/details`, lng);
   data = response?.data;
 
@@ -475,135 +288,17 @@ export default async function UniversityInfo({
       university,
       faqs,
       study_programs,
-      student_housings,
-      specifications,
+      student_housings
     } = data;
     return (
-      <div className="container mx-auto p-4 text-start text-base space-y-4 text-gray-500">
-        <Card className="flex flex-col md:flex-row md:h-96 rounded-xl shadow-none border-none hover:shadow-md">
-          <CardHeader className="md:w-2/4 p-5 py-12 order-2 md:order-1">
-            <div className="flex gap-4">
-              <div>
-                <Image
-                  src={university.logo.split("http://").join("https://")}
-                  alt=""
-                  width={500}
-                  height={500}
-                  className="size-20 rounded-xl"
-                />
-              </div>
-              <div className="space-y-2 text-gray-500">
-                <h1 className="text-lg font-[600]">{university.name}</h1>
-                <p className="text-sm text-primary">turkish - jkn</p>
-                <span className="text-sm text-secondary">komkm</span>
-              </div>
-            </div>
-            <div className="text-gray-500 py-4">
-              <p
-                className="line-clamp-4"
-                dangerouslySetInnerHTML={{
-                  __html: university.description.slice(0, 300),
-                }}
-              ></p>
-            </div>
-            <div className="text-sm flex text-center gap-4 justify-center">
-              <div className="bg-gray-50 py-3 px-5 space-y-2 rounded-lg">
-                <h2 className="text-primary text-base">
-                  {t("university.globalRank")}
-                </h2>
-                <p className="text-secondary">{university.global_rank}</p>
-              </div>
-              <div className="bg-gray-50 py-3 px-5 space-y-2 rounded-lg">
-                <h2 className="text-primary text-base">
-                  {t("university.localRank")}
-                </h2>
-                <p className="text-secondary">{university.local_rate}</p>
-              </div>
-              <div className="bg-gray-50 py-3 px-5 space-y-2 rounded-lg">
-                <h2 className="text-primary text-base">
-                  {t("university.studentsCount")}
-                </h2>
-                <p className="text-secondary">{university.student_count}</p>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent className="md:w-2/4 p-4 md:order-2">
-            <Image
-              src={university.image.split("http://").join("https://")}
-              alt=""
-              width={500}
-              height={500}
-              className="size-full rounded-xl"
-            />
-          </CardContent>
-        </Card>
-
-        <div className="bg-white space-y-7 text-gray-500">
-          <Card className="border-none shadow-none">
-            <CardHeader>
-              <h1 className="text-lg md:text-xl font-bold my-2">
-                {t("university.video")} {university.name}
-              </h1>
-            </CardHeader>
-              {university.video != null && (
-            <CardContent className="h-[30rem]">
-               
-                <iframe
-                  className="size-full rounded-xl"
-                  width={1280}
-                  src={`https://www.youtube.com/embed/${
-                    university.video.split("=")[1]
-                  }`}
-                  frameBorder={0}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
-            </CardContent>
-              )}
-          </Card>
-          <div className="py-10">
-            <h1 className="text-lg md:text-xl font-bold px-4">
-              {t("university.photo")}
-            </h1>
-          </div>
-          {university.photo_album.length > 0 && (
-            <div className="flex items-stretch gap-4 h-[30rem] rounded-xl px-4">
-              <div className="flex flex-col w-1/3 gap-y-2 -mt-1">
-                <img
-                  src={
-                    university.photo_album.length > 0 &&
-                    university.photo_album[0].split("http://").join("https://")
-                  }
-                  alt="photo_album image 1"
-                  className="w-full h-1/2 object-cover rounded-2xl"
-                />
-                <img
-                  src={
-                    university.photo_album.length >= 2 &&
-                    university.photo_album[1].university.image
-                      .split("http://")
-                      .join("https://")
-                  }
-                  alt="photo_album image 2"
-                  className="w-full h-1/2 object-cover rounded-2xl"
-                />
-              </div>
-
-              <div className="w-2/3">
-                <img
-                  src={
-                    university.photo_album.length >= 3 &&
-                    university.photo_album[2].split("http://").join("https://")
-                  }
-                  alt="photo_album image 3"
-                  className="h-full w-full object-cover rounded-2xl"
-                />
-              </div>
-            </div>
-          )}
-        </div>
-
+      <div className="text-start text-base text-gray-500">
+        <section className="my-12">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-500 text-center">
+            {university.name}
+          </h1>
+        </section>
+        <CardUniOne university={university} lng={lng} />
+        <CardVideo university={university} lng={lng} />
         {/* <div className="space-y-7 text-gray-500 mt-10 py-10">
           <h1 className="text-lg md:text-xl font-bold px-4">
             {t("university.features")}
@@ -621,179 +316,26 @@ export default async function UniversityInfo({
             </Card>
           </div>
         </div> */}
+        {university && <CardConfessions university={university} lng={lng} />}
+        {university && <CardRank university={university} lng={lng} />}
+        {study_programs && study_programs.length > 0 && (
+          <CardTableData study_programs={data.study_programs} lng={lng} />
+        )}
+        {university && <CardLanguage university={university} lng={lng} />}
 
-        <Card className="border-none shadow-none rounded-none bg-primary py-10">
-          <CardHeader>
-            <h1 className="text-white text-lg md:text-xl font-bold">
-              {university.name}
-            </h1>
-          </CardHeader>
-          <CardContent className="text-center grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-            <Card className="border-none shadow-none group">
-              <CardHeader className="flex justify-center items-center">
-                <Image
-                  src={img1}
-                  alt=""
-                  width={500}
-                  height={500}
-                  className="size-28 group-hover:scale-110 duration-300 transition-all"
-                />
-              </CardHeader>
-              <CardContent>
-                <h1 className="text-lg md:text-xl font-bold text-primary">
-                  {t("university.globalRank")}
-                </h1>
-              </CardContent>
-              <CardFooter className="flex justify-center border-t py-3">
-                <p>{university.global_rank}</p>
-              </CardFooter>
-            </Card>
-            <Card className="border-none shadow-none group">
-              <CardHeader className="flex justify-center items-center">
-                <Image
-                  src={img2}
-                  alt=""
-                  width={500}
-                  height={500}
-                  className="size-28 group-hover:scale-110 duration-300 transition-all"
-                />
-              </CardHeader>
-              <CardContent>
-                <h1 className="text-lg md:text-xl font-bold text-primary">
-                  {t("university.localRank")}
-                </h1>
-              </CardContent>
-              <CardFooter className="flex justify-center border-t py-3">
-                <p>{university.local_rate}</p>
-              </CardFooter>
-            </Card>
-            <Card className="border-none shadow-none group">
-              <CardHeader className="flex justify-center items-center">
-                <Image
-                  src={img4}
-                  alt=""
-                  width={500}
-                  height={500}
-                  className="size-28 group-hover:scale-110 duration-300 transition-all"
-                />
-              </CardHeader>
-              <CardContent>
-                <h1 className="text-lg md:text-xl font-bold text-primary">
-                  {t("university.studentsCount")}
-                </h1>
-              </CardContent>
-              <CardFooter className="flex justify-center border-t py-3">
-                <p>{university.student_count}</p>
-              </CardFooter>
-            </Card>
-            <Card className="border-none shadow-none group">
-              <CardHeader className="flex justify-center items-center">
-                <Image
-                  src={img3}
-                  alt=""
-                  width={500}
-                  height={500}
-                  className="size-28 group-hover:scale-110 duration-300 transition-all"
-                />
-              </CardHeader>
-              <CardContent>
-                <h1 className="text-lg md:text-xl font-bold text-primary">
-                  {t("university.staff")}
-                </h1>
-              </CardContent>
-              <CardFooter className="flex justify-center border-t py-3">
-                <p>{university.teachers_count}</p>
-              </CardFooter>
-            </Card>
-            <Card className="border-none shadow-none group">
-              <CardHeader className="flex justify-center items-center">
-                <Image
-                  src={img5}
-                  alt=""
-                  width={500}
-                  height={500}
-                  className="size-28 group-hover:scale-110 duration-300 transition-all"
-                />
-              </CardHeader>
-              <CardContent>
-                <h1 className="text-lg md:text-xl font-bold text-primary">
-                  {t("university.nationalityCount")}
-                </h1>
-              </CardContent>
-              <CardFooter className="flex justify-center border-t py-3">
-                <p>{university.national_count}</p>
-              </CardFooter>
-            </Card>
-          </CardContent>
-        </Card>
-
-        <div className="my-8 lg:py-24 px-4 bg-white">
-          <h1 className="text-2xl font-bold mb-4">{t("tabs.studyPrograms")}</h1>
-          <div className="flex justify-between items-center flex-col lg:flex-row">
-            <StudyProgramsTabs studyPrograms={data.study_programs} lng={lng} />
-            <div className="lg:w-1/4 w-full">
-              <FilterSelect col lng={lng} />
-            </div>
-          </div>
-        </div>
-
-        <div className="px-4 py-10 mt-10 rounded-md md:text-lg md:-space-y-8">
-          <h1 className="text-lg md:text-xl font-bold">
-            {t("university.languagesStudy")} {university.name}
-          </h1>
-          <div className="flex flex-col lg:flex-row justify-between">
-            <div className="flex flex-col justify-center space-y-6">
-              <p className="text-primary">
-                {t("university.languagesStudyAvailable")} {university.name}{" "}
-                {t("university.languagesStudyMoreLanguages")}
-              </p>
-              <ul className="custom-bullet">
-                {university.languages &&
-                  university.languages.length > 0 &&
-                  university.languages.map((language: any, index: number) => (
-                    <li key={index}>{language.name}</li>
-                  ))}
-              </ul>
-            </div>
-            <div>
-              <Image
-                className="size-full hover:scale-105 duration-300 transition-all"
-                src={imgChat}
-                width={400}
-                height={400}
-                alt="chat"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="px-4 py-10 mt-10 bg-white rounded-md">
-          <div
-            className="prose prose-h3:text-primary prose-h1:text-primary prose-h2:text-primary prose-h4:text-primary prose-h3:py-0"
-            dangerouslySetInnerHTML={{ __html: university?.description }}
-          ></div>
-        </div>
-        {faqs && <div className="px-4 py-10 mt-10 space-y-6">
-          <h1 className="text-lg md:text-xl font-bold">{t("university.faqs")}</h1>
-          <div className="lg:w-3/5">
-          <FaqsComponent
-            lng={lng}
-            studyPrograms={study_programs}
-            studentHousings={student_housings}
+        {data && <CardConditionsAndRegistration data={data} lng={lng} />}
+        {university.description && (
+          <CardDetails university={university} lng={lng} />
+        )}
+        {faqs && student_housings && study_programs && (
+          <CardFaqs
             faqs={faqs}
+            student_housings={student_housings}
+            study_programs={study_programs}
+            lng={lng}
           />
-          </div>
-        </div>}
-        <div className="px-4 py-10 mt-10 rounded-md">
-          <h1 className="text-lg md:text-xl font-bold mb-4">
-            {t("university.studentHousings")}
-          </h1>
-          <div className="grid gap-4">
-            {student_housings && student_housings?.length > 0 && (
-              <HousingList t={tHousing} housings={student_housings} />
-            )}
-          </div>
-        </div>
+        )}
+        <CardHouse student_housings={student_housings} lng={lng} />
       </div>
     );
   } else

@@ -64,6 +64,10 @@ interface Resources
     next: string;
     previous: string;
   };
+  blogDetails: {
+    title: string;
+    Published: string;
+  };
 }
 
 export default Resources;

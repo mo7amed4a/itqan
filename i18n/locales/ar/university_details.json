@@ -14,7 +14,8 @@
     "languagesStudy": "لغات التدريس في",
     "languagesStudyAvailable": "تتيج",
     "languagesStudyMoreLanguages": "فرصة الدراسة بالعديد من اللغات",
-    "faqs": "سؤال وجواب عن الجامعة"
+    "faqs": "سؤال وجواب عن الجامعة",
+    "confessions": "الاعترافات الحاصلة عليها الجامعة"
   },
   "tabs": {
     "studyPrograms": "التخصصات الدراسية",
@@ -44,5 +45,10 @@
   "specifications": {
     "title": "مواصفات الجامعة"
   },
+  "description": "تفاصيل اكثر عن ",
+  "readMore": "عرض المزيد",
+  "readLess": "عرض اقل",
+  "howTo": "كيفية التقديم في ",
+  "Time": "مواعيد التسجيل في ",
   "booking_now": "سجل الان"
 }

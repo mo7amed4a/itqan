@@ -46,7 +46,7 @@ export function CustomCarousel({
         className="w-full px-4"
         opts={{ loop: true, direction: localActive === "ar" ? "rtl" : "ltr" }}
       >
-        <CarouselContent>{children}</CarouselContent>
+        <CarouselContent className="gap-4 [&>*]:!ms-2">{children}</CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
