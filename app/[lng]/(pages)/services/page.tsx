@@ -38,11 +38,11 @@ export default async function Page({
   const dataHousings = res?.data;
 
   return (
-    <div className="mt-10 space-y-10 text-start">
+    <div className="mt-10 text-start">
       <h1 className="text-center text-xl md:text-2xl font-bold text-gray-500 capitalize">
         {t("titlePage")}
       </h1>
-      <section className="container mx-auto  px-4">
+      <section className="container mx-auto  px-4 py-10">
         <div className="flex flex-col space-y-7 mt-10">
           <div>
             <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base">
@@ -144,20 +144,22 @@ export default async function Page({
           )}
         </div>
       </section>
-      <section>
-        <div className="bg-white h-96 flex flex-col space-y-10 justify-center items-center  text-center px-7">
-          <h1 className="text-lg md:text-2xl font-bold text-gray-500">
+      <section className="pb-10">
+        <div className="bg-white h-96 flex flex-col space-y-10 md:space-y-20 justify-center items-center  text-center px-7">
+          <h1 className="text-lg md:text-3xl font-bold text-gray-500">
             {t("sectionText")}
           </h1>
-          <Button
-            size="lg"
-            className="bg-primary text-white hover:bg-white hover:text-primary"
-          >
-            {t("sectionButton")}
-          </Button>
+          <div className="w-full">
+            <Button
+              size="xl"
+              className="bg-primary text-white hover:bg-secondary lg:w-96 hover:scale-x-100"
+            >
+              {t("sectionButton")}
+            </Button>
+          </div>
         </div>
       </section>
-      <section className="container mx-auto  px-4">
+      <section className="container mx-auto  px-4 pb-10">
         <h1 className="my-10 text-lg md:text-2xl font-bold text-gray-500">
           {t("post_admission_services")}
         </h1>
@@ -177,21 +179,21 @@ export default async function Page({
                         .split("http://")
                         .join("https://") || ""
                     }
-                    className="w-full h-64 md:w-32 md:h-28 group-hover:scale-105 duration-300 transition-all"
+                    className="w-full h-64 md:w-1/6 md:h-28 group-hover:scale-105 duration-300 transition-all"
                     alt="alt"
                     width={700}
                     height={700}
                   />
                 ) : (
-                  <div className="bg-gray-200 w-full h-64 md:w-32 md:h-28 rounded-md group-hover:scale-105 duration-300 transition-all"></div>
+                  <div className="bg-gray-200 w-full h-64 md:!w-1/6 md:h-28 rounded-md group-hover:scale-105 duration-300 transition-all"></div>
                 )}
-                <div className="space-y-2 py-8">
+                <div className="space-y-2 py-8 w-5/6">
                   <h3 className="text-lg md:text-xl font-bold group-hover:text-primary">
                     {housing.name}
                   </h3>
                   <p
-                    dangerouslySetInnerHTML={{ __html: housing.description }}
-                    className="text-sm md:text-base  text-gray-500 prose lg:prose-xl"
+                    dangerouslySetInnerHTML={{ __html: housing.description.slice(0, 160) }}
+                    className="text-sm md:text-base line-clamp-2 text-gray-500"
                   ></p>
                 </div>
               </div>
@@ -204,8 +206,8 @@ export default async function Page({
             {t("sectionText2")}
           </h1>
           <Button
-            size="lg"
-            className="bg-secondary text-white hover:bg-white hover:text-red-500"
+            size="xl"
+            className="bg-secondary text-white md:w-96 hover:!scale-x-100"
           >
             {t("sectionButton")}
           </Button>
@@ -219,7 +221,7 @@ export default async function Page({
         />
       </section>
 
-      <section className="bg-white py-10">
+      <section className="bg-white pb-10 pt-16">
         <div>
           <h1 className="text-lg md:text-3xl text-gray-500 font-bold text-center">
             {t("contactUs.title")}
@@ -227,7 +229,7 @@ export default async function Page({
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 py-10 container mx-auto px-4">
           <div>
-            <div className="hover:shadow-md">
+            <div className="hover:shadow-md bg-gray-50 pb-8 rounded-xl [&>div>h2]:hidden">
               <FormBooking lng={lng} />
             </div>
           </div>
