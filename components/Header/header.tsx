@@ -51,7 +51,7 @@ export default async function HeaderApp({ locale }: { locale: string }) {
             <div>
               <LinkApp href={`/${locale}/followup_request`} lng={locale} >
                   <Button
-                  className="bg-secondary hover:!scale-x-100 text-white border border-white px-4 py-0 text-[10px] md:px-2 md:text-base"
+                  className="text-wrap bg-secondary hover:!scale-x-100 text-white border border-white px-4 py-0 text-[10px] md:px-2 md:text-base"
                 >
                   {t("follow_up_on_the_registration_request")}
                 </Button>

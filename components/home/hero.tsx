@@ -17,7 +17,7 @@ export default async function HeroSection({
       className={`bg-hero p-6 ${locale === "en" && "transform -scale-x-100"}`}
     >
       <div
-        className={`h-[85vh] max-w-[85rem] mx-auto flex flex-col items-center ${
+        className={`h-screen md:h-[85vh] max-w-[85rem] mx-auto flex flex-col items-center ${
           locale === "en" ? "lg:flex-row justify-end" : "lg:flex-row-reverse"
         }`}
       >
@@ -28,10 +28,10 @@ export default async function HeroSection({
             locale === "en" && "transform -scale-x-100"
           }`}
         >
-          <h1 className="text-3xl lg:text-5xl font-bold text-primary !leading-[1.35]">
+          <h1 className="text-xl md:text-3xl lg:text-5xl font-bold text-primary !leading-[1.35]">
               {dataLang("hero.title")}
           </h1>
-          <h2 className="text-xl lg:text-3xl text-secondary font-bold">
+          <h2 className="text-lg md:text-xl lg:text-3xl text-secondary font-bold">
             {dataLang("hero.subtitle")}
           </h2>
           <div className="space-y-4 flex flex-col w-2/3 md:w-2/4 px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base">
