@@ -66,12 +66,14 @@ export default function VideoTwo({
             initial: { x: 0 },
           }}
         >
-          <h2 className="text-sm md:text-xl lg:text-2xl font-semibold text-gray-800">
+          <h2 className="text-sm md:text-xl text-center lg:text-2xl font-semibold text-gray-800">
             {text}
           </h2>
-          <button className="text-sm sm:text-base md:text-lg sm:w-auto px-2 py-2 md:px-6 md:py-3 bg-primary group-hover:bg-secondary text-white rounded-lg transition-colors">
-            {btn}
-          </button>
+          <div className="flex justify-center" >
+            <button className="text-sm sm:text-base md:text-lg sm:w-auto px-2 py-2 md:px-6 md:py-3 bg-primary group-hover:bg-secondary text-white rounded-lg transition-colors">
+              {btn}
+            </button>
+          </div>
         </motion.div>
 
         <motion.div
