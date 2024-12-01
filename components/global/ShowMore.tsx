@@ -32,7 +32,7 @@ export default function ShowMoreBtn({
       color="primary"
       size={"xl"}
       onClick={onPageChange}
-      className="w-64 py-2 font-bold bg-primary hover:bg-secondary text-white"
+      className="w-64 py-2 font-bold bg-primary hover:bg-secondary hover:!scale-x-100 text-white"
     >
       {text}
     </Button>

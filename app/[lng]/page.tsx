@@ -161,8 +161,8 @@ export default async function Page({
                 ))}
           </div>
 
-          <LinkApp href="/services" lng={lng} className="flex justify-center">
-              <Button color="primary" size="xl" className="hover:bg-secondary hover:text-white">{t("WhatService.read_more")}</Button>
+          <LinkApp href="/services" lng={lng} className="flex justify-center mt-7">
+              <Button color="primary" size="xl" className="bg-primary px-10 lg:!px-28 hover:!scale-x-100 hover:bg-secondary hover:text-white">{t("WhatService.read_more")}</Button>
             </LinkApp>
           </div>
         </SectionApp>

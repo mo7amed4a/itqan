@@ -530,7 +530,8 @@ export default function BookingFixed({ lng, child=null }: { lng: string, child?:
                   <Button
                     type="submit"
                     color="primary"
-                    className="w-full md:w-2/6"
+                    size="xl"
+                    className="w-full md:w-2/6 hover:bg-secondary hover:!scale-x-100 "
                     disabled={isSubmitting}
                   >
                     {isSubmitting

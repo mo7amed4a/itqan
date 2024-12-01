@@ -64,7 +64,7 @@ export default async function FooterApp({ lng }: { lng: string }) {
               </p>
             </div>
             <div className="space-y-3 flex flex-col md:items-center md:text-start text-sm md:text-base">
-              <div className="flex flex-col text-end">
+              <div className="flex flex-col text-start">
               <h2 className="text-lg md:text-2xl">{t("links")}</h2>
               <ul className="text-sm md:text-lg text-gray-300">
                   <li>

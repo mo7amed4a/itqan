@@ -169,7 +169,7 @@ const ContactForm = ({ lng }: { lng: string }) => {
           <Button size="xl"
             type="submit"
             color="primary"
-            className="w-full !text-base hover:!scale-x-0 font-bold text-white bg-primary hover:bg-secondary mt-4"
+            className="w-full !text-base hover:!scale-x-100 font-bold text-white bg-primary hover:bg-secondary mt-4"
           >
             {dataLang("form.submit")}
           </Button>

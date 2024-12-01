@@ -116,3 +116,14 @@ ul.custom-bullet li {
 .data-\[state\=active\]\:text-foreground[data-state="active"] {
   @apply !bg-transparent border-b-2 border-secondary !text-secondary rounded-none
 }
+
+
+.focus\:border-cyan-500:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(33, 131, 127) !important
+}
+
+.focus\:ring-cyan-500:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(33, 131, 127)
+}

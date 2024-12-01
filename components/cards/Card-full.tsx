@@ -33,7 +33,7 @@ type CardFullProps = {
 export default async function CardFull({ data, lng }: CardFullProps) {
   const {t} = await useTranslation(lng, "partial_scholarships")
   return (
-    <div className="bg-white rounded-xl p-4 flex flex-col md:flex-row text-start hover:shadow">
+    <div className="bg-white rounded-xl p-4 lg:!px-10 flex flex-col md:flex-row text-start hover:shadow">
       <div className="lg:w-1/4 h-full items-center p-4 hidden lg:flex">
         <Image
           src={data.logo.split("http://").join("https://")}
@@ -46,7 +46,7 @@ export default async function CardFull({ data, lng }: CardFullProps) {
 
       <div className="lg:w-3/4 md:py-5 flex flex-col items-start space-y-4">
         <div className="flex justify-between items-center w-full">
-          <h1 className="text-primary text-xl font-bold">
+          <h1 className="text-gray-500 text-xl font-bold">
             {data.university_name}
           </h1>
           <Image
@@ -59,7 +59,7 @@ export default async function CardFull({ data, lng }: CardFullProps) {
         </div>
 
         <div className="flex gap-x-2 md:items-center">
-          <h3 className="flex gap-x-2 text-primary text-base font-bold text-start">
+          <h3 className="flex gap-x-2 text-primary text-base text-start">
             <FaUniversity />
             {t("specialization.label")}:
           </h3>
@@ -67,30 +67,30 @@ export default async function CardFull({ data, lng }: CardFullProps) {
         </div>
 
         <div className="flex gap-x-2 md:items-center">
-          <h3 className="flex gap-x-2 text-primary text-base font-bold text-start">
+          <h3 className="flex gap-x-2 text-primary text-base text-start">
             <FaTag />
             {t("level.label")}:
           </h3>
           <p className="text-base text-gray-500">{data.level}</p>
         </div>
 
-        <div className="flex gap-x-2 md:items-center">
+        {/* <div className="flex gap-x-2 md:items-center">
           <h3 className="flex gap-x-2 text-primary text-base font-bold text-start">
             <FaMapSigns />
             {t("city.label")}:
           </h3>
           <p className="text-base text-gray-500">{data.city_name}</p>
-        </div>
+        </div> */}
 
-        <div className="flex gap-x-2 md:items-center">
+        {/* <div className="flex gap-x-2 md:items-center">
           <h3 className="flex gap-x-2 text-primary text-base font-bold text-start">
             {t("study_years.label")}:
           </h3>
           <p className="text-base text-gray-500">{data.study_years}</p>
-        </div>
+        </div> */}
 
         <div className="flex flex-col md:flex-row md:gap-4 md:items-start">
-          <h3 className="flex gap-x-2 text-primary text-base font-bold text-start">
+          <h3 className="flex gap-x-2 text-primary text-base text-start">
             <FaTag />
             {t("fees.label")}:
           </h3>
@@ -106,22 +106,22 @@ export default async function CardFull({ data, lng }: CardFullProps) {
             </p> */}
             <p>
               {/* {t("fees.total")}:{" "} */}
-              <span className="text-secondary font-bold ms-1">
+              <span className="text-secondary ms-1">
                 {data.total_fees}$
               </span>
             </p>
           </div>
         </div>
 
-        <div className="flex gap-x-4 w-full mt-4">
+        <div className="flex gap-x-4 w-full mt-4 lg:ms-16">
           <div className="">
-            <Button color="primary" className="bg-primary text-white">
+            <Button color="primary" className="bg-primary text-white lg:!px-10 !h-11">
               {t("buttons.register_scholarship")}
             </Button>
           </div>
           <div className="">
             <LinkApp href={`/universities/${data.id}`} lng={lng}>
-              <Button className="md:w-full bg-secondary">
+              <Button className="md:w-full bg-secondary lg:!px-16 !py-4 !h-11">
                 {t("buttons.view_university")}
               </Button>
             </LinkApp>

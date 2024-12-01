@@ -99,7 +99,7 @@ export default function FormBooking({lng}:{lng: string}) {
                   rightIcon={FaWhatsapp}
                   placeholder={dataLang('form_booking.mobile_w')}
                   sizing="lg"
-                  className="text-right [&>div>input]:!bg-white"
+                  className="text-right [&>div>input]:!bg-white [&>div>div>input]:focus:border-none [&>div>div>input]:focus:!ring-primary focus:outline-transparent"
                 />
                 <ErrorMessage
                   name="mobile"
@@ -112,7 +112,7 @@ export default function FormBooking({lng}:{lng: string}) {
                 <Button
                   type="submit"
                   color="primary"
-                  className="w-full font-bold py-3 text-white bg-primary"
+                  className="w-full font-bold py-3 text-white bg-primary hover:bg-secondary hover:text-white"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? dataLang('form_booking.loading')+"..." : dataLang('form_booking.submit')}

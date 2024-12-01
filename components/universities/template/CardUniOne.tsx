@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useTranslation } from "@/i18n";
 import Image from "next/image";
@@ -16,16 +17,20 @@ export default async function CardUniOne({
       <Card className="flex flex-col w-full md:flex-row md:h-96 rounded-xl shadow-none border-none hover:shadow-md">
         <CardHeader className="md:w-2/4 p-5 py-12 order-2 md:order-1">
           <div className="flex gap-4">
-            <div>
+            <Avatar className="size-24">
+              <AvatarImage className="p-4" src={university.logo.split("http://").join("https://")} alt={university.name} />
+              <AvatarFallback></AvatarFallback>
+            </Avatar>
+            {/* <div>
               <Image
                 src={university.logo.split("http://").join("https://")}
                 alt=""
-                width={500}
-                height={500}
-                className="size-20 rounded-xl"
+                width={700}
+                height={700}
+                className="h-20 w-24 rounded-xl"
               />
-            </div>
-            <div className="space-y-2 text-gray-500">
+            </div> */}
+            <div className="space-y-2 flex flex-col justify-center text-gray-500">
               <h1 className="text-lg font-[600]">{university.name}</h1>
               {/* <p className="text-sm text-primary">turkish - jkn</p>
               <span className="text-sm text-secondary">komkm</span> */}

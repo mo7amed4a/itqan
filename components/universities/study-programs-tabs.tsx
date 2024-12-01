@@ -79,7 +79,7 @@ export default function StudyProgramsTabs({ studyPrograms, lng }: StudyProgramsT
                     <TableCell className='border'>${program?.annual_fees?.toLocaleString()}</TableCell>
                     <TableCell className='border flex justify-center'>
                       <Button 
-                        className="bg-primary hover:bg-secondary !px-8" size="sm"
+                        className="bg-primary hover:bg-secondary hover:!scale-x-100 !px-8" size="sm"
                       >
                         {t('booking_now')}
                       </Button>

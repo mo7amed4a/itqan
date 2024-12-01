@@ -82,8 +82,8 @@ const HousingList = ({ housings, t }: { housings: any; t: any }) => {
             </div>
 
             <div className="md:w-3/4 mx-auto gap-5 grid grid-cols-2">
-              <Button>{t("viewImage")}</Button>
-              <Button className="bg-secondary">{t("register")}</Button>
+              <Button className="hover:!scale-x-100">{t("viewImage")}</Button>
+              <Button className="bg-secondary hover:!scale-x-100">{t("register")}</Button>
             </div>
           </CardHeader>
           <CardContent className="md:w-2/4 p-4 md:order-2">
