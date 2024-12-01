@@ -55,9 +55,9 @@ export default async function Page({
                       key={item.id}
                       className={
                         searchParams.category === `${item.id}`
-                          ? "border-b-2 border-red-500 text-red-500"
+                          ? "border-b-2 border-secondary text-secondary"
                           : !searchParams.category && index === 0
-                          ? "border-b-2 border-red-500 text-red-500"
+                          ? "border-b-2 border-secondary text-secondary"
                           : ""
                       }
                     >

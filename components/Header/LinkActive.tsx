@@ -19,7 +19,7 @@ export default function LinkActive({
     return pathname.endsWith(`${url}`) ? true : false;
   };
 
-  const activeClass = "!border-b-2 border-red-500 text-red-500";
+  const activeClass = "!border-b-2 border-secondary text-secondary";
 
   return (
     <NavbarLink
