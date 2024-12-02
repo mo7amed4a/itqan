@@ -175,8 +175,7 @@ export default async function Page({
                 {housing?.images[0] ? (
                   <Image
                     src={
-                      housing?.images[0]?.image
-                        .split("http://")
+                      housing?.images[0]?.split("http://")
                         .join("https://") || ""
                     }
                     className="w-full h-64 md:w-1/6 md:h-28 group-hover:scale-105 duration-300 transition-all"

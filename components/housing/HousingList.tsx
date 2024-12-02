@@ -92,8 +92,8 @@ const HousingList = ({ housings, t }: { housings: any; t: any }) => {
                 <Image
                   src={housing.images[0].split("http://").join("https://")}
                   alt={housing.name}
-                  width={500}
-                  height={500}
+                  width={2500}
+                  height={2500}
                   className="size-full rounded-xl"
                 />
               ) : (
