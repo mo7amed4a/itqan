@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useTranslation } from "@/i18n";
 import Image from "next/image";
 import React from "react";
+import { ImageModal } from "./ImageModal";
 
 export default async function CardVideo({
   university,
@@ -43,39 +44,29 @@ export default async function CardVideo({
             {t("university.photo")}
           </h1>
         </div>
-        <div className="flex items-stretch gap-4 h-[30rem] rounded-xl px-4">
-          <div className="flex flex-col w-1/3 gap-y-2 -mt-1">
-            <img
-              src={
-                university.photo_album.length > 0 &&
-                university.photo_album[0]
-                  .split("http://")
-                  .join("https://")
-              }
-              alt="photo_album image 1"
-              className="w-full h-1/2 object-cover rounded-2xl"
-            />
-            <img
-              src={
-                university.photo_album.length >= 2 &&
-                university.photo_album[1]?.split("http://")
-                  .join("https://")
-              }
-              alt="photo_album image 2"
-              className="w-full h-1/2 object-cover rounded-2xl"
-            />
+        <div className="flex flex-col md:flex-row items-stretch gap-4 md:h-[40rem] rounded-xl px-4">
+          <div className="flex flex-col md:w-1/3 gap-y-2 -mt-1">
+            <div className="w-full h-1/3 relative group">
+                <ImageModal key={781} src={university.photo_album[3]?.split("http://")
+                  .join("https://")} alt="Main photo" />
+                <div className="absolute inset-0 bg-[#21837F]/50 group-hover:hidden transition-opacity duration-300 rounded-2xl"></div>
+            </div>
+            <div className="w-full h-1/3 relative group">
+                <ImageModal key={781} src={university.photo_album[2]?.split("http://")
+                  .join("https://")} alt="Main photo" />
+                <div className="absolute inset-0 bg-[#21837F]/50 group-hover:hidden transition-opacity duration-300 rounded-2xl"></div>
+            </div>
+            <div className="w-full h-1/3 relative group">
+                <ImageModal key={781} src={university.photo_album[1]?.split("http://")
+                  .join("https://")} alt="Main photo" />
+                <div className="absolute inset-0 bg-[#21837F]/50 group-hover:hidden transition-opacity duration-300 rounded-2xl"></div>
+            </div>
           </div>
 
-          <div className="w-2/3">
-            <img
-              src={
-                university.photo_album.length >= 3 &&
-                university.photo_album[2]?.split("http://")
-                  .join("https://")
-              }
-              alt="photo_album image 3"
-              className="h-full w-full object-cover rounded-2xl"
-            />
+          <div className="md:w-2/3 h-full relative group">
+                <ImageModal key={781} src={university.photo_album[0]?.split("http://")
+                  .join("https://")} alt="Main photo" />
+                <div className="absolute inset-0 bg-[#21837F]/50 group-hover:hidden transition-opacity duration-300 rounded-2xl"></div>
           </div>
         </div>
       </div>
