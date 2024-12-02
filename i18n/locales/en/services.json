@@ -1,5 +1,8 @@
 {
   "titlePage": "Our services",
+  "links": {
+    "all": "All"
+  },
   "sectionText": " Get exclusive discounts, especially if you register through us",
   "sectionText2": "Get admission to private universities for free and within only 24 hours",
   "post_admission_services": "Post-admission services",

@@ -8,6 +8,7 @@ import { getData } from "@/lib/data";
 import { CustomCarousel } from "@/components/ui/CustomCarousel";
 import ShowMoreBtn from "@/components/global/ShowMore";
 import UniversitiesSliderItem from "@/components/universities/full/UniversitiesSliderItem";
+import LinksCategory from "@/components/global/LinksCategory";
 
 export default async function UniversitiesPage({
   params,
@@ -51,28 +52,8 @@ export default async function UniversitiesPage({
           {data &&
             data.categories &&
             data.categories.length > 0 &&
-            data.categories?.map((item: any, index: number) => {
-              return (
-                <li
-                  key={item.id}
-                  className={
-                    searchParams.category === `${item.id}`
-                      ? "border-b-2 border-secondary text-secondary"
-                      : !searchParams.category && index === 0
-                      ? "border-b-2 border-secondary text-secondary"
-                      : ""
-                  }
-                >
-                  {/* <LinkApp href="/blogs" lng={lng}>{t('links.study_in_turkey')}</LinkApp> */}
-                  <LinkApp
-                    href={`/cyprus_universities?category=${item.id}`}
-                    lng={lng}
-                  >
-                    {item.name}
-                  </LinkApp>
-                </li>
-              );
-            })}
+            <LinksCategory links={data.categories} searchParams={searchParams} href="/cyprus_universities" allText={t('links.all')}/>
+          }
         </ul>
       </div>
 

@@ -8,6 +8,7 @@ import { getData } from "@/lib/data";
 import { CustomCarousel } from "@/components/ui/CustomCarousel";
 import ShowMoreBtn from "@/components/global/ShowMore";
 import UniversitiesSliderItem from "@/components/universities/full/UniversitiesSliderItem";
+import LinksCategory from "@/components/global/LinksCategory";
 
 export default async function UniversitiesPage({
   params,
@@ -47,30 +48,12 @@ export default async function UniversitiesPage({
       </div>
       <div>
         <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base md:text-lg mb-5">
+        
           {data &&
             data.categories &&
             data.categories.length > 0 &&
-            data.categories?.map((item: any, index: number) => {
-              return (
-                <li
-                  key={item.id}
-                  className={
-                    searchParams.category === `${item.id}`
-                      ? "border-b-2 border-secondary text-secondary"
-                      : !searchParams.category && index === 0
-                      ? "border-b-2 border-secondary text-secondary"
-                      : ""
-                  }
-                >
-                  <LinkApp
-                    href={`/turkish_universities?category=${item.id}`}
-                    lng={lng}
-                  >
-                    {item.name}
-                  </LinkApp>
-                </li>
-              );
-            })}
+            <LinksCategory links={data.categories} searchParams={searchParams} href="/turkish_universities" allText={t('links.all')}/>
+          }
         </ul>
       </div>
 

@@ -159,23 +159,22 @@ export default async function Page({
           </div>
         </div>
       </section>
-      <section className="container mx-auto  px-4 pb-10">
+     {data && data?.services && data?.services?.length > 1 && <section className="container mx-auto  px-4 pb-10">
         <h1 className="my-10 text-lg md:text-2xl font-bold text-gray-500">
-          {t("post_admission_services")}
+          {/* {t("post_admission_services")} */}
+          {data.services[1].name}
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {dataHousings &&
-            dataHousings?.housings &&
-            dataHousings?.housings?.length > 0 &&
-            dataHousings?.housings?.map((housing: any) => (
+          {
+            data?.services[1]?.services?.map((item: any) => (
               <div
-                key={housing.id}
+                key={item.id}
                 className="bg-white group hover:shadow-xl hover:scale-105 duration-300 transition-all rounded-xl flex flex-col md:flex-row items-center gap-8 text-center md:text-start overflow-hidden p-4"
               >
-                {housing?.images[0] ? (
+                {item?.image ? (
                   <Image
                     src={
-                      housing?.images[0]?.split("http://")
+                      item?.image?.split("http://")
                         .join("https://") || ""
                     }
                     className="w-full h-64 md:w-1/6 md:h-28 group-hover:scale-105 duration-300 transition-all"
@@ -188,17 +187,17 @@ export default async function Page({
                 )}
                 <div className="space-y-2 py-8 w-5/6">
                   <h3 className="text-lg md:text-xl font-bold group-hover:text-primary">
-                    {housing.name}
+                    {item.name}
                   </h3>
                   <p
-                    dangerouslySetInnerHTML={{ __html: housing.description.slice(0, 160) }}
+                    dangerouslySetInnerHTML={{ __html: item.name.slice(0, 160) }}
                     className="text-sm md:text-base line-clamp-2 text-gray-500"
                   ></p>
                 </div>
               </div>
             ))}
         </div>
-      </section>
+      </section>}
       <section className="relative bg-primary">
         <div className="relative z-10 h-96 bg-transparent flex flex-col space-y-10 justify-center items-center px-7 text-center">
           <h1 className="text-lg md:text-3xl font-bold text-white">

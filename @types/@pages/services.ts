@@ -1,5 +1,8 @@
 export interface ServicesLangType {
   services: {
+    links: {
+      all: string
+    }
     titlePage: string;
     sectionText: string;
     sectionText2: string;
