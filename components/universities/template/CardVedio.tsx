@@ -58,8 +58,7 @@ export default async function CardVideo({
             <img
               src={
                 university.photo_album.length >= 2 &&
-                university.photo_album[1].university.image
-                  .split("http://")
+                university.photo_album[1]?.split("http://")
                   .join("https://")
               }
               alt="photo_album image 2"
@@ -71,8 +70,7 @@ export default async function CardVideo({
             <img
               src={
                 university.photo_album.length >= 3 &&
-                university.photo_album[2]
-                  .split("http://")
+                university.photo_album[2]?.split("http://")
                   .join("https://")
               }
               alt="photo_album image 3"
