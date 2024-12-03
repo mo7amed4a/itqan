@@ -21,7 +21,7 @@
     "engeneer": "engineering"
   },
   "videoCall": {
-    "text": "Request a video call with an educational partner",
+    "text": "Request a video call with your educational advisor",
     "booking_now": "Reserve your place now"
   },
   "specialties": {
@@ -42,6 +42,7 @@
   },
   "WhatService": {
     "title": "What does itqan offer?",
+    "title2": "If you registered through it",
     "read_more": "View more"
   },
   "form_booking": {

@@ -44,12 +44,12 @@ export default function CardBlog({
             {formatDate(blog.created_at).split('/').join('.')}
           </Badge>
         </CardHeader>
-        <CardContent className="space-y-4 px-0 py-4">
+        <CardContent className="space-y-4 px-0 py-6">
           <CardTitle className="text-base md:text-2xl font-bold text-gray-500 group-hover:text-primary text-wrap w-full">
             {blog.title}
           </CardTitle>
           <p
-            className="text-sm md:text-base text-gray-400 line-clamp-4"
+            className="text-sm md:text-base text-gray-400 line-clamp-2 py-"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           ></p>
           <div className="flex justify-center">

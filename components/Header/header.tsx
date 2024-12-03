@@ -34,7 +34,7 @@ export default async function HeaderApp({ locale }: { locale: string }) {
             <BookingFixed lng={locale} child={
               <Button
                 color="primary"
-                className="border text-wrap px-4 hover:!scale-x-100 py-0 text-[10px] md:px-2 md:text-base"
+                className="border text-wrap px-4 hover:!scale-x-100 py-0 text-[11px] md:px-4 md:text-base"
               >
                 {t("booking_btn")}
               </Button>
@@ -43,7 +43,7 @@ export default async function HeaderApp({ locale }: { locale: string }) {
             <div>
               <Button
                 color="primary"
-                className="border hover:!scale-x-100 px-4 py-0 text-[10px] md:px-2 md:text-base"
+                className="border hover:!scale-x-100 px-4 md:px-6 lg:px-10 py-0 text-[11px] md:text-base"
               >
                 {t("be_our_agent")}
               </Button>

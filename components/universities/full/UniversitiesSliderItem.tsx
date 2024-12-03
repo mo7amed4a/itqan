@@ -67,11 +67,11 @@ export default function UniversitiesSliderItem({
                 </span>
                 <span className="flex gap-x-2 text-sm">
                   <span>{t("universityInfo.priceRange.from")}</span>{" "}
-                  <span>{item.min_annual_fees}</span>
+                  <span>{item.min_annual_fees}$</span>
                 </span>
                 <span className="flex gap-x-2 text-sm">
                   <span>{t("universityInfo.priceRange.to")}</span>{" "}
-                  <span>{item.max_annual_fees}</span>
+                  <span>{item.max_annual_fees}$</span>
                 </span>
               </div>
               <div className="flex justify-center">

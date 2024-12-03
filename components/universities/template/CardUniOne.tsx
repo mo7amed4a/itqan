@@ -13,7 +13,7 @@ export default async function CardUniOne({
 }) {
   const {t} = await useTranslation(lng, "university_details");
   return (
-    <section className="container mx-auto px-4 mb-5">
+    <section className="container lg:max-w-[85vw] mx-auto px-4 mb-5">
       <Card className="flex flex-col w-full md:flex-row md:h-96 rounded-xl shadow-none border-none hover:shadow-md">
         <CardHeader className="md:w-2/4 p-5 py-12 order-2 md:order-1">
           <div className="flex gap-4">
@@ -40,7 +40,7 @@ export default async function CardUniOne({
             <p
               className="line-clamp-4"
               dangerouslySetInnerHTML={{
-                __html: university.description.slice(0, 300),
+                __html: university.description.slice(0, 200),
               }}
             ></p>
           </div>

@@ -43,6 +43,7 @@ export interface HomeLangType {
     };
     WhatService: {
       title: string;
+      title2: string;
       read_more: string;
     }
     form_booking: {

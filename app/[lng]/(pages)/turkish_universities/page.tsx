@@ -29,8 +29,8 @@ export default async function UniversitiesPage({
     url = `/tukey_universities?category_id=${searchParams.category}`;
   }
   if (searchParams.page) {
-    const params = new URLSearchParams(searchParams.toString())
-    params.set("page", searchParams.page)
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("page", searchParams.page);
     url += `?${params.toString()}`;
   }
 
@@ -40,7 +40,7 @@ export default async function UniversitiesPage({
   const pagination = data?.paginated_universities?.pagination || null;
 
   return (
-    <div className="my-10 container mx-auto space-y- p-4">
+    <div className="my-10 container lg:max-w-[85vw] mx-auto space-y- p-4">
       <div className="flex justify-center items-center text-center">
         <h2 className="text-lg font-bold text-gray-500 md:text-2xl">
           {t("title")}
@@ -48,56 +48,85 @@ export default async function UniversitiesPage({
       </div>
       <div>
         <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base md:text-lg mb-5">
-        
-          {data &&
-            data.categories &&
-            data.categories.length > 0 &&
-            <LinksCategory links={data.categories} searchParams={searchParams} href="/turkish_universities" allText={t('links.all')}/>
-          }
+          {data && data.categories && data.categories.length > 0 && (
+            <LinksCategory
+              links={data.categories}
+              searchParams={searchParams}
+              href="/turkish_universities"
+              allText={t("links.all")}
+            />
+          )}
         </ul>
       </div>
 
-      <div className="space-y-10">
-        <h1 className="text-lg font-bold text-gray-500 md:text-2xl">
-          {t("mostRanked")}
-        </h1>
+      {data &&
+        data.featured_universities &&
+        data.featured_universities.length > 0 && (
+          <div className="space-y-5 md:mt-8 lg:px-16">
+            <h1 className="text-lg font-bold text-gray-500 md:text-2xl lg:ps-4">
+              {t("mostRanked")}
+            </h1>
+            <div>
+              <CustomCarousel lng={lng}>
+                {data.featured_universities.map((item: UniversityType) => (
+                  <UniversitiesSliderItem
+                    key={item.id}
+                    item={item}
+                    lng={lng}
+                    t={t}
+                  />
+                ))}
+              </CustomCarousel>
+            </div>
+          </div>
+        )}
 
-        {data &&
-            data.featured_universities && data.featured_universities.length > 0 && <CustomCarousel lng={lng}>
-          { data.featured_universities.map((item: UniversityType) => (
-              <UniversitiesSliderItem key={item.id} item={item} lng={lng} t={t}/>
-            ))}
-        </CustomCarousel>}
-      </div>
-
-      <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-10">
-        {data &&
-          data.paginated_universities &&
-          data.paginated_universities.data &&
-          data.paginated_universities.data.map((item: UniversityType) => {
-            return (
-              <LinkApp
-                key={item.id}
-                href={`/universities/${item.id}`}
-                lng={lng}
-              >
-                <CardUniversity major={t('topMajors')} btnText={t('universityInfo.registerNow')} university={item} />
-              </LinkApp>
-            );
-          })}
-      </section>
-      {/* <div>
-        {pagination && pagination.total > 1 && (
+{data &&
+        data.paginated_universities &&
+        data.paginated_universities.data ?
+        data.paginated_universities.data.length > 0 ? 
+        (
+          <div>
+            <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-10">
+              {data.paginated_universities.data.map((item: UniversityType) => {
+                return (
+                  <LinkApp
+                    key={item.id}
+                    lng={lng}
+                    href={`/universities/${item.id}`}
+                  >
+                    <CardUniversity
+                      major={t("topMajors")}
+                      btnText={t("universityInfo.registerNow")}
+                      university={item}
+                    />
+                  </LinkApp>
+                );
+              })}
+            </section>
+            {/* {pagination && pagination.total > 1 && (
           <PaginationApp
             currentPage={pagination?.current_page}
             totalPages={pagination.total}
             lng={lng}
           />
-        )}
-      </div> */}
-      <div className="flex justify-center mt-10">
-       <ShowMoreBtn page={searchParams.page} text={t('show_more')} />
-      </div>
+        )} */}
+            <div className="flex justify-center mt-10">
+              <ShowMoreBtn page={searchParams.page} text={t("show_more")} />
+            </div>
+          </div>
+        ): 
+        <div className="min-h-[40vh] w-full flex justify-center items-center">
+          <div>
+            <h1 className="text-lg md:text-2xl text-gray-500 font-bold">Not Found</h1>
+          </div>
+        </div> :
+         <div className="min-h-[40vh] w-full flex justify-center items-center">
+         <div>
+           <h1 className="text-lg md:text-2xl text-gray-500 font-bold">Server Error</h1>
+         </div>
+       </div>
+        }
     </div>
   );
 }

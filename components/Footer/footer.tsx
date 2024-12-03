@@ -24,25 +24,25 @@ export default async function FooterApp({ lng }: { lng: string }) {
   return (
     data && (
       <Footer container className="bg-primary text-white rounded-none p-0">
-        <div className="w-full">
-          <div className="grid md:grid-cols-3 gap-4 p-5">
-            <div className="space-y-3 flex flex-col md:items-center md:text-start text-sm md:text-base">
+        <div className="w-full md:pt-10">
+          <div className="grid md:grid-cols-3 gap-4 py-5 px-4 md:px-0 container lg:max-w-[85vw] mx-auto">
+            <div className="space-y-3 flex flex-col md:text-start text-sm md:text-base">
               <div className="flex flex-col text-start">
-                <h2 className="text-lg md:text-2xl text-start">
+                <h2 className="text-lg md:text-xl text-start py-4">
                   {t("contactUs")}
                 </h2>
                 <ul className="space-y-2 text-white/80 md:text-lg ">
                   <li className="flex space-x-1 items-center">
-                    <IoLocationSharp />
+                    <IoLocationSharp className="!text-white"/>
                     {/* <a href="">{t("address")}</a> */}
                     <a href="">{data.address}</a>
                   </li>
                   <li className="flex items-center space-x-1">
-                    <MdEmail />
+                    <MdEmail className="!text-white"/>
                     <a href={`mailto:${data.email}`}>{data.email}</a>
                   </li>
                   <li className="flex items-center space-x-1">
-                    <IoIosCall />
+                    <IoIosCall className="!text-white"/>
                     <a href={`tel:${data.phone}`} dir="ltr">
                       {data.phone}
                     </a>
@@ -56,16 +56,16 @@ export default async function FooterApp({ lng }: { lng: string }) {
                 alt="ITQAN Logo"
                 width={400}
                 height={400}
-                className="h-16 w-2/4 md:h-20 md:w-auto"
+                className="w-32 md:h-20 md:w-auto md:-mt-4"
               />
               {/* <p className="mt-4 w-3/4 md:text-center">{t("bio")}</p> */}
               <p className="mt-8 w-3/4 md:text-center md:text-lg">
                 {data.footer_text}
               </p>
             </div>
-            <div className="space-y-3 flex flex-col md:items-center md:text-start text-sm md:text-base">
-              <div className="flex flex-col text-start">
-              <h2 className="text-lg md:text-2xl">{t("links")}</h2>
+            <div className="space-y-3 flex flex-col md:items-end md:text-start text-sm md:text-base">
+              <div className="flex flex-col text-start md:text-end">
+              <h2 className="text-lg md:text-xl py-4">{t("links")}</h2>
               <ul className="text-sm md:text-lg text-gray-300">
                   <li>
                     <LinkApp href="/" lng={lng}>

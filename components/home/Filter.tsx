@@ -21,17 +21,22 @@ import { MdOutlineAccessTimeFilled } from "react-icons/md";
 
 export default function FilterSelect({
   lng,
-  col=false
+  col=false,
+  filterData=null
 }: {
   lng: string;
-  col?: boolean
+  col?: boolean;
+  filterData?: any
 }) {
-  const [data, setData] = useState<any>(null)
+  const [data, setData] = useState<any>(filterData || null)
+
   useEffect(() => {
-    (async() => {
-      const response = await getData("/filters", lng);
-      setData(response?.data)
-    })()
+    if(!filterData) {
+      (async() => {
+        const response = await getData("/filters", lng);
+        setData(response?.data)
+      })()
+    }
   }, [])
 
   const { t: dataLang } = useTranslation(lng, "home");
@@ -60,7 +65,7 @@ export default function FilterSelect({
   };
 
   return data ? (
-    <div className={`mt-6 grid grid-cols-1 ${col ? '' : 'md:grid-cols-3 bg-gray-900/10'} gap-4 rounded p-4`}>
+    <div className={`mt-6 grid grid-cols-1 p-4 rounded ${col ? '' : 'md:grid-cols-3 bg-green-900/25 rounded-xl p-5'} gap-4`}>
       {/* Select Specialization */}
       <Select
         onValueChange={(value) => handleFilterChange("specialization", value)}

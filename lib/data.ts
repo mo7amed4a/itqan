@@ -10,6 +10,8 @@ export async function getData(url: string, lng: string): Promise<any | undefined
       return res.data;
     } else if (res?.data?.success === true) {
       return res.data;
+    } else if (res?.data?.universities) {
+      return res.data;
     } else {
       // redirect("/error");
     }

@@ -1,6 +1,20 @@
 {
+  "links": {
+    "university_photos": "صور الجامعة",
+    "study_features": "مميزات الدراسة في الجامعة",
+    "recognitions": "الاعترافات الحاصلة",
+    "university_numbers": "الجامعة بأرقام",
+    "university_specializations": "تخصصات الجامعة",
+    "university_accreditations": "اعتمادات الجامعة",
+    "university_languages": "لغات الجامعة",
+    "university_Terms": "شروط التقديم",
+    "university_details": "تفاصيل اكثر",
+    "university_faqs": "الاسئلة الشائعة"
+  },
   "university": {
+    "info": "معلومات عن",
     "foundedIn": "تأسست في",
+    "numbers": "بألارقام",
     "globalRank": "التصنيف العالمي",
     "languages": "اللغات",
     "localRank": "الترتيب المحلي",

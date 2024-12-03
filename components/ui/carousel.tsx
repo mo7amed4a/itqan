@@ -213,7 +213,7 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute  h-8 w-8 rounded-full hidden md:flex flex-col items-center bg-transparent border-none",
+        "absolute size-8 rounded-full hidden md:flex flex-col items-center bg-transparent border-none",
         orientation === "horizontal"
           ? "-start-12 top-1/2 -translate-y-1/2 rtl:rotate-180"
           : "-top-12 start-1/2 -translate-x-1/2",

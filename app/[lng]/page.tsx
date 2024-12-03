@@ -32,19 +32,22 @@ export default async function Page({
 }) {
   const { t } = await useTranslation(lng, "home");
   const response = await getData("/get_home", lng);
+  const res_Settings = await getData("/get_settings", lng);
+
   const data = response?.data;
+  const settings = res_Settings?.data;
 
   return (
     <main className="space-y-">
       {data && <HeroSection dataLang={t} locale={lng} />}
       <section className="bg-white py-8">
-        <VideoTwo  text={t('videoCall.text')} btn={t('videoCall.booking_now')} lng={lng} />
+        <VideoTwo url={settings.consult_url} text={t('videoCall.text')} btn={t('videoCall.booking_now')} lng={lng} />
         {/* <VideoCall dataVideoCall={t} locale={lng} /> */}
       </section>
       <div className="bg-[#f5f7f9] my-10">
         <SectionApp
           title={t("specialties.title")}
-          className="container mx-auto "
+          className="container lg:max-w-[85vw] mx-auto"
         >
           <Carousel>
             <CarouselContent className="md:h-96">
@@ -60,8 +63,6 @@ export default async function Page({
                   </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
           </Carousel>
           {/* <div className="overflow-x-auto whitespace-nowrap p-4 hidden-scrollbar space-x-4">
               {
@@ -73,10 +74,10 @@ export default async function Page({
         </SectionApp>
         <SectionApp
            title={t("best_universities.title")}
-          className="container mx-auto"
+          className="container lg:max-w-[85vw] mx-auto"
         >
           <Carousel>
-            <CarouselContent className="px-10">
+            <CarouselContent className="px-10 md:px-0">
             {data &&
               data.turkish_universities &&
               data.turkish_universities.map((item: UniversityType) => (
@@ -90,16 +91,14 @@ export default async function Page({
                   </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
           </Carousel>
         </SectionApp>
         <SectionApp
           title={t("best_universitiesTwo.title")}
-          className="container mx-auto"
+          className="container lg:max-w-[85vw] mx-auto"
         >
           <Carousel>
-            <CarouselContent className="px-10">
+            <CarouselContent className="px-10 md:px-0">
             {data &&
               data.qyprus_universities &&
               data.qyprus_universities.map((item: UniversityType) => (
@@ -113,8 +112,6 @@ export default async function Page({
                   </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
           </Carousel>
         </SectionApp>
       
@@ -146,11 +143,12 @@ export default async function Page({
 
 
         <SectionApp
-          title={t("WhatService.title")}
-          className="container mx-auto"
+          title={t("WhatService.title2")}
+          title2={t("WhatService.title")}
+          className="container lg:max-w-[85vw] mx-auto"
         >
           <div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 w-full gap-4 px-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 w-full gap-4 px-4 md:px-0">
             {data &&
                   data.services &&
                   data.services.length > 0 &&

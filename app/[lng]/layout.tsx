@@ -5,6 +5,8 @@ import { dir } from "i18next";
 import { setAcceptLanguage } from "../../lib/axios";
 import HeaderApp from "@/components/Header/header";
 import { getData } from "@/lib/data";
+import Image from "next/image";
+import chatLogo from "../../public/logo/chat.png"
 // import TawkTo from "@/components/fixedCps/tawkTo";
 
 export async function generateMetadata({
@@ -65,7 +67,9 @@ export default async function RootLayout({
       <BookingFixed lng={lng} />
       {children}
       <FooterApp lng={lng} />
-      {/* <TawkTo /> */}
+      <div className="fixed bottom-4 start-4">
+        <Image src={chatLogo} className="w-24 h-20" width={400} height={400} alt="" />
+      </div>
     </main>
   );
 }

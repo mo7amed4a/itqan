@@ -1,8 +1,22 @@
 export interface UniversityDetailsType {
   university_details: {
+    links: {
+      university_photos: string;
+      study_features: string;
+      recognitions: string;
+      university_numbers: string;
+      university_specializations: string;
+      university_accreditations: string;
+      university_languages: string;
+      university_Terms: string;
+      university_details: string;
+      university_faqs: string;
+    };
     university: {
+      info: string;
       foundedIn: string;
       globalRank: string;
+      numbers: string;
       localRank: string;
       languages: string;
       staff: string;
@@ -48,7 +62,7 @@ export interface UniversityDetailsType {
       title: string;
     };
     description: string;
-    readMore:string;
+    readMore: string;
     readLess: string;
     howTo: string;
     Time: string;

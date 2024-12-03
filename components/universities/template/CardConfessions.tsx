@@ -12,7 +12,7 @@ export default async function CardConfessions({
 }) {
   const { t } = await useTranslation(lng, "university_details");
   return (
-    <div className="container mx-auto px-4 py-10 mt-10 rounded-md">
+    <div className="container lg:max-w-[85vw] mx-auto px-4 py-10 mt-10 rounded-md">
       <h1 className="text-lg md:text-xl font-bold my-10">
         {t("university.confessions")}
       </h1>

@@ -20,12 +20,12 @@ export default async function CardRank({
   const { t } = await useTranslation(lng, "university_details");
   return (
     <Card className="relative border-none shadow-none rounded-none bg-primary py-10">
-    <CardHeader className="container mx-auto relative z-10">
+    <CardHeader className="container lg:max-w-[85vw] mx-auto relative z-10">
       <h1 className="text-white text-lg md:text-xl font-bold">
-        {university.name}
+        {university.name} {t('university.numbers')}
       </h1>
     </CardHeader>
-    <CardContent className="relative z-10 container mx-auto text-center grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+    <CardContent className="relative z-10 container lg:max-w-[85vw] mx-auto lg:px-16 text-center grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
       <Card className="border-none shadow-none group">
         <CardHeader className="flex justify-center items-center">
           <Image

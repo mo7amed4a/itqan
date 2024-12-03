@@ -1,6 +1,20 @@
 {
+  "links": {
+    "university_photos": "تصاویر دانشگاه",
+    "study_features": "مزایای تحصیل در دانشگاه",
+    "recognitions": "اعترافات انجام شده",
+    "university_numbers": "دانشگاه در اعداد",
+    "university_specializations": "تخصص های دانشگاهی",
+    "university_accreditations": "اعتبارات دانشگاه",
+    "university_languages": "زبان های دانشگاهی",
+    "university_Terms": "شرایط درخواست",
+    "university_details": "جزئیات بیشتر",
+    "university_faqs": "سوالات متداول"
+  },
   "university": {
+    "info": "اطلاعات در مورد",
     "foundedIn": "تاسیس شده در",
+    "numbers": "در اعداد",
     "globalRank": "رتبه بندی جهانی",
     "languages": "زبان ها",
     "localRank": "رتبه بندی محلی",
@@ -15,7 +29,7 @@
     "languagesStudyAvailable": "Tteg",
     "languagesStudyMoreLanguages": "فرصتی برای تحصیل به زبان های مختلف",
     "faqs": "پرسش و پاسخ در مورد دانشگاه",
-     "confessions": "تقدیرنامه های کسب شده توسط دانشگاه"
+    "confessions": "تقدیرنامه های کسب شده توسط دانشگاه"
   },
   "tabs": {
     "studyPrograms": "رشته های دانشگاهی",
@@ -45,7 +59,7 @@
   "specifications": {
     "title": "مشخصات دانشگاه"
   },
-  "description": "جزئیات بیشتر در مورد",
+  "description": "جزئیات بیشتر در مورد ",
   "readMore": "نمایش بیشتر",
   "readLess": "کمتر پیشنهاد دهید",
   "howTo": "نحوه درخواست در ",

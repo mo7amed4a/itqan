@@ -8,7 +8,7 @@ export async function generateMetadata({
 }) {
   let data;
   let site = await getData("/get_settings", params.lng);
-  const response = await getData("page/about-us", params.lng);
+  const response = await getData("page/registration-rules", params.lng);
   data = response?.data?.page;
   return {
     title: `${data?.meta_title || "About"} | ${
@@ -21,11 +21,15 @@ export async function generateMetadata({
 
 export default async function page({
   params,
+  searchParams,
 }: {
   params: { lng: string };
+  searchParams: {
+    category: string;
+  };
 }) {
   let data;
-  const response = await getData("page/about-us", params.lng);
+  const response = await getData("page/registration-rules", params.lng);
   data = response?.data?.page;
   return (
     data && (

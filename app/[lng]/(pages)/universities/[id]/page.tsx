@@ -9,6 +9,9 @@ import CardConditionsAndRegistration from "@/components/universities/template/Ca
 import CardFaqs from "@/components/universities/template/CardFaqs";
 import CardDetails from "@/components/universities/template/CardDetails";
 import CardHouse from "@/components/universities/template/CardHouse";
+import Link from "next/link";
+import { useTranslation } from "@/i18n";
+import Navbar from "@/components/universities/template/NavbarForUniversity";
 
 const universityData = {
   data: {
@@ -279,26 +282,28 @@ export default async function UniversityInfo({
   params: { lng: string; id: string };
 }) {
   const { lng, id } = params;
+  const {t} = await useTranslation(lng, "university_details")
   let data: any = null;
   const response = await getData(`/universities/${id}/details`, lng);
   data = response?.data;
 
   if (data && data?.university) {
-    const {
-      university,
-      faqs,
-      study_programs,
-      student_housings
-    } = data;
+    const { university, faqs, study_programs, student_housings } = data;
     return (
-      <div className="text-start text-base text-gray-500">
-        <section className="my-12">
+      <div className="text-start text-base text-gray-500 scroll-smooth">
+        <section className="my-12 px-4 lg:px-0">
           <h1 className="text-xl md:text-2xl font-bold text-gray-500 text-center">
             {university.name}
           </h1>
         </section>
+          <Navbar lng={lng} name={university.name}/>
+        <div className="container lg:max-w-[85vw] mx-auto px-4 py-5">
+          <h2 className="text-lg md:text-xl font-bold text-gray-500">{t("university.info")} {university.name}</h2>
+        </div>
         <CardUniOne university={university} lng={lng} />
-        <CardVideo university={university} lng={lng} />
+        <div id="photos">
+          <CardVideo university={university} lng={lng} />
+        </div>
         {/* <div className="space-y-7 text-gray-500 mt-10 py-10">
           <h1 className="text-lg md:text-xl font-bold px-4">
             {t("university.features")}
@@ -316,24 +321,44 @@ export default async function UniversityInfo({
             </Card>
           </div>
         </div> */}
-        {university && <CardConfessions university={university} lng={lng} />}
-        {university && <CardRank university={university} lng={lng} />}
-        {study_programs && study_programs.length > 0 && (
-          <CardTableData study_programs={data.study_programs} lng={lng} />
+        {university && (
+          <div id="recognitions" className="scroll-mt-96">
+            <CardConfessions university={university} lng={lng} />
+          </div>
         )}
-        {university && <CardLanguage university={university} lng={lng} />}
+        {university && (
+          <div id="numbers" className="scroll-mt-96">
+            <CardRank university={university} lng={lng} />
+          </div>
+        )}
+        {study_programs && study_programs.length > 0 && (
+          <div id="specializations" className="scroll-mt-96">
+            <CardTableData study_programs={data.study_programs} lng={lng} />
+          </div>
+        )}
+        {university && <div id="languages" className="scroll-mt-96">
+            <CardLanguage university={university} lng={lng} />
+          </div>}
 
-        {data && <CardConditionsAndRegistration data={data} lng={lng} />}
+        {data && (
+          <div id="terms" className="scroll-mt-96">
+            <CardConditionsAndRegistration data={data} lng={lng} />
+          </div>
+        )}
         {university.description && (
-          <CardDetails university={university} lng={lng} />
+          <div id="details" className="scroll-mt-96">
+            <CardDetails university={university} lng={lng} />
+          </div>
         )}
         {faqs && student_housings && study_programs && (
-          <CardFaqs
-            faqs={faqs}
-            student_housings={student_housings}
-            study_programs={study_programs}
-            lng={lng}
-          />
+          <div id="faqs" className="scroll-mt-96">
+            <CardFaqs
+              faqs={faqs}
+              student_housings={student_housings}
+              study_programs={study_programs}
+              lng={lng}
+            />
+          </div>
         )}
         <CardHouse student_housings={student_housings} lng={lng} />
       </div>
@@ -347,3 +372,5 @@ export default async function UniversityInfo({
       </div>
     );
 }
+
+

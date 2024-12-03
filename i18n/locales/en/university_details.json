@@ -1,6 +1,20 @@
 {
+  "links": {
+    "university_photos": "University pictures",
+    "study_features": "Advantages of studying at the university",
+    "recognitions": "Confessions made",
+    "university_numbers": "The university in numbers",
+    "university_specializations": "University specializations",
+    "university_accreditations": "University credits",
+    "university_languages": "University languages",
+    "university_Terms": "Application conditions",
+    "university_details": "More details",
+    "university_faqs": "Frequently asked questions"
+  },
   "university": {
+    "info": "Information about",
     "foundedIn": "Founded in",
+    "numbers": "In numbers",
     "globalRank": "Global rankings",
     "languages": "Languages",
     "localRank": "Local ranking",
@@ -15,7 +29,7 @@
     "languagesStudyAvailable": "Tteg",
     "languagesStudyMoreLanguages": "The opportunity to study in many languages",
     "faqs": "Question and answer about the university",
-     "confessions": "Recognitions obtained by the university"
+    "confessions": "Recognitions obtained by the university"
   },
   "tabs": {
     "studyPrograms": "Academic majors",
@@ -37,7 +51,7 @@
   },
   "housing": {
     "capacity": "Capacity",
-    "price": "Price",
+    "price": "the price",
     "beds": "Beds",
     "meals": "Meals",
     "internet": "Internet"
@@ -45,7 +59,7 @@
   "specifications": {
     "title": "University specifications"
   },
-  "description": "More details about",
+  "description": "More details about ",
   "readMore": "Show more",
   "readLess": "Offer less",
   "howTo": "How to apply in ",

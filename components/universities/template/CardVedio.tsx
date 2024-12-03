@@ -13,9 +13,9 @@ export default async function CardVideo({
 }) {
   const {t} = await useTranslation(lng, "university_details");
   return (
-    <div className="bg-white space-y-7 text-gray-500">
+    <div className="bg-white space-y-7 text-gray-500 pb-10">
     {university.video != null && (
-      <Card className="border-none shadow-none container mx-auto">
+      <Card className="border-none shadow-none container lg:max-w-[85vw] mx-auto">
         <CardHeader>
           <h1 className="text-lg md:text-xl font-bold my-2">
             {t("university.video")} {university.name}
@@ -38,7 +38,7 @@ export default async function CardVideo({
       </Card>
     )}
     {university.photo_album.length > 0 && (
-      <div className="container mx-auto">
+      <div className="container lg:max-w-[85vw] mx-auto">
         <div className="py-10">
           <h1 className="text-lg md:text-xl font-bold px-4">
             {t("university.photo")}

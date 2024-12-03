@@ -14,6 +14,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import ShowMoreBtn from "@/components/global/ShowMore";
+import LinksCategory from "@/components/global/LinksCategory";
 
 export default async function Blogs({
   params,
@@ -33,8 +34,8 @@ export default async function Blogs({
     url = `/blog_cat/${searchParams.category}`;
   }
   if (searchParams.page) {
-    const params = new URLSearchParams(searchParams.toString())
-    params.set("page", searchParams.page)
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("page", searchParams.page);
     url += `?${params.toString()}`;
   }
 
@@ -45,7 +46,7 @@ export default async function Blogs({
   const sliders = resp?.data?.sliders || null;
 
   return (
-    <div className="my-10 container mx-auto space-y-10 p-4">
+    <div className="my-10 container lg:max-w-[85vw] mx-auto space-y-10 p-4">
       <div className="flex justify-center items-center text-center">
         <h2 className="text-lg font-bold text-gray-500 md:text-2xl">
           {t("title")}
@@ -53,6 +54,17 @@ export default async function Blogs({
       </div>
       <div>
         <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base md:text-lg">
+          <li
+            className={
+              !searchParams.category
+                ? "border-b-2 border-secondary text-secondary"
+                : ""
+            }
+          >
+            <LinkApp href={`/blogs`} lng={lng}>
+              {t("links.all")}
+            </LinkApp>
+          </li>
           {links &&
             links?.map((item: any, index: number) => {
               return (
@@ -60,8 +72,6 @@ export default async function Blogs({
                   key={item.id}
                   className={
                     searchParams.category === item.slug
-                      ? "border-b-2 border-secondary text-secondary"
-                      : !searchParams.category && index === 0
                       ? "border-b-2 border-secondary text-secondary"
                       : ""
                   }
@@ -75,56 +85,70 @@ export default async function Blogs({
         </ul>
       </div>
 
-      <div className="space-y-10">
+      {sliders && sliders.length > 0 && <div className="space-y-10">
         <h1 className="text-lg text-start font-bold text-gray-500 md:text-2xl">
           {t("most_visited")}
         </h1>
-        <Carousel>
-          <CarouselContent className="p-4 gap-x-4">
-            {sliders &&
-              sliders?.map((item: any) => (
-                <CarouselItem
-                  key={item.id}
-                  className=" h-full bg-white rounded-xl hover:shadow-md"
-                >
-                  <div className="w-full h-full grid md:grid-cols-2">
-                    <div className="h-full flex items-center order-2 p-4">
-                      <div className="space-y-5 lg:!space-y-10 lg:w-11/12 mx-auto">
-                        <h1 className="text-lg font-bold text-gray-500 md:text-3xl">
-                          {item.title}
-                        </h1>
-                        <p
-                          className="text-sm md:text-base text-gray-600 prose line-clamp-2"
-                          dangerouslySetInnerHTML={{ __html: item.content }}
-                        ></p>
+        <div className="lg:px-24">
+          <Carousel>
+            <CarouselContent className="p-4 gap-x-4">
+              {sliders?.map((item: any) => (
+                  <CarouselItem
+                    key={item.id}
+                    className="h-auto bg-white rounded-xl hover:shadow-md"
+                  >
+                    <LinkApp
+                      lng={lng}
+                      href={`/blogs/${item.slug}`}
+                      className="w-full"
+                    >
+                      <div className="w-full h-full grid md:grid-cols-2">
+                        <div className="h-full flex items-center order-2 p-4">
+                          <div className="space-y-5 text-start lg:!space-y-16 lg:w-11/12 mx-auto">
+                            <h1 className="text-lg font-bold text-gray-500 md:text-3xl">
+                              {item.title}
+                            </h1>
+                            <p
+                              className="text-sm md:text-base text-gray-500 line-clamp-2"
+                              dangerouslySetInnerHTML={{
+                                __html: item.content.slice(0, 200),
+                              }}
+                            ></p>
+                          </div>
+                        </div>
+                        <div className="p-4 ps-0 md:ps-4 order-1 md:order-2">
+                          <Image
+                            src={img1}
+                            alt="img"
+                            width={2300}
+                            height={2300}
+                            className="w-full md:h-[400px] object-cover rounded-xl"
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="p-4 order-1 md:order-2">
-                      <Image
-                        src={img1}
-                        alt="img"
-                        width={2300}
-                        height={2300}
-                        className="w-full h-full object-cover rounded-xl"
-                      />
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-      </div>
+                    </LinkApp>
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </div>}
 
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:grid-cols-3">
         {blogs &&
           blogs.map((item: BlogItemType) => (
-            <CardBlog key={item.id} blog={item} lng={lng} textBtn={t('read_more')} />
+            <CardBlog
+              key={item.id}
+              blog={item}
+              lng={lng}
+              textBtn={t("read_more")}
+            />
           ))}
       </section>
       <div className="flex justify-center">
-       <ShowMoreBtn page={searchParams.page} text={t('show_more')} />
+        <ShowMoreBtn page={searchParams.page} text={t("show_more")} />
       </div>
     </div>
   );

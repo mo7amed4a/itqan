@@ -9,11 +9,13 @@ import Image from "next/image";
 export default function VideoTwo({
     text,
     btn,
-    lng
+    lng,
+    url
 }:{
     text: string;
     btn: string;
-    lng: string
+    lng: string;
+    url: string
 }) {
   const containerRef = useRef(null); // للإشارة إلى الحاوية
   const imageRef = useRef(null); // للإشارة إلى الحاوية
@@ -40,6 +42,7 @@ export default function VideoTwo({
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
 
   return (
     <div
@@ -70,9 +73,9 @@ export default function VideoTwo({
             {text}
           </h2>
           <div className="flex justify-center" >
-            <button className="text-sm sm:text-base md:text-lg sm:w-auto px-2 py-2 md:px-6 md:py-3 bg-primary group-hover:bg-secondary text-white rounded-lg transition-colors">
+            <a href={url} target="_blank" className="text-sm sm:text-base md:text-lg sm:w-auto px-2 py-2 md:px-6 md:py-3 bg-primary group-hover:bg-secondary text-white rounded-lg transition-colors">
               {btn}
-            </button>
+            </a>
           </div>
         </motion.div>
 
