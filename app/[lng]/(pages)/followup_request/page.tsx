@@ -1,62 +1,64 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Button, Card, TextInput } from 'flowbite-react';
-import { useFormik } from 'formik';
-import { useRouter } from 'next/navigation';
-import * as Yup from 'yup';
-import { useTranslation } from '../../../../i18n/client';
+import React from "react";
+import { Card, TextInput } from "flowbite-react";
+import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
+import * as Yup from "yup";
+import { useTranslation } from "../../../../i18n/client";
+import { Button } from "@/components/ui/button";
 
 export default function TrackingPage({
-    params,
+  params,
 }: {
-    params: {
-        lng: string
-    }
+  params: {
+    lng: string;
+  };
 }) {
-    const { t: dataLang } = useTranslation(params.lng, "followup_request");
+  const { t: dataLang } = useTranslation(params.lng, "followup_request");
 
-
-    const router = useRouter()
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
-      code: ''
+      code: "",
     },
     validationSchema: Yup.object({
-      code: Yup.string().required(dataLang('code_require'))
+      code: Yup.string().required(dataLang("code_require")),
     }),
     onSubmit: (values) => {
-      // توجيه المستخدم إلى صفحة الكود
-      router.push(`followup_request/${values.code}`)
-    }
+      router.push(`followup_request/${values.code}`);
+    },
   });
 
   return (
-    <div className="max-w-md mx-auto mt-10">
-      <Card>
-        <div className="flex justify-between mb-4">
-          <h2 className="text-xl font-bold">{dataLang('tracking_title')}</h2>
-          <div>
-            
-          </div>
-        </div>
-        <form onSubmit={formik.handleSubmit}>
-          <TextInput
-            type="text"
-            placeholder={dataLang('enter_code')}
-            name="code"
-            className="mb-4"
-            value={formik.values.code}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            color={formik.errors.code && formik.touched.code ? "failure" : undefined}
-          />
-          {formik.errors.code && formik.touched.code ? (
-            <p className="text-red-600 text-start text-sm pb-1">{formik.errors.code}</p>
-          ) : null}
-          <Button type="submit">{dataLang('submit_button')}</Button>
-        </form>
-      </Card>
+    <div>
+      <header className="bg-primary text-white text-center py-12">
+          <h1 className="text-4xl font-bold my-5">{dataLang("tracking_title")}</h1>
+        </header>
+       <div className="max-w-md mx-auto px-4 mt-10 pb-10">
+        <Card className="p-2">
+          <form onSubmit={formik.handleSubmit}>
+            <TextInput
+              type="text"
+              placeholder={dataLang("enter_code")}
+              name="code"
+              className="mb-4"
+              value={formik.values.code}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              color={
+                formik.errors.code && formik.touched.code ? "failure" : undefined
+              }
+            />
+            {formik.errors.code && formik.touched.code ? (
+              <p className="text-red-600 text-start text-sm pb-1">
+                {formik.errors.code}
+              </p>
+            ) : null}
+            <Button type="submit" className="w-full hover:bg-secondary hover:scale-x-100">{dataLang("submit_button")}</Button>
+          </form>
+        </Card>
+       </div>
     </div>
   );
-};
+}

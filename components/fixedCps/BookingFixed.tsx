@@ -25,6 +25,7 @@ import {
 } from "../ui/select";
 import { Button } from "../ui/button";
 import { getData } from "@/lib/data";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type DataType = {
   name: string;
@@ -54,11 +55,12 @@ interface DataHomeType {
 
 export default function BookingFixed({ lng, child=null }: { lng: string, child?: React.ReactNode | null }) {
   const { t: dataLang } = useTranslation(lng, "layOutFixed");
-  const [isOpen, setIsOpen] = useState(false);
-  const handleClose = () => setIsOpen(false);
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(searchParams.get("booking") ? true : false);
   const [text, setText] = useState<string | null>(null);
   const [dataHome, setDataHome] = useState<DataHomeType | null>(null);
-
 
   const validationSchema = Yup.object({
     name: Yup.string().required(dataLang("drawer.name_required")),
@@ -162,6 +164,14 @@ export default function BookingFixed({ lng, child=null }: { lng: string, child?:
     }
   };
 
+  const handleClose = () => {
+    const current = new URLSearchParams(Array.from(searchParams.entries()))
+    current.delete("booking")
+    const search = current.toString()
+    const query = search ? `?${search}` : ""
+    setIsOpen(false)
+    router.push(`${pathname}${query}`)
+  }
   // useEffect(() => {
   //   // setText((localStorage.getItem("msgBooking") as string) || null);
   // }, []);
@@ -175,6 +185,12 @@ export default function BookingFixed({ lng, child=null }: { lng: string, child?:
   useEffect(() => {
     getDataHome();
   }, []);
+
+  useEffect(() => {
+    if (searchParams.get("booking") === "open") {
+      setIsOpen(true);
+    }
+  }, [searchParams.get("booking")])
 
   return (
     <div>

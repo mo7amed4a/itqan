@@ -16,6 +16,7 @@ import LinkActive from "./LinkActive";
 import BookingFixed from "../fixedCps/BookingFixed";
 import LinkApp from "../global/LinkApp";
 import { Button } from "../ui/button";
+import OpenBooking from "../fixedCps/OpenBooking";
 
 export default async function HeaderApp({ locale }: { locale: string }) {
   const { t } = await useTranslation(locale, "Header");
@@ -31,14 +32,14 @@ export default async function HeaderApp({ locale }: { locale: string }) {
         <div className="flex flex-col md:flex-row justify-between py-2 px-4 md:px-10 gap-2 md:w-[90vw] mx-auto">
           <div className="flex justify-between md:justify-start gap-4">
             <div className="z-[7817874]">
-            <BookingFixed lng={locale} child={
-              <Button
-                color="primary"
-                className="border text-wrap px-4 hover:!scale-x-100 py-0 text-[11px] md:px-4 md:text-base"
-              >
-                {t("booking_btn")}
-              </Button>
-              } />
+              <OpenBooking>
+                <Button
+                  color="primary"
+                  className="border text-wrap px-4 hover:!scale-x-100 py-0 text-[11px] md:px-4 md:text-base"
+                >
+                  {t("booking_btn")}
+                </Button>
+              </OpenBooking>
             </div>
             <div>
               <Button
@@ -49,14 +50,11 @@ export default async function HeaderApp({ locale }: { locale: string }) {
               </Button>
             </div>
             <div>
-              <LinkApp href={`/${locale}/followup_request`} lng={locale} >
-                  <Button
-                  className="text-wrap bg-secondary hover:!scale-x-100 text-white border border-white px-4 py-0 text-[10px] md:px-2 md:text-base"
-                >
+              <LinkApp href={`/followup_request`} lng={locale}>
+                <Button className="text-wrap bg-secondary hover:!scale-x-100 text-white border border-white px-4 py-0 text-[10px] md:px-2 md:text-base">
                   {t("follow_up_on_the_registration_request")}
                 </Button>
-                </LinkApp>
-            
+              </LinkApp>
             </div>
           </div>
           <div className="flex justify-between md:justify-start gap-4">
@@ -65,19 +63,17 @@ export default async function HeaderApp({ locale }: { locale: string }) {
           </div>
         </div>
       </div>
-      <div
-        className="px-3 md:px-10 md:w-[90vw] md:mx-auto"
-      >
+      <div className="px-3 md:px-10 md:w-[90vw] md:mx-auto">
         <Navbar fluid rounded>
           <NavbarBrand as={"div"}>
-            <LinkApp href="/" lng={locale} >
-            <Image
-              src={logo}
-              className="w-32 md:w-44 h-12 md:h-full bg-contain"
-              alt="app Logo"
-              width={"200"}
-              height={"200"}
-            />
+            <LinkApp href="/" lng={locale}>
+              <Image
+                src={logo}
+                className="w-32 md:w-44 h-12 md:h-full bg-contain"
+                alt="app Logo"
+                width={"200"}
+                height={"200"}
+              />
             </LinkApp>
           </NavbarBrand>
           <NavbarToggle />

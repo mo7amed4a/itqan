@@ -67,9 +67,9 @@ export default async function RootLayout({
       <BookingFixed lng={lng} />
       {children}
       <FooterApp lng={lng} />
-      <div className="fixed bottom-4 start-4">
+      {/* <div className="fixed bottom-4 start-4">
         <Image src={chatLogo} className="w-24 h-20" width={400} height={400} alt="" />
-      </div>
+      </div> */}
     </main>
   );
 }

@@ -5,6 +5,7 @@ import { getData } from "@/lib/data";
 import FilterSelect from "./Filter";
 import BookingFixed from "../fixedCps/BookingFixed";
 import LinkApp from "../global/LinkApp";
+import OpenBooking from "../fixedCps/OpenBooking";
 
 export default async function HeroSection({
   dataLang,
@@ -36,14 +37,11 @@ export default async function HeroSection({
             {dataLang("hero.subtitle")}
           </h2>
           <div className="space-y-4 flex flex-col w-2/3 md:w-2/4 px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base">
-            <BookingFixed
-              lng={locale}
-              child={
-                <Button size={"xl"} variant={"secondary"} className="w-full">
-                  {dataLang("hero.register_now")}
-                </Button>
-              }
-            />
+            <OpenBooking>
+              <Button size={"xl"} variant={"secondary"} className="w-full">
+                {dataLang("hero.register_now")}
+              </Button>
+            </OpenBooking>
             <Button
               size={"xl"}
               variant={"outline"}
