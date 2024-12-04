@@ -41,7 +41,7 @@ export default async function UniversitiesPage({
   const pagination = data?.paginated_universities?.pagination || null;
 
   return (
-    <div className="my-10 container mx-auto space-y-7 p-4">
+    <div className="my-10 container lg:max-w-[85vw] mx-auto space-y-7 p-4 md:px-0">
       <div className="flex justify-center items-center text-center">
         <h2 className="text-lg font-bold text-gray-500 md:text-2xl">
           {t("title")}

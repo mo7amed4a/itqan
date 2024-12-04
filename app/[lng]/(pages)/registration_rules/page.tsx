@@ -34,16 +34,16 @@ export default async function page({
   return (
     data && (
       <div>
-        <header className="bg-primary text-white text-center py-12">
-          <h1 className="text-4xl font-bold my-5">{data.name}</h1>
-        </header>
-        <section className="text-start py-12 px-4">
-          <p
-            className="mt-4 text-gray-700 max-w-7xl mx-auto prose lg:prose-xl"
-            dangerouslySetInnerHTML={{ __html: data.details }}
-          ></p>
-        </section>
-      </div>
+      <header className="bg-primary text-white text-center py-12">
+        <h1 className="text-4xl font-bold my-5">{data.name}</h1>
+      </header>
+      <section className="text-start py-12 px-4">
+        <p
+          className="mt-4 text-gray-700 max-w-7xl mx-auto prose lg:prose-xl"
+          dangerouslySetInnerHTML={{ __html: data.details }}
+        ></p>
+      </section>
+    </div>
     )
   );
 }

@@ -9,7 +9,7 @@ export default async function Page({ params }: { params: { lng: string } }) {
   const response = await getData("/grants", lng);
   const data = response?.data;
   return (
-    <div className="container mx-auto px-4 my-10">
+    <div className="container lg:max-w-[85vw] mx-auto px-4 md:px-0 my-10">
       <h1 className="text-center text-xl md:text-2xl font-bold text-gray-500 capitalize">
         {t("title")}
       </h1>

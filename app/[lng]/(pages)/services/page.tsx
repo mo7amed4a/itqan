@@ -42,7 +42,7 @@ export default async function Page({
       <h1 className="text-center text-xl md:text-2xl font-bold text-gray-500 capitalize">
         {t("titlePage")}
       </h1>
-      <section className="container mx-auto  px-4 py-10">
+      <section className="container lg:max-w-[85vw] mx-auto px-4 md:px-0 py-10">
         <div className="flex flex-col space-y-7 mt-10">
           <div>
             <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base">
@@ -112,8 +112,6 @@ export default async function Page({
                       </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
               </Carousel>
             </div>
           ) : (
@@ -137,8 +135,6 @@ export default async function Page({
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
               </Carousel>
             </div>
           )}
@@ -159,7 +155,7 @@ export default async function Page({
           </div>
         </div>
       </section>
-     {data && data?.services && data?.services?.length > 1 && <section className="container mx-auto  px-4 pb-10">
+     {data && data?.services && data?.services?.length > 1 && <section className="container lg:max-w-[85vw] mx-auto px-4 md:px-0 pb-10">
         <h1 className="my-10 text-lg md:text-2xl font-bold text-gray-500">
           {/* {t("post_admission_services")} */}
           {data.services[1].name}
@@ -198,6 +194,7 @@ export default async function Page({
             ))}
         </div>
       </section>}
+      
       <section className="relative bg-primary">
         <div className="relative z-10 h-96 bg-transparent flex flex-col space-y-10 justify-center items-center px-7 text-center">
           <h1 className="text-lg md:text-3xl font-bold text-white">
@@ -220,29 +217,31 @@ export default async function Page({
       </section>
 
       <section className="bg-white pb-10 pt-16">
-        <div>
-          <h1 className="text-lg md:text-3xl text-gray-500 font-bold text-center">
-            {t("contactUs.title")}
-          </h1>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 py-10 container mx-auto px-4">
+        <div className="container lg:max-w-[85vw] mx-auto px-4 md:px-0">
           <div>
-            <div className="hover:shadow-md bg-gray-50 pb-8 rounded-xl [&>div>h2]:hidden">
-              <FormBooking lng={lng} />
-            </div>
+            <h1 className="text-lg md:text-3xl text-gray-500 font-bold text-center">
+              {t("contactUs.title")}
+            </h1>
           </div>
-          <div className="p-4 md:p-8">
-            <h2 className="text-base md:text-3xl font-bold text-primary lg:w-3/5 !leading-[1.35]">
-              {t("contactUs.subtitle")}
-              <span className="text-red-500"> {t("contactUs.hour")}</span>
-            </h2>
-            <ul className="mt-8 text-base md:text-xl text-gray-500 space-y-3 !leading-[1.45]">
-              <li className="list">{t("contactUs.points.a")}</li>
-              <li className="list">{t("contactUs.points.b")}</li>
-              <li className="list">{t("contactUs.points.c")}</li>
-              <li className="list">{t("contactUs.points.d")}</li>
-              <li className="list">{t("contactUs.points.e")}</li>
-            </ul>
+          <div className="grid grid-cols-1 md:grid-cols-2 py-10 container mx-auto px-4">
+            <div>
+              <div className="hover:shadow-md bg-gray-50 pb-8 rounded-xl [&>div>h2]:hidden">
+                <FormBooking lng={lng} />
+              </div>
+            </div>
+            <div className="p-4 md:p-8">
+              <h2 className="text-base md:text-3xl font-bold text-primary lg:w-3/5 !leading-[1.35]">
+                {t("contactUs.subtitle")}
+                <span className="text-red-500"> {t("contactUs.hour")}</span>
+              </h2>
+              <ul className="mt-8 text-base md:text-xl text-gray-500 space-y-3 !leading-[1.45]">
+                <li className="list">{t("contactUs.points.a")}</li>
+                <li className="list">{t("contactUs.points.b")}</li>
+                <li className="list">{t("contactUs.points.c")}</li>
+                <li className="list">{t("contactUs.points.d")}</li>
+                <li className="list">{t("contactUs.points.e")}</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
