@@ -38,15 +38,15 @@ export default function LocaleSwitcher({ lng }: { lng: string }) {
       disabled={isPending}
       
     >
-      <SelectTrigger className="w-[120px] bg-transparent !text-white focus:ring-0 focus:outline-none focus-visible:ring-0 focus:border-none">
+      <SelectTrigger className="w-[55px] md:w-[70px] h-8 md:h-9 bg-transparent !text-white focus:ring-0 focus:outline-none focus-visible:ring-0 focus:border-none">
         <div className="!text-white">
           <SelectValue placeholder="Select language" />
         </div>
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="en">English</SelectItem>
-        <SelectItem value="ar">العربية</SelectItem>
-        <SelectItem value="fa">فارسی</SelectItem>
+        <SelectItem value="en">EN</SelectItem>
+        <SelectItem value="ar">AR</SelectItem>
+        <SelectItem value="fa">FA</SelectItem>
       </SelectContent>
     </Select>
   )

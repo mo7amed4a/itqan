@@ -29,6 +29,7 @@
     "message_required": "محتوای پیام الزامی است",
     "submitting": "ثبت نام در حال انجام است",
     "btnCopy": "کد را کپی کنید",
-    "followup_request": "پیگیری سفارش"
+    "followup_request": "پیگیری سفارش",
+    "close": "بستن"
   }
 }

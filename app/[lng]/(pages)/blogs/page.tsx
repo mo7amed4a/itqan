@@ -85,14 +85,15 @@ export default async function Blogs({
         </ul>
       </div>
 
-      {sliders && sliders.length > 0 && <div className="space-y-10">
-        <h1 className="text-lg text-start font-bold text-gray-500 md:text-2xl">
-          {t("most_visited")}
-        </h1>
-        <div className="lg:px-24">
-          <Carousel>
-            <CarouselContent className="p-4 gap-x-4">
-              {sliders?.map((item: any) => (
+      {sliders && sliders.length > 0 && (
+        <div className="space-y-10">
+          <h1 className="text-lg text-start font-bold text-gray-500 md:text-2xl">
+            {t("most_visited")}
+          </h1>
+          <div className="lg:px-24">
+            <Carousel>
+              <CarouselContent className="p-4 gap-x-4">
+                {sliders?.map((item: any) => (
                   <CarouselItem
                     key={item.id}
                     className="h-auto bg-white rounded-xl hover:shadow-md"
@@ -129,15 +130,34 @@ export default async function Blogs({
                     </LinkApp>
                   </CarouselItem>
                 ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
         </div>
-      </div>}
+      )}
 
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:grid-cols-3">
-        {blogs &&
+      <section className="grid grid-cols-1">
+        <Carousel>
+          <CarouselContent className="px-10 md:px-0">
+            {blogs &&
+              blogs.map((item: BlogItemType) => (
+                <CarouselItem
+                  className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pb-8"
+                  key={item.id}
+                >
+                  <CardBlog
+                    key={item.id}
+                    blog={item}
+                    lng={lng}
+                    textBtn={t("read_more")}
+                  />
+                </CarouselItem>
+              ))}
+          </CarouselContent>
+        </Carousel>
+        {/* {blogs &&
           blogs.map((item: BlogItemType) => (
             <CardBlog
               key={item.id}
@@ -145,7 +165,7 @@ export default async function Blogs({
               lng={lng}
               textBtn={t("read_more")}
             />
-          ))}
+          ))} */}
       </section>
       <div className="flex justify-center">
         <ShowMoreBtn page={searchParams.page} text={t("show_more")} />

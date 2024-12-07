@@ -19,7 +19,7 @@ export default async function HeroSection({
       className={`bg-hero p-6 ${locale === "en" && "transform -scale-x-100"}`}
     >
       <div
-        className={`h-screen md:h-[85vh] max-w-[90rem] mx-auto flex flex-col items-center ${
+        className={`h-screen md:h-[85vh] max-w-[90vw] mx-auto px-4 md:px-10 flex flex-col items-center ${
           locale === "en" ? "lg:flex-row justify-end" : "lg:flex-row-reverse"
         }`}
       >

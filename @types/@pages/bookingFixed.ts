@@ -14,6 +14,7 @@ export interface BookingFixedType {
       select_language: "اختر اللغة";
       select_specialization: "اختر التخصص";
       select_universities: "اختر الجامعات التي تود الانضمام إليها";
+      close: string;
 
       message_text: "نص الرسالة";
       message_content: "نص الرسالة";

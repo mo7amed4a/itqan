@@ -41,7 +41,7 @@ export default async function Page({
     <main className="space-y-">
       {data && <HeroSection dataLang={t} locale={lng} />}
       <section className="bg-white py-8">
-        <VideoTwo url={settings.consult_url} text={t('videoCall.text')} btn={t('videoCall.booking_now')} lng={lng} />
+        <VideoTwo url={settings?.consult_url} text={t('videoCall.text')} btn={t('videoCall.booking_now')} lng={lng} />
         {/* <VideoCall dataVideoCall={t} locale={lng} /> */}
       </section>
       <div className="bg-[#f5f7f9] my-10">

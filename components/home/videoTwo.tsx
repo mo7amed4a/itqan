@@ -50,13 +50,12 @@ export default function VideoTwo({
       className="max-w-6xl mx-auto p-3 md:p-6 group"
     >
       <motion.div
-        className="bg-gray-50 rounded-full p-3 md:p-6 flex items-center justify-between gap-8 group hover:cursor-pointer"
+        className="md:bg-gray-50 rounded-full p-3 md:p-6 flex flex-col-reverse md:flex-row items-center justify-between gap-8 group hover:cursor-pointer"
         style={{ direction: "rtl" }}
         whileHover="hover"
         whileFocus={"hover"}
       >
-        <motion.div
-          className="flex-1 space-y-2 md:space-y-6 md:group-hover:ps-[17rem] ps-4"
+        <motion.div className="flex-1 space-y-2 md:space-y-6 md:group-hover:ps-[17rem] ps-4"
           variants={{
             hover: {
               x: -256,
@@ -69,7 +68,7 @@ export default function VideoTwo({
             initial: { x: 0 },
           }}
         >
-          <h2 className="text-sm md:text-xl text-center lg:text-2xl font-semibold text-gray-800">
+          <h2 className="text-sm md:text-xl text-center lg:text-2xl font-semibold text-gray-600 md:text-gray-800">
             {text}
           </h2>
           <div className="flex justify-center" >
@@ -79,8 +78,7 @@ export default function VideoTwo({
           </div>
         </motion.div>
 
-        <motion.div
-          className="size-24 sm:size-32 md:size-[24rem] border-8 border-white rounded-full flex-shrink-0"
+        <motion.div className="w-80 h-80 sm:size-32 md:size-[24rem] border-8 border-white rounded-full flex-shrink-0"
           ref={imageRef}
           variants={{
             hover: {
@@ -95,7 +93,7 @@ export default function VideoTwo({
           }}
         >
           <div className="w-full h-full rounded-full overflow-hidden bg-white/90">
-          <Image className='rounded-full size-full border-4 md:border-8 border-primary/20' src={img} alt='video call' width={300} height={300} />
+            <Image className='rounded-full size-full border-4 md:border-8 border-primary/20' src={img} alt='video call' width={300} height={300} />
           </div>
         </motion.div>
       </motion.div>

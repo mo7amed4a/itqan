@@ -29,6 +29,7 @@
     "message_required": "Message content is required",
     "submitting": "Registration is in progress",
     "btnCopy": "Copy the code",
-    "followup_request": "Order tracking"
+    "followup_request": "Order tracking",
+    "close": "Close"
   }
 }

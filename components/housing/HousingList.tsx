@@ -10,7 +10,6 @@ import { MdNoMeals } from "react-icons/md";
 import { MdFace } from "react-icons/md";
 import { LiaBedSolid } from "react-icons/lia";
 
-
 const HousingList = ({ housings, t }: { housings: any; t: any }) => {
   return (
     <>
@@ -33,15 +32,15 @@ const HousingList = ({ housings, t }: { housings: any; t: any }) => {
                 dangerouslySetInnerHTML={{ __html: housing.description }}
               ></p>
             </div> */}
-            <div className="text-sm flex items-end flex-wrap mt-5 text-center gap-4 justify-center font-[600]">
+            <div className="text-sm grid grid-cols-3 md:flex items-end flex-wrap mt-5 text-center gap-4 justify-center font-[600]">
               <div className="bg-gray-50 flex flex-col items-center p-3 space-y-2 rounded-lg">
-              <LiaBedSolid className="size-6 fill-primary"/>
+                <LiaBedSolid className="size-6 fill-primary" />
 
                 <h2 className="text-primary border-b text-base">{t("beds")}</h2>
                 <p className="text-secondary py-2">{housing.beds}</p>
               </div>
               <div className="bg-gray-50 flex flex-col items-center p-3 space-y-2 rounded-lg">
-              <MdNoMeals className="size-6 fill-primary"/>
+                <MdNoMeals className="size-6 fill-primary" />
 
                 <h2 className="text-primary  border-b text-base">
                   {t("meals")}
@@ -49,7 +48,7 @@ const HousingList = ({ housings, t }: { housings: any; t: any }) => {
                 <p className="text-secondary py-2">{housing.meals}</p>
               </div>
               <div className="bg-gray-50 flex flex-col items-center p-3 space-y-2 rounded-lg">
-              <MdFace className="size-6 fill-primary" />
+                <MdFace className="size-6 fill-primary" />
 
                 <h2 className="text-primary border-b text-base">{t("type")}</h2>
                 <p className="text-secondary py-2">
@@ -83,7 +82,9 @@ const HousingList = ({ housings, t }: { housings: any; t: any }) => {
 
             <div className="md:w-3/4 mx-auto gap-5 grid grid-cols-2">
               <Button className="hover:!scale-x-100">{t("viewImage")}</Button>
-              <Button className="bg-secondary hover:!scale-x-100">{t("register")}</Button>
+              <Button className="bg-secondary hover:!scale-x-100">
+                {t("register")}
+              </Button>
             </div>
           </CardHeader>
           <CardContent className="md:w-2/4 p-4 md:order-2">

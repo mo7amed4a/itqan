@@ -45,20 +45,20 @@ export default async function CardFull({ data, lng }: CardFullProps) {
       </div>
 
       <div className="lg:w-3/4 md:py-5 flex flex-col items-start space-y-4">
-        <div className="flex justify-between items-center w-full">
-          <h1 className="text-gray-500 text-xl font-bold">
+        <div className="flex flex-col-reverse justify-between items-center w-full gap-5">
+          <h1 className="text-gray-500 text-xl font-bold text-start w-full">
             {data.university_name}
           </h1>
           <Image
             src={data.logo.split("http://").join("https://")}
-            className="rounded-full w-20 lg:hidden"
+            className="rounded-full w-64 h-64 lg:hidden"
             alt={data.university_name}
             width={100}
             height={100}
           />
         </div>
 
-        <div className="flex gap-x-2 md:items-center">
+        <div className="flex justify-between md:justify-normal w-full gap-x-2 md:items-center">
           <h3 className="flex gap-x-2 text-primary text-base text-start">
             <FaUniversity />
             {t("specialization.label")}:
@@ -66,7 +66,7 @@ export default async function CardFull({ data, lng }: CardFullProps) {
           <p className="text-base text-gray-500">{data.program_name}</p>
         </div>
 
-        <div className="flex gap-x-2 md:items-center">
+        <div className="flex justify-between md:justify-normal w-full gap-x-2 md:items-center">
           <h3 className="flex gap-x-2 text-primary text-base text-start">
             <FaTag />
             {t("level.label")}:
@@ -89,7 +89,7 @@ export default async function CardFull({ data, lng }: CardFullProps) {
           <p className="text-base text-gray-500">{data.study_years}</p>
         </div> */}
 
-        <div className="flex flex-col md:flex-row md:gap-4 md:items-start">
+        <div className="flex justify-between md:justify-normal w-full md:flex-row md:gap-4 md:items-start">
           <h3 className="flex gap-x-2 text-primary text-base text-start">
             <FaTag />
             {t("fees.label")}:
@@ -113,15 +113,15 @@ export default async function CardFull({ data, lng }: CardFullProps) {
           </div>
         </div>
 
-        <div className="flex gap-x-4 w-full mt-4 lg:ms-16">
-          <div className="">
-            <Button color="primary" className="bg-primary text-white lg:!px-10 !h-11">
+        <div className="grid grid-cols-2 md:flex gap-x-4 w-full mt-4 lg:ms-16">
+          <div className="w-full md:w-auto">
+            <Button color="primary" className="bg-primary w-full text-white lg:!px-10 md:!h-11">
               {t("buttons.register_scholarship")}
             </Button>
           </div>
-          <div className="">
-            <LinkApp href={`/universities/${data.id}`} lng={lng}>
-              <Button className="md:w-full bg-secondary lg:!px-16 !py-4 !h-11">
+          <div className="w-full md:w-auto">
+            <LinkApp className="w-full" href={`/universities/${data.id}`} lng={lng}>
+              <Button className="w-full bg-secondary lg:!px-16 !py-4 md:!h-11">
                 {t("buttons.view_university")}
               </Button>
             </LinkApp>

@@ -15,6 +15,7 @@ import img1 from "../../public/logo/logo-footer.png";
 import Image from "next/image";
 import { useTranslation } from "../../i18n";
 import { getData } from "@/lib/data";
+import LinksFixedHome from "./LinksFixedHome";
 
 export default async function FooterApp({ lng }: { lng: string }) {
   const { t } = await useTranslation(lng, "Footer");
@@ -24,6 +25,7 @@ export default async function FooterApp({ lng }: { lng: string }) {
   return (
     data && (
       <Footer container className="bg-primary text-white rounded-none p-0">
+        <LinksFixedHome data={data} />
         <div className="w-full md:pt-10">
           <div className="grid md:grid-cols-3 gap-4 py-5 px-4 md:px-0 container lg:max-w-[85vw] mx-auto">
             <div className="space-y-3 flex flex-col md:text-start text-sm md:text-base">

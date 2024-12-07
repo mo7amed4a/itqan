@@ -29,6 +29,7 @@
     "message_required": "محتوى الرسالة مطلوب",
     "submitting": "جاري التسجيل",
     "btnCopy": "نسخ الكود",
-    "followup_request": "تتبع الطلب"
+    "followup_request": "تتبع الطلب",
+    "close": "الغاء"
   }
 }
