@@ -34,18 +34,18 @@ export default async function CardUniversity({
           alt="alt"
           width={500}
           height={500}
-          className="rounded-2xl h-52 w-full"
+          className="rounded-2xl h-40 md:h-52 w-full"
           src={university.image.split('http://').join('https://')}
         />
         <Image
           alt="alt"
           width={500}
           height={500}
-          className="size-24 md:size-28 rounded-full absolute start-4 -bottom-16 border-4 bg-white"
+          className="size-16 md:size-28 rounded-full absolute start-4 -bottom-10 md:-bottom-16 border-4 bg-white"
           src={university.logo.split('http://').join('https://')}
         />
       </div>
-      <div className="p-4 mt-16 text-start">
+      <div className="p-4 mt-10 md:mt-16 text-start">
         <h2 className="font-bold text-lg sm:text-xl md:text-2xl text-primary line-clamp-1">
           {university.name || university.translated_name}
         </h2>

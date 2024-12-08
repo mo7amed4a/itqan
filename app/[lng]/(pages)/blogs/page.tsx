@@ -61,7 +61,7 @@ export default async function Blogs({
                 : ""
             }
           >
-            <LinkApp href={`/blogs`} lng={lng}>
+            <LinkApp className="text-nowrap" href={`/blogs`} lng={lng}>
               {t("links.all")}
             </LinkApp>
           </li>

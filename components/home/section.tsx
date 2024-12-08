@@ -13,7 +13,7 @@ export default function SectionApp({
 }) {
   return (
     <div className="flex flex-col py-8 space-y-9">
-      <h1 className="text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-500 flex justify-center gap-x-2">
+      <h1 className={`text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-500 flex justify-center gap-x-2 ${title2 && "flex-col md:flex-row"}`}>
         <span className="text-secondary">{title2}</span>
         <span>{title}</span>
       </h1>

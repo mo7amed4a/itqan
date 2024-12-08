@@ -72,7 +72,7 @@ export default function VideoTwo({
             {text}
           </h2>
           <div className="flex justify-center" >
-            <a href={url} target="_blank" className="text-sm sm:text-base md:text-lg sm:w-auto px-2 py-2 md:px-6 md:py-3 bg-primary group-hover:bg-secondary text-white rounded-lg transition-colors">
+            <a href={url} target="_blank" className="w-3/4 md:w-auto text-center mt-4 md:mt-0 text-sm sm:text-base md:text-lg sm:w-auto px-2 py-2 md:px-6 md:py-3 bg-primary group-hover:bg-secondary text-white rounded-lg transition-colors">
               {btn}
             </a>
           </div>

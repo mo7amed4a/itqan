@@ -32,7 +32,7 @@ export default function CardBlog({
     <LinkApp lng={lng} href={`/blogs/${blog.slug}`}>
       <Card className="flex w-full border-none rounded-3xl shadow-none hover:shadow-xl h-full px-3 duration-300 cursor-pointer md:my-4 group flex-col justify-center">
           {/* <div className="bg-[#21837F]/50 rounded-xl size-full absolute inset-0 z-0"></div> */}
-        <CardHeader className="h-64 relative p-0 rounded-3xl group-hover:before:bg-transparent before:bg-[#21837F]/40 before:absolute before:inset-0 before:transition-all before:duration-300 before:size-full before:z-10 overflow-hidden">
+        <CardHeader className="h-40 md:h-64 relative p-0 rounded-3xl group-hover:before:bg-transparent before:bg-[#21837F]/40 before:absolute before:inset-0 before:transition-all before:duration-300 before:size-full before:z-10 overflow-hidden">
           <Image
             src={`${blog.image.split("http://").join("https://")}`}
             alt="alt"
@@ -45,17 +45,17 @@ export default function CardBlog({
           </Badge>
         </CardHeader>
         <CardContent className="space-y-4 px-0 py-6">
-          <CardTitle className="text-base md:text-2xl font-bold text-gray-500 group-hover:text-primary text-wrap w-full">
+          <CardTitle className="text-sm md:text-2xl font-bold text-gray-500 group-hover:text-primary text-wrap w-full">
             {blog.title}
           </CardTitle>
           <p
-            className="text-sm md:text-base text-gray-400 line-clamp-2 py-"
+            className="text-xs md:text-base text-gray-400 line-clamp-2 py-"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           ></p>
           <div className="flex justify-center">
             <Button
               color="primary"
-              className="w-40 py-4 group-hover:bg-secondary font-bold bg-primary text-white"
+              className="w-40 h-8 md:!h-auto md:py-3 group-hover:bg-secondary font-bold bg-primary text-white"
             >
               {textBtn}
             </Button>
