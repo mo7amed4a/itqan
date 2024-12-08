@@ -23,6 +23,10 @@ body {
   @apply bg-cover bg-bottom;
 }
 
+.hidden-scrollbar {
+  scrollbar-width: none;
+}
+
 .hidden-scrollbar::-webkit-scrollbar {
   display: none;
 }
