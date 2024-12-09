@@ -12,6 +12,7 @@ import CardHouse from "@/components/universities/template/CardHouse";
 import Link from "next/link";
 import { useTranslation } from "@/i18n";
 import Navbar from "@/components/universities/template/NavbarForUniversity";
+import CardAlbum from "@/components/universities/template/CardAlbum";
 
 const universityData = {
   data: {
@@ -303,6 +304,7 @@ export default async function UniversityInfo({
         <CardUniOne university={university} lng={lng} />
         <div id="photos">
           <CardVideo university={university} lng={lng} />
+          <CardAlbum university={university} lng={lng} />
         </div>
         {/* <div className="space-y-7 text-gray-500 mt-10 py-10">
           <h1 className="text-lg md:text-xl font-bold px-4">

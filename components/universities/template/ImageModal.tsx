@@ -29,6 +29,7 @@ export function ImageModal({ src, alt }: ImageModalProps) {
               width={2500}
               height={2500}
               alt={alt}
+              onClick={() => setIsOpen(e => !e)}
               className="w-full h-full object-contain"
             />
           </div>
