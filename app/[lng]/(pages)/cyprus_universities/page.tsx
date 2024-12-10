@@ -9,6 +9,8 @@ import { CustomCarousel } from "@/components/ui/CustomCarousel";
 import ShowMoreBtn from "@/components/global/ShowMore";
 import UniversitiesSliderItem from "@/components/universities/full/UniversitiesSliderItem";
 import LinksCategory from "@/components/global/LinksCategory";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { dir } from "i18next";
 
 export default async function UniversitiesPage({
   params,
@@ -86,22 +88,29 @@ export default async function UniversitiesPage({
         data.paginated_universities.data.length > 0 ? 
         (
           <div>
-            <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-10">
-              {data.paginated_universities.data.map((item: UniversityType) => {
-                return (
-                  <LinkApp
-                    key={item.id}
-                    lng={lng}
-                    href={`/universities/${item.id}`}
-                  >
-                    <CardUniversity
-                      major={t("topMajors")}
-                      btnText={t("universityInfo.registerNow")}
-                      university={item}
-                    />
-                  </LinkApp>
-                );
-              })}
+            <section className="mt-10">
+              <ScrollArea className="w-full whitespace-nowrap md:overflow-auto md:whitespace-pre-wrap" dir={dir(lng)}>
+                <div className="flex md:grid grid-cols-3 w-max md:w-full gap-4">
+                  {data.paginated_universities.data.map(
+                    (item: UniversityType) => {
+                      return (
+                        <LinkApp className="w-64 md:w-auto"
+                          key={item.id}
+                          lng={lng}
+                          href={`/universities/${item.id}`}
+                        >
+                          <CardUniversity
+                            major={t("topMajors")}
+                            btnText={t("universityInfo.registerNow")}
+                            university={item}
+                          />
+                        </LinkApp>
+                      );
+                    }
+                  )}
+                </div>
+                <ScrollBar orientation="horizontal" className="hidden" />
+              </ScrollArea>
             </section>
             {/* {pagination && pagination.total > 1 && (
           <PaginationApp

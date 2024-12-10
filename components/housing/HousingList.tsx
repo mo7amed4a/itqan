@@ -18,7 +18,7 @@ const HousingList = ({ housings, t }: { housings: any; t: any }) => {
           key={housing.id}
           className="flex flex-col md:flex-row 2xl:h-96 rounded-xl shadow-none border-none hover:shadow-md"
         >
-          <CardHeader className="md:w-2/4 px-8 py-12 order-2 md:order-1 space-y-10">
+          <CardHeader className="md:w-2/4 px-8 py-12 order-2 md:order-1 md:space-y-10">
             <div className="flex gap-4 text-start">
               <div className="space-y-2 text-gray-500">
                 <h1 className="text-lg font-[600]">{housing.name}</h1>
@@ -32,57 +32,57 @@ const HousingList = ({ housings, t }: { housings: any; t: any }) => {
                 dangerouslySetInnerHTML={{ __html: housing.description }}
               ></p>
             </div> */}
-            <div className="text-sm grid grid-cols-3 md:flex items-end flex-wrap mt-5 text-center gap-4 justify-center font-[600]">
-              <div className="bg-gray-50 flex flex-col items-center p-3 space-y-2 rounded-lg">
+            <div className="text-sm grid grid-cols-3 md:flex items-end flex-wrap lg:mt-5 text-center gap-3 md:gap-4 justify-center font-[600]">
+              <div className="bg-gray-50 flex flex-col items-center p-2 md:p-3 space-y-2 rounded-lg">
                 <LiaBedSolid className="size-6 fill-primary" />
 
-                <h2 className="text-primary border-b text-base">{t("beds")}</h2>
-                <p className="text-secondary py-2">{housing.beds}</p>
+                <h2 className="text-primary border-b text-xs md:text-base text-nowrap">{t("beds")}</h2>
+                <p className="text-secondary py-2 text-xs md:text-base">{housing.beds}</p>
               </div>
-              <div className="bg-gray-50 flex flex-col items-center p-3 space-y-2 rounded-lg">
+              <div className="bg-gray-50 flex flex-col items-center p-2 md:p-3 space-y-2 rounded-lg">
                 <MdNoMeals className="size-6 fill-primary" />
 
-                <h2 className="text-primary  border-b text-base">
+                <h2 className="text-primary border-b text-xs md:text-base text-nowrap">
                   {t("meals")}
                 </h2>
-                <p className="text-secondary py-2">{housing.meals}</p>
+                <p className="text-secondary py-2 text-xs md:text-base">{housing.meals}</p>
               </div>
-              <div className="bg-gray-50 flex flex-col items-center p-3 space-y-2 rounded-lg">
+              <div className="bg-gray-50 flex flex-col items-center p-2 md:p-3 space-y-2 rounded-lg">
                 <MdFace className="size-6 fill-primary" />
 
-                <h2 className="text-primary border-b text-base">{t("type")}</h2>
-                <p className="text-secondary py-2">
+                <h2 className="text-primary border-b text-xs md:text-base text-nowrap">{t("type")}</h2>
+                <p className="text-secondary py-2 text-xs md:text-base">
                   {housing.type === "male_housing" ? t("male") : t("female")}
                 </p>
               </div>
-              <div className="bg-gray-50 flex flex-col items-center p-3 space-y-2 rounded-lg">
+              <div className="bg-gray-50 flex flex-col items-center p-2 md:p-3 space-y-2 rounded-lg">
                 <FaMoneyBills className="size-6 fill-primary" />
 
-                <h2 className="text-primary border-b text-base">
+                <h2 className="text-primary border-b text-xs md:text-base text-nowrap">
                   {t("price")}
                 </h2>
-                <p className="text-secondary py-2">{housing.price}</p>
+                <p className="text-secondary py-2 text-xs md:text-base">{housing.price}</p>
               </div>
-              <div className="bg-gray-50 flex flex-col items-center p-3 space-y-2 rounded-lg">
+              <div className="bg-gray-50 flex flex-col items-center p-2 md:p-3 space-y-2 rounded-lg">
                 <MdReduceCapacity className="size-6 fill-primary" />
 
-                <h2 className="text-primary border-b text-base">
+                <h2 className="text-primary border-b text-xs md:text-base text-nowrap">
                   {t("capacity")}
                 </h2>
-                <p className="text-secondary py-2">{housing.capacity}</p>
+                <p className="text-secondary py-2 text-xs md:text-base">{housing.capacity}</p>
               </div>
-              <div className="bg-gray-50 flex flex-col items-center p-3 space-y-2 rounded-lg">
+              <div className="bg-gray-50 flex flex-col items-center p-2 md:p-3 space-y-2 rounded-lg">
                 <IoIosWifi className="size-6 fill-primary" />
-                <h2 className="text-primary border-b text-base">
+                <h2 className="text-primary border-b text-xs md:text-base text-nowrap">
                   {t("internet")}
                 </h2>
-                <p className="text-secondary py-2">{housing.internet}</p>
+                <p className="text-secondary py-2 text-xs md:text-base">{housing.internet}</p>
               </div>
             </div>
 
-            <div className="md:w-3/4 mx-auto gap-5 grid grid-cols-2">
-              <Button className="hover:!scale-x-100">{t("viewImage")}</Button>
-              <Button className="bg-secondary hover:!scale-x-100">
+            <div className="w-full md:w-3/4 mx-auto gap-2 md:gap-5 grid grid-cols-2">
+              <Button className="hover:!scale-x-100 w-full" size="xs">{t("viewImage")}</Button>
+              <Button className="bg-secondary hover:!scale-x-100" size="xs">
                 {t("register")}
               </Button>
             </div>

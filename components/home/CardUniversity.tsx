@@ -34,7 +34,7 @@ export default async function CardUniversity({
           alt="alt"
           width={500}
           height={500}
-          className="rounded-2xl h-40 md:h-52 w-full"
+          className="rounded-2xl h-36 md:h-52 w-full"
           src={university.image.split('http://').join('https://')}
         />
         <Image
@@ -45,21 +45,21 @@ export default async function CardUniversity({
           src={university.logo.split('http://').join('https://')}
         />
       </div>
-      <div className="p-4 mt-10 md:mt-16 text-start">
-        <h2 className="font-bold text-lg sm:text-xl md:text-2xl text-primary line-clamp-1">
+      <div className="p-4 mt-8 md:mt-16 text-start">
+        <h2 className="font-bold text-base sm:text-xl md:text-2xl text-primary line-clamp-1">
           {university.name || university.translated_name}
         </h2>
         {
           university.description &&
-        <p className="text-sm text-gray-500 line-clamp-2 pt-4" dangerouslySetInnerHTML={{ __html: university.description.slice(0, 200) }}></p>
+        <p className="text-sm text-gray-500 line-clamp-2 pt-2 md:pt-4" dangerouslySetInnerHTML={{ __html: university.description.slice(0, 200) }}></p>
         }
         {
            university.translated_description &&
-        <p className="text-sm text-gray-500 line-clamp-2 pt-4" dangerouslySetInnerHTML={{ __html: university.translated_description.slice(0, 200) }}></p>
+        <p className="text-sm text-gray-500 line-clamp-2 pt-2 md:pt-4" dangerouslySetInnerHTML={{ __html: university.translated_description.slice(0, 200) }}></p>
         }
         {university?.first_programs?.length > 0 && <>
-          <h6 className="text-red-500 text-base md:text-lg">{major}</h6>
-          <ul className="grid grid-cols-2 mt-4 text-xs md:text-base text-gray-600 text-start custom-bullet-university">
+          <h6 className="text-red-500 text-xs md:text-lg">{major}</h6>
+          <ul className="grid grid-cols-2 mt-4 text-xs gap-x-3 md:text-base text-gray-600 text-start custom-bullet-university">
             {
               university.first_programs.slice(0, 4).map((item, index) => (
                 <li key={index}>{item}</li>

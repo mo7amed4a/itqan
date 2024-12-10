@@ -9,6 +9,8 @@ import { CustomCarousel } from "@/components/ui/CustomCarousel";
 import ShowMoreBtn from "@/components/global/ShowMore";
 import UniversitiesSliderItem from "@/components/universities/full/UniversitiesSliderItem";
 import LinksCategory from "@/components/global/LinksCategory";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { dir } from "i18next";
 
 export default async function UniversitiesPage({
   params,
@@ -47,7 +49,7 @@ export default async function UniversitiesPage({
         </h2>
       </div>
       <div>
-        <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base md:text-lg mb-5">
+        <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base md:text-lg mb-5 mt-4 md:mt-0">
           {data && data.categories && data.categories.length > 0 && (
             <LinksCategory
               links={data.categories}
@@ -81,28 +83,34 @@ export default async function UniversitiesPage({
           </div>
         )}
 
-{data &&
-        data.paginated_universities &&
-        data.paginated_universities.data ?
-        data.paginated_universities.data.length > 0 ? 
-        (
+      {data &&
+      data.paginated_universities &&
+      data.paginated_universities.data ? (
+        data.paginated_universities.data.length > 0 ? (
           <div>
-            <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-10">
-              {data.paginated_universities.data.map((item: UniversityType) => {
-                return (
-                  <LinkApp
-                    key={item.id}
-                    lng={lng}
-                    href={`/universities/${item.id}`}
-                  >
-                    <CardUniversity
-                      major={t("topMajors")}
-                      btnText={t("universityInfo.registerNow")}
-                      university={item}
-                    />
-                  </LinkApp>
-                );
-              })}
+            <section className="mt-10">
+              <ScrollArea className="w-full whitespace-nowrap md:overflow-auto md:whitespace-pre-wrap" dir={dir(lng)}>
+                <div className="flex md:grid grid-cols-3 w-max md:w-full gap-4">
+                  {data.paginated_universities.data.map(
+                    (item: UniversityType) => {
+                      return (
+                        <LinkApp className="w-64 md:w-auto"
+                          key={item.id}
+                          lng={lng}
+                          href={`/universities/${item.id}`}
+                        >
+                          <CardUniversity
+                            major={t("topMajors")}
+                            btnText={t("universityInfo.registerNow")}
+                            university={item}
+                          />
+                        </LinkApp>
+                      );
+                    }
+                  )}
+                </div>
+                <ScrollBar orientation="horizontal" className="hidden" />
+              </ScrollArea>
             </section>
             {/* {pagination && pagination.total > 1 && (
           <PaginationApp
@@ -115,18 +123,24 @@ export default async function UniversitiesPage({
               <ShowMoreBtn page={searchParams.page} text={t("show_more")} />
             </div>
           </div>
-        ): 
+        ) : (
+          <div className="min-h-[40vh] w-full flex justify-center items-center">
+            <div>
+              <h1 className="text-lg md:text-2xl text-gray-500 font-bold">
+                Not Found
+              </h1>
+            </div>
+          </div>
+        )
+      ) : (
         <div className="min-h-[40vh] w-full flex justify-center items-center">
           <div>
-            <h1 className="text-lg md:text-2xl text-gray-500 font-bold">Not Found</h1>
+            <h1 className="text-lg md:text-2xl text-gray-500 font-bold">
+              Server Error
+            </h1>
           </div>
-        </div> :
-         <div className="min-h-[40vh] w-full flex justify-center items-center">
-         <div>
-           <h1 className="text-lg md:text-2xl text-gray-500 font-bold">Server Error</h1>
-         </div>
-       </div>
-        }
+        </div>
+      )}
     </div>
   );
 }

@@ -30,7 +30,7 @@ export default function CardBlog({
 }) {
   return (
     <LinkApp lng={lng} href={`/blogs/${blog.slug}`}>
-      <Card className="flex w-full border-none rounded-3xl shadow-none hover:shadow-xl h-full px-3 duration-300 cursor-pointer md:my-4 group flex-col justify-center">
+      <Card className="flex w-full border-none rounded-3xl shadow-none hover:shadow-xl px-2 md:px-3 duration-300 cursor-pointer pt-4 md:my-4 group flex-col justify-start">
           {/* <div className="bg-[#21837F]/50 rounded-xl size-full absolute inset-0 z-0"></div> */}
         <CardHeader className="h-40 md:h-64 relative p-0 rounded-3xl group-hover:before:bg-transparent before:bg-[#21837F]/40 before:absolute before:inset-0 before:transition-all before:duration-300 before:size-full before:z-10 overflow-hidden">
           <Image
@@ -38,14 +38,14 @@ export default function CardBlog({
             alt="alt"
             width={500}
             height={500}
-            className="size-full rounded-3xl"
+            className="size-full rounded-3xl absolute inset-0"
           />
           <Badge className="rounded-md font-bold text-white bg-blue-200/40 backdrop-blur-md absolute end-4 bottom-5 z-10">
             {formatDate(blog.created_at).split('/').join('.')}
           </Badge>
         </CardHeader>
         <CardContent className="space-y-4 px-0 py-6">
-          <CardTitle className="text-sm md:text-2xl font-bold text-gray-500 group-hover:text-primary text-wrap w-full">
+          <CardTitle className="text-sm md:text-2xl font-bold text-gray-500 group-hover:text-primary text-wrap w-full line-clamp-2">
             {blog.title}
           </CardTitle>
           <p

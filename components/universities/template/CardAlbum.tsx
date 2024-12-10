@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { ImageModal } from "./ImageModal";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { dir } from "i18next";
 
 export default async function CardAlbum({
   university,
@@ -22,9 +23,9 @@ export default async function CardAlbum({
               {t("university.photo")}
             </h1>
           </div>  
-          <ScrollArea className="lg:hidden w-full whitespace-nowrap">
+          <ScrollArea className="lg:hidden w-full whitespace-nowrap" dir={dir(lng)}>
             <div className="flex w-max gap-x-4 p-4">
-              <div className="w-[27rem] relative group">
+              <div className="size-52 relative group">
                 <ImageModal
                    key={(Math.random() * 100)+ 2}
                   src={university.photo_album[3]
@@ -34,7 +35,7 @@ export default async function CardAlbum({
                 />
                 <div className="absolute inset-0 bg-[#21837F]/50 group-hover:hidden transition-opacity duration-300 rounded-2xl"></div>
               </div>
-              <div className="w-[27rem] relative group">
+              <div className="size-52 relative group">
                 <ImageModal
                    key={(Math.random() * 100)+ 3}
                   src={university.photo_album[2]
@@ -44,7 +45,7 @@ export default async function CardAlbum({
                 />
                 <div className="absolute inset-0 bg-[#21837F]/50 group-hover:hidden transition-opacity duration-300 rounded-2xl"></div>
               </div>
-              <div className="w-[27rem] relative group">
+              <div className="size-52 relative group">
                 <ImageModal
                    key={(Math.random() * 100)+ 1}
                   src={university.photo_album[1]
@@ -55,7 +56,7 @@ export default async function CardAlbum({
                 <div className="absolute inset-0 bg-[#21837F]/50 group-hover:hidden transition-opacity duration-300 rounded-2xl"></div>
               </div>
 
-              <div className="w-[27rem] relative group">
+              <div className="size-52 relative group">
                 <ImageModal
                   key={(Math.random() * 100)+ 4}
                   src={university.photo_album[0]
@@ -67,7 +68,7 @@ export default async function CardAlbum({
               </div>
             </div>
 
-            <ScrollBar orientation="horizontal"  />
+            <ScrollBar orientation="horizontal" className="hidden" />
           </ScrollArea>
           <div className="hidden lg:flex flex-col md:flex-row items-stretch gap-4 md:h-[40rem] rounded-xl px-4">
             <div className="flex flex-col md:w-1/3 gap-y-2 -mt-1">

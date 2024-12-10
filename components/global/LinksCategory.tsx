@@ -30,6 +30,7 @@ export default function LinksCategory({ links,searchParams, href , allText, serv
             }
           >
             <LinkApp
+            className="text-nowrap "
               href={`${href}?category=${item.id}`}
               lng={params.lng}
             >
