@@ -71,13 +71,13 @@ export default function StudyProgramsTabs({ studyPrograms, lng }: StudyProgramsT
               <TableBody>
                 {level?.programs?.map((program) => (
                   <TableRow key={program?.id} className="even:bg-muted-foreground/10 py-0">
-                    <TableCell className="font-bold md:w-2/5 border py-1 md:py-2 text-nowrap">
+                    <TableCell className="font-bold md:w-2/5 border py-1 md:py-3 text-nowrap">
                       {program?.specialization_name}
                     </TableCell>
-                    <TableCell className='border font-bold py-1 md:py-2 text-nowrap'>{program?.study_years} {t('tabs.years')}</TableCell>
-                    <TableCell className='border font-bold py-1 md:py-2 text-nowrap'>{program?.study_language}</TableCell>
-                    <TableCell className='border font-bold py-1 md:py-2 text-nowrap'>${program?.annual_fees?.toLocaleString()}</TableCell>
-                    <TableCell className='border font-bold flex justify-center bg-white md:py-2 text-nowrap py-1'>
+                    <TableCell className='border font-bold py-1 md:py-3 text-nowrap'>{program?.study_years} {t('tabs.years')}</TableCell>
+                    <TableCell className='border font-bold py-1 md:py-3 text-nowrap'>{program?.study_language}</TableCell>
+                    <TableCell className='border font-bold py-1 md:py-3 text-nowrap'>${program?.annual_fees?.toLocaleString()}</TableCell>
+                    <TableCell className='border font-bold flex justify-center bg-white md:py-3 text-nowrap py-1'>
                       <Button size="xs"
                         className="bg-primary hover:bg-secondary hover:!scale-x-100 !px-8"
                       >
