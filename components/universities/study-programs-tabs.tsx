@@ -58,7 +58,7 @@ export default function StudyProgramsTabs({ studyPrograms, lng }: StudyProgramsT
       {studyPrograms.map((level) => (
         <TabsContent key={level?.level_id} value={level?.level_id?.toString() || ''}>
           <div className="rounded-xl border overflow-hidden">
-            <Table dir="rtl" className='w-[40%]' >
+            <Table dir="rtl" >
               <TableHeader className="bg-primary">
                 <TableRow>
                   <TableHead className="font-bold text-right border text-white md:w-2/5">{t('tabs.majors')}</TableHead>
