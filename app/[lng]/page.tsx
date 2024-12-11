@@ -54,41 +54,36 @@ export default async function Page({
           title={t("specialties.title")}
           className="container lg:max-w-[85vw] mx-auto"
         >
-          <Carousel>
-            <CarouselContent className="md:h-96">
-              {data &&
-                data.specializations &&
-                data.specializations.length > 0 &&
-                data.specializations.map((e: any) => (
-                  <CarouselItem
-                    className="basis-1/2 md:basis-1/3 pb-8"
-                    key={e.id}
-                  >
-                    <CardSmall imageUrl={e.image} text={e.name} />
-                  </CarouselItem>
-                ))}
-            </CarouselContent>
-          </Carousel>
-          <LinkApp
-            href="/specializations"
-            lng={lng}
-            className="flex justify-center mt-7"
-          >
-            <Button
-              color="primary"
-              size="xl"
-              className="bg-primary px-10 lg:!px-28 hover:!scale-x-100 hover:bg-secondary hover:text-white"
+          <>
+            <Carousel>
+              <CarouselContent className="md:h-96">
+                {data &&
+                  data.specializations &&
+                  data.specializations.length > 0 &&
+                  data.specializations.map((e: any) => (
+                    <CarouselItem
+                      className="basis-1/2 md:basis-1/3 pb-8"
+                      key={e.id}
+                    >
+                      <CardSmall imageUrl={e.image} text={e.name} />
+                    </CarouselItem>
+                  ))}
+              </CarouselContent>
+            </Carousel>
+            <LinkApp
+              href="/specializations"
+              lng={lng}
+              className="flex justify-center mt-7"
             >
-              {t("WhatService.read_more")}
-            </Button>
-          </LinkApp>
-          {/* <div className="overflow-x-auto whitespace-nowrap p-4 hidden-scrollbar space-x-4">
-              {
-                data && data.services && data.services.length > 0 && data.services.map((e: any) => (
-                  <CardSmall key={e.id} imageUrl={e.image} text={e.name} />
-                ))
-              }
-          </div> */}
+              <Button
+                color="primary"
+                size="xl"
+                className="bg-primary px-10 lg:!px-28 hover:!scale-x-100 hover:bg-secondary hover:text-white"
+              >
+                {t("WhatService.read_more")}
+              </Button>
+            </LinkApp>
+          </>
         </SectionApp>
         <SectionApp
           title={t("best_universities.title")}
