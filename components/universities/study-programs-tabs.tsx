@@ -58,28 +58,28 @@ export default function StudyProgramsTabs({ studyPrograms, lng }: StudyProgramsT
       {studyPrograms.map((level) => (
         <TabsContent key={level?.level_id} value={level?.level_id?.toString() || ''}>
           <div className="rounded-xl border overflow-hidden">
-            <Table dir="rtl" >
+            <Table dir="rtl" className='w-[40%]' >
               <TableHeader className="bg-primary">
                 <TableRow>
-                  <TableHead className="text-right border text-white md:w-2/5">{t('tabs.majors')}</TableHead>
-                  <TableHead className="text-right border text-white">{t('tabs.studyYears')}</TableHead>
-                  <TableHead className="text-right border text-white">{t('tabs.studyLanguage')}</TableHead>
-                  <TableHead className="text-right border text-white">{t('tabs.tuitionFee')}</TableHead>
-                  <TableHead className="text-right border text-white w-44">{t('tabs.registration')}</TableHead>
+                  <TableHead className="font-bold text-right border text-white md:w-2/5">{t('tabs.majors')}</TableHead>
+                  <TableHead className="font-bold text-right border text-white">{t('tabs.studyYears')}</TableHead>
+                  <TableHead className="font-bold text-right border text-white">{t('tabs.studyLanguage')}</TableHead>
+                  <TableHead className="font-bold text-right border text-white">{t('tabs.tuitionFee')}</TableHead>
+                  <TableHead className="font-bold text-right border text-white w-44">{t('tabs.registration')}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {level?.programs?.map((program) => (
-                  <TableRow key={program?.id} className="even:bg-muted/50">
-                    <TableCell className="font-medium md:w-2/5 border">
+                  <TableRow key={program?.id} className="even:bg-muted-foreground/10 py-0">
+                    <TableCell className="font-bold md:w-2/5 border py-1 md:py-2 text-nowrap">
                       {program?.specialization_name}
                     </TableCell>
-                    <TableCell className='border'>{program?.study_years} {t('tabs.years')}</TableCell>
-                    <TableCell className='border'>{program?.study_language}</TableCell>
-                    <TableCell className='border'>${program?.annual_fees?.toLocaleString()}</TableCell>
-                    <TableCell className='border flex justify-center'>
-                      <Button 
-                        className="bg-primary hover:bg-secondary hover:!scale-x-100 !px-8" size="sm"
+                    <TableCell className='border font-bold py-1 md:py-2 text-nowrap'>{program?.study_years} {t('tabs.years')}</TableCell>
+                    <TableCell className='border font-bold py-1 md:py-2 text-nowrap'>{program?.study_language}</TableCell>
+                    <TableCell className='border font-bold py-1 md:py-2 text-nowrap'>${program?.annual_fees?.toLocaleString()}</TableCell>
+                    <TableCell className='border font-bold flex justify-center bg-white md:py-2 text-nowrap py-1'>
+                      <Button size="xs"
+                        className="bg-primary hover:bg-secondary hover:!scale-x-100 !px-8"
                       >
                         {t('booking_now')}
                       </Button>
