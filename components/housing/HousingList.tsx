@@ -81,8 +81,8 @@ const HousingList = ({ housings, t }: { housings: any; t: any }) => {
             </div>
 
             <div className="w-full md:w-3/4 mx-auto gap-2 md:gap-5 grid grid-cols-2">
-              <Button className="hover:!scale-x-100 w-full" size="xs">{t("viewImage")}</Button>
-              <Button className="bg-secondary hover:!scale-x-100" size="xs">
+              <Button className="hover:!scale-x-100 w-full md:!h-10 md:!px-4 md:!py-2" size="xs">{t("viewImage")}</Button>
+              <Button className="bg-secondary hover:!scale-x-100 md:!h-10 md:!px-4 md:!py-2" size="xs">
                 {t("register")}
               </Button>
             </div>
