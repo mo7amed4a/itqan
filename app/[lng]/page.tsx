@@ -7,7 +7,6 @@ import CardUniversity, {
   UniversityType,
 } from "../../components/home/CardUniversity";
 import WhyItqan from "../../components/home/whyItqan";
-import { Button } from "flowbite-react";
 import { useTranslation } from "../../i18n";
 import Image from "next/image";
 import img1 from "../../public/images/form-logo.png";
@@ -22,6 +21,7 @@ import {
 import { getData } from "@/lib/data";
 import LinkApp from "@/components/global/LinkApp";
 import VideoTwo from "@/components/home/videoTwo";
+import { Button } from "@/components/ui/button";
 
 export default async function Page({
   params: { lng },
@@ -39,9 +39,14 @@ export default async function Page({
 
   return (
     <main className="space-y-">
-      {data && <HeroSection dataLang={t} locale={lng} />}
+      {data && <HeroSection locale={lng} />}
       <section className="bg-white py-8">
-        <VideoTwo url={settings?.consult_url} text={t('videoCall.text')} btn={t('videoCall.booking_now')} lng={lng} />
+        <VideoTwo
+          url={settings?.consult_url}
+          text={t("videoCall.text")}
+          btn={t("videoCall.booking_now")}
+          lng={lng}
+        />
         {/* <VideoCall dataVideoCall={t} locale={lng} /> */}
       </section>
       <div className="bg-[#f5f7f9] my-10">
@@ -64,6 +69,19 @@ export default async function Page({
                 ))}
             </CarouselContent>
           </Carousel>
+          <LinkApp
+            href="/specializations"
+            lng={lng}
+            className="flex justify-center mt-7"
+          >
+            <Button
+              color="primary"
+              size="xl"
+              className="bg-primary px-10 lg:!px-28 hover:!scale-x-100 hover:bg-secondary hover:text-white"
+            >
+              {t("WhatService.read_more")}
+            </Button>
+          </LinkApp>
           {/* <div className="overflow-x-auto whitespace-nowrap p-4 hidden-scrollbar space-x-4">
               {
                 data && data.services && data.services.length > 0 && data.services.map((e: any) => (
@@ -73,21 +91,25 @@ export default async function Page({
           </div> */}
         </SectionApp>
         <SectionApp
-           title={t("best_universities.title")}
+          title={t("best_universities.title")}
           className="container lg:max-w-[85vw] mx-auto"
         >
           <Carousel>
             <CarouselContent className="px-10 md:px-0">
-            {data &&
-              data.turkish_universities &&
-              data.turkish_universities.map((item: UniversityType) => (
+              {data &&
+                data.turkish_universities &&
+                data.turkish_universities.map((item: UniversityType) => (
                   <CarouselItem
                     className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pb-8"
                     key={item.id}
                   >
                     <LinkApp href={`/universities/${item.id}`} lng={lng}>
-                        <CardUniversity major={t('topMajors')} btnText={t('form_booking.submit')} university={item} />
-                      </LinkApp>
+                      <CardUniversity
+                        major={t("topMajors")}
+                        btnText={t("form_booking.submit")}
+                        university={item}
+                      />
+                    </LinkApp>
                   </CarouselItem>
                 ))}
             </CarouselContent>
@@ -99,22 +121,26 @@ export default async function Page({
         >
           <Carousel>
             <CarouselContent className="px-10 md:px-0">
-            {data &&
-              data.qyprus_universities &&
-              data.qyprus_universities.map((item: UniversityType) => (
+              {data &&
+                data.qyprus_universities &&
+                data.qyprus_universities.map((item: UniversityType) => (
                   <CarouselItem
                     className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pb-8"
                     key={item.id}
                   >
                     <LinkApp href={`/universities/${item.id}`} lng={lng}>
-                        <CardUniversity major={t('topMajors')} btnText={t('form_booking.submit')} university={item} />
-                      </LinkApp>
+                      <CardUniversity
+                        major={t("topMajors")}
+                        btnText={t("form_booking.submit")}
+                        university={item}
+                      />
+                    </LinkApp>
                   </CarouselItem>
                 ))}
             </CarouselContent>
           </Carousel>
         </SectionApp>
-      
+
         {data && data.settings && <WhyItqan data={data.settings} t={t} />}
         <section className="flex md:h-[70vh] px-4 md:px-0 bg-white">
           <div className="md:w-9/12 flex justify-center items-center w-full py-8 relative">
@@ -140,31 +166,38 @@ export default async function Page({
           </div>
         </section>
 
-
-
         <SectionApp
           title={t("WhatService.title2")}
           title2={t("WhatService.title")}
           className="container lg:max-w-[85vw] mx-auto"
         >
           <div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 w-full gap-4 px-4 md:px-0">
-            {data &&
-                  data.services &&
-                  data.services.length > 0 &&
-                  data.services.slice(0, 4).map((e: any) => (
-                    <div className="pb-8" key={e.id}>
-                      <CardSmall services imageUrl={e.image} text={e.name} />
-                    </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 w-full gap-4 px-4 md:px-0">
+              {data &&
+                data.services &&
+                data.services.length > 0 &&
+                data.services.slice(0, 4).map((e: any) => (
+                  <div className="pb-8" key={e.id}>
+                    <CardSmall services imageUrl={e.image} text={e.name} />
+                  </div>
                 ))}
-          </div>
+            </div>
 
-          <LinkApp href="/services" lng={lng} className="flex justify-center mt-7">
-              <Button color="primary" size="xl" className="bg-primary px-10 lg:!px-28 hover:!scale-x-100 hover:bg-secondary hover:text-white">{t("WhatService.read_more")}</Button>
+            <LinkApp
+              href="/services"
+              lng={lng}
+              className="flex justify-center mt-7"
+            >
+              <Button
+                color="primary"
+                size="xl"
+                className="bg-primary px-10 lg:!px-28 hover:!scale-x-100 hover:bg-secondary hover:text-white"
+              >
+                {t("WhatService.read_more")}
+              </Button>
             </LinkApp>
           </div>
         </SectionApp>
-        
       </div>
     </main>
   );
