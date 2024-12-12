@@ -178,7 +178,7 @@ export default function BookingFixed({ lng, child=null }: { lng: string, child?:
 
   const getDataHome = async () => {
     const response = await getData("/filters", lng);
-    console.log(response);
+    // console.log(response);
     setDataHome(response?.data);
   };
 

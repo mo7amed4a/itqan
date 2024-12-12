@@ -65,7 +65,9 @@ export default async function Page({
                       className="basis-1/2 md:basis-1/3 pb-8"
                       key={e.id}
                     >
-                      <CardSmall imageUrl={e.image} text={e.name} />
+                      <LinkApp href={`/specializations/${e.id}`} lng={lng}>
+                        <CardSmall imageUrl={e.image} text={e.name} />
+                      </LinkApp>
                     </CarouselItem>
                   ))}
               </CarouselContent>

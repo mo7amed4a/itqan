@@ -55,7 +55,7 @@ const RegistrationRequest = ({
       })
       .catch((err) => {
         toast.error("Server error");
-        console.log(err);
+        // console.log(err);
       });
   }, [params.code]);
 

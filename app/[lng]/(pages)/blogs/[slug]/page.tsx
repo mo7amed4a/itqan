@@ -19,7 +19,7 @@ export default async function page({
 
   const resp = await getData(`/post/${params.slug}`, lng);
   if (resp) {
-    console.log(resp.data.msg);
+    // console.log(resp.data.msg);
   } else {
     notFound();
   }

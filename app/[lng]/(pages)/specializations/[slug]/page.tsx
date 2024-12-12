@@ -25,7 +25,7 @@ export default async function UniversitiesPage({
 
   const response = await getData(url, lng);
   data = response?.data?.specialization;
-  console.log(data);
+  // console.log(data);
 
   return (
     <div>

@@ -3,12 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "@/i18n/client";
 import { api, setAcceptLanguage } from "@/lib/axios";
 
-import { Card, Clipboard, Drawer, Textarea, TextInput } from "flowbite-react";
+import { Card, Clipboard, Textarea, TextInput } from "flowbite-react";
 import { BiMale, BiPhone } from "react-icons/bi";
 import { CgFlag } from "react-icons/cg";
 import { CiUser } from "react-icons/ci";
 import { FaGraduationCap, FaLanguage, FaRegFileAlt } from "react-icons/fa";
-import { FaHandPointRight } from "react-icons/fa6";
 import { LuGraduationCap } from "react-icons/lu";
 import { MdEmail } from "react-icons/md";
 import { Formik, Field, Form, ErrorMessage } from "formik";
@@ -26,7 +25,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { getData } from "@/lib/data";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
 
 
 
@@ -57,12 +56,8 @@ type DataType = {
     universities: ItemType[]
   }
 
-export default function BookingFixed({
-    params,
-  }: {
-    params: { lng: string };
-  }) {
-    const { lng } = params
+export default function BookingFixed() {
+    const { lng } = useParams() as { lng: string };
     const { t: dataLang } = useTranslation(lng, "layOutFixed");
     const searchParams = useSearchParams()
     const router = useRouter()
@@ -187,7 +182,7 @@ export default function BookingFixed({
   
     const getDataHome = async () => {
       const response = await getData("/filters", lng);
-      console.log(response);
+      // console.log(response);
       setDataHome(response?.data);
     };
   
