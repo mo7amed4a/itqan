@@ -14,7 +14,7 @@ export default async function CardHouse({
   const { t: tHousing } = await useTranslation(lng, "housing");
 
   return (
-    <div id="jj" className="container mx-auto px-4 py-10 rounded-md">
+    <div id="jj" className="container lg:max-w-[85vw] mx-auto px-4 lg:px-0 py-10 rounded-md">
           <h1 className="text-lg md:text-xl font-bold mb-4">
             {t("university.studentHousings")}
           </h1>

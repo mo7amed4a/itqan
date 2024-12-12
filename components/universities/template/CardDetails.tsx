@@ -13,7 +13,7 @@ export default async function CardDetails({
   return (
     university?.description && (
       <div className="px-4 py-10 mt-10 bg-white rounded-md">
-        <div className="container mx-auto">
+        <div className="container lg:max-w-[85vw] mx-auto">
           <h1 className="text-lg md:text-xl font-bold mb-4">
             {t("description")} {university.name}
           </h1>

@@ -31,11 +31,11 @@ export default async function CardRank({
       
       <CardContent className="flex w-max gap-x-4 p-4 relative z-10 container lg:max-w-[85vw] mx-auto lg:px-16 text-center lg:grid lg:grid-cols-5 gap-5">
         
-        <Card className="size-52 border-none shadow-none group">
+        <Card className="w-52 border-none shadow-none group">
           <CardHeader className="flex justify-center items-center">
             <Image
               src={img1}
-              alt=""
+              alt={t("university.globalRank")}
               width={500}
               height={500}
               className="!h-20 !w-24 lg:size-28 group-hover:scale-110 duration-300 transition-all"
@@ -46,11 +46,11 @@ export default async function CardRank({
               {t("university.globalRank")}
             </h1>
           </CardContent>
-          <CardFooter className="flex justify-center border-t py-2 md:py-3">
-            <p>{university.global_rank}</p>
-          </CardFooter>
+          <div className="flex justify-center py-3 items-center text-2xl font-bold text-gray-500 border-t">
+            <span>{university.global_rank}</span>
+          </div>
         </Card>
-        <Card className="size-52 border-none shadow-none group">
+        <Card className="w-52 border-none shadow-none group">
           <CardHeader className="flex justify-center items-center">
             <Image
               src={img2}
@@ -65,11 +65,11 @@ export default async function CardRank({
               {t("university.localRank")}
             </h1>
           </CardContent>
-          <CardFooter className="flex justify-center border-t py-2 md:py-3">
+          <div className="flex justify-center py-3 items-center text-2xl font-bold text-gray-500 border-t">
             <p>{university.local_rate}</p>
-          </CardFooter>
+          </div>
         </Card>
-        <Card className="size-52 border-none shadow-none group">
+        <Card className="w-52 border-none shadow-none group">
           <CardHeader className="flex justify-center items-center">
             <Image
               src={img4}
@@ -84,11 +84,11 @@ export default async function CardRank({
               {t("university.studentsCount")}
             </h1>
           </CardContent>
-          <CardFooter className="flex justify-center border-t py-2 md:py-3">
-            <p>{university.student_count}</p>
-          </CardFooter>
+          <div className="flex justify-center py-3 items-center text-2xl font-bold text-gray-500 border-t">
+          <p>{university.student_count}</p>
+          </div>
         </Card>
-        <Card className="size-52 border-none shadow-none group">
+        <Card className="w-52 border-none shadow-none group">
           <CardHeader className="flex justify-center items-center">
             <Image
               src={img3}
@@ -103,11 +103,11 @@ export default async function CardRank({
               {t("university.staff")}
             </h1>
           </CardContent>
-          <CardFooter className="flex justify-center border-t py-2 md:py-3">
+          <div className="flex justify-center py-3 items-center text-2xl font-bold text-gray-500 border-t">
             <p>{university.teachers_count}</p>
-          </CardFooter>
+          </div>
         </Card>
-        <Card className="size-52 border-none shadow-none group">
+        <Card className="w-52 border-none shadow-none group">
           <CardHeader className="flex justify-center items-center">
             <Image
               src={img5}
@@ -122,9 +122,9 @@ export default async function CardRank({
               {t("university.nationalityCount")}
             </h1>
           </CardContent>
-          <CardFooter className="flex justify-center border-t py-2 md:py-3">
+          <div className="flex justify-center py-3 items-center text-2xl font-bold text-gray-500 border-t">
             <p>{university.national_count}</p>
-          </CardFooter>
+          </div>
         </Card>
 
       </CardContent>

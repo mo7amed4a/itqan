@@ -65,7 +65,7 @@ export default function FilterSelect({
   };
 
   return data ? (
-    <div className={`mt-6 grid grid-cols-1 p-4 rounded ${col ? '' : 'md:grid-cols-3 bg-green-900/25 rounded-xl p-5'} gap-4`}>
+    <div className={`lg:mt-12 grid grid-cols-1 p-4 rounded ${col ? '' : 'md:grid-cols-3 bg-green-900/25 rounded-xl p-5'} gap-4`}>
       {/* Select Specialization */}
       <Select
         onValueChange={(value) => handleFilterChange("specialization", value)}

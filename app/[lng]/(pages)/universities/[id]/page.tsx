@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useTranslation } from "@/i18n";
 import Navbar from "@/components/universities/template/NavbarForUniversity";
 import CardAlbum from "@/components/universities/template/CardAlbum";
+import CardFeatures from "@/components/universities/template/CardFeatures";
 
 const universityData = {
   data: {
@@ -283,7 +284,7 @@ export default async function UniversityInfo({
   params: { lng: string; id: string };
 }) {
   const { lng, id } = params;
-  const {t} = await useTranslation(lng, "university_details")
+  const { t } = await useTranslation(lng, "university_details");
   let data: any = null;
   const response = await getData(`/universities/${id}/details`, lng);
   data = response?.data;
@@ -297,32 +298,25 @@ export default async function UniversityInfo({
             {university.name}
           </h1>
         </section>
-          <Navbar lng={lng} name={university.name}/>
+        <Navbar lng={lng} name={university.name} />
         <div className="container lg:max-w-[85vw] mx-auto px-4 py-5">
-          <h2 className="text-lg md:text-xl font-bold text-gray-500">{t("university.info")} {university.name}</h2>
+          <h2 className="text-lg md:text-xl font-bold text-gray-500">
+            {t("university.info")} {university.name}
+          </h2>
         </div>
         <CardUniOne university={university} lng={lng} />
         <div id="photos">
           <CardVideo university={university} lng={lng} />
           <CardAlbum university={university} lng={lng} />
         </div>
-        {/* <div className="space-y-7 text-gray-500 mt-10 py-10">
-          <h1 className="text-lg md:text-xl font-bold px-4">
-            {t("university.features")}
-          </h1>
-          <div className="w-4/5 mx-auto">
-            <Card className="flex items-center border-none shadow-none gap-4 p-3 md:gap-6 group hover:shadow-2xl">
-              <CardHeader className="p-0">
-                <div className="size-12 text-xl rounded-full bg-primary text-center flex items-center justify-center text-white group-hover:bg-secondary">
-                  1
-                </div>
-              </CardHeader>
-              <CardContent className="p-0">
-                lorem kjf kmwefomefw wefnwe fowef
-              </CardContent>
-            </Card>
-          </div>
-        </div> */}
+
+        {data.specifications && (
+          <CardFeatures
+            university={university}
+            specifications={data.specifications}
+            lng={lng}
+          />
+        )}
         {university && (
           <div id="recognitions" className="scroll-mt-96">
             <CardConfessions university={university} lng={lng} />
@@ -338,9 +332,11 @@ export default async function UniversityInfo({
             <CardTableData study_programs={data.study_programs} lng={lng} />
           </div>
         )}
-        {university && <div id="languages" className="scroll-mt-96">
+        {university && (
+          <div id="languages" className="scroll-mt-96">
             <CardLanguage university={university} lng={lng} />
-          </div>}
+          </div>
+        )}
 
         {data && (
           <div id="terms" className="scroll-mt-96">
@@ -362,7 +358,9 @@ export default async function UniversityInfo({
             />
           </div>
         )}
-        <CardHouse student_housings={student_housings} lng={lng} />
+        {student_housings && (
+          <CardHouse student_housings={student_housings} lng={lng} />
+        )}
       </div>
     );
   } else
@@ -374,5 +372,3 @@ export default async function UniversityInfo({
       </div>
     );
 }
-
-
