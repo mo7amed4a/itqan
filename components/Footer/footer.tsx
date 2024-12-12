@@ -75,6 +75,11 @@ export default async function FooterApp({ lng }: { lng: string }) {
                     </LinkApp>
                   </li>
                   <li>
+                    <LinkApp href="/" lng={lng}>
+                      {t("majors")}
+                    </LinkApp>
+                  </li>
+                  <li>
                     <LinkApp href="/contact" lng={lng}>
                       {t("contactUs")}
                     </LinkApp>

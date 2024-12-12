@@ -52,6 +52,7 @@ interface Resources
     aboutUs: string;
     contactUs: string;
     services: string;
+    majors: string;
     links: string;
     address: string;
     bio: string;
