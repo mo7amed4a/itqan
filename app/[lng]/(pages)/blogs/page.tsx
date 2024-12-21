@@ -4,7 +4,7 @@ import LinkApp from "../../../../components/global/LinkApp";
 import CardBlog, { BlogItemType } from "../../../../components/cards/CardBlog";
 import img1 from "../../../../public/images/for-blog.png";
 import Image from "next/image";
-import { useTranslation } from "../../../../i18n";
+import { useTranslation as getTranslation } from "../../../../i18n";
 import { getData } from "@/lib/data";
 import {
   Carousel,
@@ -14,7 +14,23 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import ShowMoreBtn from "@/components/global/ShowMore";
-import LinksCategory from "@/components/global/LinksCategory";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lng: string };
+}) {
+  const {lng} = params
+  const { t } = await getTranslation(lng, "Header");
+  let data;
+  const response = await getData("/get_settings", params.lng);
+  data = response?.data;
+  return {
+    title: t('blog') + " - " + data?.site_name,
+    description: data?.meta_description || "",
+  };
+}
+
 
 export default async function Blogs({
   params,
@@ -27,7 +43,7 @@ export default async function Blogs({
   };
 }) {
   const lng = params.lng;
-  const { t } = await useTranslation(lng, "blogs");
+  const { t } = await getTranslation(lng, "blogs");
 
   let url = "/blog";
   if (searchParams.category) {
@@ -48,9 +64,9 @@ export default async function Blogs({
   return (
     <div className="my-10 container lg:max-w-[85vw] mx-auto space-y-10 p-4">
       <div className="flex justify-center items-center text-center">
-        <h2 className="text-lg font-bold text-gray-500 md:text-2xl">
+        <h1 className="text-lg font-bold text-gray-500 md:text-2xl">
           {t("title")}
-        </h2>
+        </h1>
       </div>
       <div>
         <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base md:text-lg">
@@ -87,9 +103,9 @@ export default async function Blogs({
 
       {sliders && sliders.length > 0 && (
         <div className="space-y-10">
-          <h1 className="text-lg text-start font-bold text-gray-500 md:text-2xl">
+          <h2 className="text-lg text-start font-bold text-gray-500 md:text-2xl">
             {t("most_visited")}
-          </h1>
+          </h2>
           <div className="lg:px-24">
             <Carousel>
               <CarouselContent className="p-4 gap-x-4">
@@ -106,15 +122,15 @@ export default async function Blogs({
                       <div className="w-full h-full grid md:grid-cols-2">
                         <div className="h-full flex items-center order-2 p-4">
                           <div className="space-y-5 text-start lg:!space-y-16 lg:w-11/12 mx-auto">
-                            <h1 className="text-lg font-bold text-gray-500 md:text-3xl">
+                            <h3 className="text-lg font-bold text-gray-500 md:text-3xl">
                               {item.title}
-                            </h1>
-                            <p
-                              className="text-sm md:text-base text-gray-500 line-clamp-2"
+                            </h3>
+                            <span
+                              className="block text-sm md:text-base text-gray-500 line-clamp-2"
                               dangerouslySetInnerHTML={{
                                 __html: item.content.slice(0, 200),
                               }}
-                            ></p>
+                            ></span>
                           </div>
                         </div>
                         <div className="p-4 ps-0 md:ps-4 order-1 md:order-2">

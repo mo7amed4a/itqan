@@ -4,6 +4,23 @@ import ContactForm from "../../../../components/contact/ContactForm";
 import { getData } from "@/lib/data";
 import { IoIosCall } from "react-icons/io";
 
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lng: string };
+}) {
+  const {lng} = params
+  const { t } = await getTranslation(lng, "Header");
+  let data;
+  const response = await getData("/get_settings", params.lng);
+  data = response?.data;
+  return {
+    title: t('contact_us') + " - " + data?.site_name,
+  };
+}
+
+
 export default async function page({
   params,
 }: {
@@ -24,9 +41,9 @@ export default async function page({
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
         <div className="relative px-6 py-10 lg:static ">
           <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+            <span className="text-3xl font-bold tracking-tight text-gray-900">
               {dataLang("title")}
-            </h2>
+            </span>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               {dataLang("description")}
             </p>

@@ -1,7 +1,24 @@
 import React from "react";
-import { useTranslation } from "../../../../i18n";
+import { useTranslation as getTranslation } from "../../../../i18n";
 import { getData } from "@/lib/data";
 import HousingList from "@/components/housing/HousingList";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lng: string };
+}) {
+  const {lng} = params
+  const { t } = await getTranslation(lng, "Header");
+  let data;
+  const response = await getData("/get_settings", params.lng);
+  data = response?.data;
+  return {
+    title: t('student_accommodation') + " - " + data?.site_name,
+    description: data?.meta_description || "",
+  };
+}
+
 
 export default async function UniversitiesPage({
   params,
@@ -9,7 +26,7 @@ export default async function UniversitiesPage({
   params: { lng: string };
 }) {
   const lng = params.lng;
-  const { t } = await useTranslation(lng, "housing");
+  const { t } = await getTranslation(lng, "housing");
   const response = await getData("/housings", lng);
   const data = response?.data;
 

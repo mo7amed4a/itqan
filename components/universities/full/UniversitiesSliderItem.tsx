@@ -4,21 +4,22 @@ import { CarouselItem } from "@/components/ui/carousel";
 import { TFunction } from "i18next";
 import Image from "next/image";
 import React from "react";
-import img1 from "/public/images/for-blog.png";
 
 
 export default function UniversitiesSliderItem({
     item,
     lng,
-    t
+    t,
+    url
 }: {
     item: any;
     lng: string;
     t: TFunction<any, undefined>
+    url: string
 }) {
   return (
     <CarouselItem key={item.id} className="lg:px-4 w-screen">
-      <LinkApp href={`/universities/${item.id}`} lng={lng}>
+      <LinkApp href={`/${url}/${item.slug}`} lng={lng}>
         <div className="w-full h-full group !bg-white rounded-2xl hover:shadow-md text-start">
           <div className="grid lg:grid-cols-2 w-full relative">
             <div className="space-y-3 text-lg text-gray-600 order-2 p-6 -mt-24 md:-mt-0 z-10">

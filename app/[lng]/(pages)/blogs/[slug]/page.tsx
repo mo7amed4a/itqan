@@ -25,6 +25,9 @@ export default async function page({
   }
   const blog = resp?.data?.post || null;
 
+  let data;
+  const response = await getData("/get_settings", lng);
+  data = response?.data;
   return (
     <article className="text-base relative isolate bg-white text-start">
       <header className="bg-primary text-white text-center py-12">
@@ -49,6 +52,35 @@ export default async function page({
         dangerouslySetInnerHTML={{ __html: blog.content }}
         className="max-w-screen-xl mx-auto mt-10 space-y-12 px-4 py-10 text-lg tracking-wide text-gray-700 prose lg:prose-xl"
       ></div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": data?.site_name,
+            author: data?.site_name,
+            interactionStatistic: [
+              {
+                "@type": "InteractionCounter",
+                interactionService: {
+                  "@type": "WebSite",
+                  name: "Twitter",
+                  url: "http://www.twitter.com",
+                },
+                interactionType: "https://schema.org/ShareAction",
+                userInteractionCount: "1203",
+              },
+              {
+                "@type": "InteractionCounter",
+                interactionType: "https://schema.org/CommentAction",
+                userInteractionCount: "78",
+              },
+            ],
+            name: blog.title,
+          }),
+        }}
+      />
     </article>
   );
 }

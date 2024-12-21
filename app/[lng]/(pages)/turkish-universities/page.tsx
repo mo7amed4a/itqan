@@ -1,6 +1,6 @@
 import React from "react";
 import LinkApp from "../../../../components/global/LinkApp";
-import { useTranslation } from "../../../../i18n";
+import { useTranslation as getTranslation} from "../../../../i18n";
 import CardUniversity, {
   UniversityType,
 } from "../../../../components/home/CardUniversity";
@@ -11,6 +11,22 @@ import UniversitiesSliderItem from "@/components/universities/full/UniversitiesS
 import LinksCategory from "@/components/global/LinksCategory";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { dir } from "i18next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lng: string };
+}) {
+  const {lng} = params
+  const { t } = await getTranslation(lng, "Header");
+  let data;
+  const response = await getData("/get_settings", params.lng);
+  data = response?.data;
+  return {
+    title: t('turkish_universities') + " - " + data?.site_name,
+  };
+}
+
 
 export default async function UniversitiesPage({
   params,
@@ -23,7 +39,7 @@ export default async function UniversitiesPage({
   };
 }) {
   const lng = params.lng;
-  const { t } = await useTranslation(lng, "turkish_universities");
+  const { t } = await getTranslation(lng, "turkish_universities");
 
   let data = null;
   let url = "/tukey_universities";
@@ -39,14 +55,14 @@ export default async function UniversitiesPage({
   const response = await getData(url, lng);
   data = response?.data;
 
-  const pagination = data?.paginated_universities?.pagination || null;
+  // const pagination = data?.paginated_universities?.pagination || null;
 
   return (
     <div className="my-10 container lg:max-w-[85vw] mx-auto space-y- p-4">
       <div className="flex justify-center items-center text-center">
-        <h2 className="text-lg font-bold text-gray-500 md:text-2xl">
+        <h1 className="text-lg font-bold text-gray-500 md:text-2xl">
           {t("title")}
-        </h2>
+        </h1>
       </div>
       <div>
         <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base md:text-lg mb-5 mt-4 md:mt-0">
@@ -54,7 +70,7 @@ export default async function UniversitiesPage({
             <LinksCategory
               links={data.categories}
               searchParams={searchParams}
-              href="/turkish_universities"
+              href="/turkish-universities"
               allText={t("links.all")}
             />
           )}
@@ -65,9 +81,9 @@ export default async function UniversitiesPage({
         data.featured_universities &&
         data.featured_universities.length > 0 && (
           <div className="space-y-5 md:mt-8 lg:px-16">
-            <h1 className="text-lg font-bold text-gray-500 md:text-2xl lg:ps-4">
+            <span className="text-lg font-bold text-gray-500 md:text-2xl lg:ps-4">
               {t("mostRanked")}
-            </h1>
+            </span>
             <div>
               <CustomCarousel lng={lng}>
                 {data.featured_universities.map((item: UniversityType) => (
@@ -76,6 +92,7 @@ export default async function UniversitiesPage({
                     item={item}
                     lng={lng}
                     t={t}
+                    url="turkish-universities"
                   />
                 ))}
               </CustomCarousel>
@@ -97,7 +114,7 @@ export default async function UniversitiesPage({
                         <LinkApp className="w-64 md:w-auto"
                           key={item.id}
                           lng={lng}
-                          href={`/universities/${item.id}`}
+                          href={`/turkish-universities/${item.slug}`}
                         >
                           <CardUniversity
                             major={t("topMajors")}
@@ -126,18 +143,18 @@ export default async function UniversitiesPage({
         ) : (
           <div className="min-h-[40vh] w-full flex justify-center items-center">
             <div>
-              <h1 className="text-lg md:text-2xl text-gray-500 font-bold">
+              <span className="text-lg md:text-2xl text-gray-500 font-bold">
                 Not Found
-              </h1>
+              </span>
             </div>
           </div>
         )
       ) : (
         <div className="min-h-[40vh] w-full flex justify-center items-center">
           <div>
-            <h1 className="text-lg md:text-2xl text-gray-500 font-bold">
+            <span className="text-lg md:text-2xl text-gray-500 font-bold">
               Server Error
-            </h1>
+            </span>
           </div>
         </div>
       )}

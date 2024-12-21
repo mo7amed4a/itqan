@@ -1,15 +1,28 @@
 import React from "react";
-import LinkApp from "../../../../../components/global/LinkApp";
-import { useTranslation } from "../../../../../i18n";
-import CardUniversity, {
-  UniversityType,
-} from "../../../../../components/home/CardUniversity";
+import { useTranslation as getTranslation} from "../../../../../i18n";
 import { getData } from "@/lib/data";
-import { CustomCarousel } from "@/components/ui/CustomCarousel";
-import ShowMoreBtn from "@/components/global/ShowMore";
-import UniversitiesSliderItem from "@/components/universities/full/UniversitiesSliderItem";
-import LinksCategory from "@/components/global/LinksCategory";
-import CardSmall from "@/components/cards/card-small";
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lng: string, slug: string };
+}) {
+  const {lng, slug} = params
+  const { t } = await getTranslation(lng, "university_details");
+  
+  let data;
+  const response = await getData("/get_settings", params.lng);
+  data = response?.data;
+
+  let url = `/specialization/${slug}`;
+  const specializationResponse = await getData(url, lng);
+
+  return {
+    title: specializationResponse?.data?.specialization?.name + " - " + t('tabs.majors') + " - " + data?.site_name,
+  };
+}
+
 
 export default async function UniversitiesPage({
   params,
@@ -18,14 +31,12 @@ export default async function UniversitiesPage({
 }) {
   const lng = params.lng;
   const slug = params.slug;
-  const { t } = await useTranslation(lng, "turkish_universities");
 
   let data = null;
   let url = `/specialization/${slug}`;
 
   const response = await getData(url, lng);
   data = response?.data?.specialization;
-  // console.log(data);
 
   return (
     <div>

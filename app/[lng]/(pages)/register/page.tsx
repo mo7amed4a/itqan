@@ -27,9 +27,6 @@ import { Button } from "@/components/ui/button";
 import { getData } from "@/lib/data";
 import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
 
-
-
-
 type DataType = {
     name: string;
     surname: string;
@@ -565,7 +562,7 @@ export default function BookingFixed() {
                   <div className="flex gap-x-2">
                     <Link
                       onClick={() => setIsOpen(false)}
-                      href={`/${lng}/followup_request/${text?.split(":")[1]}`}
+                      href={`/${lng}/followup-request/${text?.split(":")[1]}`}
                     >
                       <Button
                         size={"sm"}

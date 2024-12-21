@@ -14,9 +14,9 @@ export default async function CardLanguage({
   return (
     <section>
     <div className="container lg:max-w-[85vw] mx-auto px-4 py-10 mt-10 rounded-md md:text-lg md:-space-y-12">
-      <h1 className="text-lg md:text-2xl font-bold">
+      <h2 className="text-lg md:text-2xl font-bold">
         {t("university.languagesStudy")} {university.name}
-      </h1>
+      </h2>
       <div className="flex flex-col lg:flex-row justify-between">
         <div className="flex flex-col justify-center space-y-6">
           <p className="text-primary md:text-lg">

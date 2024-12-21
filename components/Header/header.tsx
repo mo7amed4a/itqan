@@ -1,10 +1,8 @@
-
 import Link from "next/link";
 import {
   Navbar,
   NavbarBrand,
   NavbarCollapse,
-  NavbarLink,
   NavbarToggle,
 } from "flowbite-react";
 import InputSearch from "./inputSearch";
@@ -14,10 +12,15 @@ import logo from "../../public/logo/logo.png";
 import { useTranslation } from "../../i18n";
 import { api, setAcceptLanguage } from "../../lib/axios";
 import LinkActive from "./LinkActive";
-import BookingFixed from "../fixedCps/BookingFixed";
 import LinkApp from "../global/LinkApp";
 import { Button } from "../ui/button";
 import OpenBooking from "../fixedCps/OpenBooking";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 export default async function HeaderApp({ locale }: { locale: string }) {
   const { t } = await useTranslation(locale, "Header");
@@ -51,7 +54,7 @@ export default async function HeaderApp({ locale }: { locale: string }) {
               </Button>
             </div>
             <div>
-              <LinkApp href={`/followup_request`} lng={locale}>
+              <LinkApp href={`/followup-request`} lng={locale}>
                 <Button className="text-nowrap md:bg-secondary hover:!scale-x-100 text-white border border-white py-0 text-[9px] px-1 md:px-2 md:text-base h-8 md:h-9">
                   {t("follow_up_on_the_registration_request")}
                 </Button>
@@ -59,9 +62,9 @@ export default async function HeaderApp({ locale }: { locale: string }) {
             </div>
           </div>
           <div className="flex justify-between md:justify-start gap-4">
-           <div className="hidden md:block">
-           <InputSearch placeholder={t("search_for_the_university")} />
-           </div>
+            <div className="hidden md:block">
+              <InputSearch placeholder={t("search_for_the_university")} />
+            </div>
             <LocalSwitcher lng={locale} />
           </div>
         </div>
@@ -81,61 +84,84 @@ export default async function HeaderApp({ locale }: { locale: string }) {
           </NavbarBrand>
           <NavbarToggle />
           <NavbarCollapse className="md:!w-9/12 4xl:!w-auto [&>ul>li>a]:text-base lg:[&>ul>li>a]:text-lg xl:[&>ul>li>a]:text-xl [&>ul>li>a]:text-nowrap rtl:xl:[&>ul>li]:ps-2 md:overflow-x-scroll 2xl:overflow-x-auto z-40 hidden-scrollbar">
-            <LinkActive as={Link} locale={locale} text={t("home")} url="" />
+            {/* <LinkActive as={Link} locale={locale} text={t("home")} url="" /> */}
+            <LinkActive
+              as={Link}
+              locale={locale}
+              text={t("turkish_universities")}
+              url="turkish-universities"
+            />
+            <LinkActive
+              as={Link}
+              locale={locale}
+              text={t("cyprus_universities")}
+              url="cyprus-universities"
+            />
+            <LinkActive
+              as={Link}
+              locale={locale}
+              text={t("partial_scholarships")}
+              url="partial-scholarships"
+            />
             <LinkActive
               as={Link}
               locale={locale}
               text={t("blog")}
               url="blogs"
             />
-            <LinkActive
-              as={Link}
-              locale={locale}
-              text={t("about_us")}
-              url="about"
-            />
-            <LinkActive
-              as={Link}
-              locale={locale}
-              text={t("contact_us")}
-              url="contact"
-            />
-            <LinkActive
-              as={Link}
-              locale={locale}
-              text={t("turkish_universities")}
-              url="turkish_universities"
-            />
-            <LinkActive
-              as={Link}
-              locale={locale}
-              text={t("cyprus_universities")}
-              url="cyprus_universities"
-            />
+
             <LinkActive
               as={Link}
               locale={locale}
               text={t("student_accommodation")}
-              url="student_accommodation"
+              url="student-accommodation"
             />
-            <LinkActive
-              as={Link}
-              locale={locale}
-              text={t("partial_scholarships")}
-              url="partial_scholarships"
-            />
-            {/* <LinkActive
-              as={Link}
-              locale={locale}
-              text={t("opportunities")}
-              url="opportunities"
-            /> */}
-            <LinkActive
-              as={Link}
-              locale={locale}
-              text={t("services")}
-              url="services"
-            />
+
+            <DropdownMenu>
+              <DropdownMenuTrigger className="hidden md:block" asChild>
+                <div className="text-base text-gray-700 hover:text-primary lg:text-lg xl:text-xl cursor-pointer text-nowrap">
+                  {t("about_itqan")}
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <DropdownMenuItem>
+                  <LinkApp href={`/about`} lng={locale}>
+                    {t("about_us")}
+                  </LinkApp>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <LinkApp href={`/services`} lng={locale}>
+                    {t("services")}
+                  </LinkApp>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <LinkApp href={`/contact`} lng={locale}>
+                    {t("contact_us")}
+                  </LinkApp>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <div className="[&>li>a]:text-base md:hidden [&>li>a]:text-nowrap">
+              <LinkActive
+                as={Link}
+                locale={locale}
+                text={t("about_us")}
+                url="about"
+              />
+              <LinkActive
+                as={Link}
+                locale={locale}
+                text={t("services")}
+                url="services"
+              />
+              <LinkActive
+                as={Link}
+                locale={locale}
+                text={t("contact_us")}
+                url="contact"
+              />
+            </div>
           </NavbarCollapse>
         </Navbar>
       </div>

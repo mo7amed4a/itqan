@@ -17,10 +17,10 @@ const ReadMore: React.FC<ShowMoreProps> = ({ text ,readMore, readLess}) => {
 
   return (
     <div>
-      <div
+      <p
         className="text-start prose prose-h3:text-primary prose-h1:text-primary prose-h2:text-primary prose-h4:text-primary prose-h3:py-0"
         dangerouslySetInnerHTML={{ __html: displayedText }}
-      ></div>
+      ></p>
       <p>{!isExpanded && text.length > charLimit ? "..." : ""}</p>
       {text.length > charLimit && (
         <button

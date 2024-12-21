@@ -7,12 +7,14 @@ export default function LinkActive({
   as,
   locale,
   text,
-  url
+  url,
+  className
 }: {
   as: React.ElementType;
-  locale: string;
+  locale?: string;
   text: string;
-  url: string
+  url?: string;
+  className?: string
 }) {
   const pathname = usePathname();
   const isActive = (url: string): boolean => {
@@ -25,7 +27,7 @@ export default function LinkActive({
     <NavbarLink
       as={as}
       href={`/${locale}/${url}`}
-      className={isActive(`/${locale}/${url}`) ? activeClass : (url===""&& pathname.endsWith(`/${locale}`) ? activeClass : '')}
+      className={isActive(`/${locale}/${url}`) ? activeClass : (url===""&& pathname.endsWith(`/${locale}`) ? activeClass : '') + " " + className}
     >
       {text}
     </NavbarLink>

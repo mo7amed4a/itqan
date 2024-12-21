@@ -5,10 +5,7 @@ import CardUniversity, {
   UniversityType,
 } from "../../../../components/home/CardUniversity";
 import { getData } from "@/lib/data";
-import { CustomCarousel } from "@/components/ui/CustomCarousel";
 import ShowMoreBtn from "@/components/global/ShowMore";
-import UniversitiesSliderItem from "@/components/universities/full/UniversitiesSliderItem";
-import LinksCategory from "@/components/global/LinksCategory";
 
 export default async function UniversitiesPage({
   params,

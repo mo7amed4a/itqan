@@ -15,9 +15,9 @@ export default async function CardHouse({
 
   return (
     <div id="jj" className="container lg:max-w-[85vw] mx-auto px-4 lg:px-0 py-10 rounded-md">
-          <h1 className="text-lg md:text-xl font-bold mb-4">
+          <h2 className="text-lg md:text-xl font-bold mb-4">
             {t("university.studentHousings")}
-          </h1>
+          </h2>
           <div className="grid gap-4">
             {student_housings && student_housings?.length > 0 && (
               <HousingList t={tHousing} housings={student_housings} />

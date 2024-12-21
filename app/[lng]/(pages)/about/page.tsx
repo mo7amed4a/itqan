@@ -11,7 +11,7 @@ export async function generateMetadata({
   const response = await getData("page/about-us", params.lng);
   data = response?.data?.page;
   return {
-    title: `${data?.meta_title || "About"} | ${
+    title: `${data?.meta_title || "About"} - ${
       site?.data?.site_name || "Itqan"
     }`,
     description: data?.meta_description,

@@ -72,7 +72,7 @@ export default function StudyProgramsTabs({ studyPrograms, lng }: StudyProgramsT
                 {level?.programs?.map((program) => (
                   <TableRow key={program?.id} className="even:bg-muted-foreground/10 py-0">
                     <TableCell className="font-bold md:w-2/5 border py-1 md:py-3 text-nowrap">
-                      {program?.specialization_name}
+                     <h3>{program?.specialization_name}</h3>
                     </TableCell>
                     <TableCell className='border font-bold py-1 md:py-3 text-nowrap'>{program?.study_years} {t('tabs.years')}</TableCell>
                     <TableCell className='border font-bold py-1 md:py-3 text-nowrap'>{program?.study_language}</TableCell>

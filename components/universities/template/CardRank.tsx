@@ -23,9 +23,9 @@ export default async function CardRank({
   return (
     <Card className="relative border-none shadow-none rounded-none bg-primary py-10">
     <CardHeader className="container lg:max-w-[85vw] mx-auto relative z-10">
-      <h1 className="text-white text-lg md:text-xl font-bold">
+      <h2 className="text-white text-lg md:text-xl font-bold">
         {university.name} {t('university.numbers')}
-      </h1>
+      </h2>
     </CardHeader>
     <ScrollArea className="w-full whitespace-nowrap" dir={dir(lng)}>
       
@@ -42,9 +42,9 @@ export default async function CardRank({
             />
           </CardHeader>
           <CardContent className="py-2">
-            <h1 className="text-base sm:text-lg md:text-xl font-bold text-primary">
+            <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary">
               {t("university.globalRank")}
-            </h1>
+            </h3>
           </CardContent>
           <div className="flex justify-center py-3 items-center text-2xl font-bold text-gray-500 border-t">
             <span>{university.global_rank}</span>
@@ -61,9 +61,9 @@ export default async function CardRank({
             />
           </CardHeader>
           <CardContent className="py-2">
-            <h1 className="text-lg md:text-xl font-bold text-primary">
+            <h3 className="text-lg md:text-xl font-bold text-primary">
               {t("university.localRank")}
-            </h1>
+            </h3>
           </CardContent>
           <div className="flex justify-center py-3 items-center text-2xl font-bold text-gray-500 border-t">
             <p>{university.local_rate}</p>
@@ -80,9 +80,9 @@ export default async function CardRank({
             />
           </CardHeader>
           <CardContent className="py-2">
-            <h1 className="text-lg md:text-xl font-bold text-primary">
+            <h3 className="text-lg md:text-xl font-bold text-primary">
               {t("university.studentsCount")}
-            </h1>
+            </h3>
           </CardContent>
           <div className="flex justify-center py-3 items-center text-2xl font-bold text-gray-500 border-t">
           <p>{university.student_count}</p>
@@ -99,9 +99,9 @@ export default async function CardRank({
             />
           </CardHeader>
           <CardContent className="py-2">
-            <h1 className="text-lg md:text-xl font-bold text-primary">
+            <h3 className="text-lg md:text-xl font-bold text-primary">
               {t("university.staff")}
-            </h1>
+            </h3>
           </CardContent>
           <div className="flex justify-center py-3 items-center text-2xl font-bold text-gray-500 border-t">
             <p>{university.teachers_count}</p>
@@ -118,9 +118,9 @@ export default async function CardRank({
             />
           </CardHeader>
           <CardContent className="py-2">
-            <h1 className="text-lg md:text-xl font-bold text-primary">
+            <h3 className="text-lg md:text-xl font-bold text-primary">
               {t("university.nationalityCount")}
-            </h1>
+            </h3>
           </CardContent>
           <div className="flex justify-center py-3 items-center text-2xl font-bold text-gray-500 border-t">
             <p>{university.national_count}</p>

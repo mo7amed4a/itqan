@@ -94,7 +94,7 @@ export default function HeroSection({
                 {dataLang("hero.register_now")}
               </Button>
             </OpenBooking>
-            <LinkApp href="/registration_rules" lng={locale}>
+            <LinkApp href="/registration-rules" lng={locale}>
               <Button
                 size={"xl"}
                 variant={"outline"}
@@ -103,7 +103,7 @@ export default function HeroSection({
                 {dataLang("hero.steps")}
               </Button>
             </LinkApp>
-            <LinkApp href="/turkish_universities" lng={locale}>
+            <LinkApp href="/turkish-universities" lng={locale}>
               <Button size={"xl"} className="w-full">
                 {dataLang("hero.choose_study")}
               </Button>

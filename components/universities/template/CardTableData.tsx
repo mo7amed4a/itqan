@@ -18,9 +18,9 @@ export default async function CardTableData({
   return (
     <div className="bg-white">
           <div className="container lg:max-w-[85vw] mx-auto lg:py-24 px-4">
-            <h1 className="text-2xl font-bold mb-4 pt-8 md:pt-0">
+            <h2 className="text-2xl font-bold mb-4 pt-8 md:pt-0">
               {t("tabs.studyPrograms")}
-            </h1>
+            </h2>
             <div className="flex justify-between items-start flex-col-reverse lg:flex-row">
               <StudyProgramsTabs
                 studyPrograms={study_programs}

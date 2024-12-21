@@ -30,9 +30,9 @@ export default async function FooterApp({ lng }: { lng: string }) {
           <div className="grid md:grid-cols-3 gap-4 py-5 px-4 md:px-0 container lg:max-w-[85vw] mx-auto">
             <div className="space-y-3 flex flex-col md:text-start text-sm md:text-base">
               <div className="flex flex-col text-start">
-                <h2 className="text-lg md:text-xl text-start py-4">
+                <span className="text-lg md:text-xl text-start block py-4">
                   {t("contactUs")}
-                </h2>
+                </span>
                 <ul className="space-y-2 text-white/80 md:text-lg ">
                   <li className="flex space-x-1 items-center">
                     <IoLocationSharp className="!text-white"/>
@@ -67,7 +67,7 @@ export default async function FooterApp({ lng }: { lng: string }) {
             </div>
             <div className="space-y-3 flex flex-col md:items-end md:text-start text-sm md:text-base">
               <div className="flex flex-col text-start md:text-end">
-              <h2 className="text-lg md:text-xl py-4">{t("links")}</h2>
+              <span className="text-lg md:text-xl py-4 block">{t("links")}</span>
               <ul className="text-sm md:text-lg text-gray-300">
                   <li>
                     <LinkApp href="/" lng={lng}>

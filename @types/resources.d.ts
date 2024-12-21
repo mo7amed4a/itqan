@@ -44,6 +44,7 @@ interface Resources
     steps_to_register: string;
     first_arab_site: string;
     in_turkey_for_arab_students: string;
+    about_itqan: string;
   };
   Footer: {
     siteName: string;

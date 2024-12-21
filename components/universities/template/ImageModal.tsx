@@ -13,13 +13,13 @@ export function ImageModal({ src, alt }: ImageModalProps) {
   return (
     <>
       <div className="cursor-pointer w-full h-full" onClick={() => setIsOpen(true)}>
-        <Image
+        {src && <Image
           src={src}
           width={2500}
           height={2500}
           alt={alt}
           className="w-full h-full object-cover rounded-2xl transition-transform duration-300"
-        />
+        />}
       </div>
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={() => setIsOpen(false)}>

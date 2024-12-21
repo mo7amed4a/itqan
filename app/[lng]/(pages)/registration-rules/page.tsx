@@ -11,8 +11,8 @@ export async function generateMetadata({
   const response = await getData("page/registration-rules", params.lng);
   data = response?.data?.page;
   return {
-    title: `${data?.meta_title || "About"} | ${
-      site?.data?.site_name || "Itqan"
+      title: `${data?.meta_title || "About"} - ${
+        site?.data?.site_name || "Itqan"
     }`,
     description: data?.meta_description,
     keywords: data?.meta_keywords,
@@ -21,12 +21,8 @@ export async function generateMetadata({
 
 export default async function page({
   params,
-  searchParams,
 }: {
   params: { lng: string };
-  searchParams: {
-    category: string;
-  };
 }) {
   let data;
   const response = await getData("page/registration-rules", params.lng);

@@ -7,7 +7,7 @@ export async function generateMetadata({ params } : { params: { lng: string } })
   const response = await getData("page/tos", params.lng);    
   data = response?.data?.page; 
   return {
-    title: `${data?.meta_title || 'TOS'} | ${site?.data?.site_name|| "Itqan"}`  ,
+    title: `${data?.meta_title || 'TOS'} - ${site?.data?.site_name|| "Itqan"}`  ,
     description: data?.meta_description,
     keywords: data?.meta_keywords,
   };
@@ -15,12 +15,8 @@ export async function generateMetadata({ params } : { params: { lng: string } })
 
 export default async function page({
   params,
-  searchParams,
 }: {
   params: { lng: string };
-  searchParams: {
-    category: string;
-  };
 }) {
   let data;
   const response = await getData("page/tos", params.lng);  

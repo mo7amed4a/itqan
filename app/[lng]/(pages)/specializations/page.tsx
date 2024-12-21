@@ -3,7 +3,23 @@ import LinkApp from "@/components/global/LinkApp";
 import { getData } from "@/lib/data";
 import ShowMoreBtn from "@/components/global/ShowMore";
 import CardSmall from "@/components/cards/card-small";
-import { useTranslation } from "@/i18n";
+import { useTranslation as getTranslation } from "@/i18n";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lng: string };
+}) {
+  const {lng} = params
+  const { t } = await getTranslation(lng, "university_details");
+  let data;
+  const response = await getData("/get_settings", params.lng);
+  data = response?.data;
+  return {
+    title: t('tabs.majors') + " - " + data?.site_name,
+    description: data?.meta_description || "",
+  };
+}
 
 export default async function UniversitiesPage({
   params,
@@ -15,8 +31,8 @@ export default async function UniversitiesPage({
   }
 }) {
   const lng = params.lng;
-  const { t } = await useTranslation(lng, "turkish_universities");
-  const { t:dataLang } = await useTranslation(lng, "university_details");
+  const { t } = await getTranslation(lng, "turkish_universities");
+  const { t:dataLang } = await getTranslation(lng, "university_details");
 
   let data = null;
   let url = "/specializations";

@@ -26,7 +26,7 @@ export default function TrackingPage({
       code: Yup.string().required(dataLang("code_require")),
     }),
     onSubmit: (values) => {
-      router.push(`followup_request/${values.code}`);
+      router.push(`followup-request/${values.code}`);
     },
   });
 

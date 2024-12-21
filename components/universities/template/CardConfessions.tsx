@@ -15,9 +15,9 @@ export default async function CardConfessions({
   const { t } = await useTranslation(lng, "university_details");
   return (
     <div className="container lg:max-w-[85vw] mx-auto px-4 py-10 mt-10 rounded-md">
-      <h1 className="text-lg md:text-xl font-bold my-10">
+      <h2 className="text-lg md:text-xl font-bold my-10">
         {t("university.confessions")}
-      </h1>
+      </h2>
       <ScrollArea className="w-full whitespace-nowrap"  dir={dir(lng)}>
         <div className="flex w-max gap-x-4 p-4 lg:w-9/12 mx-auto lg:grid lg:grid-cols-3 gap-5">
           {university.confessions.map((item: any, index: number) => (

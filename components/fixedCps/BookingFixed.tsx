@@ -567,7 +567,7 @@ export default function BookingFixed({ lng, child=null }: { lng: string, child?:
                   <div className="flex gap-x-2">
                     <Link
                       onClick={() => setIsOpen(false)}
-                      href={`/${lng}/followup_request/${text?.split(":")[1]}`}
+                      href={`/${lng}/followup-request/${text?.split(":")[1]}`}
                     >
                       <Button
                         size={"sm"}

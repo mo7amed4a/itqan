@@ -1,5 +1,4 @@
 import HeroSection from "../../components/home/hero";
-import VideoCall from "../../components/home/videoCall";
 import SectionApp from "../../components/home/section";
 import CardSmall from "../../components/cards/card-small";
 import FormBooking from "../../components/home/form-booking";
@@ -15,13 +14,12 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { getData } from "@/lib/data";
 import LinkApp from "@/components/global/LinkApp";
 import VideoTwo from "@/components/home/videoTwo";
 import { Button } from "@/components/ui/button";
+
 
 export default async function Page({
   params: { lng },
