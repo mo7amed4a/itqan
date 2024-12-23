@@ -10,6 +10,7 @@ import {
 } from "../ui/breadcrumb";
 import React from "react";
 import { useTranslation } from "@/i18n/client";
+import LinkApp from "./LinkApp";
 
 export default function BreadcrumbApp({ lng,className }: { lng: string, className?: string }) {
   const pathname = usePathname();
@@ -17,9 +18,9 @@ export default function BreadcrumbApp({ lng,className }: { lng: string, classNam
   const {t} = useTranslation(lng, 'breadcrumb')
   return (
     <Breadcrumb className={`text-sm mt-10 px-4 md:px-0 ${className}`}>
-      <BreadcrumbList>
+      <BreadcrumbList className="items-center">
         <BreadcrumbItem>
-          <BreadcrumbLink href={"/"+lng}>{t("Home")}</BreadcrumbLink>
+          <LinkApp lng={lng} href={"/"}>{t("Home")}</LinkApp>
         </BreadcrumbItem>
         {segments.map((segment: string, index) => {
           const href = `/${segments.slice(0, index + 1).join("/")}`;
@@ -35,10 +36,10 @@ export default function BreadcrumbApp({ lng,className }: { lng: string, classNam
                 }`}
                 aria-current={isLast ? "page" : undefined}
               >
-                <BreadcrumbLink href={"/"+ lng + href}>
+                <LinkApp lng={lng} href={href}>
                   {/* @ts-ignore */}
                   {t(segment)}
-                </BreadcrumbLink>
+                </LinkApp>
               </BreadcrumbItem>
             </React.Fragment>
           );

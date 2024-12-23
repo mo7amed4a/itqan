@@ -64,7 +64,7 @@ export default async function Blogs({
 
   return (
     <div className="my-10 container lg:max-w-[85vw] mx-auto space-y-10 p-4">
-      <BreadcrumbApp lng={lng} />
+      <BreadcrumbApp lng={lng} className="!-mt-10 pt-4"/>
       <div className="flex justify-center items-center text-center">
         <h1 className="text-lg font-bold text-gray-500 md:text-2xl">
           {t("title")}
