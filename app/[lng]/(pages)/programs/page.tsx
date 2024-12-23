@@ -1,62 +1,97 @@
-import CardFull, { UniversityTwoType } from "@/components/cards/Card-full";
-import FilterSelect from "@/components/home/Filter";
-import { useTranslation } from "@/i18n";
-import { getData } from "@/lib/data";
 import React from "react";
+import LinkApp from "@/components/global/LinkApp";
+import { getData } from "@/lib/data";
+import ShowMoreBtn from "@/components/global/ShowMore";
+import CardSmall from "@/components/cards/card-small";
+import { useTranslation as getTranslation } from "@/i18n";
 
-export default async function Page({
+export async function generateMetadata({
   params,
-  searchParams,
 }: {
   params: { lng: string };
-  searchParams: {
-    level: string;
-    specialization: string;
-    years: string;
-    language: string;
+}) {
+  const {lng} = params
+  const { t } = await getTranslation(lng, "university_details");
+  let data;
+  const response = await getData("/get_settings", params.lng);
+  data = response?.data;
+  return {
+    title: t('tabs.majors') + " - " + data?.site_name,
+    description: data?.meta_description || "",
   };
+}
+
+export default async function UniversitiesPage({
+  params,
+  searchParams
+}: {
+  params: { lng: string};
+  searchParams: {
+    page: string;
+  }
 }) {
   const lng = params.lng;
-  const {t} = await useTranslation(lng, 'program')
-  const { level, specialization, years, language } = searchParams;
-  const query:Partial<typeof searchParams> = {};
+  const { t } = await getTranslation(lng, "turkish_universities");
+  const { t:dataLang } = await getTranslation(lng, "university_details");
 
-if (level) query.level = level;
-if (specialization) query.specialization = specialization;
-if (years) query.years = years;
-if (language) query.language = language;
+  let data = null;
+  let url = "/specializations";
+  if (searchParams.page) {
+    url = `/specializations?page=${searchParams.page}`;
+  }
 
-const queryString = new URLSearchParams(query).toString();
+  const response = await getData(url, lng);
+  data = response?.data?.specializations;
 
-const response = await getData(`/programs?${queryString}`, lng);
-const data = response?.data;
-
-  
   return (
-    <section className="max-w-7xl mx-auto py-10 px-4">
-      <div className="flex justify-center py-10">
-        <h1 className="text-lg md:text-2xl text-center font-bold text-gray-500">{t('title')}</h1>
-      </div>
-      <div className="flex flex-col-reverse lg:flex-row gap-4">
-       <div className="w-full">
-        {data &&
-          data?.data &&
-          data?.data?.length > 0 ?  (
-            <div className="grid grid-cols-1 gap-4 w-full">
-              {data &&
-                data.data &&
-                data.data.map((item: UniversityTwoType) => {
-                  return <CardFull key={item.id} data={item} lng={lng} />;
+    <div>
+      <header className="bg-primary text-white text-center py-12">
+        <h1 className="text-4xl font-bold my-5">{dataLang("tabs.majors")}</h1>
+      </header>
+      <div className="container lg:max-w-[85vw] mx-auto px-4 lg:px-0 text-center pb-10">
+        {data ? (
+          data.length > 0 ? (
+            <div>
+              <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-10">
+                {data.map((item: any) => {
+                  return (
+                    <LinkApp
+                      key={item.id}
+                      lng={lng}
+                      href={`/programs/${item.slug}`}
+                    >
+                      <CardSmall
+                      imageUrl={item.image}
+                        text={item.name}
+                      />
+                    </LinkApp>
+                  );
                 })}
+              </section>
+              <div className="flex justify-center mt-10">
+                <ShowMoreBtn page={searchParams.page} text={t("show_more")} />
+              </div>
+             
             </div>
-          ) : <div className="flex justify-center items-center h-[50vh]">
-              <div className="font-bold text-gray-500 text-xl">{t('notFound')}</div>
-          </div> }
-       </div>
-        <div className="lg:w-96">
-          <FilterSelect lng={lng} col/>
-        </div>
+          ) : (
+            <div className="min-h-[40vh] w-full flex justify-center items-center">
+              <div>
+                <h1 className="text-lg md:text-2xl text-gray-500 font-bold">
+                  Not Found
+                </h1>
+              </div>
+            </div>
+          )
+        ) : (
+          <div className="min-h-[40vh] w-full flex justify-center items-center">
+            <div>
+              <h1 className="text-lg md:text-2xl text-gray-500 font-bold">
+                Server Error
+              </h1>
+            </div>
+          </div>
+        )}
       </div>
-    </section>
-  ) ;
+    </div>
+  );
 }

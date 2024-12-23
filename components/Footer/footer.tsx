@@ -75,7 +75,7 @@ export default async function FooterApp({ lng }: { lng: string }) {
                     </LinkApp>
                   </li>
                   <li>
-                    <LinkApp href="/specializations" lng={lng}>
+                    <LinkApp href="/programs" lng={lng}>
                       {t("majors")}
                     </LinkApp>
                   </li>

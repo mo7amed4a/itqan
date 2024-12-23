@@ -7,16 +7,16 @@ export default function SectionApp({
   className,
 }: {
   children: React.ReactElement;
-  title: string;
+  title?: string;
   title2?: string;
   className: string;
 }) {
   return (
     <div className="flex flex-col py-8 space-y-9">
-      <h1 className={`text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-500 flex justify-center gap-x-2 ${title2 && "flex-col md:flex-row"}`}>
+      <h2 className={`text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-500 flex justify-center gap-x-2 ${title2 && "flex-col md:flex-row"}`}>
         <span className="text-secondary">{title2}</span>
         <span>{title}</span>
-      </h1>
+      </h2>
       <div className={className}>{children}</div>
     </div>
   );

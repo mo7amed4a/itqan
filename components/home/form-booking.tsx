@@ -15,7 +15,7 @@ type FormValues = {
   mobile: string;
 };
 
-export default function FormBooking({lng}:{lng: string}) {
+export default function FormBooking({lng, data}:{lng: string, data?: {home_form_title: string}}) {
   const { t:dataLang } = useTranslation(lng, 'home')
 
   const validationSchema = Yup.object({
@@ -62,7 +62,10 @@ export default function FormBooking({lng}:{lng: string}) {
         >
           {({ isSubmitting }) => (
             <div className="flex flex-col space-y-10 items-center w-full">
-              <h2 className="text-lg md:text-2xl lg:text-3xl font-bold text-gray-500">{dataLang('form_booking.title')}</h2>
+              <h3 className="text-lg md:text-2xl lg:text-3xl font-bold text-gray-500">
+                {/* {dataLang('form_booking.title')} */}
+                {data ? data?.home_form_title : dataLang('form_booking.title')}
+              </h3>
               <Form className="grid grid-cols-1 gap-4 w-full p-6 ">
               <div className="flex flex-col gap-4">
                 <Field

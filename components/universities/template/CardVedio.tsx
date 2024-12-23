@@ -17,9 +17,9 @@ export default async function CardVideo({
     <div className="bg-white space-y-7 text-gray-500 pb-10">
       <Card className="border-none shadow-none container lg:max-w-[85vw] mx-auto">
         <CardHeader>
-          <h1 className="text-lg md:text-xl font-bold my-2">
+          <h2 className="text-lg md:text-xl font-bold my-2">
             {t("university.video")} {university.name}
-          </h1>
+          </h2>
         </CardHeader>
 
         <CardContent className="h-[30rem]">

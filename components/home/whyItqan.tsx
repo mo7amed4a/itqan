@@ -14,9 +14,9 @@ export default function WhyItqan({
     <div className="bg-orange-50 h-auto relative">
       <div className="flex flex-col md:flex-row items-center md:gap-x-20 md:py-10 px-4 md:w-[85vw] mx-auto">
         <div className="space-y-4 lg:w-3/5 relative z-10 py-20">
-          <h1 className="text-lg md:text-3xl md:text-center  text-primary font-bold md:mb-10">
+          <h2 className="text-lg md:text-3xl md:text-center  text-primary font-bold md:mb-10">
             {data.why_title}
-          </h1>
+          </h2>
       <Image
             src={img2}
             alt="why-choose-us"

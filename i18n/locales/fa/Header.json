@@ -1,14 +1,14 @@
 {
   "be_our_agent": "نماینده ما باشید",
-  "follow_up_on_the_registration_request": "پیگیری درخواست",
+  "follow_up_on_the_registration_request": "پیگیری درخواست ثبت نام",
   "search_for_the_university": "جستجوی دانشگاه",
   "booking_btn": "یک صندلی رزرو کنید",
   "home": "صفحه اصلی",
   "blog": "وبلاگ",
   "about_us": "ما کی هستیم؟",
   "contact_us": "با ما تماس بگیرید",
-  "turkish_universities": "دانشگاه های ترکیه ما",
-  "cyprus_universities": "دانشگاه های قبرس ما",
+  "turkish_universities": "دانشگاه های ترکیه",
+  "cyprus_universities": "دانشگاه های قبرس",
   "student_accommodation": "مسکن دانشجویی",
   "partial_scholarships": "کمک های مالی جزئی",
   "opportunities": "فرصت ها",
@@ -18,5 +18,5 @@
   "steps_to_register": "مراحل ثبت نام در دانشگاه ها",
   "first_arab_site": "اولین وب سایت عربی تخصصی در زمینه مطالعات",
   "in_turkey_for_arab_students": "در ترکیه برای دانشجویان عرب",
-  "about_itqan": "درباره اتقان"
+  "about_itqan": "در مورد مسترینگ"
 }

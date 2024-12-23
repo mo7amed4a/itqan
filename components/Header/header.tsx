@@ -83,7 +83,7 @@ export default async function HeaderApp({ locale }: { locale: string }) {
             </LinkApp>
           </NavbarBrand>
           <NavbarToggle />
-          <NavbarCollapse className="md:!w-9/12 4xl:!w-auto [&>ul>li>a]:text-base lg:[&>ul>li>a]:text-lg xl:[&>ul>li>a]:text-xl [&>ul>li>a]:text-nowrap rtl:xl:[&>ul>li]:ps-2 md:overflow-x-scroll 2xl:overflow-x-auto z-40 hidden-scrollbar">
+          <NavbarCollapse className="[&>ul]:!justify-end md:!w-9/12 4xl:!w-auto [&>ul>li>a]:text-base lg:[&>ul>li>a]:text-lg xl:[&>ul>li>a]:text-xl [&>ul>li>a]:text-nowrap rtl:xl:[&>ul>li]:ps-2 md:overflow-x-scroll 2xl:overflow-x-auto z-40 hidden-scrollbar">
             {/* <LinkActive as={Link} locale={locale} text={t("home")} url="" /> */}
             <LinkActive
               as={Link}

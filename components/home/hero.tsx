@@ -12,41 +12,50 @@ import { useEffect, useState } from "react";
 
 export default function HeroSection({
   locale,
+  data
 }: {
   locale: string;
+  data: {
+    slider_title: string;
+    slider_title2: string;
+    slider_bg_web: string;
+    slider_image_web: string;
+    slider_bg_mobile: string;
+    slider_image_mobile: string;
+  }
 }) {
   const {t: dataLang} = useTranslation(locale, "home");
-  const data = {
-    site_name: "Itqan Education",
-    meta_tags: "Itqan Education",
-    meta_description: "Itqan Education",
-    facebook: "https://www.facebook.com/itqanstudy",
-    instagram: "https://www.instagram.com/itqanstudy",
-    twitter: "#",
-    tiktok: "#",
-    whatsapp: "https://wa.me/message/E57POZ566FLCP1",
-    youtube: "#",
-    phone: "+905069300007",
-    email: "info@itqaneducation.com",
-    slider_title: "Register now and get a free consultation",
-    slider_title2: "About Turkish Universities",
-    why_title:
-      "How can we help you and what you need to know about the student's orientation?",
-    why_details:
-      "<ul>     <li>Etqan strives for academic excellence for students.</li>     <li>It offers educational programs tailored to each age group.</li>     <li>It uses the latest technological tools in education.</li>     <li>It provides education aligned with the job market's requirements.</li>     <li>It contributes to developing students' critical thinking skills.</li>     <li>It offers an interactive learning environment that encourages innovation and creativity.</li> </ul>",
-    footer_text:
-      "A leading academic consulting company in the field of student registration in Turkish universities, international schools and language institutes.",
-    address: "Istanbul - Fatih - Findikzade Station",
-    slider_image_web:
-      "https://admin.itqaneducation.com/storage/settings/gUqz5VwadnrZmYMvgMAI3Yoxr0QMNxucuTaDyXZf.png",
-    consult_url: "https://wa.me/message/E57POZ566FLCP1",
-    slider_bg_mobile:
-      "https://admin.itqaneducation.com/storage/settings/zKyLCvpb6XJfgLK4l45WfOiRnDIQatEL9TQBADWB.png",
-    slider_bg_web:
-      "https://admin.itqaneducation.com/storage/settings/sysTPAOYwUNeEAitKD1rNLzyvCIbcC7444pk0a9l.jpg",
-    slider_image_mobile:
-      "https://admin.itqaneducation.com/storage/settings/Xy16EsOfwWi8Ve9lTMD9NWrW0XknZeCD4aLdOBDN.png",
-  };
+  // const data = {
+  //   site_name: "Itqan Education",
+  //   meta_tags: "Itqan Education",
+  //   meta_description: "Itqan Education",
+  //   facebook: "https://www.facebook.com/itqanstudy",
+  //   instagram: "https://www.instagram.com/itqanstudy",
+  //   twitter: "#",
+  //   tiktok: "#",
+  //   whatsapp: "https://wa.me/message/E57POZ566FLCP1",
+  //   youtube: "#",
+  //   phone: "+905069300007",
+  //   email: "info@itqaneducation.com",
+  //   slider_title: "Register now and get a free consultation",
+  //   slider_title2: "About Turkish Universities",
+  //   why_title:
+  //     "How can we help you and what you need to know about the student's orientation?",
+  //   why_details:
+  //     "<ul>     <li>Etqan strives for academic excellence for students.</li>     <li>It offers educational programs tailored to each age group.</li>     <li>It uses the latest technological tools in education.</li>     <li>It provides education aligned with the job market's requirements.</li>     <li>It contributes to developing students' critical thinking skills.</li>     <li>It offers an interactive learning environment that encourages innovation and creativity.</li> </ul>",
+  //   footer_text:
+  //     "A leading academic consulting company in the field of student registration in Turkish universities, international schools and language institutes.",
+  //   address: "Istanbul - Fatih - Findikzade Station",
+  //   slider_image_web:
+  //     "https://admin.itqaneducation.com/storage/settings/gUqz5VwadnrZmYMvgMAI3Yoxr0QMNxucuTaDyXZf.png",
+  //   consult_url: "https://wa.me/message/E57POZ566FLCP1",
+  //   slider_bg_mobile:
+  //     "https://admin.itqaneducation.com/storage/settings/zKyLCvpb6XJfgLK4l45WfOiRnDIQatEL9TQBADWB.png",
+  //   slider_bg_web:
+  //     "https://admin.itqaneducation.com/storage/settings/sysTPAOYwUNeEAitKD1rNLzyvCIbcC7444pk0a9l.jpg",
+  //   slider_image_mobile:
+  //     "https://admin.itqaneducation.com/storage/settings/Xy16EsOfwWi8Ve9lTMD9NWrW0XknZeCD4aLdOBDN.png",
+  // };
   // await getData("/get_settings", locale);
 
   const [deviceType, setDeviceType] = useState<string|null>(null);
@@ -80,10 +89,13 @@ export default function HeroSection({
           className={`w-full lg:w-3/4 flex flex-col items-center text-center space-y-6`}
         >
           <h1 className="text-xl md:text-3xl lg:text-[2.5rem] font-bold text-gray-700 text-opacity-80 !leading-[1.35]">
-            {dataLang("hero.title")}
+            {/* {dataLang("hero.title")} */}
+            {data?.slider_title}
+            {/* {JSON.stringify(data)} */}
           </h1>
           <h2 className="text-lg md:text-xl lg:text-[2.5rem] text-secondary font-bold">
-            {dataLang("hero.subtitle")}
+            {/* {dataLang("hero.subtitle")} */}
+            {data?.slider_title2}
           </h2>
           {deviceType === "Mobile" && 
           <Image src={data.slider_image_mobile} className="size-64" alt="hero" width={2500} height={2500} />

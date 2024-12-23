@@ -58,7 +58,7 @@ export default async function CardUniversity({
         <p className="text-sm text-gray-500 line-clamp-2 pt-2 md:pt-4" dangerouslySetInnerHTML={{ __html: university.translated_description.slice(0, 200) }}></p>
         }
         {university?.first_programs?.length > 0 && <>
-          <h6 className="text-red-500 text-xs md:text-lg">{major}</h6>
+          <span className="text-red-500 text-xs md:text-lg">{major}</span>
           <ul className="grid grid-cols-2 mt-4 text-xs gap-x-3 md:text-base text-gray-600 text-start custom-bullet-university">
             {
               university.first_programs.slice(0, 4).map((item, index) => (

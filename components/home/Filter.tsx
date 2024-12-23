@@ -61,7 +61,7 @@ export default function FilterSelect({
   // Function to navigate to the desired URL
   const handleSearch = () => {
     const queryParams = new URLSearchParams(filters).toString();
-    router.push(`/programs?${queryParams}`);
+    router.push(`/universities-filters?${queryParams}`);
   };
 
   return data ? (

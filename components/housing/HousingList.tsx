@@ -21,7 +21,7 @@ const HousingList = ({ housings, t }: { housings: any; t: any }) => {
           <CardHeader className="md:w-2/4 px-8 py-12 order-2 md:order-1 md:space-y-10">
             <div className="flex gap-4 text-start">
               <div className="space-y-2 text-gray-500">
-                <h2 className="text-lg font-[600]">{housing.name}</h2>
+                <h3 className="text-lg font-[600]">{housing.name}</h3>
                 {/* <span className="text-base text-secondary ">
                   {housing.city}
                 </span> */}
@@ -36,21 +36,21 @@ const HousingList = ({ housings, t }: { housings: any; t: any }) => {
               <div className="bg-gray-50 flex flex-col items-center p-2 md:p-3 space-y-2 rounded-lg">
                 <LiaBedSolid className="size-6 fill-primary" />
 
-                <h2 className="text-primary border-b text-xs md:text-base text-nowrap">{t("beds")}</h2>
+                <span className="text-primary border-b text-xs md:text-base text-nowrap">{t("beds")}</span>
                 <p className="text-secondary py-2 text-xs md:text-base">{housing.beds}</p>
               </div>
               <div className="bg-gray-50 flex flex-col items-center p-2 md:p-3 space-y-2 rounded-lg">
                 <MdNoMeals className="size-6 fill-primary" />
 
-                <h2 className="text-primary border-b text-xs md:text-base text-nowrap">
+                <span className="text-primary border-b text-xs md:text-base text-nowrap">
                   {t("meals")}
-                </h2>
+                </span>
                 <p className="text-secondary py-2 text-xs md:text-base">{housing.meals}</p>
               </div>
               <div className="bg-gray-50 flex flex-col items-center p-2 md:p-3 space-y-2 rounded-lg">
                 <MdFace className="size-6 fill-primary" />
 
-                <h2 className="text-primary border-b text-xs md:text-base text-nowrap">{t("type")}</h2>
+                <span className="text-primary border-b text-xs md:text-base text-nowrap">{t("type")}</span>
                 <p className="text-secondary py-2 text-xs md:text-base">
                   {housing.type === "male_housing" ? t("male") : t("female")}
                 </p>
@@ -58,24 +58,24 @@ const HousingList = ({ housings, t }: { housings: any; t: any }) => {
               <div className="bg-gray-50 flex flex-col items-center p-2 md:p-3 space-y-2 rounded-lg">
                 <FaMoneyBills className="size-6 fill-primary" />
 
-                <h2 className="text-primary border-b text-xs md:text-base text-nowrap">
+                <span className="text-primary border-b text-xs md:text-base text-nowrap">
                   {t("price")}
-                </h2>
+                </span>
                 <p className="text-secondary py-2 text-xs md:text-base">{housing.price}</p>
               </div>
               <div className="bg-gray-50 flex flex-col items-center p-2 md:p-3 space-y-2 rounded-lg">
                 <MdReduceCapacity className="size-6 fill-primary" />
 
-                <h2 className="text-primary border-b text-xs md:text-base text-nowrap">
+                <span className="text-primary border-b text-xs md:text-base text-nowrap">
                   {t("capacity")}
-                </h2>
+                </span>
                 <p className="text-secondary py-2 text-xs md:text-base">{housing.capacity}</p>
               </div>
               <div className="bg-gray-50 flex flex-col items-center p-2 md:p-3 space-y-2 rounded-lg">
                 <IoIosWifi className="size-6 fill-primary" />
-                <h2 className="text-primary border-b text-xs md:text-base text-nowrap">
+                <span className="text-primary border-b text-xs md:text-base text-nowrap">
                   {t("internet")}
-                </h2>
+                </span>
                 <p className="text-secondary py-2 text-xs md:text-base">{housing.internet}</p>
               </div>
             </div>

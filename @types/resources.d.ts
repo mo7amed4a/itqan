@@ -1,5 +1,6 @@
 import { BlogLangType } from "./@pages/blog";
 import { BookingFixedType } from "./@pages/bookingFixed";
+import { BreadcrumbType } from "./@pages/breadcrumb";
 import { ContactInfoType } from "./@pages/contact";
 import { Cypriot_universitiesLangType } from "./@pages/cypriot_universities";
 import { FollowupRequestType } from "./@pages/followup_request";
@@ -23,7 +24,8 @@ interface Resources
     HousingLangType,
     ServicesLangType,
     UniversityDetailsType,
-    ProgramType {
+    ProgramType,
+    BreadcrumbType {
   Header: {
     be_our_agent: string;
     follow_up_on_the_registration_request: string;

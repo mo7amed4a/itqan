@@ -37,7 +37,7 @@ export default async function Page({
 
   return (
     <main className="space-y-">
-      {data && <HeroSection locale={lng} />}
+      {settings && <HeroSection locale={lng} data={settings}/>}
       <section className="bg-white py-8">
         <VideoTwo
           url={settings?.consult_url}
@@ -63,7 +63,7 @@ export default async function Page({
                       className="basis-1/2 md:basis-1/3 pb-8"
                       key={e.id}
                     >
-                      <LinkApp href={`/specializations/${e.id}`} lng={lng}>
+                      <LinkApp href={`/programs/${e.id}`} lng={lng}>
                         <CardSmall imageUrl={e.image} text={e.name} />
                       </LinkApp>
                     </CarouselItem>
@@ -71,7 +71,7 @@ export default async function Page({
               </CarouselContent>
             </Carousel>
             <LinkApp
-              href="/specializations"
+              href="/programs"
               lng={lng}
               className="flex justify-center mt-7"
             >
@@ -140,7 +140,7 @@ export default async function Page({
         <section className="flex md:h-[70vh] px-4 md:px-0 bg-white">
           <div className="md:w-9/12 flex justify-center items-center w-full py-8 relative">
             <div className="w-full md:w-2/4 relative z-10">
-              <FormBooking lng={lng} />
+              {settings && <FormBooking lng={lng} data={settings}/>}
             </div>
             <Image
               src={img2}

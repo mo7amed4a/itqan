@@ -13,6 +13,7 @@ import { useTranslation } from "@/i18n";
 import Navbar from "@/components/universities/template/NavbarForUniversity";
 import CardAlbum from "@/components/universities/template/CardAlbum";
 import CardFeatures from "@/components/universities/template/CardFeatures";
+import BreadcrumbApp from "@/components/global/breadcrumb";
 
 export default async function UniversitiesPage({
   params,
@@ -25,10 +26,17 @@ export default async function UniversitiesPage({
   const response = await getData(`/universities/${slug}/details`, lng);
   data = response?.data;
 
+  let settings;
+  const responseSettings = await getData("/get_settings", params.lng);
+  settings = responseSettings?.data;
+
   if (data && data?.university) {
     const { university, faqs, study_programs, student_housings } = data;
     return (
       <div className="text-start text-base text-gray-500 scroll-smooth">
+        <div className="container lg:max-w-[85%] mx-auto">
+          <BreadcrumbApp lng={lng} />
+        </div>
         <section className="my-12 px-4 lg:px-0">
           <h1 className="text-xl md:text-2xl font-bold text-gray-500 text-center">
             {university.name}
@@ -97,6 +105,38 @@ export default async function UniversitiesPage({
         {student_housings && (
           <CardHouse student_housings={student_housings} lng={lng} />
         )}
+
+
+
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": settings?.site_name,
+            author: settings?.site_name,
+            interactionStatistic: [
+              {
+                "@type": "InteractionCounter",
+                interactionService: {
+                  "@type": "WebSite",
+                  name: "Twitter",
+                  url: "http://www.twitter.com",
+                },
+                interactionType: "https://schema.org/ShareAction",
+                userInteractionCount: "1203",
+              },
+              {
+                "@type": "InteractionCounter",
+                interactionType: "https://schema.org/CommentAction",
+                userInteractionCount: "78",
+              },
+            ],
+            name: university.name,
+          }),
+        }}
+      />
+      
       </div>
     );
   } else

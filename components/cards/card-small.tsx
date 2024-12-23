@@ -25,7 +25,8 @@ export default function CardSmall({
             className="size-16 md:size-36 group-hover:scale-105 duration-300"
           />
           <CardTitle className={`text-gray-500 group-hover:text-primary text-wrap w-full text-base md:text-2xl  ${services ? "font-normal" : "font-bold"}`}>
-            {text}
+           {services ? <h3>{text}</h3> : <h3>{text}</h3>}
+           
           </CardTitle>
         </CardHeader>
       </Card>

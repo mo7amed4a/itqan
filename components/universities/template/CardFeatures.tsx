@@ -24,9 +24,9 @@ export default async function CardFeatures({
   return (
     specifications && (
       <div className="space-y-7 text-gray-500 mt-10 py-10 pb-2 container lg:max-w-[85vw] mx-auto">
-        <h1 className="text-lg md:text-xl font-bold px-4">
+        <h2 className="text-lg md:text-xl font-bold px-4">
           {t("university.features")} {university.name}
-        </h1>
+        </h2>
         <div className="!w-[94%] md:!w-4/5 mx-auto">
           {Array.isArray(specifications)
             ? specifications.map((item: any, index: number) =>

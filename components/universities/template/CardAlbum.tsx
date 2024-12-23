@@ -19,9 +19,9 @@ export default async function CardAlbum({
       {university.photo_album.length > 0 && (
         <div className="container lg:max-w-[85vw] mx-auto">
           <div className="py-10">
-            <h1 className="text-lg md:text-xl font-bold px-4">
+            <h2 className="text-lg md:text-xl font-bold px-4">
               {t("university.photo")}
-            </h1>
+            </h2>
           </div>  
           <ScrollArea className="lg:hidden w-full whitespace-nowrap" dir={dir(lng)}>
             <div className="flex w-max gap-x-4 p-4">

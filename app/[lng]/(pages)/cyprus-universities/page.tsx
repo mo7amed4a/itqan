@@ -11,6 +11,7 @@ import UniversitiesSliderItem from "@/components/universities/full/UniversitiesS
 import LinksCategory from "@/components/global/LinksCategory";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { dir } from "i18next";
+import BreadcrumbApp from "@/components/global/breadcrumb";
 
 export async function generateMetadata({
   params,
@@ -22,8 +23,16 @@ export async function generateMetadata({
   let data;
   const response = await getData("/get_settings", params.lng);
   data = response?.data;
+
+  let dataTwo = null;
+  let url = "/qyprus_universities";
+  const responseTwo = await getData(url, lng);
+  dataTwo = responseTwo?.data; 
   return {
-    title: t('cyprus_universities') + " - " + data?.site_name,
+    title: t('cyprus_universities') + "  - " + data?.site_name,
+    description: dataTwo?.seo[0]?.meta_description
+  };
+  return {
   };
 }
 
@@ -58,7 +67,8 @@ export default async function UniversitiesPage({
   // const pagination = data?.paginated_universities?.pagination || null;
 
   return (
-    <div className="my-10 container lg:max-w-[85vw] mx-auto space-y-7 p-4 md:px-0">
+    <div className="mb-10 container lg:max-w-[85vw] mx-auto space-y-7 p-4 md:px-0">
+      <BreadcrumbApp lng={lng} />
       <div className="flex justify-center items-center text-center">
         <h1 className="text-lg font-bold text-gray-500 md:text-2xl">
           {t("title")}

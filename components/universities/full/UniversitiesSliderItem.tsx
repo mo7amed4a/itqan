@@ -36,7 +36,7 @@ export default function UniversitiesSliderItem({
                   {item.name}
                 </h2>
               </div>
-              <p className="text-sm md:text-base" dangerouslySetInnerHTML={{ __html: item.description }}></p>
+              <p className="text-sm md:text-base" dangerouslySetInnerHTML={{ __html: item.short_description }}></p>
               {/* <p>{t("universityInfo.description")}</p> */}
               <div className="flex gap-x-4 text-primary text-xs md:text-base">
                 <div className="flex gap-x-2">

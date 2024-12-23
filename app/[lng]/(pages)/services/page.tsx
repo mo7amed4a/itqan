@@ -9,11 +9,10 @@ import { getData } from "@/lib/data";
 import {
   Carousel,
   CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  CarouselItem
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
+import BreadcrumbApp from "@/components/global/breadcrumb";
 
 export default async function Page({
   params,
@@ -38,7 +37,10 @@ export default async function Page({
   const dataHousings = res?.data;
 
   return (
-    <div className="mt-10 text-start">
+    <div className="-10 text-start">
+      <div className="container lg:max-w-[85vw] mx-auto ">
+        <BreadcrumbApp lng={lng} />
+      </div>
       <h1 className="text-center text-xl md:text-2xl font-bold text-gray-500 capitalize">
         {t("titlePage")}
       </h1>
@@ -83,14 +85,14 @@ export default async function Page({
           data.services.length > 0 &&
           searchParams.category ? (
             <div className="space-y-10">
-              <h1 className="text-lg font-bold text-gray-500 md:text-xl">
+              <h2 className="text-lg font-bold text-gray-500 md:text-xl">
                 {
                   data.services.find(
                     (service: any) =>
                       service.id === parseInt(searchParams.category)
                   ).name
                 }
-              </h1>
+              </h2>
 
               <Carousel>
                 <CarouselContent className="h-auto">
@@ -116,9 +118,9 @@ export default async function Page({
             </div>
           ) : (
             <div className="space-y-10">
-              <h1 className="text-lg font-bold text-gray-500 md:text-xl">
+              <h2 className="text-lg font-bold text-gray-500 md:text-xl">
                 {data?.services[0]?.name}
-              </h1>
+              </h2>
 
               <Carousel>
                 <CarouselContent className="h-auto">
@@ -142,9 +144,9 @@ export default async function Page({
       </section>
       <section className="pb-10">
         <div className="bg-white h-96 flex flex-col space-y-10 md:space-y-20 justify-center items-center  text-center px-7">
-          <h1 className="text-lg md:text-3xl font-bold text-gray-500">
+          <h2 className="text-lg md:text-3xl font-bold text-gray-500">
             {t("sectionText")}
-          </h1>
+          </h2>
           <div className="w-full">
             <Button
               size="xl"
@@ -156,10 +158,10 @@ export default async function Page({
         </div>
       </section>
      {data && data?.services && data?.services?.length > 1 && <section className="container lg:max-w-[85vw] mx-auto px-4 md:px-0 pb-10">
-        <h1 className="my-10 text-lg md:text-2xl font-bold text-gray-500">
+        <h2 className="my-10 text-lg md:text-2xl font-bold text-gray-500">
           {/* {t("post_admission_services")} */}
           {data.services[1].name}
-        </h1>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {
             data?.services[1]?.services?.map((item: any) => (
@@ -197,9 +199,9 @@ export default async function Page({
       
       <section className="relative bg-primary">
         <div className="relative z-10 h-96 bg-transparent flex flex-col space-y-10 justify-center items-center px-7 text-center">
-          <h1 className="text-lg md:text-3xl font-bold text-white">
+          <span className="text-lg md:text-3xl font-bold text-white">
             {t("sectionText2")}
-          </h1>
+          </span>
           <Button
             size="xl"
             className="bg-secondary text-white md:w-96 hover:!scale-x-100"
@@ -219,21 +221,21 @@ export default async function Page({
       <section className="bg-white pb-10 pt-16">
         <div className="container lg:max-w-[85vw] mx-auto px-4 md:px-0">
           <div>
-            <h1 className="text-lg md:text-3xl text-gray-500 font-bold text-center">
+            <h2 className="text-lg md:text-3xl text-gray-500 font-bold text-center">
               {t("contactUs.title")}
-            </h1>
+            </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 py-10 container mx-auto px-4">
             <div>
               <div className="hover:shadow-md bg-gray-50 pb-8 rounded-xl [&>div>h2]:hidden">
-                <FormBooking lng={lng} />
+                <FormBooking  lng={lng} />
               </div>
             </div>
             <div className="p-4 md:p-8">
-              <h2 className="text-base md:text-3xl font-bold text-primary lg:w-3/5 !leading-[1.35]">
+              <h3 className="text-base md:text-3xl font-bold text-primary lg:w-3/5 !leading-[1.35]">
                 {t("contactUs.subtitle")}
                 <span className="text-red-500"> {t("contactUs.hour")}</span>
-              </h2>
+              </h3>
               <ul className="mt-8 text-base md:text-xl text-gray-500 space-y-3 !leading-[1.45]">
                 <li className="list">{t("contactUs.points.a")}</li>
                 <li className="list">{t("contactUs.points.b")}</li>

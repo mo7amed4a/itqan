@@ -1,6 +1,6 @@
 import React from "react";
 import LinkApp from "../../../../components/global/LinkApp";
-import { useTranslation as getTranslation} from "../../../../i18n";
+import { useTranslation as getTranslation } from "../../../../i18n";
 import CardUniversity, {
   UniversityType,
 } from "../../../../components/home/CardUniversity";
@@ -11,22 +11,28 @@ import UniversitiesSliderItem from "@/components/universities/full/UniversitiesS
 import LinksCategory from "@/components/global/LinksCategory";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { dir } from "i18next";
+import BreadcrumbApp from "@/components/global/breadcrumb";
 
 export async function generateMetadata({
   params,
 }: {
   params: { lng: string };
 }) {
-  const {lng} = params
+  const { lng } = params;
   const { t } = await getTranslation(lng, "Header");
   let data;
   const response = await getData("/get_settings", params.lng);
   data = response?.data;
+
+  let dataTwo = null;
+  let url = "/tukey_universities";
+  const responseTwo = await getData(url, lng);
+  dataTwo = responseTwo?.data;
   return {
-    title: t('turkish_universities') + " - " + data?.site_name,
+    title: t("turkish_universities") + " - " + data?.site_name,
+    description: dataTwo?.seo[0]?.meta_description,
   };
 }
-
 
 export default async function UniversitiesPage({
   params,
@@ -58,7 +64,8 @@ export default async function UniversitiesPage({
   // const pagination = data?.paginated_universities?.pagination || null;
 
   return (
-    <div className="my-10 container lg:max-w-[85vw] mx-auto space-y- p-4">
+    <div className="mb-10 container lg:max-w-[85vw] mx-auto space-y- p-4">
+      <BreadcrumbApp lng={lng} />
       <div className="flex justify-center items-center text-center">
         <h1 className="text-lg font-bold text-gray-500 md:text-2xl">
           {t("title")}
@@ -106,12 +113,16 @@ export default async function UniversitiesPage({
         data.paginated_universities.data.length > 0 ? (
           <div>
             <section className="mt-10">
-              <ScrollArea className="w-full whitespace-nowrap md:overflow-auto md:whitespace-pre-wrap" dir={dir(lng)}>
+              <ScrollArea
+                className="w-full whitespace-nowrap md:overflow-auto md:whitespace-pre-wrap"
+                dir={dir(lng)}
+              >
                 <div className="flex md:grid grid-cols-3 w-max md:w-full gap-4">
                   {data.paginated_universities.data.map(
                     (item: UniversityType) => {
                       return (
-                        <LinkApp className="w-64 md:w-auto"
+                        <LinkApp
+                          className="w-64 md:w-auto"
                           key={item.id}
                           lng={lng}
                           href={`/turkish-universities/${item.slug}`}

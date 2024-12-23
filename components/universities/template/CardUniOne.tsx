@@ -31,36 +31,36 @@ export default async function CardUniOne({
               />
             </div> */}
             <div className="space-y-2 flex flex-col justify-center text-gray-500">
-              <h1 className="text-lg font-[600]">{university.name}</h1>
+              <span className="text-lg font-[600]">{university.name}</span>
               {/* <p className="text-sm text-primary">turkish - jkn</p>
               <span className="text-sm text-secondary">komkm</span> */}
             </div>
           </div>
-          <div className="text-gray-500 py-4">
+          <div className="text-gray-500 pt-3 pb-4">
             <p
               className="line-clamp-4"
               dangerouslySetInnerHTML={{
-                __html: university.description.slice(0, 200),
+                __html: university.short_description,
               }}
             ></p>
           </div>
           <div className="text-sm flex text-center gap-4 justify-center">
             <div className="bg-gray-50 py-3 px-5 space-y-2 rounded-lg">
-              <h2 className="text-primary text-base">
+              <span className="text-primary text-base">
                 {t("university.globalRank")}
-              </h2>
+              </span>
               <p className="text-secondary">{university.global_rank}</p>
             </div>
             <div className="bg-gray-50 py-3 px-5 space-y-2 rounded-lg">
-              <h2 className="text-primary text-base">
+              <span className="text-primary text-base">
                 {t("university.localRank")}
-              </h2>
+              </span>
               <p className="text-secondary">{university.local_rate}</p>
             </div>
             <div className="bg-gray-50 py-3 px-5 space-y-2 rounded-lg">
-              <h2 className="text-primary text-base">
+              <span className="text-primary text-base">
                 {t("university.studentsCount")}
-              </h2>
+              </span>
               <p className="text-secondary">{university.student_count}</p>
             </div>
           </div>
