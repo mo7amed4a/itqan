@@ -23,7 +23,7 @@ const ReadMoreLines: React.FC<ShowMoreProps> = ({ text ,readMore, readLess}) => 
       ></p>
       
       {/* <p>{!isExpanded && text.length > charLimit ? "..." : ""}</p> */}
-      {text.length > charLimit && (
+      {text?.length > charLimit && (
         <button
           onClick={toggleExpanded}
           className="mt-2 text-primary hover:underline"

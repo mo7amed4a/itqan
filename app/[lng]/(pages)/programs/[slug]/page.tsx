@@ -56,8 +56,7 @@ export default async function UniversitiesPage({
   let url = `/specialization/${slug}`;
 
   const response = await getData(url, lng);
-  data = response?.data;
-
+  data = response?.data;  
   return (
     <div>
       <header className="bg-primary text-white text-center py-12">
