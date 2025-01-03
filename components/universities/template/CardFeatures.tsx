@@ -27,7 +27,7 @@ export default async function CardFeatures({
         <h2 className="text-lg md:text-xl font-bold px-4">
           {t("university.features")} {university.name}
         </h2>
-        <div className="!w-[94%] md:!w-4/5 mx-auto">
+        <div className="!w-[94%] md:!w-4/5 mx-auto space-y-4">
           {Array.isArray(specifications)
             ? specifications.map((item: any, index: number) =>
                 FeatureItem({ item, index })

@@ -10,7 +10,7 @@ export default function layout({
   };
 }) {
   return (
-    <div className="bg-white text-base text-start">
+    <div className="bg-[#F5F7F9] text-base text-start">
       {children}
     </div>
   );

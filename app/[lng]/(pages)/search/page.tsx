@@ -39,6 +39,7 @@ export default async function UniversitiesPage({
       <header className="bg-primary text-white text-center py-12">
         <h1 className="text-4xl font-bold my-5">{searchParams.name}</h1>
       </header>
+
       <div className="container lg:max-w-[85vw] mx-auto px-4 lg:px-0 text-center pb-10">
         {data ? (
           data.length > 0 ? (

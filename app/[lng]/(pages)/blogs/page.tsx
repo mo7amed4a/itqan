@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/carousel";
 import ShowMoreBtn from "@/components/global/ShowMore";
 import BreadcrumbApp from "@/components/global/breadcrumb";
+import NavbarBlog from "./_components/NavbarForBlog";
 
 export async function generateMetadata({
   params,
@@ -64,11 +65,14 @@ export default async function Blogs({
 
   return (
     <div className="my-10 container lg:max-w-[85vw] mx-auto space-y-10 p-4">
-      <BreadcrumbApp lng={lng} className="!-mt-10 pt-4"/>
-      <div className="flex justify-center items-center text-center">
-        <h1 className="text-lg font-bold text-gray-500 md:text-2xl">
-          {t("title")}
-        </h1>
+      <div>
+        <div className="flex justify-start items-center text-start -mb-4">
+          <h1 className="text-lg font-bold text-gray-500 md:text-2xl">
+            {t("title")}
+          </h1>
+        </div>
+        <BreadcrumbApp lng={lng} last="المدونة - اخر الاخبار" className="md:!-ms-4 pt-4"/>
+        <NavbarBlog lng={lng}/>
       </div>
       <div>
         <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base md:text-lg">
@@ -175,15 +179,6 @@ export default async function Blogs({
               ))}
           </CarouselContent>
         </Carousel>
-        {/* {blogs &&
-          blogs.map((item: BlogItemType) => (
-            <CardBlog
-              key={item.id}
-              blog={item}
-              lng={lng}
-              textBtn={t("read_more")}
-            />
-          ))} */}
       </section>
       <div className="flex justify-center">
         <ShowMoreBtn page={searchParams.page} text={t("show_more")} />

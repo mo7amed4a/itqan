@@ -1,25 +1,20 @@
 import Image from "next/image";
 import React from "react";
-import { Button } from "../ui/button";
 import { useTranslation } from "@/i18n";
+import { Button } from "@/components/ui/button";
 export type UniversityType = {
   id: number;
+  slug: string;
   image: string;
   logo: string;
-  found_year: number | null;
-  study_programs:  { id: number, name: string }[]
-  slug: string;
-  global_rank: number | null;
   name: string;
-  description: string;
-  first_programs: string[];
-  min_annual_fees: number;
-  max_annual_fees: number;
-  translated_name: string;
-  translated_description: string;
-};
+  study_programs: {
+      id: number;
+      name: string;
+  }[];
+}
 
-export default async function CardUniversity({
+export default async function CardUniversityForBLog({
   university,
   major,
   btnText,
@@ -53,7 +48,7 @@ export default async function CardUniversity({
       <div className="p-4 mt-8 md:mt-16 text-start">
         <div className="flex justify-between items-center">
           <h2 className="font-bold text-base sm:text-xl md:text-2xl text-primary line-clamp-1">
-            {university.name || university.translated_name}
+            {university.name}
           </h2>
           <div className="ms-auto flex">
             <Image 

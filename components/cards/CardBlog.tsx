@@ -19,6 +19,7 @@ import { formatDate } from "../../lib/moment";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
+import { Eye } from "lucide-react";
 export default function CardBlog({
   blog,
   lng,
@@ -40,9 +41,6 @@ export default function CardBlog({
             height={500}
             className="size-full rounded-3xl absolute inset-0"
           />
-          <Badge className="rounded-md font-bold text-white bg-blue-200/40 backdrop-blur-md absolute end-4 bottom-5 z-10">
-            {formatDate(blog.created_at).split('/').join('.')}
-          </Badge>
         </CardHeader>
         <CardContent className="space-y-4 px-0 py-6">
           <CardTitle className="text-sm md:text-2xl font-bold text-gray-500 group-hover:text-primary text-wrap w-full line-clamp-2">
@@ -52,6 +50,14 @@ export default function CardBlog({
             className="text-xs md:text-base text-gray-400 line-clamp-2 py-"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           ></p>
+          <div className="flex gap-2 justify-end">
+            <Badge className="rounded-md font-bold text-primary bg-gray-200/40 backdrop-blur-md flex gap-2 items-center">
+            <Eye className="text-red-500"/> <span>97</span>
+            </Badge>
+            <Badge className="rounded-md font-bold text-primary bg-gray-200/40 backdrop-blur-md">
+              {formatDate(blog.created_at).split('/').join('.')}
+            </Badge>
+          </div>
           <div className="flex justify-center">
             <Button
               color="primary"

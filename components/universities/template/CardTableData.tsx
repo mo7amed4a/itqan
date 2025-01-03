@@ -21,12 +21,12 @@ export default async function CardTableData({
             <h2 className="text-2xl font-bold mb-4 pt-8 md:pt-0">
               {t("tabs.studyPrograms")}
             </h2>
-            <div className="flex justify-between items-start flex-col-reverse lg:flex-row">
+            <div className="flex justify-between items-start flex-col-reverse lg:flex-row-reverse">
               <StudyProgramsTabs
                 studyPrograms={study_programs}
                 lng={lng}
               />
-              <div className="lg:w-1/4 w-full">
+              <div className="lg:w-1/4 -mt-3 w-full">
                 <FilterSelect filterData={filterData} col lng={lng} />
               </div>
             </div>

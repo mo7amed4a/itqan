@@ -50,7 +50,7 @@ export default function StudyProgramsTabs({ studyPrograms, lng }: StudyProgramsT
     <Tabs value={activeTab} dir={dir(lng)} onValueChange={setActiveTab} className="w-full">
       <TabsList className="flex gap-4 w-full justify-start rounded-none mb-8 bg-transparent">
         {studyPrograms.map((level) => (
-          <TabsTrigger className="bg-transparent" key={level?.level_id} value={level?.level_id?.toString() || ''}>
+          <TabsTrigger className="bg-transparent border rounded-full px-3 py-1.5" key={level?.level_id} value={level?.level_id?.toString() || ''}>
             {level?.level_name}
           </TabsTrigger>
         ))}
@@ -72,7 +72,7 @@ export default function StudyProgramsTabs({ studyPrograms, lng }: StudyProgramsT
                 {level?.programs?.map((program) => (
                   <TableRow key={program?.id} className="even:bg-muted-foreground/10 py-0">
                     <TableCell className="font-bold md:w-2/5 border py-1 md:py-3 text-nowrap">
-                     <h3>{program?.specialization_name}</h3>
+                     <span>{program?.specialization_name}</span>
                     </TableCell>
                     <TableCell className='border font-bold py-1 md:py-3 text-nowrap'>{program?.study_years} {t('tabs.years')}</TableCell>
                     <TableCell className='border font-bold py-1 md:py-3 text-nowrap'>{program?.study_language}</TableCell>

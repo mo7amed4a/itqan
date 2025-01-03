@@ -11,8 +11,8 @@ export default function LinksCategory({ links,searchParams, href , allText, serv
       {!service && <li
         className={
           !searchParams.category
-            ? "border-b-2 border-secondary text-secondary"
-            : ""
+            ? "rounded-full bg-secondary text-white px-3 py-1.5"
+            : "rounded-full border !border-gray-400 text-gray-500 px-3 py-1.5"
         }
       >
         <LinkApp href={`${href}`} lng={params.lng}>
@@ -25,8 +25,8 @@ export default function LinksCategory({ links,searchParams, href , allText, serv
             key={item.id}
             className={
               searchParams.category === `${item.id}`
-                ? "border-b-2 border-secondary text-secondary"
-                : ""
+                ? "rounded-full bg-secondary text-white px-3 py-1.5"
+                : "rounded-full border !border-gray-400 text-gray-500 px-3 py-1.5"
             }
           >
             <LinkApp

@@ -21,7 +21,7 @@ const HousingList = ({ housings, t }: { housings: any; t: any }) => {
           <CardHeader className="md:w-2/4 px-8 py-12 order-2 md:order-1 md:space-y-10">
             <div className="flex gap-4 text-start">
               <div className="space-y-2 text-gray-500">
-                <h3 className="text-lg font-[600]">{housing.name}</h3>
+                <span className="text-lg font-[600]">{housing.name}</span>
                 {/* <span className="text-base text-secondary ">
                   {housing.city}
                 </span> */}

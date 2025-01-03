@@ -98,7 +98,7 @@ export default async function Page({
                     className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pb-8"
                     key={item.id}
                   >
-                    <LinkApp href={`/universities/${item.id}`} lng={lng}>
+                    <LinkApp href={`/turkish-universities//${item.id}`} lng={lng}>
                       <CardUniversity
                         major={t("topMajors")}
                         btnText={t("form_booking.submit")}
@@ -123,7 +123,7 @@ export default async function Page({
                     className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pb-8"
                     key={item.id}
                   >
-                    <LinkApp href={`/universities/${item.id}`} lng={lng}>
+                    <LinkApp href={`/cyprus-universities/${item.id}`} lng={lng}>
                       <CardUniversity
                         major={t("topMajors")}
                         btnText={t("form_booking.submit")}

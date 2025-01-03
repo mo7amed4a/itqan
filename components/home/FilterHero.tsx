@@ -19,7 +19,7 @@ import { getData } from "@/lib/data";
 import { Skeleton } from "../ui/skeleton";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 
-export default function FilterSelect({
+export default function FilterSelectHero({
   lng,
   col=false,
   filterData=null
@@ -65,20 +65,42 @@ export default function FilterSelect({
   };
 
   return data ? (
-    <div className={`grid grid-cols-1 p-4 rounded ${col ? '' : 'md:grid-cols-3 bg-green-900/25 rounded-xl p-5'} gap-4`}>
+    <div className="container md:max-w-[85%] mx-auto px-4 py-10 md:px-0">
       {/* Select Specialization */}
+      <div className={`lg:mt-12 grid grid-cols-1 p-4 rounded ${col ? '' : 'md:grid-cols-5 rounded-xl p-5'} gap-4`}>
+
       <Select
         onValueChange={(value) => handleFilterChange("specialization", value)}
       >
-        <SelectTrigger className="rtl:flex-row-reverse h-14">
-          <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
-            <HiOutlineAdjustmentsHorizontal className="size-5 text-gray-500" />
+        <SelectTrigger className="rtl:flex-row-reverse h-14 text-primary">
+          <div className="flex gap-x-2 items-center rtl:flex-row-reverse text-gray-600">
+            <HiOutlineAdjustmentsHorizontal className="size-5 text-primary" />
+            اختر الدولة
+          </div>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel className="w-full text-primary">
+    الدول المتاحة
+            </SelectLabel>
+            <SelectItem value={'null'}>تركيا</SelectItem>
+            
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+
+      <Select
+        onValueChange={(value) => handleFilterChange("specialization", value)}
+      >
+        <SelectTrigger className="rtl:flex-row-reverse h-14 text-primary">
+          <div className="flex gap-x-2 items-center rtl:flex-row-reverse text-gray-600">
+            <HiOutlineAdjustmentsHorizontal className="size-5 text-primary" />
             <SelectValue placeholder={dataLang("hero.select_specialty")} />
           </div>
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            <SelectLabel className="w-full">
+            <SelectLabel className="w-full text-primary">
               {dataLang("hero.select_specialty")}
             </SelectLabel>
             <SelectItem value={'null'}>{dataLang("hero.select_none")}</SelectItem>
@@ -98,8 +120,8 @@ export default function FilterSelect({
       {/* Select Level */}
       <Select onValueChange={(value) => handleFilterChange("level", value)}>
         <SelectTrigger className="rtl:flex-row-reverse h-14">
-        <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
-            <FaLanguage className="size-5 text-gray-500" />
+        <div className="flex gap-x-2 items-center rtl:flex-row-reverse text-gray-600">
+            <FaLanguage className="size-5 text-primary" />
             <SelectValue placeholder={dataLang("hero.select_study_level")} />
           </div>
         </SelectTrigger>
@@ -116,11 +138,28 @@ export default function FilterSelect({
         </SelectContent>
       </Select>
 
-      {/* Select Language */}
+
+      {/* Select Year */}
+      {/* {col && <Select onValueChange={(value) => handleFilterChange("years", value)}>
+        <SelectTrigger className="rtl:flex-row-reverse h-14 text-primary">
+        <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
+            <MdOutlineAccessTimeFilled className="size-5 text-primary" />
+            <SelectValue placeholder="اختر تكلفة الدراسة" />
+          </div>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>التكلفة</SelectLabel>
+            <SelectItem value={'null'}>{dataLang("hero.select_none")}</SelectItem>
+            
+          </SelectGroup>
+        </SelectContent>
+      </Select>} */}
+
       <Select onValueChange={(value) => handleFilterChange("language", value)}>
         <SelectTrigger className="rtl:flex-row-reverse h-14">
-        <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
-            <SlBadge className="size-5 text-gray-500" />
+        <div className="flex gap-x-2 items-center rtl:flex-row-reverse text-gray-600">
+            <SlBadge className="size-5 text-primary" />
           <SelectValue placeholder={dataLang("hero.select_language")} />
           </div>
         </SelectTrigger>
@@ -129,7 +168,7 @@ export default function FilterSelect({
             <SelectLabel>{dataLang("hero.select_language")}</SelectLabel>
             <SelectItem value={'null'}>{dataLang("hero.select_none")}</SelectItem>
             {data?.languages?.map((e: any, i: number) => (
-              <SelectItem key={i} value={e.id}>
+              <SelectItem className="" key={i} value={e.id}>
                 {e.name}
               </SelectItem>
             ))}
@@ -137,31 +176,10 @@ export default function FilterSelect({
         </SelectContent>
       </Select>
 
-      {/* Select Year */}
-      {col && <Select onValueChange={(value) => handleFilterChange("years", value)}>
-        <SelectTrigger className="rtl:flex-row-reverse h-14">
-        <div className="flex gap-x-2 items-center rtl:flex-row-reverse">
-            <MdOutlineAccessTimeFilled className="size-5 text-gray-500" />
-            <SelectValue placeholder={dataLang("hero.select_years")} />
-          </div>
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            <SelectLabel>{dataLang("hero.select_years")}</SelectLabel>
-            <SelectItem value={'null'}>{dataLang("hero.select_none")}</SelectItem>
-            {[...new Array(6)].map((e: any, i: number) => (
-              <SelectItem key={i} value={`${i + 1}`}>
-                {i + 1}
-              </SelectItem>
-            ))}
-          </SelectGroup>
-        </SelectContent>
-      </Select>}
-
       <Select onValueChange={(value) => handleFilterChange("language", value)}>
         <SelectTrigger className="rtl:flex-row-reverse h-14">
         <div className="flex gap-x-2 items-center rtl:flex-row-reverse text-gray-600">
-            <SlBadge className="size-5 text-" />
+            <SlBadge className="size-5 text-primary" />
           <SelectValue placeholder="اختر تكلفة الدراسة" />
           </div>
         </SelectTrigger>
@@ -169,28 +187,31 @@ export default function FilterSelect({
           <SelectGroup>
             <SelectLabel>التكلفة</SelectLabel>
             <SelectItem value={'null'}>1000$</SelectItem>
-            <SelectItem value={'s'}>1500$</SelectItem>
+            <SelectItem value={'null'}>1500$</SelectItem>
           </SelectGroup>
         </SelectContent>
       </Select>
+        
+      </div>
 
       {/* Search Button */}
-      <div className="grid-cols-1"></div>
+      <div className="flex justify-center items-center">
+          <Button
+            size={"xl"}
+            color="primary"
+            className="bg-secondary hover:!scale-x-100 py-4 w-80 mb-4"
+            onClick={handleSearch}
+            // disabled={
+            //   !filters.specialization || !filters.level || !filters.language
+            // }
+          >
+            {dataLang("hero.search")}
+          </Button>
+      </div>
 
-      <Button
-        size={"xl"}
-        color="primary"
-        className="hover:bg-secondary hover:!scale-x-100 py-4"
-        onClick={handleSearch}
-        // disabled={
-        //   !filters.specialization || !filters.level || !filters.language
-        // }
-      >
-        {dataLang("hero.search")}
-      </Button>
     </div>
   ) : (
-    <div className={`mt-6 grid grid-cols-1 ${col ? '' : 'md:grid-cols-3 bg-gray-900/10'} gap-4 rounded p-4`}>
+    <div className={`mt-6 grid grid-cols-1 ${col ? '' : 'md:grid-cols-3'} gap-4 rounded p-4`}>
       <Skeleton className="h-12 w-full rounded-xl bg-white" />
       <Skeleton className="h-12 w-full rounded-xl bg-white" />
       <Skeleton className="h-12 w-full rounded-xl bg-white" />

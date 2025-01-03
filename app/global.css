@@ -135,3 +135,31 @@ ul.custom-bullet-university li {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(33, 131, 127)
 }
+
+
+.discount-badge {
+  background-color: #f16529;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.discount-badge::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #f16529;
+}
+
+
+[role="tab"][aria-selected="true"] {
+  @apply !bg-secondary !text-white border rounded-full px-3 py-1.5
+}

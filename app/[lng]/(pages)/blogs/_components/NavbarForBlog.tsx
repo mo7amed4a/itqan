@@ -1,63 +1,57 @@
+import InputSearch from "@/components/Header/inputSearch";
+import { Input } from "@/components/ui/input";
 import { useTranslation } from "@/i18n";
+import InputSearchBlog from "./inputSearchBlog";
 
-const Navbar = async ({ lng, name }: { lng: string, name: string }) => {
+const NavbarBlog = async ({ lng, name }: { lng: string, name?: string }) => {
     const { t } = await useTranslation(lng, "university_details");
   
     return (
-      <nav className="flex justify-start gap-x-4 p-4 mt-4 container lg:max-w-[85vw] mx-auto whitespace-nowrap md:text-lg overflow-x-scroll hidden-scrollbar">
+      <nav className="flex justify-start gap-x-4 p-4 mt-4 container lg:max-w-[85vw] mx-auto whitespace-nowrap text-lg md:text-lg overflow-x-scroll hidden-scrollbar">
         <a 
           href="#university"
           className="rounded-full bg-secondary text-white px-3 py-1"
         >
-          {name}
+          الدراسة في تركيا
         </a>
         <a href="#photos" className="rounded-full border !border-gray-400 text-gray-500 px-3 py-1">
-          {t("links.university_photos")}
+          المعيشة في تركيا
         </a>
         <a
           href="#recognitions"
           className="rounded-full border !border-gray-400 text-gray-500 px-3 py-1"
         >
-          {t("links.recognitions")}
+          التخصصات الجامعية
         </a>
         <a
           href="#numbers"
           className="rounded-full border !border-gray-400 text-gray-500 px-3 py-1"
         >
-          {t("links.university_numbers")}
+          الدراسة عن بعد
         </a>
         <a
           href="#specializations"
           className="rounded-full border !border-gray-400 text-gray-500 px-3 py-1"
         >
-          {t("links.university_specializations")}
+          المنح التركية
         </a>
         <a
           href="#languages"
           className="rounded-full border !border-gray-400 text-gray-500 px-3 py-1"
         >
-          {t("links.university_languages")}
+          تطوير الذات
         </a>
         <a
           href="#terms"
           className="rounded-full border !border-gray-400 text-gray-500 px-3 py-1"
         >
-          {t("links.university_Terms")}
+          الكل
         </a>
-        <a
-          href="#details"
-          className="rounded-full border !border-gray-400 text-gray-500 px-3 py-1"
-        >
-          {t("links.university_details")}
-        </a>
-        <a
-          href="#faqs"
-          className="rounded-full border !border-gray-400 text-gray-500 px-3 py-1"
-        >
-          {t("links.university_faqs")}
-        </a>
+        <div className="ms-auto">
+          <InputSearchBlog placeholder={"بحث"} />
+        </div>
       </nav>
     );
   };
 
-  export default Navbar
+  export default NavbarBlog

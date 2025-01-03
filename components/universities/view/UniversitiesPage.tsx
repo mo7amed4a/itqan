@@ -34,14 +34,14 @@ export default async function UniversitiesPage({
     const { university, faqs, study_programs, student_housings } = data;
     return (
       <div className="text-start text-base text-gray-500 scroll-smooth">
-        <div className="container lg:max-w-[85%] mx-auto">
-          <BreadcrumbApp lng={lng} />
-        </div>
-        <section className="my-12 px-4 lg:px-0">
-          <h1 className="text-xl md:text-2xl font-bold text-gray-500 text-center">
+        <section className="mt-12 px-4 lg:px-0 container lg:max-w-[85%] mx-auto">
+          <h1 className="text-xl md:text-2xl font-bold text-primary text-start">
             {university.name}
           </h1>
         </section>
+        <div className="container lg:max-w-[85%] mx-auto">
+          <BreadcrumbApp lng={lng} last={university.name}/>
+        </div>
         <Navbar lng={lng} name={university.name} />
         <div className="container lg:max-w-[85vw] mx-auto px-4 py-5">
           <h2 className="text-lg md:text-xl font-bold text-gray-500">

@@ -1,14 +1,12 @@
 'use client';
-import { TFunction } from "i18next";
 import { Button } from "../ui/button";
 
-import { getData } from "@/lib/data";
-import FilterSelect from "./Filter";
 import LinkApp from "../global/LinkApp";
 import OpenBooking from "../fixedCps/OpenBooking";
 import Image from "next/image";
 import { useTranslation } from "@/i18n/client";
 import { useEffect, useState } from "react";
+import FilterSelectHero from "./FilterHero";
 
 export default function HeroSection({
   locale,
@@ -78,60 +76,63 @@ export default function HeroSection({
   
 
   return (
-    <div
-      style={{ backgroundImage: deviceType === "Mobile" ? `url(${data?.slider_bg_mobile})` : `url(${data?.slider_bg_web})` }}
-      className={`bg-hero px-6 overflow-y-hidden py-10 lg:py-0`}
-    >
+    <section>
       <div
-        className={`h-auto md:h-[85vh] max-w-[90vw] mx-auto px-4 md:px-10 flex flex-col md:flex-row items-center`}
+        style={{ backgroundImage: deviceType === "Mobile" ? `url(${data?.slider_bg_mobile})` : `url(${data?.slider_bg_web})` }}
+        className={`bg-hero px-6 overflow-y-hidden py-10 lg:py-0`}
       >
-         <div
-          className={`w-full lg:w-3/4 flex flex-col items-center text-center space-y-6`}
+        <div
+          className={`h-auto md:h-[85vh] max-w-[90vw] mx-auto px-4 md:px-10 flex flex-col md:flex-row items-center`}
         >
-          <h1 className="text-xl md:text-3xl lg:text-[2.5rem] font-bold text-gray-700 text-opacity-80 !leading-[1.35]">
-            {/* {dataLang("hero.title")} */}
-            {data?.slider_title}
-            {/* {JSON.stringify(data)} */}
-          </h1>
-          <h2 className="text-lg md:text-xl lg:text-[2.5rem] text-secondary font-bold">
-            {/* {dataLang("hero.subtitle")} */}
-            {data?.slider_title2}
-          </h2>
-          {deviceType === "Mobile" && 
-          <Image src={data.slider_image_mobile} className="size-64" alt="hero" width={2500} height={2500} />
-         }
-          <div className="space-y-4 flex flex-col w-2/3 md:w-2/4 px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base">
-            <OpenBooking>
-              <Button size={"xl"} variant={"secondary"} className="w-full">
-                {dataLang("hero.register_now")}
-              </Button>
-            </OpenBooking>
-            <LinkApp href="/registration-rules" lng={locale}>
-              <Button
-                size={"xl"}
-                variant={"outline"}
-                className="border border-primary text-primary w-full"
-              >
-                {dataLang("hero.steps")}
-              </Button>
-            </LinkApp>
-            <LinkApp href="/turkish-universities" lng={locale}>
-              <Button size={"xl"} className="w-full">
-                {dataLang("hero.choose_study")}
-              </Button>
-            </LinkApp>
-          </div>
+          <div
+            className={`w-full lg:w-3/4 flex flex-col items-center text-center space-y-6`}
+          >
+            <h1 className="text-xl md:text-3xl lg:text-[2.5rem] font-bold text-gray-700 text-opacity-80 !leading-[1.35]">
+              {/* {dataLang("hero.title")} */}
+              {data?.slider_title}
+              {/* {JSON.stringify(data)} */}
+            </h1>
+            <h2 className="text-lg md:text-xl lg:text-[2.5rem] text-secondary font-bold">
+              {/* {dataLang("hero.subtitle")} */}
+              {data?.slider_title2}
+            </h2>
+            {deviceType === "Mobile" &&  data.slider_image_mobile &&
+            <Image src={data.slider_image_mobile} className="size-64" alt="hero" width={2500} height={2500} />
+          }
+            <div className="space-y-4 flex flex-col w-2/3 md:w-2/4 px-0 py-0 text-[10px] md:px-2 md:py-1 md:text-base">
+              <OpenBooking>
+                <Button size={"xl"} variant={"secondary"} className="w-full">
+                  {dataLang("hero.register_now")}
+                </Button>
+              </OpenBooking>
+              <LinkApp href="/registration-rules" lng={locale}>
+                <Button
+                  size={"xl"}
+                  variant={"outline"}
+                  className="border border-primary text-primary w-full"
+                >
+                  {dataLang("hero.steps")}
+                </Button>
+              </LinkApp>
+              <LinkApp href="/turkish-universities" lng={locale}>
+                <Button size={"xl"} className="w-full">
+                  {dataLang("hero.choose_study")}
+                </Button>
+              </LinkApp>
+            </div>
 
-          <div className="w-full">
-            <FilterSelect lng={locale} />
+            
+          </div> 
+          <div className="w-full lg:w-1/2 mb-6 lg:mb-0 h-full ltr:-scale-x-100 flex items-end justify-end">
+            {deviceType === "Desktop" && data.slider_image_web &&
+            <Image src={data.slider_image_web} className="h-[78%] w-[85%] lg:w-[78%]" alt="hero" width={1000} height={1000} />
+          }
           </div>
-        </div> 
-        <div className="w-full lg:w-1/2 mb-6 lg:mb-0 h-full ltr:-scale-x-100 flex items-end justify-end">
-          {deviceType === "Desktop" && 
-          <Image src={data.slider_image_web} className="h-[78%] w-[85%] lg:w-[78%]" alt="hero" width={1000} height={1000} />
-        }
         </div>
       </div>
-    </div>
+        <div className="w-full">
+          <FilterSelectHero lng={locale} />
+        </div>
+    </section>
   );
 }

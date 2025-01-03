@@ -11,7 +11,7 @@ import React from "react";
 import { useTranslation } from "@/i18n/client";
 import LinkApp from "./LinkApp";
 
-export default function BreadcrumbApp({ lng,className }: { lng: string, className?: string }) {
+export default function BreadcrumbApp({ lng,className , last}: { lng: string, className?: string , last?: string}) {
   const pathname = usePathname();
   const segments = pathname.split("/").filter((segment) => segment !== lng && segment !== "");
   const {t} = useTranslation(lng, 'breadcrumb')
@@ -37,7 +37,11 @@ export default function BreadcrumbApp({ lng,className }: { lng: string, classNam
               >
                 <LinkApp lng={lng} href={href}>
                   {/* @ts-ignore */}
-                  {t(segment)}
+                  {
+                    (isLast && last) ? (
+                      <span className="text-primary font-semibold">{last}</span>
+                    ): t(segment as any)
+                  }
                 </LinkApp>
               </BreadcrumbItem>
             </React.Fragment>
