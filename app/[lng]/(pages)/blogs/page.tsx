@@ -16,6 +16,8 @@ import {
 import ShowMoreBtn from "@/components/global/ShowMore";
 import BreadcrumbApp from "@/components/global/breadcrumb";
 import NavbarBlog from "./_components/NavbarForBlog";
+import LinksCategory from "@/components/global/LinksCategory";
+import InputSearchBlog from "./_components/inputSearchBlog";
 
 export async function generateMetadata({
   params,
@@ -59,7 +61,7 @@ export default async function Blogs({
 
   let blogs = null;
   const resp = await getData(url, lng);
-  blogs = resp?.data?.posts || null;
+  blogs = resp?.data?.posts?.data || null;
   const links = resp?.data?.cats || null;
   const sliders = resp?.data?.sliders || null;
 
@@ -72,38 +74,20 @@ export default async function Blogs({
           </h1>
         </div>
         <BreadcrumbApp lng={lng} last="المدونة - اخر الاخبار" className="md:!-ms-4 pt-4"/>
-        <NavbarBlog lng={lng}/>
       </div>
       <div>
-        <ul className="flex gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base md:text-lg">
-          <li
-            className={
-              !searchParams.category
-                ? "border-b-2 border-secondary text-secondary"
-                : ""
-            }
-          >
-            <LinkApp className="text-nowrap" href={`/blogs`} lng={lng}>
-              {t("links.all")}
-            </LinkApp>
-          </li>
-          {links &&
-            links?.map((item: any, index: number) => {
-              return (
-                <li
-                  key={item.id}
-                  className={
-                    searchParams.category === item.slug
-                      ? "border-b-2 border-secondary text-secondary"
-                      : ""
-                  }
-                >
-                  <LinkApp href={`/blogs?category=${item.slug}`} lng={lng}>
-                    {item.name}
-                  </LinkApp>
-                </li>
-              );
-            })}
+        <ul className="flex w-full gap-4 [&>li]:pb-2 overflow-x-auto hidden-scrollbar text-base md:text-lg mb-5 mt-4 md:mt-0">
+          {links && links.length > 0 && (
+            <LinksCategory
+              links={links}
+              searchParams={searchParams}
+              href="/blogs"
+              allText={t("links.all")}
+            />
+          )}
+          <div className="ms-auto w-64">
+            <InputSearchBlog placeholder={"بحث"} />
+          </div>
         </ul>
       </div>
 

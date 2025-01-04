@@ -20,6 +20,9 @@ export default function LinksCategory({ links,searchParams, href , allText, serv
         </LinkApp>
       </li>}
       {links.map((item: any, index: number) => {
+        if (item.slug) {
+          item.id = item.slug
+        }
         return (
           <li
             key={item.id}

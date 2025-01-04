@@ -11,6 +11,7 @@ export interface BlogItemType {
   updated_at: string;
   title: string;
   content: string;
+  views: number;
 }
 
 // import img1 from "../../public/images/for-blog.png";
@@ -52,7 +53,7 @@ export default function CardBlog({
           ></p>
           <div className="flex gap-2 justify-end">
             <Badge className="rounded-md font-bold text-primary bg-gray-200/40 backdrop-blur-md flex gap-2 items-center">
-            <Eye className="text-red-500"/> <span>97</span>
+            <Eye className="text-red-500"/> <span>{blog?.views}</span>
             </Badge>
             <Badge className="rounded-md font-bold text-primary bg-gray-200/40 backdrop-blur-md">
               {formatDate(blog.created_at).split('/').join('.')}

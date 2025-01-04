@@ -35,21 +35,18 @@ export default function UniversitiesSliderItem({
                   {/* {t("universityInfo.name")} */}
                   {item.name}
                 </h2>
-                <div className="ms-auto flex">
-                  <Image 
-                    src={"https://img.freeflagicons.com/thumb/round_icon/turkey/turkey_640.png"}
-                    alt="img"
-                    width={300}
-                    height={300}
-                    className="w-16 h-12 rounded-full"
-                  />
-                  <Image 
-                    src={"https://img.freeflagicons.com/thumb/round_icon/turkey/turkey_640.png"}
-                    alt="img"
-                    width={300}
-                    height={300}
-                    className="w-16 h-12 rounded-full"
-                  />
+                <div className="ms-auto flex gap-3">
+                  {
+                    item?.language_flags?.map((e:{flag: string}, index: number) => {
+                      return <Image  key={index}
+                            src={e.flag.split("http://").join("https://")}
+                            alt="img"
+                            width={300}
+                            height={300}
+                            className="!size-9 rounded-full"
+                          />
+                    })
+                  }
                 </div>
               </div>
               <p className="text-sm md:text-base line-clamp-2" dangerouslySetInnerHTML={{ __html: item.short_description }}></p>

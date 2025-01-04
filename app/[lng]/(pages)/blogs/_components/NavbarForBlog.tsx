@@ -47,9 +47,7 @@ const NavbarBlog = async ({ lng, name }: { lng: string, name?: string }) => {
         >
           الكل
         </a>
-        <div className="ms-auto">
-          <InputSearchBlog placeholder={"بحث"} />
-        </div>
+        
       </nav>
     );
   };

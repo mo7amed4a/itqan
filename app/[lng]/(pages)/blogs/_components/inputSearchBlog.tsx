@@ -16,7 +16,7 @@ export default function InputSearchBlog({placeholder} : {
     }
   }
   return (
-    <form onSubmit={handelSubmit} dir="rt" className="relative w-full max-w-lg">
+    <form onSubmit={handelSubmit} dir="rt" className="relative w-full">
       <Input
         type="search"
         placeholder={placeholder}

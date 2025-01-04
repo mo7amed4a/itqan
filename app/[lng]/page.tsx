@@ -19,6 +19,11 @@ import { getData } from "@/lib/data";
 import LinkApp from "@/components/global/LinkApp";
 import VideoTwo from "@/components/home/videoTwo";
 import { Button } from "@/components/ui/button";
+import Numbers from "@/components/home/numbers";
+import Photos from "@/components/home/photos";
+import RegistrationCompleteStep from "@/components/home/registration-complete-step";
+import Videos from "@/components/home/videos";
+import BlogForHome from "@/components/home/blogForHome";
 
 
 export default async function Page({
@@ -48,6 +53,40 @@ export default async function Page({
         {/* <VideoCall dataVideoCall={t} locale={lng} /> */}
       </section>
       <div className="bg-[#f5f7f9] my-10">
+        {/* ماذا تقدم */}
+        <SectionApp
+          title={t("WhatService.title2")}
+          title2={t("WhatService.title")}
+          className="container lg:max-w-[85vw] mx-auto"
+        >
+          <div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 w-full gap-4 px-4 md:px-0">
+              {data &&
+                data.services &&
+                data.services.length > 0 &&
+                data.services.slice(0, 4).map((e: any) => (
+                  <div className="pb-8" key={e.id}>
+                    <CardSmall services imageUrl={e.image} text={e.name} />
+                  </div>
+                ))}
+            </div>
+
+            <LinkApp
+              href="/services"
+              lng={lng}
+              className="flex justify-center mt-7"
+            >
+              <Button
+                color="primary"
+                size="xl"
+                className="bg-primary px-10 lg:!px-28 hover:!scale-x-100 hover:bg-secondary hover:text-white"
+              >
+                {t("WhatService.read_more")}
+              </Button>
+            </LinkApp>
+          </div>
+        </SectionApp>
+        {/* اهم التخصصات */}
         <SectionApp
           title={t("specialties.title")}
           className="container lg:max-w-[85vw] mx-auto"
@@ -83,6 +122,26 @@ export default async function Page({
                 {t("WhatService.read_more")}
               </Button>
             </LinkApp>
+          </>
+        </SectionApp>
+        {/* ارقام واحصائيات */}
+        <SectionApp
+          title="اتقان التعليمية"
+          title2={"ارقام واحصائيات"}
+          className="container lg:max-w-[85vw] mx-auto"
+        >
+          <>
+          <Numbers />
+          </>
+        </SectionApp>
+        {/* موثوقون معتمدون */}
+        <SectionApp
+          title="من افضل الجامعات"
+          title2={"موثوقون معتمدون"}
+          className="container lg:max-w-[85vw] mx-auto"
+        >
+          <>
+          <Photos data={data?.university_logos}/>
           </>
         </SectionApp>
         <SectionApp
@@ -135,6 +194,31 @@ export default async function Page({
             </CarouselContent>
           </Carousel>
         </SectionApp>
+        <div className="bg-white py-10">
+          <SectionApp
+            title={"التسجيل بالجامعة"}
+            title2="خطوات"
+            className=""
+          >
+            <>
+            <RegistrationCompleteStep />
+            </>
+          </SectionApp>
+        </div>
+
+        {/* videos */}
+        <div className="mb-20 bg-white py-20">
+          <Videos data={data.videos} />
+        </div>
+
+        <SectionApp
+          title="المقالات ومركز المعلومات"
+          className="container lg:max-w-[85vw] mx-auto"
+        >
+          <>
+          <BlogForHome data={data.blog} lng={lng} />
+          </>
+        </SectionApp>
 
         {data && data.settings && <WhyItqan data={data.settings} t={t} />}
         <section className="flex md:h-[70vh] px-4 md:px-0 bg-white">
@@ -160,39 +244,6 @@ export default async function Page({
             />
           </div>
         </section>
-
-        <SectionApp
-          title={t("WhatService.title2")}
-          title2={t("WhatService.title")}
-          className="container lg:max-w-[85vw] mx-auto"
-        >
-          <div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 w-full gap-4 px-4 md:px-0">
-              {data &&
-                data.services &&
-                data.services.length > 0 &&
-                data.services.slice(0, 4).map((e: any) => (
-                  <div className="pb-8" key={e.id}>
-                    <CardSmall services imageUrl={e.image} text={e.name} />
-                  </div>
-                ))}
-            </div>
-
-            <LinkApp
-              href="/services"
-              lng={lng}
-              className="flex justify-center mt-7"
-            >
-              <Button
-                color="primary"
-                size="xl"
-                className="bg-primary px-10 lg:!px-28 hover:!scale-x-100 hover:bg-secondary hover:text-white"
-              >
-                {t("WhatService.read_more")}
-              </Button>
-            </LinkApp>
-          </div>
-        </SectionApp>
       </div>
     </main>
   );

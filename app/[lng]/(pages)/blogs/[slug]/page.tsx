@@ -9,7 +9,7 @@ import BreadcrumbApp from "@/components/global/breadcrumb";
 import ConsultationCard from "./_components/ConsultationCard";
 import CardUniversity from "@/components/home/CardUniversity";
 import CardUniversityForBLog from "./_components/CardUniversityForBLog";
-import CardBlog from "@/components/cards/CardBlog";
+import CardBlog, { BlogItemType } from "@/components/cards/CardBlog";
 
 export default async function page({
   params,
@@ -29,38 +29,11 @@ export default async function page({
     notFound();
   }
   const blog = resp?.data?.post || null;
+  const related = resp?.data?.related || null;
 
   let data;
   const response = await getData("/get_settings", lng);
   data = response?.data;
-
-
-  const blogData = [ 
-    {
-      "id": 29,
-      "blog_category_id": 4,
-    "slug": "university-of-kyrenia-in-cyprus",
-    "image": "https://admin.itqaneducation.com/storage/universities/CFCYkM2iAri6pqho3Vgxj5AFflwaNURBBaSbXvYo.jpg",
-    "logo": "https://admin.itqaneducation.com/storage/universities/M2NkcGRNyRPxwbkYiwNqp35U9sVj3vazxSfoW77j.png",
-    "title": "عن كيرينيا في قبرص",
-    "created_at": "10/04/2024",
-    "content": "نص تجريب عن كارد المقالة تجريبي تجريبي",
-  "is_slider": 4,
-  "updated_at": "04/10/2024"
-},
-    {
-      "id": 29,
-      "blog_category_id": 4,
-    "slug": "university-of-kyrenia-in-cyprus",
-    "image": "https://admin.itqaneducation.com/storage/universities/CFCYkM2iAri6pqho3Vgxj5AFflwaNURBBaSbXvYo.jpg",
-    "logo": "https://admin.itqaneducation.com/storage/universities/M2NkcGRNyRPxwbkYiwNqp35U9sVj3vazxSfoW77j.png",
-    "title": "عن كيرينيا في قبرص",
-    "created_at": "10/04/2024",
-    "content": "نص تجريب عن كارد المقالة تجريبي تجريبي",
-  "is_slider": 4,
-  "updated_at": "04/10/2024"
-},
-]
 
 
   return (
@@ -90,16 +63,16 @@ export default async function page({
             <div className="flex gap-4">
               <div className="bg-white flex items-center p-2 gap-3 rounded-md">
                 <span>اسم المحرر</span>
-                <span className="text-primary">اتقان</span>
+                <span className="text-primary">{blog?.created_by}</span>
               </div>
               <div className="bg-white flex items-center p-2 gap-3 rounded-md">
                 <span>تارخ التحديث</span>
-                <span className="text-primary">15 ديسمبر 2024</span>
+                <span className="text-primary">{formatDate(blog?.created_at).split('/').join('.')}</span>
               </div>
             </div> 
           </section>
           <section className="w-full">
-          <Image
+            <Image
               width={2000}
               height={2000}
               className="sm:h-[34rem] mt-10 w-full rounded-xl"
@@ -113,7 +86,7 @@ export default async function page({
               className="mx-auto mt-10 space-y-12 px-4 py-10 text-lg tracking-wide text-gray-700 prose lg:prose-xl"
             ></div>
           </section>
-          <section className="w-full">
+          {/* <section className="w-full">
           <Image
               width={2000}
               height={2000}
@@ -140,12 +113,12 @@ export default async function page({
               dangerouslySetInnerHTML={{ __html: blog.content }}
               className="mx-auto mt-10 space-y-12 py-10 text-lg tracking-wide text-gray-700 prose lg:prose-xl"
             ></div>
-          </section>
+          </section> */}
         </main>
         <aside className="md:w-2/5 space-y-4">
-          <ConsultationCard />
+          <ConsultationCard lng={lng} link={data.consult_url} />
           {
-            blogData.map((item) => {
+            related?.map((item: BlogItemType) => {
               return (
                 <CardBlog
                   key={item.id}
