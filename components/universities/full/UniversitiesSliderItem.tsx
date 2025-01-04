@@ -6,7 +6,7 @@ import Image from "next/image";
 import React from "react";
 
 
-export default function UniversitiesSliderItem({
+export default function   UniversitiesSliderItem({
     item,
     lng,
     t,
@@ -51,17 +51,55 @@ export default function UniversitiesSliderItem({
               </div>
               <p className="text-sm md:text-base line-clamp-2" dangerouslySetInnerHTML={{ __html: item.short_description }}></p>
               {/* <p>{t("universityInfo.description")}</p> */}
-              <div className="flex gap-x-4 text-primary text-xs md:text-base">
-                <div className="flex gap-x-2">
+              {/* <div className="flex gap-x-4 text-primary text-xs md:text-base"> */}
+                {/* <div className="flex gap-x-2">
                   <span>{t("universityInfo.establishmentYear")} :</span>
                   <span>{item.found_year}</span>
                 </div>
                 <div className="flex gap-x-2">
                   <span>{t("universityInfo.ranking")} :</span>
                   <span>{item.global_rank}</span>
+                </div> */}
+                {/* <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
+                  <span className="text-primary">سنة التأسيس</span>
+                  <span className="text-secondary">2000</span>
                 </div>
-              </div>
-              <div className="space-y-2 text-sm md:text-base">
+
+
+              </div> */}
+              <section className="space-y-3 pt-3">
+          <div className="w-full gap-2 md:items-center text-gray-800 text-xs md:text-sm grid grid-cols-4">
+            <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
+              <span className="text-primary">سنة التأسيس</span>
+              <span className="text-secondary">2000</span>
+            </div>
+            <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
+              <span className="text-primary">الترتيب عالميا</span>
+              <span className="text-secondary">2000</span>
+            </div>
+            <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
+              <span className="text-primary">الترتيب محليا</span>
+              <span className="text-secondary">2000</span>
+            </div>
+            <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
+              <span className="text-primary">عدد التخصصات</span>
+              <span className="text-secondary">2000</span>
+            </div>
+          </div>
+          <div className="bg-gray-400/10 text-gray-800 flex justify-between w-full gap-4 rounded-lg text-sm p-3">
+            <span className="text-secondary">تبدأ الارسعار</span>
+            <div className="flex items-center gap-2">
+                <span>من</span>
+                <span>{item.min_annual_fees}$</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span>الى</span>
+              <span>{item.max_annual_fees}$</span>
+            </div>
+          </div>
+        </section>
+        
+              {/* <div className="space-y-2 text-sm md:text-base">
                 <h2 className="text-secondary">{t("topMajors")} :</h2>
                 <ul className="grid grid-cols-2 lg:flex flex-wrap gap-x-10 text-base text-gray-500">
                   {item?.first_programs &&
@@ -87,7 +125,7 @@ export default function UniversitiesSliderItem({
                   <span>{t("universityInfo.priceRange.to")}</span>{" "}
                   <span>{item.max_annual_fees}$</span>
                 </span>
-              </div>
+              </div> */}
               <div className="flex justify-center">
                 <Button
                   color="primary"

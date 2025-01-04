@@ -71,7 +71,7 @@ export default async function CardUniversityTwo({
           </div>
         </div>
         <section className="space-y-3 pt-3">
-          <div className="w-full gap-2 md:items-center text-gray-800 text-xs md:text-sm grid grid-cols-3">
+          <div className="w-full gap-2 md:items-center text-gray-800 text-xs md:text-sm grid grid-cols-4">
             <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
               <span className="text-primary">سنة التأسيس</span>
               <span className="text-secondary">2000</span>

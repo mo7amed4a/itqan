@@ -29,7 +29,7 @@ export default function LinksCategory({ links,searchParams, href , allText, serv
             className={
               searchParams.category === `${item.id}`
                 ? "rounded-full bg-secondary text-white px-3 py-1.5"
-                : "rounded-full border !border-gray-400 text-gray-500 px-3 py-1.5"
+                : "rounded-full bg-gray-200 border !border-gray-400 text-gray-500 px-3 py-1.5"
             }
           >
             <LinkApp
