@@ -10,6 +10,7 @@ import { useTranslation } from "../../i18n";
 import Image from "next/image";
 import img1 from "../../public/images/form-logo.png";
 import img2 from "../../public/images/bg-form.png";
+import imgSection from "../../public/screen/section.jpeg";
 import {
   Carousel,
   CarouselContent,
@@ -24,6 +25,7 @@ import Photos from "@/components/home/photos";
 import RegistrationCompleteStep from "@/components/home/registration-complete-step";
 import Videos from "@/components/home/videos";
 import BlogForHome from "@/components/home/blogForHome";
+import CardUniversityTwo from "@/components/home/CardUniversityTwo";
 
 
 export default async function Page({
@@ -52,7 +54,7 @@ export default async function Page({
         />
         {/* <VideoCall dataVideoCall={t} locale={lng} /> */}
       </section>
-      <div className="bg-[#f5f7f9] my-10">
+      <div className="bg-[#f5f7f9] mt-10">
         {/* ماذا تقدم */}
         <SectionApp
           title={t("WhatService.title2")}
@@ -93,7 +95,7 @@ export default async function Page({
         >
           <>
             <Carousel>
-              <CarouselContent className="md:h-96">
+              <CarouselContent className="md:h-80">
                 {data &&
                   data.specializations &&
                   data.specializations.length > 0 &&
@@ -103,7 +105,7 @@ export default async function Page({
                       key={e.id}
                     >
                       <LinkApp href={`/programs/${e.slug}`} lng={lng}>
-                        <CardSmall imageUrl={e.image} text={e.name} />
+                        <CardSmall university_count={e.university_count} imageUrl={e.image} text={e.name} />
                       </LinkApp>
                     </CarouselItem>
                   ))}
@@ -154,11 +156,11 @@ export default async function Page({
                 data.turkish_universities &&
                 data.turkish_universities.map((item: UniversityType) => (
                   <CarouselItem
-                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pb-8"
+                    className="md:basis-1/2 lg:basis-1/3 pb-8"
                     key={item.id}
                   >
                     <LinkApp href={`/turkish-universities//${item.id}`} lng={lng}>
-                      <CardUniversity
+                      <CardUniversityTwo
                         major={t("topMajors")}
                         btnText={t("form_booking.submit")}
                         university={item}
@@ -179,7 +181,7 @@ export default async function Page({
                 data.qyprus_universities &&
                 data.qyprus_universities.map((item: UniversityType) => (
                   <CarouselItem
-                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pb-8"
+                    className="md:basis-1/2 lg:basis-1/3 pb-8"
                     key={item.id}
                   >
                     <LinkApp href={`/cyprus-universities/${item.id}`} lng={lng}>
@@ -205,7 +207,11 @@ export default async function Page({
             </>
           </SectionApp>
         </div>
-
+        <div className="bg-white">
+          <div className="container lg:max-w-[85vw] mx-auto">
+            <Image src={imgSection} className="w-full h-auto" width={2000} height={2000} alt="section" />
+          </div>
+        </div>
         {/* videos */}
         <div className="mb-20 bg-white py-20">
           <Videos data={data.videos} />
@@ -220,7 +226,7 @@ export default async function Page({
           </>
         </SectionApp>
 
-        {data && data.settings && <WhyItqan data={data.settings} t={t} />}
+        {/* {data && data.settings && <WhyItqan data={data.settings} t={t} />} */}
         <section className="flex md:h-[70vh] px-4 md:px-0 bg-white">
           <div className="md:w-9/12 flex justify-center items-center w-full py-8 relative">
             <div className="w-full md:w-2/4 relative z-10">
