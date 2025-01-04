@@ -99,7 +99,7 @@ export default async function Page({
                   data.specializations.length > 0 &&
                   data.specializations.map((e: any) => (
                     <CarouselItem
-                      className="basis-1/2 md:basis-1/3 pb-8"
+                      className="basis-1/2 md:basis-1/5 pb-8"
                       key={e.id}
                     >
                       <LinkApp href={`/programs/${e.slug}`} lng={lng}>
