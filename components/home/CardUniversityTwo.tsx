@@ -90,7 +90,7 @@ export default async function CardUniversityTwo({
             </div>
           </div>
           <div className="bg-gray-400/10 text-gray-800 flex justify-between w-full gap-4 rounded-lg text-sm p-3">
-            <span className="text-secondary">تبدأ الارسعار</span>
+            <span className="text-secondary">تبدأ الاسعار</span>
             <div className="flex items-center gap-2">
                 <span>من</span>
                 <span>{university.min_annual_fees}$</span>

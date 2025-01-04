@@ -7,8 +7,6 @@ import Image from "next/image";
 import { getData } from "@/lib/data";
 import BreadcrumbApp from "@/components/global/breadcrumb";
 import ConsultationCard from "./_components/ConsultationCard";
-import CardUniversity from "@/components/home/CardUniversity";
-import CardUniversityForBLog from "./_components/CardUniversityForBLog";
 import CardBlog, { BlogItemType } from "@/components/cards/CardBlog";
 
 export default async function page({
@@ -37,7 +35,7 @@ export default async function page({
 
 
   return (
-    <article className="text-base relative isolate text-start -mt-10 pt-20 container md:max-w-[85%] px-4 md:px-0 mx-auto">
+    <article className="text-base relative isolate text-start -mt-5 container md:max-w-[85%] px-4 md:px-0 mx-auto">
       <BreadcrumbApp lng={lng} last={blog.title}/>
       {/* <header className="mx-auto max-w-screen-xl text-center">
         <Image
@@ -56,20 +54,10 @@ export default async function page({
       </header> */}
       <div className="flex flex-col md:flex-row gap-4">
         <main className="w-full">
-          <section className="mt-7 flex flex-col md:flex-row justify-between text-gray-600">
-            <h1 className="text-primary text-xl md:text-2xl">
-            {blog.title}
+          <section className="mt-7 flex flex-col md:flex-row justify-between">
+            <h1 className="text-primary text-lg md:text-2xl">
+              {blog.title}
             </h1>
-            <div className="flex gap-4">
-              <div className="bg-white flex items-center p-2 gap-3 rounded-md">
-                <span>اسم المحرر</span>
-                <span className="text-primary">{blog?.created_by}</span>
-              </div>
-              <div className="bg-white flex items-center p-2 gap-3 rounded-md">
-                <span>تارخ التحديث</span>
-                <span className="text-primary">{formatDate(blog?.created_at).split('/').join('.')}</span>
-              </div>
-            </div> 
           </section>
           <section className="w-full">
             <Image
@@ -79,6 +67,16 @@ export default async function page({
               src={blog.image.split("http://").join("https://")}
               alt="Featured Image"
             />
+            <div className="flex flex-wrap gap-4 pt-4 ms-auto text-gray-600">
+              <div className="bg-white flex items-center p-2 gap-3 rounded-md">
+                <span>اسم المحرر</span>
+                <span className="text-primary">{blog?.created_by}</span>
+              </div>
+              <div className="bg-white flex items-center p-2 gap-3 rounded-md">
+                <span>تارخ التحديث</span>
+                <span className="text-primary">{formatDate(blog?.created_at).split('/').join('.')}</span>
+              </div>
+            </div>
           </section>
           <section>
             <div

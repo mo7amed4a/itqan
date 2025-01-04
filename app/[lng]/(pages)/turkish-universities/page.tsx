@@ -12,6 +12,7 @@ import LinksCategory from "@/components/global/LinksCategory";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { dir } from "i18next";
 import BreadcrumbApp from "@/components/global/breadcrumb";
+import CardUniversityTwo from "@/components/home/CardUniversityTwo";
 
 export async function generateMetadata({
   params,
@@ -127,7 +128,7 @@ export default async function UniversitiesPage({
                           lng={lng}
                           href={`/turkish-universities/${item.slug}`}
                         >
-                          <CardUniversity
+                          <CardUniversityTwo
                             major={t("topMajors")}
                             btnText={t("universityInfo.registerNow")}
                             university={item}
