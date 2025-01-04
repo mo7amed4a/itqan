@@ -12,10 +12,10 @@ export default function RegistrationCompleteStep() {
     <div className="container lg:max-w-[85vw] mx-auto ">
         <div className="grid grid-cols-2 lg:grid-cols-5 w-full gap-4 px-4 md:px-0">
         <Steps number={1} image={img1} text="ابحث عن الجامعة"/>
-        <Steps number={1} image={img2} text="التحق بالجامعة"/>
-        <Steps number={1} image={img3} text="الاقامة"/>
-        <Steps number={1} image={img4} text="اتمام التسجيل بالجامعة"/>
-        <Steps number={1} image={img5} text="الاقامة الطلابية"/>
+        <Steps number={2} image={img2} text="التحق بالجامعة"/>
+        <Steps number={3} image={img3} text="الاقامة"/>
+        <Steps number={4} image={img4} text="اتمام التسجيل بالجامعة"/>
+        <Steps number={5} image={img5} text="الاقامة الطلابية"/>
         </div>
     </div>
   )
@@ -45,7 +45,7 @@ const Steps = ({
             {/* <Image src={image.split('http://').join('https://')} className="size-64" alt="" width={100} height={100} /> */}
           </div>
           
-          <span className="text-xl font-bold text-gray-700">
+          <span className="text-xl font-bold text-gray-600">
             {text}
           </span>
           
