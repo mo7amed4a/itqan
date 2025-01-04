@@ -73,19 +73,19 @@ export default async function CardUniversityTwo({
         <section className="space-y-3 pt-3">
           <div className="w-full gap-2 md:items-center text-gray-800 text-xs md:text-sm grid grid-cols-4">
             <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
-              <span className="text-primary">سنة التأسيس</span>
+              <span className="text-primary text-[0.65rem]">سنة التأسيس</span>
               <span className="text-secondary">2000</span>
             </div>
             <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
-              <span className="text-primary">الترتيب عالميا</span>
+              <span className="text-primary text-[0.65rem]">الترتيب عالميا</span>
               <span className="text-secondary">2000</span>
             </div>
             <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
-              <span className="text-primary">الترتيب محليا</span>
+              <span className="text-primary text-[0.65rem]">الترتيب محليا</span>
               <span className="text-secondary">2000</span>
             </div>
             <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
-              <span className="text-primary">عدد التخصصات</span>
+              <span className="text-primary text-[0.65rem]">عدد التخصصات</span>
               <span className="text-secondary">2000</span>
             </div>
           </div>

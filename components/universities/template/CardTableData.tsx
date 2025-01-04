@@ -16,10 +16,10 @@ export default async function CardTableData({
   const filterData = res?.data
 
   return (
-    <div className="bg-white">
+    <div>
           <div className="container lg:max-w-[85vw] mx-auto lg:py-24 px-4">
             <h2 className="text-2xl font-bold mb-4 pt-8 md:pt-0">
-              {t("tabs.studyPrograms")}
+              {"تخصصات "}
             </h2>
             <div className="flex justify-between items-start flex-col-reverse lg:flex-row-reverse">
               <StudyProgramsTabs

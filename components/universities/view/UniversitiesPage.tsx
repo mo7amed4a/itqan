@@ -53,27 +53,37 @@ export default async function UniversitiesPage({
           <CardVideo university={university} lng={lng} />
           <CardAlbum university={university} lng={lng} />
         </div>
-
+{/* 
         {data.specifications && (
           <CardFeatures
             university={university}
             specifications={data.specifications}
             lng={lng}
           />
-        )}
+        )} */}
         {university && (
           <div id="recognitions" className="scroll-mt-96">
             <CardConfessions university={university} lng={lng} />
           </div>
         )}
-        {university && (
-          <div id="numbers" className="scroll-mt-96">
-            <CardRank university={university} lng={lng} />
-          </div>
-        )}
         {study_programs && study_programs.length > 0 && (
           <div id="specializations" className="scroll-mt-96">
             <CardTableData study_programs={data.study_programs} lng={lng} />
+          </div>
+        )}
+        {university.description && (
+          <div id="details" className="scroll-mt-96">
+            <CardDetails university={university} lng={lng} />
+          </div>
+        )}
+        
+        {student_housings && (
+          <CardHouse student_housings={student_housings} lng={lng} />
+        )}
+
+        {university && (
+          <div id="numbers" className="scroll-mt-96">
+            <CardRank university={university} lng={lng} />
           </div>
         )}
         {university && (
@@ -87,11 +97,7 @@ export default async function UniversitiesPage({
             <CardConditionsAndRegistration data={data} lng={lng} />
           </div>
         )}
-        {university.description && (
-          <div id="details" className="scroll-mt-96">
-            <CardDetails university={university} lng={lng} />
-          </div>
-        )}
+        
         {faqs && student_housings && study_programs && (
           <div id="faqs" className="scroll-mt-96">
             <CardFaqs
@@ -102,9 +108,7 @@ export default async function UniversitiesPage({
             />
           </div>
         )}
-        {student_housings && (
-          <CardHouse student_housings={student_housings} lng={lng} />
-        )}
+        
 
 
 

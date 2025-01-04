@@ -15,7 +15,7 @@ export default async function CardAlbum({
 }) {
   const { t } = await useTranslation(lng, "university_details");
   return university?.photo_album?.length > 0 && (
-    <div className="bg-white space-y-7 text-gray-500 pb-10">
+    <div className="space-y-7 text-gray-500 pb-10">
       {university.photo_album.length > 0 && (
         <div className="container lg:max-w-[85vw] mx-auto">
           <div className="py-10">

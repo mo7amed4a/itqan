@@ -2,7 +2,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useTranslation } from "@/i18n";
 import Image from "next/image";
-import React from "react";
+import React from "react"
+import img from "../../../public/icons/discound.png";
 
 export default async function CardUniOne({
   university,
@@ -15,7 +16,16 @@ export default async function CardUniOne({
   return (
     <section className="container lg:max-w-[85vw] mx-auto px-4 mb-5">
       <Card className="flex flex-col w-full md:flex-row md:h-96 rounded-xl shadow-none border-none hover:shadow-md">
-        <CardHeader className="md:w-2/4 p-5 py-12 order-2 md:order-1">
+        <CardHeader className="md:w-2/4 p-5 py-12 order-2 md:order-1 relative">
+        <div className="absolute top-0 end-0">
+          <div className="relative w-20">
+            <Image src={img} className="h-20 w-full absolute inset-0 -top-3" alt="" width={100} height={100} />
+            <div className="relative z-10 flex flex-col items-center justify-center text-white">
+              <span>الخصم</span>
+              <span>40%</span>
+            </div>
+          </div>
+        </div>
           <div className="flex gap-4">
             <Avatar className="size-24">
               <AvatarImage className="p-4" src={university.logo.split("http://").join("https://")} alt={university.name} />
@@ -36,7 +46,7 @@ export default async function CardUniOne({
               <span className="text-sm text-secondary">komkm</span> */}
             </div>
           </div>
-          <div className="text-gray-500 pt-3 pb-4 md:ps-4">
+          {/* <div className="text-gray-500 pt-3 pb-4 md:ps-4">
             <p
               className="line-clamp-4"
               dangerouslySetInnerHTML={{
@@ -63,7 +73,39 @@ export default async function CardUniOne({
               </span>
               <p className="text-secondary">{university.student_count}</p>
             </div>
+          </div> */}
+          <section className="space-y-3 pt-3">
+          <div className="w-full gap-2 md:items-center text-gray-800 text-xs md:text-sm grid grid-cols-4">
+            <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
+              <span className="text-primary">سنة التأسيس</span>
+              <span className="text-secondary">2000</span>
+            </div>
+            <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
+              <span className="text-primary">الترتيب عالميا</span>
+              <span className="text-secondary">2000</span>
+            </div>
+            <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
+              <span className="text-primary">الترتيب محليا</span>
+              <span className="text-secondary">2000</span>
+            </div>
+            <div className="bg-gray-400/10 rounded-lg p-3 flex flex-col items-center space-y-4">
+              <span className="text-primary">عدد التخصصات</span>
+              <span className="text-secondary">2000</span>
+            </div>
           </div>
+          <div className="bg-gray-400/10 text-gray-800 flex justify-between w-full gap-4 rounded-lg text-sm p-3">
+            <span className="text-secondary">تبدأ الارسعار</span>
+            <div className="flex items-center gap-2">
+                <span>من</span>
+                <span>{university.min_annual_fees}$</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span>الى</span>
+              <span>{university.max_annual_fees}$</span>
+            </div>
+          </div>
+        </section>
+        
           {/* <div className="bg-gray-400/10 text-gray-800 flex justify-between w-full gap-4 rounded-lg text-sm p-3 ">
             <div className="flex flex-col items-center gap-2">
               <div className="flex gap-4 items-center">

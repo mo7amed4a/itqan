@@ -5,7 +5,6 @@ import FormBooking from "../../components/home/form-booking";
 import CardUniversity, {
   UniversityType,
 } from "../../components/home/CardUniversity";
-import WhyItqan from "../../components/home/whyItqan";
 import { useTranslation } from "../../i18n";
 import Image from "next/image";
 import img1 from "../../public/images/form-logo.png";
@@ -185,7 +184,7 @@ export default async function Page({
                     key={item.id}
                   >
                     <LinkApp href={`/cyprus-universities/${item.id}`} lng={lng}>
-                      <CardUniversity
+                      <CardUniversityTwo
                         major={t("topMajors")}
                         btnText={t("form_booking.submit")}
                         university={item}

@@ -14,7 +14,7 @@ export default async function CardVideo({
   const {t} = await useTranslation(lng, "university_details");
   return university.video != null && (
      
-    <div className="bg-white space-y-7 text-gray-500 pb-10">
+    <div className="space-y-7 text-gray-500 pb-10">
       <Card className="border-none shadow-none container lg:max-w-[85vw] mx-auto">
         <CardHeader>
           <h2 className="text-lg md:text-xl font-bold my-2">
